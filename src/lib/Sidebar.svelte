@@ -40,6 +40,11 @@
     store.view = "scratchpad";
   }
 
+  function openSettings() {
+    store.activeKey = "settings";
+    store.view = "settings";
+  }
+
   function onNewSession(projectId: string) {
     store.error = "";
     store.preselectedProjectId = projectId;
@@ -107,7 +112,16 @@
       {/each}
     {/each}
   </div>
-  <div class="settings"><Settings size={14} strokeWidth={1.75} /> Settings</div>
+  <div
+    class="settings"
+    class:active={store.view === "settings"}
+    role="button"
+    tabindex="0"
+    onclick={openSettings}
+    onkeydown={(e) => e.key === "Enter" && openSettings()}
+  >
+    <Settings size={14} strokeWidth={1.75} /> Settings
+  </div>
 </aside>
 
 <style>
@@ -214,7 +228,11 @@
     gap: 6px;
     padding: 8px 10px;
     border-top: 1px solid #111;
-    color: #666;
-    cursor: not-allowed;
+    color: #aaa;
+    cursor: pointer;
+  }
+  .settings:hover,
+  .settings.active {
+    background: #37373d;
   }
 </style>

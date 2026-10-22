@@ -9,6 +9,7 @@ mod pty;
 mod runtime;
 mod scratchpad;
 mod session;
+mod settings;
 mod state;
 mod status;
 mod worktree;
@@ -19,11 +20,16 @@ pub fn run() {
     let rt_dir = rt.dir.clone();
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_process::init())
         .manage(session::Sessions::default())
         .manage(project::Projects::default())
         .manage(collab::CollabNotify::default())
         .manage(rt)
         .setup(|app| {
+            app.manage(std::sync::Mutex::new(settings::load(
+                &settings::settings_path(),
+            )));
             app.manage(std::sync::Mutex::new(collab::load(&collab::collab_path())));
             tauri::async_runtime::spawn(broker::serve(app.handle().clone()));
             Ok(())
@@ -43,7 +49,10 @@ pub fn run() {
             project::add_project,
             project::remove_project,
             scratchpad::read_scratchpad,
-            scratchpad::write_scratchpad
+            scratchpad::write_scratchpad,
+            settings::get_settings,
+            settings::set_settings,
+            settings::app_info
         ])
         .build(tauri::generate_context!())
         .expect("error while running agentfleet")

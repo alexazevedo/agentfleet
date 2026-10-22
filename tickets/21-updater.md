@@ -1,6 +1,6 @@
 ---
 id: 21
-status: todo
+status: done
 model: sonnet
 depends_on: [19, 20]
 max_attempts: 3
@@ -28,7 +28,7 @@ Add `tauri-plugin-updater = "2"` and `tauri-plugin-process = "2"` (Rust) and `@t
 2. `cd src-tauri && cargo test`
 3. `npm run check && npm run build`
 4. `grep -q '"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ' src-tauri/tauri.conf.json`
-5. `npm run tauri build -- --debug --bundles app && test -d src-tauri/target/debug/bundle/macos/agentfleet.app`
+5. `npm run tauri build -- --debug --bundles app && test -d src-tauri/target/debug/bundle/macos/agentfleet.app`  (needs `TAURI_SIGNING_PRIVATE_KEY(_PASSWORD)` in the env — orchestrator runs it with the key from ~/.tauri)
 
 ## Done when
 - With no release published, "Check now" reports an error/no update without crashing; the scheduler does not run when update checks are off.

@@ -14,6 +14,7 @@ use crate::agent;
 use crate::collab::{self, CollabNotify, CollabState};
 use crate::project::{Project, Projects};
 use crate::runtime::Runtime;
+use crate::settings::SettingsState;
 use crate::state::{self, PersistedSession, PersistedState};
 use crate::status::{self, Status};
 use crate::worktree::{self, Worktree, WorktreeError};
@@ -127,7 +128,12 @@ pub fn create_session(
     let id = Uuid::new_v4();
     let id8: String = id.simple().to_string().chars().take(8).collect();
 
-    let root = platform::home_dir().join(".agentfleet/worktrees");
+    let root = app
+        .state::<SettingsState>()
+        .lock()
+        .map_err(|e| e.to_string())?
+        .worktrees_root
+        .clone();
     std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
     let wt = worktree::create(&repo, agent.as_str(), &id8, &root)
         .map_err(|e| worktree_error_message(&e))?;
@@ -199,9 +205,14 @@ fn spawn_for(
         let status_file = run.join(format!("{id}.status"));
         let settings = run.join(format!("{id}.settings.json"));
         agent::write_hooks_settings(&status_file, &settings).map_err(|e| e.to_string())?;
+        let auto_permission = app
+            .state::<SettingsState>()
+            .lock()
+            .map_err(|e| e.to_string())?
+            .auto_permission;
         command = format!(
             "{path_prefix}exec {}",
-            agent::claude_launch(id, &settings, resume)
+            agent::claude_launch(id, &settings, resume, auto_permission)
         );
         status::spawn_poller(app.clone(), id, status_file, stop_rx);
         poller_stop = Some(stop_tx.clone());

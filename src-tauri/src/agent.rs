@@ -8,10 +8,20 @@ pub fn shell_quote(s: &str) -> String {
     format!("'{}'", s.replace('\'', "'\\''"))
 }
 
-pub fn claude_launch(session_id: Uuid, settings_path: &Path, resume: bool) -> String {
+pub fn claude_launch(
+    session_id: Uuid,
+    settings_path: &Path,
+    resume: bool,
+    auto_permission: bool,
+) -> String {
     let id_flag = if resume { "--resume" } else { "--session-id" };
+    let perm = if auto_permission {
+        "--permission-mode auto "
+    } else {
+        ""
+    };
     format!(
-        "claude --permission-mode auto --settings {} {} {}",
+        "claude {perm}--settings {} {} {}",
         shell_quote(&settings_path.to_string_lossy()),
         id_flag,
         session_id
@@ -41,13 +51,16 @@ mod tests {
     fn launch_flags() {
         let id = Uuid::new_v4();
         let p = PathBuf::from("/tmp/x.settings.json");
-        let s = claude_launch(id, &p, false);
+        let s = claude_launch(id, &p, false, true);
         assert!(s.starts_with("claude --permission-mode auto --settings "));
         assert!(s.contains(&format!("--session-id {id}")));
         assert!(!s.contains("--resume"));
-        let r = claude_launch(id, &p, true);
+        let r = claude_launch(id, &p, true, true);
         assert!(r.contains(&format!("--resume {id}")));
         assert!(!r.contains("--session-id"));
+        let n = claude_launch(id, &p, false, false);
+        assert!(n.starts_with("claude --settings "));
+        assert!(!n.contains("--permission-mode"));
     }
 
     #[test]

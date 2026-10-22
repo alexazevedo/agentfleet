@@ -37,7 +37,7 @@ export const store = $state({
   projects: [] as Project[],
   tabs: [] as Tab[],
   activeKey: null as string | null,
-  view: "terminal" as "terminal" | "messages" | "scratchpad",
+  view: "terminal" as "terminal" | "messages" | "scratchpad" | "settings",
   dialogOpen: false,
   preselectedProjectId: null as string | null,
   error: "",

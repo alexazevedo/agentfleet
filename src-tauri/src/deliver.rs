@@ -4,6 +4,7 @@ use uuid::Uuid;
 
 use crate::collab::{self, CollabNotify, CollabState, RunStatus};
 use crate::session::{Agent, Sessions};
+use crate::settings::SettingsState;
 use crate::status::Status;
 
 #[derive(Debug, PartialEq)]
@@ -123,9 +124,17 @@ pub fn try_deliver(app: &AppHandle, run_id: Uuid, force: bool) -> Result<bool, S
     Ok(true)
 }
 
+fn auto_delivery(app: &AppHandle) -> bool {
+    app.state::<SettingsState>()
+        .lock()
+        .map(|s| s.auto_delivery)
+        .unwrap_or(true)
+}
+
 pub fn on_status(app: &AppHandle, session: Uuid, status: Status) {
+    let auto = auto_delivery(app);
     match status {
-        Status::Waiting => {
+        Status::Waiting if auto => {
             let next = {
                 let cs = app.state::<CollabState>();
                 let Ok(c) = cs.lock() else {
@@ -175,6 +184,9 @@ pub fn on_status(app: &AppHandle, session: Uuid, status: Status) {
 }
 
 pub fn on_request_created(app: &AppHandle, run_id: Uuid) {
+    if !auto_delivery(app) {
+        return;
+    }
     if let Err(e) = try_deliver(app, run_id, false) {
         eprintln!("agentfleet: delivery failed: {e}");
     }

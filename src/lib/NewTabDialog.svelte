@@ -1,12 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
+  import { loadSettings, settings } from "./settingsStore.svelte";
   import { addPending, addProject, loadProjects, store, type AgentKind } from "./sessions.svelte";
 
   let projectId = $state("");
   let agent = $state<AgentKind>("claude");
 
   onMount(async () => {
+    try {
+      if (!settings.loaded) await loadSettings();
+      agent = settings.value.defaultAgent;
+    } catch {}
     await loadProjects();
     if (store.preselectedProjectId) {
       projectId = store.preselectedProjectId;

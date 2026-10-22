@@ -3,12 +3,16 @@
   import StatusBar from "./lib/StatusBar.svelte";
   import NewTabDialog from "./lib/NewTabDialog.svelte";
   import Terminal from "./lib/Terminal.svelte";
-  import { NotebookPen, PanelLeft } from "lucide-svelte";
+  import { NotebookPen, PanelLeft, Settings as SettingsIcon } from "lucide-svelte";
   import Messages from "./lib/Messages.svelte";
+  import SettingsPane from "./lib/SettingsPane.svelte";
   import Scratchpad from "./lib/Scratchpad.svelte";
   import { queuedCount } from "./lib/collab.svelte";
   import { onMount } from "svelte";
   import { restoreTabs, store } from "./lib/sessions.svelte";
+  import { loadSettings, settings } from "./lib/settingsStore.svelte";
+  import { startScheduler, stopScheduler, updater } from "./lib/updater.svelte";
+  import UpdateDialog from "./lib/UpdateDialog.svelte";
 
   const KEY = "agentfleet.sidebarCollapsed";
   let collapsed = $state(false);
@@ -18,6 +22,13 @@
       collapsed = localStorage.getItem(KEY) === "1";
     } catch {}
     restoreTabs();
+    loadSettings().catch(() => {});
+  });
+
+  $effect(() => {
+    if (settings.loaded && settings.value.updateChecks) startScheduler();
+    else stopScheduler();
+    return stopScheduler;
   });
 
   const activeTab = $derived(store.tabs.find((t) => t.key === store.activeKey));
@@ -39,6 +50,8 @@
     <div class="strip">
       {#if store.view === "scratchpad"}
         <span class="label"><NotebookPen size={14} strokeWidth={1.75} /> Scratchpad</span>
+      {:else if store.view === "settings"}
+        <span class="label"><SettingsIcon size={14} strokeWidth={1.75} /> Settings</span>
       {:else if activeTab?.info}
         {@const n = queuedCount(activeTab.info.id)}
         <button type="button" class:on={store.view === "terminal"} onclick={() => (store.view = "terminal")}>Terminal</button>
@@ -53,6 +66,8 @@
       {/each}
       {#if store.view === "scratchpad" && store.activeKey?.startsWith("scratchpad:")}
         <Scratchpad projectId={store.activeKey.slice("scratchpad:".length)} />
+      {:else if store.view === "settings"}
+        <SettingsPane />
       {:else if store.view === "messages" && activeTab?.info}
         <Messages tab={activeTab} />
       {/if}
@@ -63,6 +78,7 @@
   </section>
   <StatusBar />
   {#if store.dialogOpen}<NewTabDialog />{/if}
+  {#if updater.available}<UpdateDialog />{/if}
 </main>
 
 <style>

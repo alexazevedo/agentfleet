@@ -49,6 +49,14 @@ pub fn spawn(
     }
     cmd.cwd(cwd);
     cmd.env("TERM", "xterm-256color");
+    // Drop Claude Code session markers inherited from a parent session so a
+    // nested `claude` behaves as a top-level session. CLAUDE_CONFIG_DIR is kept.
+    for (name, _) in std::env::vars_os() {
+        let n = name.to_string_lossy();
+        if n.starts_with("CLAUDE_CODE_") || n == "CLAUDECODE" {
+            cmd.env_remove(&name);
+        }
+    }
     for (k, v) in env {
         cmd.env(k, v);
     }
@@ -136,6 +144,36 @@ mod tests {
         rx.recv_timeout(Duration::from_secs(5)).unwrap();
         let text = String::from_utf8_lossy(&out.lock().unwrap()).to_string();
         assert!(text.contains("PTYOK"), "got: {text:?}");
+    }
+
+    #[test]
+    fn scrubs_claude_code_markers_from_env() {
+        std::env::set_var("CLAUDECODE", "1");
+        std::env::set_var("CLAUDE_CODE_CHILD_SESSION", "1");
+        std::env::set_var("KEEP_ME", "yes");
+        let dir = tempfile::tempdir().unwrap();
+        let out = Arc::new(Mutex::new(Vec::new()));
+        let out2 = out.clone();
+        let (tx, rx) = mpsc::channel();
+        let _h = spawn(
+            "/bin/sh",
+            dir.path(),
+            Some(r#"echo "[$CLAUDECODE][$CLAUDE_CODE_CHILD_SESSION][$KEEP_ME]""#),
+            &[],
+            80,
+            24,
+            Box::new(move |b| out2.lock().unwrap().extend(b)),
+            Box::new(move |c| {
+                let _ = tx.send(c);
+            }),
+        )
+        .unwrap();
+        rx.recv_timeout(Duration::from_secs(5)).unwrap();
+        std::env::remove_var("CLAUDECODE");
+        std::env::remove_var("CLAUDE_CODE_CHILD_SESSION");
+        std::env::remove_var("KEEP_ME");
+        let text = String::from_utf8_lossy(&out.lock().unwrap()).to_string();
+        assert!(text.contains("[][][yes]"), "got: {text:?}");
     }
 
     #[test]
