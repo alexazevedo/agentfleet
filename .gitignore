@@ -16,3 +16,5 @@ dist/
 # graphify derived cache
 graphify-out/cache/
 graphify-out/.graphify_root
+# Claude Code worktrees
+.claude/worktrees/
