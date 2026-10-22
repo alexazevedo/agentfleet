@@ -357,6 +357,25 @@ pub fn list_restorable(
     Ok(out)
 }
 
+/// Remove every session without a PTY; returns how many were removed.
+fn drain_unattached(map: &mut HashMap<Uuid, Session>) -> usize {
+    let before = map.len();
+    map.retain(|_, s| s.pty.is_some());
+    before - map.len()
+}
+
+/// Forget restorable sessions (worktrees and branches stay on disk).
+#[tauri::command]
+pub fn forget_restorable(
+    sessions: State<'_, Sessions>,
+    projects: State<'_, Projects>,
+) -> Result<usize, String> {
+    let mut map = sessions.lock().map_err(|e| e.to_string())?;
+    let n = drain_unattached(&mut map);
+    persist(&map, &projects.lock().map_err(|e| e.to_string())?);
+    Ok(n)
+}
+
 #[tauri::command]
 pub fn attach_session(
     id: String,
@@ -537,6 +556,60 @@ pub fn shutdown(app: &AppHandle) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn fake(pty: Option<pty::PtyHandle>) -> (Uuid, Session) {
+        let id = Uuid::new_v4();
+        (
+            id,
+            Session {
+                id,
+                id8: id.simple().to_string()[..8].to_string(),
+                project_id: Uuid::new_v4(),
+                agent: Agent::Shell,
+                repo: PathBuf::from("/r"),
+                worktree: Worktree {
+                    repo: PathBuf::from("/r"),
+                    path: PathBuf::from("/w"),
+                    branch: "b".into(),
+                    base_commit: "c".into(),
+                },
+                pty,
+                poller_stop: None,
+                token: String::new(),
+                status: Status::Unknown,
+                draft_len: 0,
+            },
+        )
+    }
+
+    #[test]
+    fn drain_unattached_keeps_live() {
+        let mut live = pty::spawn(
+            "/bin/sh",
+            std::path::Path::new("/tmp"),
+            None,
+            &[],
+            80,
+            24,
+            Box::new(|_| {}),
+            Box::new(|_| {}),
+        )
+        .unwrap();
+        let mut map = HashMap::new();
+        let (a, sa) = fake(None);
+        let (b, sb) = fake(None);
+        let (c, sc) = fake(None);
+        map.insert(a, sa);
+        map.insert(b, sb);
+        let mut sc = sc;
+        sc.pty = Some(live);
+        map.insert(c, sc);
+        assert_eq!(drain_unattached(&mut map), 2);
+        assert_eq!(map.len(), 1);
+        assert!(map.contains_key(&c));
+        live = map.get_mut(&c).unwrap().pty.take().unwrap();
+        let _ = live.kill();
+    }
 
     #[test]
     fn confirm_decision() {

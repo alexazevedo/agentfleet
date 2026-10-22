@@ -9,24 +9,37 @@
   import Scratchpad from "./lib/Scratchpad.svelte";
   import { queuedCount } from "./lib/collab.svelte";
   import { onMount } from "svelte";
-  import { restoreTabs, store } from "./lib/sessions.svelte";
+  import { attachRestored, forgetRestorable, listRestorable, store } from "./lib/sessions.svelte";
   import { loadSettings, settings } from "./lib/settingsStore.svelte";
   import { startScheduler, stopScheduler, updater } from "./lib/updater.svelte";
   import UpdateDialog from "./lib/UpdateDialog.svelte";
+  import RestoreDialog from "./lib/RestoreDialog.svelte";
 
   const KEY = "agentfleet.sidebarCollapsed";
   let collapsed = $state(false);
 
-  onMount(() => {
+  onMount(async () => {
     try {
       collapsed = localStorage.getItem(KEY) === "1";
     } catch {}
-    restoreTabs();
-    loadSettings().catch(() => {});
+    await loadSettings().catch(() => {});
+    const infos = await listRestorable();
+    const mode = settings.value.restoreSessions;
+    if (infos.length === 0) {
+      store.restoreDecided = true;
+    } else if (mode === "always") {
+      attachRestored();
+      store.restoreDecided = true;
+    } else if (mode === "never") {
+      await forgetRestorable();
+      store.restoreDecided = true;
+    } else {
+      store.restoreDialogOpen = true; // dialog sets restoreDecided
+    }
   });
 
   $effect(() => {
-    if (settings.loaded && settings.value.updateChecks) startScheduler();
+    if (store.restoreDecided && settings.loaded && settings.value.updateChecks) startScheduler();
     else stopScheduler();
     return stopScheduler;
   });
@@ -78,6 +91,7 @@
   </section>
   <StatusBar />
   {#if store.dialogOpen}<NewTabDialog />{/if}
+  {#if store.restoreDialogOpen}<RestoreDialog />{/if}
   {#if updater.available}<UpdateDialog />{/if}
 </main>
 

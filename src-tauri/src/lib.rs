@@ -71,6 +71,7 @@ pub fn run() {
             session::resize_session,
             session::close_session,
             session::list_restorable,
+            session::forget_restorable,
             session::attach_session,
             collab::list_runs,
             collab::send_request,

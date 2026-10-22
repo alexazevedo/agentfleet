@@ -62,6 +62,15 @@
     </button>
     {#if updater.error}<span class="err">{updater.error}</span>{:else if updater.lastResult}<span>{updater.lastResult}</span>{/if}
   </div>
+  <h3>Startup</h3>
+  <label class="field">
+    <span>Restore sessions</span>
+    <select bind:value={form.restoreSessions}>
+      <option value="ask">Ask</option>
+      <option value="always">Always restore</option>
+      <option value="never">Never restore</option>
+    </select>
+  </label>
   <h3>Terminal</h3>
   <label class="field">
     <span>Font family</span>

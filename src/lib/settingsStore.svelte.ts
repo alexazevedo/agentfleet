@@ -15,6 +15,7 @@ export interface Settings {
   autoDelivery: boolean;
   confirmQuit: boolean;
   updateChecks: boolean;
+  restoreSessions: "ask" | "always" | "never";
   terminal: TerminalSettings;
 }
 
@@ -32,6 +33,7 @@ export const settings = $state({
     autoDelivery: true,
     confirmQuit: true,
     updateChecks: true,
+    restoreSessions: "ask",
     terminal: { fontFamily: "", fontSize: 13, lineHeight: 1.0, cursorBlink: true },
   } as Settings,
 });

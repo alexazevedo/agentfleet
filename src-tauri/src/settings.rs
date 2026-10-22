@@ -40,6 +40,8 @@ pub struct Settings {
     pub auto_delivery: bool,
     pub confirm_quit: bool,
     pub update_checks: bool,
+    /// "ask" | "always" | "never"
+    pub restore_sessions: String,
     #[serde(default)]
     pub terminal: TerminalSettings,
 }
@@ -53,6 +55,7 @@ impl Default for Settings {
             auto_delivery: true,
             confirm_quit: true,
             update_checks: true,
+            restore_sessions: "ask".into(),
             terminal: TerminalSettings::default(),
         }
     }
@@ -99,6 +102,9 @@ fn validate(s: &Settings) -> Result<(), String> {
     }
     if s.default_agent != "claude" && s.default_agent != "shell" {
         return Err(format!("unknown agent: {}", s.default_agent));
+    }
+    if !matches!(s.restore_sessions.as_str(), "ask" | "always" | "never") {
+        return Err("restore sessions must be ask, always or never".into());
     }
     if !(9..=24).contains(&s.terminal.font_size) {
         return Err("font size must be 9–24".into());
@@ -185,6 +191,15 @@ mod tests {
         };
         assert!(validate(&rel).is_err());
         assert!(validate(&Settings::default()).is_ok());
+        let bad_restore = Settings {
+            restore_sessions: "sometimes".into(),
+            ..Settings::default()
+        };
+        assert_eq!(
+            validate(&bad_restore).unwrap_err(),
+            "restore sessions must be ask, always or never"
+        );
+        assert_eq!(Settings::default().restore_sessions, "ask");
         for size in [8, 25] {
             let s = Settings {
                 terminal: TerminalSettings {

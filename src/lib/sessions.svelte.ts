@@ -41,6 +41,10 @@ export const store = $state({
   dialogOpen: false,
   preselectedProjectId: null as string | null,
   error: "",
+  pendingRestore: [] as SessionInfo[],
+  restoreDialogOpen: false,
+  // True once the launch restore decision is resolved (gates the update scheduler).
+  restoreDecided: false,
 });
 
 // Events that arrive before create_session resolves (tab has no info.id yet).
@@ -125,28 +129,48 @@ export async function closeTab(key: string) {
   setTimeout(() => remove(key), 3000);
 }
 
-// Called once on app start: one tab per persisted session (PTY attached by Terminal).
-let restoredOnce = false;
-export async function restoreTabs() {
-  if (restoredOnce) return;
-  restoredOnce = true;
+// Called once on app start: load saved sessions into store.pendingRestore.
+let listedOnce = false;
+export async function listRestorable(): Promise<SessionInfo[]> {
+  if (listedOnce) return store.pendingRestore;
+  listedOnce = true;
   try {
     const infos = await invoke<SessionInfo[]>("list_restorable");
     await loadProjects();
-    for (const info of infos) {
-      const key = crypto.randomUUID();
-      store.tabs.push({
-        key,
-        projectId: info.projectId,
-        agent: info.agent,
-        info,
-        status: early.get(info.id) ?? "unknown",
-        restored: true,
-      });
-      early.delete(info.id);
-      store.activeKey ??= key;
-    }
+    store.pendingRestore = infos;
   } catch (e) {
     store.error = String(e);
   }
+  return store.pendingRestore;
+}
+
+// One tab per pending session (PTY attached by Terminal).
+export function attachRestored() {
+  for (const info of store.pendingRestore) {
+    const key = crypto.randomUUID();
+    store.tabs.push({
+      key,
+      projectId: info.projectId,
+      agent: info.agent,
+      info,
+      status: early.get(info.id) ?? "unknown",
+      restored: true,
+    });
+    early.delete(info.id);
+    store.activeKey ??= key;
+  }
+  store.pendingRestore = [];
+}
+
+export async function forgetRestorable() {
+  try {
+    await invoke<number>("forget_restorable");
+  } catch (e) {
+    store.error = String(e);
+  }
+  store.pendingRestore = [];
+}
+
+export function restoreTabs() {
+  return listRestorable().then(attachRestored);
 }
