@@ -12,7 +12,7 @@ use uuid::Uuid;
 
 use crate::agent;
 use crate::collab::{self, CollabNotify, CollabState};
-use crate::project::{Project, Projects};
+use crate::project::{self, Project, Projects};
 use crate::runtime::Runtime;
 use crate::settings::SettingsState;
 use crate::state::{self, PersistedSession, PersistedState};
@@ -423,7 +423,7 @@ pub fn resize_session(
     with_pty(&sessions, &id, |p| p.resize(cols, rows))
 }
 
-#[derive(Serialize, Debug, PartialEq)]
+#[derive(Serialize, Debug, Clone, PartialEq)]
 #[serde(tag = "kind", rename_all = "lowercase")]
 pub enum CloseOutcome {
     Removed,
@@ -447,13 +447,15 @@ fn close_decision(
 }
 
 #[tauri::command]
-pub fn close_session(
-    id: String,
-    sessions: State<'_, Sessions>,
-    projects: State<'_, Projects>,
-    app: AppHandle,
-) -> Result<CloseOutcome, String> {
+pub fn close_session(id: String, app: AppHandle) -> Result<CloseOutcome, String> {
     let uuid = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
+    close_one(&app, uuid)
+}
+
+/// Close one session: remove from registry, stop poller/PTY, clean run files, remove clean worktree.
+pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
+    let sessions = app.state::<Sessions>();
+    let projects = app.state::<Projects>();
     // Take ownership so the mutex is not held across kill (which joins the reader).
     let mut s = {
         let mut map = sessions.lock().map_err(|e| e.to_string())?;
@@ -469,7 +471,7 @@ pub fn close_session(
             collab::save(&c);
             t
         };
-        collab::changed(&app, &app.state::<CollabNotify>().0, &touched);
+        collab::changed(app, &app.state::<CollabNotify>().0, &touched);
     }
     if let Some(tx) = &s.poller_stop {
         let _ = tx.send(true);
@@ -493,6 +495,71 @@ pub fn close_session(
         },
     };
     Ok(outcome)
+}
+
+#[derive(Serialize, Debug, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct ClosedSession {
+    pub id: String,
+    pub outcome: CloseOutcome,
+}
+
+/// Closes `ids` in order; stops at the first error (already-closed ones stay closed).
+/// Only when every close succeeded does `finish` run (the project removal).
+pub fn cascade(
+    ids: Vec<Uuid>,
+    mut close: impl FnMut(Uuid) -> Result<CloseOutcome, String>,
+    finish: impl FnOnce() -> Result<(), String>,
+) -> Result<Vec<ClosedSession>, String> {
+    let mut out = Vec::with_capacity(ids.len());
+    for id in ids {
+        let outcome = close(id)?;
+        out.push(ClosedSession {
+            id: id.to_string(),
+            outcome,
+        });
+    }
+    finish()?;
+    Ok(out)
+}
+
+#[tauri::command]
+pub fn remove_project_cascade(id: String, app: AppHandle) -> Result<Vec<ClosedSession>, String> {
+    let uuid = Uuid::parse_str(&id).map_err(|_| "no such project".to_string())?;
+    let ids = {
+        let sessions = app.state::<Sessions>();
+        let projects = app.state::<Projects>();
+        let map = sessions.lock().map_err(|e| e.to_string())?;
+        if !projects
+            .lock()
+            .map_err(|e| e.to_string())?
+            .iter()
+            .any(|p| p.id == uuid)
+        {
+            return Err("no such project".into());
+        }
+        let mut v: Vec<(String, Uuid)> = map
+            .values()
+            .filter(|s| s.project_id == uuid)
+            .map(|s| (s.id8.clone(), s.id))
+            .collect();
+        v.sort();
+        v.into_iter().map(|(_, id)| id).collect::<Vec<_>>()
+    };
+    cascade(
+        ids,
+        |sid| close_one(&app, sid),
+        || {
+            let sessions = app.state::<Sessions>();
+            let projects = app.state::<Projects>();
+            let map = sessions.lock().map_err(|e| e.to_string())?;
+            let mut list = projects.lock().map_err(|e| e.to_string())?;
+            let has = map.values().any(|s| s.project_id == uuid);
+            project::remove_from(&mut list, uuid, has)?;
+            persist(&map, &list);
+            Ok(())
+        },
+    )
 }
 
 /// Pure: whether closing the window should ask for confirmation.
@@ -561,6 +628,69 @@ mod tests {
                 path: "/p \u{2014} boom".into()
             }
         );
+    }
+
+    fn ids(n: usize) -> Vec<Uuid> {
+        (0..n).map(|_| Uuid::new_v4()).collect()
+    }
+
+    #[test]
+    fn cascade_closes_all_then_finishes() {
+        let v = ids(3);
+        let mut finished = 0;
+        let r = cascade(
+            v.clone(),
+            |_| Ok(CloseOutcome::Removed),
+            || {
+                finished += 1;
+                Ok(())
+            },
+        )
+        .unwrap();
+        assert_eq!(finished, 1);
+        let got: Vec<String> = r.iter().map(|c| c.id.clone()).collect();
+        assert_eq!(got, v.iter().map(|u| u.to_string()).collect::<Vec<_>>());
+        assert!(r.iter().all(|c| c.outcome == CloseOutcome::Removed));
+    }
+
+    #[test]
+    fn cascade_stops_at_first_error() {
+        let mut calls = 0;
+        let mut finished = false;
+        let r = cascade(
+            ids(3),
+            |_| {
+                calls += 1;
+                if calls == 2 {
+                    Err("boom".to_string())
+                } else {
+                    Ok(CloseOutcome::Removed)
+                }
+            },
+            || {
+                finished = true;
+                Ok(())
+            },
+        );
+        assert_eq!(r, Err("boom".to_string()));
+        assert_eq!(calls, 2);
+        assert!(!finished);
+    }
+
+    #[test]
+    fn cascade_kept_is_not_an_error() {
+        let mut finished = false;
+        let r = cascade(
+            ids(1),
+            |_| Ok(CloseOutcome::Kept { path: "/w".into() }),
+            || {
+                finished = true;
+                Ok(())
+            },
+        )
+        .unwrap();
+        assert!(finished);
+        assert_eq!(r[0].outcome, CloseOutcome::Kept { path: "/w".into() });
     }
 
     #[test]

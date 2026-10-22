@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
-  import { Folder, NotebookPen, Settings, Plus, X } from "lucide-svelte";
+  import { Folder, NotebookPen, Settings, Plus, Trash2, X } from "lucide-svelte";
   import AgentIcon from "./AgentIcon.svelte";
   import { collab, initCollabListener, loadRuns, queuedCount } from "./collab.svelte";
   import {
@@ -62,6 +62,7 @@
       <div class="project">
         <span class="name" title={p.path}><Folder size={14} strokeWidth={1.75} /> {p.name}</span>
         <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
+        <button type="button" class="remove" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></button>
       </div>
       <div
         class="session"
@@ -193,6 +194,13 @@
     padding: 0 4px;
   }
   .session:hover .close {
+    visibility: visible;
+  }
+  .remove {
+    visibility: hidden;
+    padding: 0 4px;
+  }
+  .project:hover .remove {
     visibility: visible;
   }
   .kept {

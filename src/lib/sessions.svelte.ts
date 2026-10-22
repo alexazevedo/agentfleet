@@ -40,6 +40,7 @@ export const store = $state({
   view: "terminal" as "terminal" | "messages" | "scratchpad" | "settings",
   dialogOpen: false,
   preselectedProjectId: null as string | null,
+  removeProjectId: null as string | null,
   error: "",
 });
 
@@ -123,6 +124,25 @@ export async function closeTab(key: string) {
     return remove(key);
   }
   setTimeout(() => remove(key), 3000);
+}
+
+type ClosedSession = { id: string; outcome: CloseOutcome };
+
+// Backend closes the sessions then removes the project; on rejection the store is untouched.
+export async function removeProject(id: string): Promise<void> {
+  await invoke<ClosedSession[]>("remove_project_cascade", { id });
+  const keys = new Set(store.tabs.filter((t) => t.projectId === id).map((t) => t.key));
+  const activeGone =
+    store.activeKey !== null && (keys.has(store.activeKey) || store.activeKey === "scratchpad:" + id);
+  for (let i = store.tabs.length - 1; i >= 0; i--) {
+    if (keys.has(store.tabs[i].key)) store.tabs.splice(i, 1);
+  }
+  const pi = store.projects.findIndex((p) => p.id === id);
+  if (pi >= 0) store.projects.splice(pi, 1);
+  if (activeGone) {
+    store.activeKey = store.tabs.at(-1)?.key ?? null;
+    store.view = "terminal";
+  }
 }
 
 // Called once on app start: one tab per persisted session (PTY attached by Terminal).

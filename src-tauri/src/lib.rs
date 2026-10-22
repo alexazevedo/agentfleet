@@ -79,6 +79,7 @@ pub fn run() {
             project::list_projects,
             project::add_project,
             project::remove_project,
+            session::remove_project_cascade,
             scratchpad::read_scratchpad,
             scratchpad::write_scratchpad,
             settings::get_settings,
