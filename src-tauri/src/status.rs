@@ -3,9 +3,11 @@ use std::path::PathBuf;
 use std::time::Duration;
 
 use serde::Serialize;
-use tauri::{AppHandle, Emitter};
+use tauri::{AppHandle, Emitter, Manager};
 use tokio::sync::watch;
 use uuid::Uuid;
+
+use crate::session::Sessions;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "lowercase")]
@@ -31,7 +33,13 @@ struct StatusEvent {
     status: Status,
 }
 
+/// Single status sink: record on the session, notify the UI, then let delivery react.
 pub fn emit(app: &AppHandle, id: Uuid, status: Status) {
+    if let Ok(mut map) = app.state::<Sessions>().lock() {
+        if let Some(s) = map.get_mut(&id) {
+            s.status = status;
+        }
+    }
     let _ = app.emit(
         "session-status",
         StatusEvent {
@@ -39,6 +47,7 @@ pub fn emit(app: &AppHandle, id: Uuid, status: Status) {
             status,
         },
     );
+    crate::deliver::on_status(app, id, status);
 }
 
 /// Polls `status_file` every 200 ms; send `true` on the returned-by-caller

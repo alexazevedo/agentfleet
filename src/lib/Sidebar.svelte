@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
+  import { Folder, NotebookPen, Settings, Plus, X } from "lucide-svelte";
+  import AgentIcon from "./AgentIcon.svelte";
+  import { collab, initCollabListener, loadRuns, queuedCount } from "./collab.svelte";
   import {
     addProject,
     closeTab,
@@ -9,7 +12,17 @@
     store,
   } from "./sessions.svelte";
 
-  onMount(initStatusListener);
+  onMount(() => {
+    initStatusListener();
+    initCollabListener();
+  });
+
+  // Initial load so badges show before any collab-changed event.
+  $effect(() => {
+    for (const t of store.tabs) {
+      if (t.info && !(t.info.id in collab.runsBySession)) loadRuns(t.info.id);
+    }
+  });
 
   async function onAddProject() {
     const picked = await open({ directory: true, multiple: false });
@@ -22,6 +35,11 @@
     }
   }
 
+  function openScratchpad(projectId: string) {
+    store.activeKey = "scratchpad:" + projectId;
+    store.view = "scratchpad";
+  }
+
   function onNewSession(projectId: string) {
     store.error = "";
     store.preselectedProjectId = projectId;
@@ -32,13 +50,24 @@
 <aside class="sidebar">
   <div class="header">
     <span>Projects</span>
-    <button type="button" aria-label="Add project" onclick={onAddProject}>+</button>
+    <button type="button" aria-label="Add project" onclick={onAddProject}><Plus size={14} strokeWidth={1.75} /></button>
   </div>
   <div class="list">
     {#each store.projects as p (p.id)}
       <div class="project">
-        <span class="name" title={p.path}>📁 {p.name}</span>
-        <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}>+</button>
+        <span class="name" title={p.path}><Folder size={14} strokeWidth={1.75} /> {p.name}</span>
+        <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
+      </div>
+      <div
+        class="session"
+        class:active={store.activeKey === "scratchpad:" + p.id}
+        role="button"
+        tabindex="0"
+        onclick={() => openScratchpad(p.id)}
+        onkeydown={(e) => e.key === "Enter" && openScratchpad(p.id)}
+      >
+        <NotebookPen size={14} strokeWidth={1.75} />
+        <span>Scratchpad</span>
       </div>
       {#each store.tabs.filter((t) => t.projectId === p.id) as tab (tab.key)}
         <div
@@ -50,6 +79,7 @@
           onkeydown={(e) => e.key === "Enter" && setActive(tab.key)}
         >
           {#if tab.info}
+            <AgentIcon agent={tab.info.agent} size={14} />
             <span>{tab.info.agent === "claude" ? "Claude Code" : "Shell"}</span>
             <span class="id8">{tab.info.id8}</span>
           {:else}
@@ -63,8 +93,11 @@
             onclick={(e) => {
               e.stopPropagation();
               closeTab(tab.key);
-            }}>×</button
+            }}><X size={14} strokeWidth={1.75} /></button
           >
+          {#if tab.info && queuedCount(tab.info.id) > 0}
+            <span class="badge" title="Queued requests">{queuedCount(tab.info.id)}</span>
+          {/if}
           {#if tab.closing === "kept"}
             <span class="kept" title={tab.keptPath}>kept</span>
           {:else}
@@ -74,7 +107,7 @@
       {/each}
     {/each}
   </div>
-  <div class="settings">Settings</div>
+  <div class="settings"><Settings size={14} strokeWidth={1.75} /> Settings</div>
 </aside>
 
 <style>
@@ -96,13 +129,18 @@
   }
   .header {
     font-weight: 600;
-    padding-left: 36px; /* room for the toggle button */
+    font-size: 12px;
+    color: #aaa;
+    padding-top: 10px;
   }
   .list {
     flex: 1;
     overflow-y: auto;
   }
   .name {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -147,6 +185,14 @@
     font-size: 11px;
     color: #e3a008;
   }
+  .badge {
+    background: #0e639c;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 10px;
+    padding: 0 5px;
+    line-height: 14px;
+  }
   .dot {
     width: 8px;
     height: 8px;
@@ -163,6 +209,9 @@
     background: #f85149;
   }
   .settings {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 8px 10px;
     border-top: 1px solid #111;
     color: #666;

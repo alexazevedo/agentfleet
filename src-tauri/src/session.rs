@@ -6,12 +6,14 @@ use std::sync::Mutex;
 
 use serde::Serialize;
 use tauri::ipc::{Channel, InvokeResponseBody};
-use tauri::{AppHandle, State};
+use tauri::{AppHandle, Manager, State};
 use tokio::sync::watch;
 use uuid::Uuid;
 
 use crate::agent;
+use crate::collab::{self, CollabNotify, CollabState};
 use crate::project::{Project, Projects};
+use crate::runtime::Runtime;
 use crate::state::{self, PersistedSession, PersistedState};
 use crate::status::{self, Status};
 use crate::worktree::{self, Worktree, WorktreeError};
@@ -50,6 +52,12 @@ pub struct Session {
     pub pty: Option<pty::PtyHandle>,
     /// Send `true` to stop the status poller (Claude sessions only).
     pub poller_stop: Option<watch::Sender<bool>>,
+    /// Broker auth token; empty until a PTY is spawned, regenerated per spawn.
+    pub token: String,
+    /// Last known status. Stored as `Unknown` on spawn; updates land in ticket 12.
+    pub status: Status,
+    /// Bytes typed since the last Enter (backend shortcut: counts raw bytes, not characters).
+    pub draft_len: usize,
 }
 
 #[derive(Serialize)]
@@ -65,6 +73,24 @@ pub struct SessionInfo {
 }
 
 pub type Sessions = Mutex<HashMap<Uuid, Session>>;
+
+/// Resolve a full session UUID or a unique id8 prefix to a live session id.
+pub fn resolve_id(sessions: &HashMap<Uuid, Session>, s: &str) -> Option<Uuid> {
+    if let Ok(id) = Uuid::parse_str(s) {
+        return sessions.contains_key(&id).then_some(id);
+    }
+    if s.is_empty() || s.len() > 8 {
+        return None;
+    }
+    let mut it = sessions.values().filter(|x| x.id8.starts_with(s));
+    let first = it.next()?;
+    it.next().is_none().then_some(first.id)
+}
+
+/// (project, agent) of a session.
+pub fn lookup(sessions: &HashMap<Uuid, Session>, id: Uuid) -> Option<(Uuid, Agent)> {
+    sessions.get(&id).map(|s| (s.project_id, s.agent))
+}
 
 pub fn worktree_error_message(e: &WorktreeError) -> String {
     match e {
@@ -115,6 +141,9 @@ pub fn create_session(
         worktree: wt.clone(),
         pty: None,
         poller_stop: None,
+        token: String::new(),
+        status: Status::Unknown,
+        draft_len: 0,
     };
     spawn_for(&mut session, &app, cols, rows, on_data, false)?;
 
@@ -148,7 +177,21 @@ fn spawn_for(
 ) -> Result<(), String> {
     let id = session.id;
     let (stop_tx, stop_rx) = watch::channel(false);
-    let mut command: Option<String> = None;
+    let rt = app.state::<Runtime>();
+    let token = format!("{}{}", Uuid::new_v4().simple(), Uuid::new_v4().simple());
+    let env = vec![
+        (
+            "AGENTFLEET_SOCKET".to_string(),
+            rt.socket.to_string_lossy().to_string(),
+        ),
+        ("AGENTFLEET_SESSION".to_string(), id.to_string()),
+        ("AGENTFLEET_TOKEN".to_string(), token.clone()),
+    ];
+    let path_prefix = format!(
+        "export PATH={}:\"$PATH\"; ",
+        pty::shell_quote(&rt.shim_dir().to_string_lossy())
+    );
+    let mut command = format!("{path_prefix}exec \"$SHELL\" -i");
     let mut poller_stop = None;
     if session.agent == Agent::Claude {
         let run = platform::home_dir().join(".agentfleet/run");
@@ -156,7 +199,10 @@ fn spawn_for(
         let status_file = run.join(format!("{id}.status"));
         let settings = run.join(format!("{id}.settings.json"));
         agent::write_hooks_settings(&status_file, &settings).map_err(|e| e.to_string())?;
-        command = Some(agent::claude_launch(id, &settings, resume));
+        command = format!(
+            "{path_prefix}exec {}",
+            agent::claude_launch(id, &settings, resume)
+        );
         status::spawn_poller(app.clone(), id, status_file, stop_rx);
         poller_stop = Some(stop_tx.clone());
     }
@@ -164,8 +210,8 @@ fn spawn_for(
     let handle = pty::spawn(
         &platform::login_shell(),
         &session.worktree.path,
-        command.as_deref(),
-        &[],
+        Some(&command),
+        &env,
         cols,
         rows,
         Box::new(move |chunk| {
@@ -180,6 +226,9 @@ fn spawn_for(
     .map_err(|e| e.to_string())?;
     session.pty = Some(handle);
     session.poller_stop = poller_stop;
+    session.token = token;
+    session.status = Status::Unknown;
+    session.draft_len = 0;
     Ok(())
 }
 
@@ -278,6 +327,9 @@ pub fn list_restorable(
                     worktree: wt,
                     pty: None,
                     poller_stop: None,
+                    token: String::new(),
+                    status: Status::Unknown,
+                    draft_len: 0,
                 },
             );
         }
@@ -328,8 +380,26 @@ pub fn write_session(
     id: String,
     data: Vec<u8>,
     sessions: State<'_, Sessions>,
+    app: AppHandle,
 ) -> Result<(), String> {
-    with_pty(&sessions, &id, |p| p.write(&data))
+    let id = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
+    let retrigger = {
+        let mut map = sessions.lock().map_err(|e| e.to_string())?;
+        let s = map.get_mut(&id).ok_or("no such session")?;
+        let before = s.draft_len;
+        let after = crate::deliver::apply_draft(before, &data);
+        s.draft_len = after;
+        let p = s.pty.as_ref().ok_or("session has no pty")?;
+        p.write(&data).map_err(|e| e.to_string())?;
+        before > 0
+            && after == 0
+            && !data.iter().any(|b| *b == b'\r' || *b == b'\n')
+            && s.status == Status::Waiting
+    };
+    if retrigger {
+        crate::deliver::on_status(&app, id, Status::Waiting);
+    }
+    Ok(())
 }
 
 #[tauri::command]
@@ -370,6 +440,7 @@ pub fn close_session(
     id: String,
     sessions: State<'_, Sessions>,
     projects: State<'_, Projects>,
+    app: AppHandle,
 ) -> Result<CloseOutcome, String> {
     let uuid = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
     // Take ownership so the mutex is not held across kill (which joins the reader).
@@ -379,6 +450,16 @@ pub fn close_session(
         persist(&map, &projects.lock().map_err(|e| e.to_string())?);
         s
     };
+    {
+        let collab_state = app.state::<CollabState>();
+        let touched = {
+            let mut c = collab_state.lock().map_err(|e| e.to_string())?;
+            let t = collab::interrupt_all_for(&mut c, uuid, collab::now());
+            collab::save(&c);
+            t
+        };
+        collab::changed(&app, &app.state::<CollabNotify>().0, &touched);
+    }
     if let Some(tx) = &s.poller_stop {
         let _ = tx.send(true);
     }

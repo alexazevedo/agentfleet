@@ -1,0 +1,48 @@
+<script lang="ts">
+  let { agent, size = 14 }: { agent: "claude" | "codex" | "shell"; size?: number } = $props();
+  const label = $derived(agent === "claude" ? "Claude Code" : agent === "codex" ? "Codex" : "Shell");
+</script>
+
+<svg
+  viewBox="0 0 16 16"
+  width={size}
+  height={size}
+  role="img"
+  aria-label={label}
+  style="vertical-align: middle; flex: none"
+>
+  {#if agent === "claude"}
+    {#each [0, 45, 90, 135, 180, 225, 270, 315] as a}
+      <line
+        x1="8"
+        y1="2"
+        x2="8"
+        y2="6"
+        stroke="#d97757"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        transform="rotate({a} 8 8)"
+      />
+    {/each}
+  {:else if agent === "codex"}
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="#f0f0f0" />
+    <path
+      d="M4.5 5.5 L7 8 L4.5 10.5 M8.5 11 H11.5"
+      fill="none"
+      stroke="#222"
+      stroke-width="1.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  {:else}
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="#1e1e1e" stroke="#555" />
+    <path
+      d="M5 5 L9 8 L5 11"
+      fill="none"
+      stroke="#aaa"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  {/if}
+</svg>

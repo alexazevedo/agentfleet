@@ -17,7 +17,7 @@ pub struct PtyHandle {
     reader: Option<JoinHandle<()>>,
 }
 
-fn shell_quote(s: &str) -> String {
+pub fn shell_quote(s: &str) -> String {
     format!("'{}'", s.replace('\'', "'\\''"))
 }
 
@@ -45,11 +45,7 @@ pub fn spawn(
         let cwd_s = cwd.to_string_lossy();
         cmd.arg("-i");
         cmd.arg("-c");
-        cmd.arg(format!(
-            "cd {} && exec /usr/bin/env {}",
-            shell_quote(&cwd_s),
-            c
-        ));
+        cmd.arg(format!("cd {} && {}", shell_quote(&cwd_s), c));
     }
     cmd.cwd(cwd);
     cmd.env("TERM", "xterm-256color");

@@ -37,6 +37,7 @@ export const store = $state({
   projects: [] as Project[],
   tabs: [] as Tab[],
   activeKey: null as string | null,
+  view: "terminal" as "terminal" | "messages" | "scratchpad",
   dialogOpen: false,
   preselectedProjectId: null as string | null,
   error: "",
@@ -86,6 +87,7 @@ export function fail(key: string, message: string) {
 
 export function setActive(key: string) {
   store.activeKey = key;
+  store.view = "terminal";
 }
 
 let listening = false;
