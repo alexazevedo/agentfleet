@@ -61,8 +61,10 @@
     {#each store.projects as p (p.id)}
       <div class="project">
         <span class="name" title={p.path}><Folder size={14} strokeWidth={1.75} /> {p.name}</span>
-        <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
-        <button type="button" class="remove" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></button>
+        <span class="actions">
+          <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
+          <button type="button" class="remove" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></button>
+        </span>
       </div>
       <div
         class="session"
@@ -152,7 +154,15 @@
     flex: 1;
     overflow-y: auto;
   }
+  .actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    flex: none;
+  }
   .name {
+    flex: 1;
+    min-width: 0;
     display: inline-flex;
     align-items: center;
     gap: 6px;
