@@ -1,7 +1,7 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-24-cut-releases — waiting on CI green + user go-ahead for tag pushes
+24-cut-releases — paused by user ("not yet"); CI green on 65d7b75, 97abb0d, 2d6bd0d; resume with "cut v0.1.0"
 
 ## Next
 (none — last ticket) → final review → commit
