@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-19-bundle-ci — dispatched (haiku)
+20-settings — dispatched (sonnet)
 
 ## Next
-20-settings → 25-env-scrub → 21-updater → 22-quit-guard-release-script → 23-release-workflow → 24-cut-releases
+25-env-scrub → 21-updater → 22-quit-guard-release-script → 23-release-workflow → 24-cut-releases
 
 ## Decisions
 - execution: sequential
