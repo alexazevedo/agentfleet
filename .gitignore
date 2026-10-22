@@ -13,3 +13,6 @@ dist/
 *.log
 # forge runtime
 .forge/
+# graphify derived cache
+graphify-out/cache/
+graphify-out/.graphify_root

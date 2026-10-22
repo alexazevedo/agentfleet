@@ -1,0 +1,88 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { Terminal } from "@xterm/xterm";
+  import { FitAddon } from "@xterm/addon-fit";
+  import { Channel, invoke } from "@tauri-apps/api/core";
+  import "@xterm/xterm/css/xterm.css";
+  import { fail, resolve, type SessionInfo, type Tab } from "./sessions.svelte";
+
+  let { tab, active }: { tab: Tab; active: boolean } = $props();
+
+  let container: HTMLDivElement;
+  let term: Terminal;
+  let fit: FitAddon;
+  let id: string | null = null;
+
+  function refit() {
+    if (!container || container.offsetParent === null) return; // hidden
+    fit.fit();
+    if (id) invoke("resize_session", { id, cols: term.cols, rows: term.rows }).catch(() => {});
+  }
+
+  $effect(() => {
+    if (active && term) {
+      refit();
+      term.focus();
+    }
+  });
+
+  onMount(() => {
+    term = new Terminal({ cursorBlink: true, fontSize: 13 });
+    fit = new FitAddon();
+    term.loadAddon(fit);
+    term.open(container);
+    fit.fit();
+
+    term.onData((d) => {
+      if (id) invoke("write_session", { id, data: Array.from(new TextEncoder().encode(d)) });
+    });
+
+    const ro = new ResizeObserver(refit);
+    ro.observe(container);
+
+    const channel = new Channel<ArrayBuffer>();
+    channel.onmessage = (buf) => term.write(new Uint8Array(buf));
+    if (tab.restored && tab.info) {
+      const restoredId = tab.info.id;
+      invoke("attach_session", {
+        id: restoredId,
+        cols: term.cols,
+        rows: term.rows,
+        onData: channel,
+      })
+        .then(() => {
+          id = restoredId;
+          refit();
+        })
+        .catch((e) => fail(tab.key, String(e)));
+    } else {
+      invoke<SessionInfo>("create_session", {
+        projectId: tab.projectId,
+        agent: tab.agent,
+        cols: term.cols,
+        rows: term.rows,
+        onData: channel,
+      })
+        .then((info) => {
+          id = info.id;
+          resolve(tab.key, info);
+          refit();
+        })
+        .catch((e) => fail(tab.key, String(e)));
+    }
+
+    return () => {
+      ro.disconnect();
+      term.dispose();
+    };
+  });
+</script>
+
+<div class="term" bind:this={container} style:display={active ? "block" : "none"}></div>
+
+<style>
+  .term {
+    position: absolute;
+    inset: 0;
+  }
+</style>

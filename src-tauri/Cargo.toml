@@ -1,0 +1,28 @@
+[package]
+name = "agentfleet"
+version = "0.1.0"
+description = "Desktop cockpit for running coding agents in git worktrees"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "agentfleet_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+portable-pty = "0.8"
+uuid = { version = "1", features = ["v4"] }
+dirs = "5"
+thiserror = "1"
+anyhow = "1"
+tauri-plugin-dialog = "2.7.3"
+
+[dev-dependencies]
+tempfile = "3"

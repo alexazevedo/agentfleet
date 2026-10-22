@@ -1,0 +1,5079 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "svelte.config.js",
+      "file_type": "code",
+      "source_file": "svelte.config.js",
+      "source_location": "L1",
+      "id": "svelte_config_js",
+      "community": 25,
+      "norm_label": "svelte.config.js"
+    },
+    {
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "vite.config.ts",
+      "source_location": "L1",
+      "id": "vite_config_ts",
+      "community": 26,
+      "norm_label": "vite.config.ts"
+    },
+    {
+      "label": "build.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/build.rs",
+      "source_location": "L1",
+      "id": "src_tauri_build_rs",
+      "community": 21,
+      "norm_label": "build.rs"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "src-tauri/build.rs",
+      "source_location": "L1",
+      "id": "src_tauri_build_main",
+      "community": 21,
+      "norm_label": "main()"
+    },
+    {
+      "label": "session.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_session_rs",
+      "community": 0,
+      "norm_label": "session.rs"
+    },
+    {
+      "label": "Agent",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L21",
+      "id": "src_session_agent",
+      "community": 0,
+      "norm_label": "agent"
+    },
+    {
+      "label": ".as_str()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L27",
+      "id": "src_session_agent_as_str",
+      "community": 0,
+      "norm_label": ".as_str()"
+    },
+    {
+      "label": ".parse()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L34",
+      "id": "src_session_agent_parse",
+      "community": 0,
+      "norm_label": ".parse()"
+    },
+    {
+      "label": "Session",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L43",
+      "id": "src_session_session",
+      "community": 0,
+      "norm_label": "session"
+    },
+    {
+      "label": "SessionInfo",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L57",
+      "id": "src_session_sessioninfo",
+      "community": 0,
+      "norm_label": "sessioninfo"
+    },
+    {
+      "label": "worktree_error_message()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L69",
+      "id": "src_session_worktree_error_message",
+      "community": 0,
+      "norm_label": "worktree_error_message()"
+    },
+    {
+      "label": "create_session()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L82",
+      "id": "src_session_create_session",
+      "community": 0,
+      "norm_label": "create_session()"
+    },
+    {
+      "label": "spawn_for()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L141",
+      "id": "src_session_spawn_for",
+      "community": 1,
+      "norm_label": "spawn_for()"
+    },
+    {
+      "label": "info_for()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L186",
+      "id": "src_session_info_for",
+      "community": 0,
+      "norm_label": "info_for()"
+    },
+    {
+      "label": "persist()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L203",
+      "id": "src_session_persist",
+      "community": 0,
+      "norm_label": "persist()"
+    },
+    {
+      "label": "list_restorable()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L231",
+      "id": "src_session_list_restorable",
+      "community": 0,
+      "norm_label": "list_restorable()"
+    },
+    {
+      "label": "attach_session()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L298",
+      "id": "src_session_attach_session",
+      "community": 0,
+      "norm_label": "attach_session()"
+    },
+    {
+      "label": "with_pty()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L315",
+      "id": "src_session_with_pty",
+      "community": 0,
+      "norm_label": "with_pty()"
+    },
+    {
+      "label": "write_session()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L327",
+      "id": "src_session_write_session",
+      "community": 0,
+      "norm_label": "write_session()"
+    },
+    {
+      "label": "resize_session()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L336",
+      "id": "src_session_resize_session",
+      "community": 0,
+      "norm_label": "resize_session()"
+    },
+    {
+      "label": "CloseOutcome",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L347",
+      "id": "src_session_closeoutcome",
+      "community": 0,
+      "norm_label": "closeoutcome"
+    },
+    {
+      "label": "close_decision()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L354",
+      "id": "src_session_close_decision",
+      "community": 0,
+      "norm_label": "close_decision()"
+    },
+    {
+      "label": "close_session()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L369",
+      "id": "src_session_close_session",
+      "community": 0,
+      "norm_label": "close_session()"
+    },
+    {
+      "label": "close_decisions()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L411",
+      "id": "src_session_close_decisions",
+      "community": 0,
+      "norm_label": "close_decisions()"
+    },
+    {
+      "label": "maps_worktree_errors()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L429",
+      "id": "src_session_maps_worktree_errors",
+      "community": 0,
+      "norm_label": "maps_worktree_errors()"
+    },
+    {
+      "label": "lib.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/lib.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_lib_rs",
+      "community": 22,
+      "norm_label": "lib.rs"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/lib.rs",
+      "source_location": "L10",
+      "id": "src_lib_run",
+      "community": 22,
+      "norm_label": "run()"
+    },
+    {
+      "label": "status.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_status_rs",
+      "community": 1,
+      "norm_label": "status.rs"
+    },
+    {
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L12",
+      "id": "src_status_status",
+      "community": 1,
+      "norm_label": "status"
+    },
+    {
+      "label": "parse()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L19",
+      "id": "src_status_parse",
+      "community": 1,
+      "norm_label": "parse()"
+    },
+    {
+      "label": "StatusEvent",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L29",
+      "id": "src_status_statusevent",
+      "community": 1,
+      "norm_label": "statusevent"
+    },
+    {
+      "label": "emit()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L34",
+      "id": "src_status_emit",
+      "community": 1,
+      "norm_label": "emit()"
+    },
+    {
+      "label": "spawn_poller()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L46",
+      "id": "src_status_spawn_poller",
+      "community": 1,
+      "norm_label": "spawn_poller()"
+    },
+    {
+      "label": "parses_words()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L79",
+      "id": "src_status_parses_words",
+      "community": 1,
+      "norm_label": "parses_words()"
+    },
+    {
+      "label": "project.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_project_rs",
+      "community": 6,
+      "norm_label": "project.rs"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L14",
+      "id": "src_project_project",
+      "community": 6,
+      "norm_label": "project"
+    },
+    {
+      "label": "add_to()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L22",
+      "id": "src_project_add_to",
+      "community": 6,
+      "norm_label": "add_to()"
+    },
+    {
+      "label": "remove_from()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L49",
+      "id": "src_project_remove_from",
+      "community": 6,
+      "norm_label": "remove_from()"
+    },
+    {
+      "label": "list_projects()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L58",
+      "id": "src_project_list_projects",
+      "community": 6,
+      "norm_label": "list_projects()"
+    },
+    {
+      "label": "add_project()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L63",
+      "id": "src_project_add_project",
+      "community": 6,
+      "norm_label": "add_project()"
+    },
+    {
+      "label": "remove_project()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L80",
+      "id": "src_project_remove_project",
+      "community": 6,
+      "norm_label": "remove_project()"
+    },
+    {
+      "label": "repo()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L98",
+      "id": "src_project_repo",
+      "community": 6,
+      "norm_label": "repo()"
+    },
+    {
+      "label": "add_twice_same_id()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L112",
+      "id": "src_project_add_twice_same_id",
+      "community": 6,
+      "norm_label": "add_twice_same_id()"
+    },
+    {
+      "label": "non_repo_errors()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L124",
+      "id": "src_project_non_repo_errors",
+      "community": 6,
+      "norm_label": "non_repo_errors()"
+    },
+    {
+      "label": "remove_rules()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L135",
+      "id": "src_project_remove_rules",
+      "community": 6,
+      "norm_label": "remove_rules()"
+    },
+    {
+      "label": "state.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_state_rs",
+      "community": 5,
+      "norm_label": "state.rs"
+    },
+    {
+      "label": "PersistedSession",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L14",
+      "id": "src_state_persistedsession",
+      "community": 5,
+      "norm_label": "persistedsession"
+    },
+    {
+      "label": "PersistedState",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L26",
+      "id": "src_state_persistedstate",
+      "community": 0,
+      "norm_label": "persistedstate"
+    },
+    {
+      "label": ".empty()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L33",
+      "id": "src_state_persistedstate_empty",
+      "community": 0,
+      "norm_label": ".empty()"
+    },
+    {
+      "label": "state_path()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L42",
+      "id": "src_state_state_path",
+      "community": 0,
+      "norm_label": "state_path()"
+    },
+    {
+      "label": "save()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L46",
+      "id": "src_state_save",
+      "community": 5,
+      "norm_label": "save()"
+    },
+    {
+      "label": "load()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L59",
+      "id": "src_state_load",
+      "community": 0,
+      "norm_label": "load()"
+    },
+    {
+      "label": "sample()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L76",
+      "id": "src_state_sample",
+      "community": 5,
+      "norm_label": "sample()"
+    },
+    {
+      "label": "round_trip()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L99",
+      "id": "src_state_round_trip",
+      "community": 5,
+      "norm_label": "round_trip()"
+    },
+    {
+      "label": "missing_file_is_empty()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L110",
+      "id": "src_state_missing_file_is_empty",
+      "community": 5,
+      "norm_label": "missing_file_is_empty()"
+    },
+    {
+      "label": "bad_json_errors()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L119",
+      "id": "src_state_bad_json_errors",
+      "community": 5,
+      "norm_label": "bad_json_errors()"
+    },
+    {
+      "label": "wrong_version_errors()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L127",
+      "id": "src_state_wrong_version_errors",
+      "community": 5,
+      "norm_label": "wrong_version_errors()"
+    },
+    {
+      "label": "main.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/main.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_main_rs",
+      "community": 23,
+      "norm_label": "main.rs"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/main.rs",
+      "source_location": "L4",
+      "id": "src_main_main",
+      "community": 23,
+      "norm_label": "main()"
+    },
+    {
+      "label": "agent.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_agent_rs",
+      "community": 1,
+      "norm_label": "agent.rs"
+    },
+    {
+      "label": "shell_quote()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L7",
+      "id": "src_agent_shell_quote",
+      "community": 1,
+      "norm_label": "shell_quote()"
+    },
+    {
+      "label": "claude_launch()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L11",
+      "id": "src_agent_claude_launch",
+      "community": 1,
+      "norm_label": "claude_launch()"
+    },
+    {
+      "label": "write_hooks_settings()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L21",
+      "id": "src_agent_write_hooks_settings",
+      "community": 1,
+      "norm_label": "write_hooks_settings()"
+    },
+    {
+      "label": "launch_flags()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L41",
+      "id": "src_agent_launch_flags",
+      "community": 1,
+      "norm_label": "launch_flags()"
+    },
+    {
+      "label": "settings_roundtrip()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L54",
+      "id": "src_agent_settings_roundtrip",
+      "community": 1,
+      "norm_label": "settings_roundtrip()"
+    },
+    {
+      "label": "worktree.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_worktree_rs",
+      "community": 4,
+      "norm_label": "worktree.rs"
+    },
+    {
+      "label": "Worktree",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L7",
+      "id": "src_worktree_worktree",
+      "community": 4,
+      "norm_label": "worktree"
+    },
+    {
+      "label": "WorktreeError",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L15",
+      "id": "src_worktree_worktreeerror",
+      "community": 0,
+      "norm_label": "worktreeerror"
+    },
+    {
+      "label": ".from()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L24",
+      "id": "src_worktree_worktreeerror_from",
+      "community": 0,
+      "norm_label": ".from()"
+    },
+    {
+      "label": "git()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L30",
+      "id": "src_worktree_git",
+      "community": 4,
+      "norm_label": "git()"
+    },
+    {
+      "label": "create()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L39",
+      "id": "src_worktree_create",
+      "community": 4,
+      "norm_label": "create()"
+    },
+    {
+      "label": "is_clean()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L67",
+      "id": "src_worktree_is_clean",
+      "community": 4,
+      "norm_label": "is_clean()"
+    },
+    {
+      "label": "remove()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L72",
+      "id": "src_worktree_remove",
+      "community": 4,
+      "norm_label": "remove()"
+    },
+    {
+      "label": "exists()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L79",
+      "id": "src_worktree_exists",
+      "community": 0,
+      "norm_label": "exists()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L87",
+      "id": "src_worktree_run",
+      "community": 4,
+      "norm_label": "run()"
+    },
+    {
+      "label": "repo_with_commit()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L96",
+      "id": "src_worktree_repo_with_commit",
+      "community": 4,
+      "norm_label": "repo_with_commit()"
+    },
+    {
+      "label": "create_succeeds()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L117",
+      "id": "src_worktree_create_succeeds",
+      "community": 4,
+      "norm_label": "create_succeeds()"
+    },
+    {
+      "label": "not_a_repo()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L137",
+      "id": "src_worktree_not_a_repo",
+      "community": 4,
+      "norm_label": "not_a_repo()"
+    },
+    {
+      "label": "no_commits()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L144",
+      "id": "src_worktree_no_commits",
+      "community": 4,
+      "norm_label": "no_commits()"
+    },
+    {
+      "label": "branch_exists()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L154",
+      "id": "src_worktree_branch_exists",
+      "community": 4,
+      "norm_label": "branch_exists()"
+    },
+    {
+      "label": "clean_then_dirty()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L163",
+      "id": "src_worktree_clean_then_dirty",
+      "community": 4,
+      "norm_label": "clean_then_dirty()"
+    },
+    {
+      "label": "remove_clean()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L175",
+      "id": "src_worktree_remove_clean",
+      "community": 4,
+      "norm_label": "remove_clean()"
+    },
+    {
+      "label": "pty.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_pty_rs",
+      "community": 1,
+      "norm_label": "pty.rs"
+    },
+    {
+      "label": "PtyHandle",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L13",
+      "id": "src_pty_ptyhandle",
+      "community": 5,
+      "norm_label": "ptyhandle"
+    },
+    {
+      "label": "shell_quote()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L20",
+      "id": "src_pty_shell_quote",
+      "community": 1,
+      "norm_label": "shell_quote()"
+    },
+    {
+      "label": "spawn()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L25",
+      "id": "src_pty_spawn",
+      "community": 1,
+      "norm_label": "spawn()"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L87",
+      "id": "src_pty_ptyhandle_write",
+      "community": 5,
+      "norm_label": ".write()"
+    },
+    {
+      "label": ".resize()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L94",
+      "id": "src_pty_ptyhandle_resize",
+      "community": 5,
+      "norm_label": ".resize()"
+    },
+    {
+      "label": ".kill()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L105",
+      "id": "src_pty_ptyhandle_kill",
+      "community": 5,
+      "norm_label": ".kill()"
+    },
+    {
+      "label": "runs_command_and_streams_output()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L122",
+      "id": "src_pty_runs_command_and_streams_output",
+      "community": 1,
+      "norm_label": "runs_command_and_streams_output()"
+    },
+    {
+      "label": "write_exit_ends_shell()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L146",
+      "id": "src_pty_write_exit_ends_shell",
+      "community": 1,
+      "norm_label": "write_exit_ends_shell()"
+    },
+    {
+      "label": "unix.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_platform_unix_rs",
+      "community": 1,
+      "norm_label": "unix.rs"
+    },
+    {
+      "label": "home_dir()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L4",
+      "id": "platform_unix_home_dir",
+      "community": 0,
+      "norm_label": "home_dir()"
+    },
+    {
+      "label": "login_shell()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L9",
+      "id": "platform_unix_login_shell",
+      "community": 1,
+      "norm_label": "login_shell()"
+    },
+    {
+      "label": "login_shell_is_non_empty()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L21",
+      "id": "platform_unix_login_shell_is_non_empty",
+      "community": 1,
+      "norm_label": "login_shell_is_non_empty()"
+    },
+    {
+      "label": "mod.rs",
+      "file_type": "code",
+      "source_file": "src-tauri/src/platform/mod.rs",
+      "source_location": "L1",
+      "id": "src_tauri_src_platform_mod_rs",
+      "community": 27,
+      "norm_label": "mod.rs"
+    },
+    {
+      "label": "main.ts",
+      "file_type": "code",
+      "source_file": "src/main.ts",
+      "source_location": "L1",
+      "id": "src_main_ts",
+      "community": 3,
+      "norm_label": "main.ts"
+    },
+    {
+      "label": "App.svelte",
+      "file_type": "code",
+      "source_file": "src/App.svelte",
+      "source_location": "L1",
+      "id": "src_app_svelte",
+      "community": 3,
+      "norm_label": "app.svelte"
+    },
+    {
+      "label": "Sidebar.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/Sidebar.svelte",
+      "confidence": "EXTRACTED",
+      "source_location": "L1",
+      "id": "src_lib_sidebar_svelte",
+      "community": 3,
+      "norm_label": "sidebar.svelte"
+    },
+    {
+      "label": "StatusBar.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/StatusBar.svelte",
+      "confidence": "EXTRACTED",
+      "source_location": "L1",
+      "id": "src_lib_statusbar_svelte",
+      "community": 3,
+      "norm_label": "statusbar.svelte"
+    },
+    {
+      "label": "NewTabDialog.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/NewTabDialog.svelte",
+      "confidence": "EXTRACTED",
+      "source_location": "L1",
+      "id": "src_lib_newtabdialog_svelte",
+      "community": 3,
+      "norm_label": "newtabdialog.svelte"
+    },
+    {
+      "label": "Terminal.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence": "EXTRACTED",
+      "source_location": "L1",
+      "id": "src_lib_terminal_svelte",
+      "community": 3,
+      "norm_label": "terminal.svelte"
+    },
+    {
+      "label": "svelte",
+      "file_type": "code",
+      "source_file": "svelte",
+      "confidence": "EXTRACTED",
+      "id": "svelte",
+      "community": 3,
+      "norm_label": "svelte"
+    },
+    {
+      "label": "./sessions.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte",
+      "confidence": "EXTRACTED",
+      "id": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte",
+      "community": 3,
+      "norm_label": "./sessions.svelte"
+    },
+    {
+      "label": "sessions.svelte.ts",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L1",
+      "id": "src_lib_sessions_svelte_ts",
+      "community": 2,
+      "norm_label": "sessions.svelte.ts"
+    },
+    {
+      "label": "AgentKind",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L4",
+      "id": "lib_sessions_svelte_agentkind",
+      "community": 2,
+      "norm_label": "agentkind"
+    },
+    {
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L6",
+      "id": "lib_sessions_svelte_status",
+      "community": 2,
+      "norm_label": "status"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L8",
+      "id": "lib_sessions_svelte_project",
+      "community": 2,
+      "norm_label": "project"
+    },
+    {
+      "label": "SessionInfo",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L14",
+      "id": "lib_sessions_svelte_sessioninfo",
+      "community": 2,
+      "norm_label": "sessioninfo"
+    },
+    {
+      "label": "Tab",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L25",
+      "id": "lib_sessions_svelte_tab",
+      "community": 2,
+      "norm_label": "tab"
+    },
+    {
+      "label": "store",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L36",
+      "id": "lib_sessions_svelte_store",
+      "community": 2,
+      "norm_label": "store"
+    },
+    {
+      "label": "early",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L46",
+      "id": "lib_sessions_svelte_early",
+      "community": 2,
+      "norm_label": "early"
+    },
+    {
+      "label": "loadProjects()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L48",
+      "id": "lib_sessions_svelte_loadprojects",
+      "community": 2,
+      "norm_label": "loadprojects()"
+    },
+    {
+      "label": "addProject()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L56",
+      "id": "lib_sessions_svelte_addproject",
+      "community": 2,
+      "norm_label": "addproject()"
+    },
+    {
+      "label": "addPending()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L62",
+      "id": "lib_sessions_svelte_addpending",
+      "community": 2,
+      "norm_label": "addpending()"
+    },
+    {
+      "label": "resolve()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L69",
+      "id": "lib_sessions_svelte_resolve",
+      "community": 2,
+      "norm_label": "resolve()"
+    },
+    {
+      "label": "fail()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L79",
+      "id": "lib_sessions_svelte_fail",
+      "community": 2,
+      "norm_label": "fail()"
+    },
+    {
+      "label": "setActive()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L87",
+      "id": "lib_sessions_svelte_setactive",
+      "community": 2,
+      "norm_label": "setactive()"
+    },
+    {
+      "label": "initStatusListener()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L92",
+      "id": "lib_sessions_svelte_initstatuslistener",
+      "community": 2,
+      "norm_label": "initstatuslistener()"
+    },
+    {
+      "label": "remove()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L102",
+      "id": "lib_sessions_svelte_remove",
+      "community": 2,
+      "norm_label": "remove()"
+    },
+    {
+      "label": "CloseOutcome",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L108",
+      "id": "lib_sessions_svelte_closeoutcome",
+      "community": 2,
+      "norm_label": "closeoutcome"
+    },
+    {
+      "label": "closeTab()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L110",
+      "id": "lib_sessions_svelte_closetab",
+      "community": 2,
+      "norm_label": "closetab()"
+    },
+    {
+      "label": "restoreTabs()",
+      "file_type": "code",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L128",
+      "id": "lib_sessions_svelte_restoretabs",
+      "community": 2,
+      "norm_label": "restoretabs()"
+    },
+    {
+      "label": "@xterm/xterm",
+      "file_type": "code",
+      "source_file": "@xterm/xterm",
+      "confidence": "EXTRACTED",
+      "id": "xterm",
+      "community": 3,
+      "norm_label": "@xterm/xterm"
+    },
+    {
+      "label": "@xterm/addon-fit",
+      "file_type": "code",
+      "source_file": "@xterm/addon-fit",
+      "confidence": "EXTRACTED",
+      "id": "addon_fit",
+      "community": 3,
+      "norm_label": "@xterm/addon-fit"
+    },
+    {
+      "label": "@tauri-apps/api/core",
+      "file_type": "code",
+      "source_file": "@tauri-apps/api/core",
+      "confidence": "EXTRACTED",
+      "id": "core",
+      "community": 3,
+      "norm_label": "@tauri-apps/api/core"
+    },
+    {
+      "label": "@xterm/xterm/css/xterm.css",
+      "file_type": "code",
+      "source_file": "@xterm/xterm/css/xterm.css",
+      "confidence": "EXTRACTED",
+      "id": "xterm_css",
+      "community": 3,
+      "norm_label": "@xterm/xterm/css/xterm.css"
+    },
+    {
+      "label": "left",
+      "file_type": "code",
+      "source_file": "src/lib/StatusBar.svelte",
+      "source_location": "L5",
+      "id": "lib_statusbar_left",
+      "community": 3,
+      "norm_label": "left"
+    },
+    {
+      "label": "running",
+      "file_type": "code",
+      "source_file": "src/lib/StatusBar.svelte",
+      "source_location": "L12",
+      "id": "lib_statusbar_running",
+      "community": 3,
+      "norm_label": "running"
+    },
+    {
+      "label": "@tauri-apps/plugin-dialog",
+      "file_type": "code",
+      "source_file": "@tauri-apps/plugin-dialog",
+      "confidence": "EXTRACTED",
+      "id": "plugin_dialog",
+      "community": 3,
+      "norm_label": "@tauri-apps/plugin-dialog"
+    },
+    {
+      "label": "active",
+      "file_type": "code",
+      "source_file": "src/lib/Sidebar.svelte",
+      "source_location": "L46",
+      "id": "lib_sidebar_active",
+      "community": 3,
+      "norm_label": "active"
+    },
+    {
+      "label": "PRODUCT.md",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L1",
+      "id": "product_md",
+      "community": 8,
+      "norm_label": "product.md"
+    },
+    {
+      "label": "agentfleet (M1)",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L8",
+      "id": "agentfleet_product_agentfleet_m1",
+      "community": 8,
+      "norm_label": "agentfleet (m1)"
+    },
+    {
+      "label": "What / why",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L10",
+      "id": "agentfleet_product_what_why",
+      "community": 8,
+      "norm_label": "what / why"
+    },
+    {
+      "label": "Primary user story",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L13",
+      "id": "agentfleet_product_primary_user_story",
+      "community": 8,
+      "norm_label": "primary user story"
+    },
+    {
+      "label": "Scope (M1)",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L16",
+      "id": "agentfleet_product_scope_m1",
+      "community": 8,
+      "norm_label": "scope (m1)"
+    },
+    {
+      "label": "Out of scope",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L26",
+      "id": "agentfleet_product_out_of_scope",
+      "community": 8,
+      "norm_label": "out of scope"
+    },
+    {
+      "label": "Stack constraints (fixed)",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L37",
+      "id": "agentfleet_product_stack_constraints_fixed",
+      "community": 8,
+      "norm_label": "stack constraints (fixed)"
+    },
+    {
+      "label": "Success demo",
+      "file_type": "document",
+      "source_file": "PRODUCT.md",
+      "source_location": "L40",
+      "id": "agentfleet_product_success_demo",
+      "community": 8,
+      "norm_label": "success demo"
+    },
+    {
+      "label": "STATE.md",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L1",
+      "id": "state_md",
+      "community": 13,
+      "norm_label": "state.md"
+    },
+    {
+      "label": "STATE \u2014 rewrite after every ticket completes; never append. \u226430 lines total.",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L1",
+      "id": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
+      "community": 13,
+      "norm_label": "state \u2014 rewrite after every ticket completes; never append. \u226430 lines total."
+    },
+    {
+      "label": "Now",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L3",
+      "id": "agentfleet_state_now",
+      "community": 13,
+      "norm_label": "now"
+    },
+    {
+      "label": "Next",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L6",
+      "id": "agentfleet_state_next",
+      "community": 13,
+      "norm_label": "next"
+    },
+    {
+      "label": "Decisions",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L9",
+      "id": "agentfleet_state_decisions",
+      "community": 13,
+      "norm_label": "decisions"
+    },
+    {
+      "label": "Blockers",
+      "file_type": "document",
+      "source_file": "STATE.md",
+      "source_location": "L19",
+      "id": "agentfleet_state_blockers",
+      "community": 13,
+      "norm_label": "blockers"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 24,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "agentfleet",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "agentfleet_readme_agentfleet",
+      "community": 24,
+      "norm_label": "agentfleet"
+    },
+    {
+      "label": "07-persist-restore.md",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L1",
+      "id": "tickets_07_persist_restore_md",
+      "community": 14,
+      "norm_label": "07-persist-restore.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L15",
+      "id": "tickets_07_persist_restore_goal",
+      "community": 14,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L18",
+      "id": "tickets_07_persist_restore_context",
+      "community": 14,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L25",
+      "id": "tickets_07_persist_restore_checks_run_in_order_cheapest_first",
+      "community": 14,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L31",
+      "id": "tickets_07_persist_restore_done_when",
+      "community": 14,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L35",
+      "id": "tickets_07_persist_restore_not_included",
+      "community": 14,
+      "norm_label": "not included"
+    },
+    {
+      "label": "09-sidebar.md",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L1",
+      "id": "tickets_09_sidebar_md",
+      "community": 15,
+      "norm_label": "09-sidebar.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L16",
+      "id": "tickets_09_sidebar_goal",
+      "community": 15,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L19",
+      "id": "tickets_09_sidebar_context",
+      "community": 15,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L24",
+      "id": "tickets_09_sidebar_checks_run_in_order_cheapest_first",
+      "community": 15,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L29",
+      "id": "tickets_09_sidebar_done_when",
+      "community": 15,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L32",
+      "id": "tickets_09_sidebar_not_included",
+      "community": 15,
+      "norm_label": "not included"
+    },
+    {
+      "label": "03-pty.md",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L1",
+      "id": "tickets_03_pty_md",
+      "community": 10,
+      "norm_label": "03-pty.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L10",
+      "id": "tickets_03_pty_goal",
+      "community": 10,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L13",
+      "id": "tickets_03_pty_context",
+      "community": 10,
+      "norm_label": "context"
+    },
+    {
+      "label": "code:rust (pub type OnData = Box<dyn Fn(Vec<u8>) + Send + 'static>;)",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L16",
+      "id": "tickets_03_pty_codeblock_1",
+      "community": 10,
+      "norm_label": "code:rust (pub type ondata = box<dyn fn(vec<u8>) + send + 'static>;)"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L31",
+      "id": "tickets_03_pty_checks_run_in_order_cheapest_first",
+      "community": 10,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L35",
+      "id": "tickets_03_pty_done_when",
+      "community": 10,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L39",
+      "id": "tickets_03_pty_not_included",
+      "community": 10,
+      "norm_label": "not included"
+    },
+    {
+      "label": "04-shell-tab.md",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L1",
+      "id": "tickets_04_shell_tab_md",
+      "community": 16,
+      "norm_label": "04-shell-tab.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L19",
+      "id": "tickets_04_shell_tab_goal",
+      "community": 16,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L22",
+      "id": "tickets_04_shell_tab_context",
+      "community": 16,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L33",
+      "id": "tickets_04_shell_tab_checks_run_in_order_cheapest_first",
+      "community": 16,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L39",
+      "id": "tickets_04_shell_tab_done_when",
+      "community": 16,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L44",
+      "id": "tickets_04_shell_tab_not_included",
+      "community": 16,
+      "norm_label": "not included"
+    },
+    {
+      "label": "05-claude-status.md",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L1",
+      "id": "tickets_05_claude_status_md",
+      "community": 11,
+      "norm_label": "05-claude-status.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L15",
+      "id": "tickets_05_claude_status_goal",
+      "community": 11,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L18",
+      "id": "tickets_05_claude_status_context",
+      "community": 11,
+      "norm_label": "context"
+    },
+    {
+      "label": "code:json ({\"hooks\":{)",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L21",
+      "id": "tickets_05_claude_status_codeblock_1",
+      "community": 11,
+      "norm_label": "code:json ({\"hooks\":{)"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L36",
+      "id": "tickets_05_claude_status_checks_run_in_order_cheapest_first",
+      "community": 11,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L42",
+      "id": "tickets_05_claude_status_done_when",
+      "community": 11,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L45",
+      "id": "tickets_05_claude_status_not_included",
+      "community": 11,
+      "norm_label": "not included"
+    },
+    {
+      "label": "06-close-tab.md",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L1",
+      "id": "tickets_06_close_tab_md",
+      "community": 17,
+      "norm_label": "06-close-tab.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L13",
+      "id": "tickets_06_close_tab_goal",
+      "community": 17,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L16",
+      "id": "tickets_06_close_tab_context",
+      "community": 17,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L21",
+      "id": "tickets_06_close_tab_checks_run_in_order_cheapest_first",
+      "community": 17,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L27",
+      "id": "tickets_06_close_tab_done_when",
+      "community": 17,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L31",
+      "id": "tickets_06_close_tab_not_included",
+      "community": 17,
+      "norm_label": "not included"
+    },
+    {
+      "label": "01-scaffold.md",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L1",
+      "id": "tickets_01_scaffold_md",
+      "community": 18,
+      "norm_label": "01-scaffold.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L33",
+      "id": "tickets_01_scaffold_goal",
+      "community": 18,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L36",
+      "id": "tickets_01_scaffold_context",
+      "community": 18,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L43",
+      "id": "tickets_01_scaffold_checks_run_in_order_cheapest_first",
+      "community": 18,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L49",
+      "id": "tickets_01_scaffold_done_when",
+      "community": 18,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L53",
+      "id": "tickets_01_scaffold_not_included",
+      "community": 18,
+      "norm_label": "not included"
+    },
+    {
+      "label": "02-worktree.md",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L1",
+      "id": "tickets_02_worktree_md",
+      "community": 12,
+      "norm_label": "02-worktree.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L10",
+      "id": "tickets_02_worktree_goal",
+      "community": 12,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L13",
+      "id": "tickets_02_worktree_context",
+      "community": 12,
+      "norm_label": "context"
+    },
+    {
+      "label": "code:rust (pub struct Worktree { pub repo: PathBuf, pub path: PathBuf, )",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L16",
+      "id": "tickets_02_worktree_codeblock_1",
+      "community": 12,
+      "norm_label": "code:rust (pub struct worktree { pub repo: pathbuf, pub path: pathbuf, )"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L29",
+      "id": "tickets_02_worktree_checks_run_in_order_cheapest_first",
+      "community": 12,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L33",
+      "id": "tickets_02_worktree_done_when",
+      "community": 12,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L36",
+      "id": "tickets_02_worktree_not_included",
+      "community": 12,
+      "norm_label": "not included"
+    },
+    {
+      "label": "08-projects.md",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L1",
+      "id": "tickets_08_projects_md",
+      "community": 19,
+      "norm_label": "08-projects.md"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L17",
+      "id": "tickets_08_projects_goal",
+      "community": 19,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L20",
+      "id": "tickets_08_projects_context",
+      "community": 19,
+      "norm_label": "context"
+    },
+    {
+      "label": "Checks (run in order \u2014 cheapest first)",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L29",
+      "id": "tickets_08_projects_checks_run_in_order_cheapest_first",
+      "community": 19,
+      "norm_label": "checks (run in order \u2014 cheapest first)"
+    },
+    {
+      "label": "Done when",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L35",
+      "id": "tickets_08_projects_done_when",
+      "community": 19,
+      "norm_label": "done when"
+    },
+    {
+      "label": "Not included",
+      "file_type": "document",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L39",
+      "id": "tickets_08_projects_not_included",
+      "community": 19,
+      "norm_label": "not included"
+    },
+    {
+      "label": "orchestra-prd.md",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L1",
+      "id": "docs_orchestra_prd_md",
+      "community": 7,
+      "norm_label": "orchestra-prd.md"
+    },
+    {
+      "label": "Orchestra 0.3.1 Replication PRD",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L3",
+      "id": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "community": 7,
+      "norm_label": "orchestra 0.3.1 replication prd"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L7",
+      "id": "docs_orchestra_prd_overview",
+      "community": 7,
+      "norm_label": "overview"
+    },
+    {
+      "label": "How it was built",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L23",
+      "id": "docs_orchestra_prd_how_it_was_built",
+      "community": 7,
+      "norm_label": "how it was built"
+    },
+    {
+      "label": "Feature inventory",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L49",
+      "id": "docs_orchestra_prd_feature_inventory",
+      "community": 7,
+      "norm_label": "feature inventory"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L86",
+      "id": "docs_orchestra_prd_architecture",
+      "community": 7,
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Integrations and network",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L109",
+      "id": "docs_orchestra_prd_integrations_and_network",
+      "community": 7,
+      "norm_label": "integrations and network"
+    },
+    {
+      "label": "UI and UX",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L133",
+      "id": "docs_orchestra_prd_ui_and_ux",
+      "community": 7,
+      "norm_label": "ui and ux"
+    },
+    {
+      "label": "Replication requirements",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L168",
+      "id": "docs_orchestra_prd_replication_requirements",
+      "community": 7,
+      "norm_label": "replication requirements"
+    },
+    {
+      "label": "Unknowns and risks",
+      "file_type": "document",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L211",
+      "id": "docs_orchestra_prd_unknowns_and_risks",
+      "community": 7,
+      "norm_label": "unknowns and risks"
+    },
+    {
+      "label": "roadmap.md",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L1",
+      "id": "docs_roadmap_md",
+      "community": 20,
+      "norm_label": "roadmap.md"
+    },
+    {
+      "label": "agentfleet roadmap",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L1",
+      "id": "docs_roadmap_agentfleet_roadmap",
+      "community": 20,
+      "norm_label": "agentfleet roadmap"
+    },
+    {
+      "label": "Shape fixed in M1 (do not rework)",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L5",
+      "id": "docs_roadmap_shape_fixed_in_m1_do_not_rework",
+      "community": 20,
+      "norm_label": "shape fixed in m1 (do not rework)"
+    },
+    {
+      "label": "M2 \u2014 inter-session messaging",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L13",
+      "id": "docs_roadmap_m2_inter_session_messaging",
+      "community": 20,
+      "norm_label": "m2 \u2014 inter-session messaging"
+    },
+    {
+      "label": "M3 \u2014 release",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L21",
+      "id": "docs_roadmap_m3_release",
+      "community": 20,
+      "norm_label": "m3 \u2014 release"
+    },
+    {
+      "label": "Later / optional",
+      "file_type": "document",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L27",
+      "id": "docs_roadmap_later_optional",
+      "community": 20,
+      "norm_label": "later / optional"
+    },
+    {
+      "label": "discovery-m1.md",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L1",
+      "id": "docs_discovery_m1_md",
+      "community": 9,
+      "norm_label": "discovery-m1.md"
+    },
+    {
+      "label": "agentfleet \u2014 M1 discovery brief",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L1",
+      "id": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "community": 9,
+      "norm_label": "agentfleet \u2014 m1 discovery brief"
+    },
+    {
+      "label": "Product class",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L5",
+      "id": "docs_discovery_m1_product_class",
+      "community": 9,
+      "norm_label": "product class"
+    },
+    {
+      "label": "Who",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L8",
+      "id": "docs_discovery_m1_who",
+      "community": 9,
+      "norm_label": "who"
+    },
+    {
+      "label": "One job (M1 only)",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L11",
+      "id": "docs_discovery_m1_one_job_m1_only",
+      "community": 9,
+      "norm_label": "one job (m1 only)"
+    },
+    {
+      "label": "Explicitly out of M1",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L14",
+      "id": "docs_discovery_m1_explicitly_out_of_m1",
+      "community": 9,
+      "norm_label": "explicitly out of m1"
+    },
+    {
+      "label": "Done when I can",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L21",
+      "id": "docs_discovery_m1_done_when_i_can",
+      "community": 9,
+      "norm_label": "done when i can"
+    },
+    {
+      "label": "Stack constraints (fixed, not up for grill)",
+      "file_type": "document",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L29",
+      "id": "docs_discovery_m1_stack_constraints_fixed_not_up_for_grill",
+      "community": 9,
+      "norm_label": "stack constraints (fixed, not up for grill)"
+    },
+    {
+      "label": "TabBar.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/TabBar.svelte",
+      "confidence": "EXTRACTED",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "tabbar.svelte",
+      "id": "src_lib_tabbar_svelte"
+    },
+    {
+      "label": "active",
+      "file_type": "code",
+      "source_file": "src/lib/TabBar.svelte",
+      "source_location": "L18",
+      "community": 3,
+      "norm_label": "active",
+      "id": "lib_tabbar_active"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/build.rs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_build_rs",
+      "target": "src_tauri_build_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_agent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_sessioninfo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_worktree_error_message"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_create_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L126",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_spawn_for"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L171",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_info_for"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L187",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L213",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_list_restorable"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L269",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_attach_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L286",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_with_pty"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L298",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_write_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L307",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_resize_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L318",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_closeoutcome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L325",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_close_decision"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L340",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_close_session"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L378",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_close_decisions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L396",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_session_rs",
+      "target": "src_session_maps_worktree_errors"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_agent",
+      "target": "src_session_agent_as_str"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_agent",
+      "target": "src_session_agent_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_session_agent_as_str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_info_for",
+      "target": "src_session_agent_as_str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L193",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_persist",
+      "target": "src_session_agent_as_str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_session_agent_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L225",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_session_agent_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_session_worktree_error_message"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L362",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_close_session",
+      "target": "src_session_worktree_error_message"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_session_spawn_for"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "src_session_create_session",
+      "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "src_session_create_session",
+      "target": "src_worktree_worktreeerror_from"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L283",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_attach_session",
+      "target": "src_session_spawn_for"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_agent_write_hooks_settings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_agent_claude_launch"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_status_spawn_poller"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_pty_spawn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L150",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "platform_unix_login_shell"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L162",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_status_emit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L256",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_close_session",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L205",
+      "weight": 1.0,
+      "source": "src_session_persist",
+      "target": "src_state_save"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L205",
+      "weight": 1.0,
+      "source": "src_session_persist",
+      "target": "src_state_state_path"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "src_project_add_project",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "src_project_remove_project",
+      "target": "src_session_persist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L216",
+      "weight": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_state_load"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L216",
+      "weight": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_state_state_path"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_state_persistedstate_empty"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "src_session_list_restorable",
+      "target": "src_worktree_exists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L303",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_write_session",
+      "target": "src_session_with_pty"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L313",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_resize_session",
+      "target": "src_session_with_pty"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L363",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_session_close_session",
+      "target": "src_session_close_decision"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L355",
+      "weight": 1.0,
+      "source": "src_session_close_session",
+      "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L360",
+      "weight": 1.0,
+      "source": "src_session_close_session",
+      "target": "src_worktree_is_clean"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/lib.rs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_lib_rs",
+      "target": "src_lib_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_parse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_statusevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_emit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_spawn_poller"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_status_rs",
+      "target": "src_status_parses_words"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_status_spawn_poller",
+      "target": "src_status_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_status_spawn_poller",
+      "target": "src_status_emit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/status.rs",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "src_status_spawn_poller",
+      "target": "src_pty_spawn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_add_to",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_remove_from",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_list_projects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_add_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_remove_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_repo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_add_twice_same_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_non_repo_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "src_tauri_src_project_rs",
+      "target": "src_project_remove_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "src_project_add_project",
+      "target": "src_project_add_to",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "src_project_add_twice_same_id",
+      "target": "src_project_add_to",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "src_project_remove_rules",
+      "target": "src_project_add_to",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "src_project_remove_project",
+      "target": "src_project_remove_from",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "src_project_remove_rules",
+      "target": "src_project_remove_from",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "src_project_add_twice_same_id",
+      "target": "src_project_repo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/project.rs",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "src_project_remove_rules",
+      "target": "src_project_repo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_persistedsession"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_persistedstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_state_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_save"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_load"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_sample"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_round_trip"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_missing_file_is_empty"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_bad_json_errors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_state_rs",
+      "target": "src_state_wrong_version_errors"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_state_persistedstate",
+      "target": "src_state_persistedstate_empty"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_state_load",
+      "target": "src_state_persistedstate_empty"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "src_state_state_path",
+      "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_state_round_trip",
+      "target": "src_state_save"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "src_state_save",
+      "target": "src_worktree_worktreeerror_from"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_state_save",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L91",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_state_round_trip",
+      "target": "src_state_sample"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "src_state_bad_json_errors",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/state.rs",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "src_state_wrong_version_errors",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/main.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_main_rs",
+      "target": "src_main_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_shell_quote"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_claude_launch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_write_hooks_settings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_launch_flags"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_settings_roundtrip"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_agent_write_hooks_settings",
+      "target": "src_agent_shell_quote"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_agent_settings_roundtrip",
+      "target": "src_agent_shell_quote"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_agent_launch_flags",
+      "target": "src_agent_claude_launch"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_agent_settings_roundtrip",
+      "target": "src_agent_write_hooks_settings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "src_agent_write_hooks_settings",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_agent_launch_flags",
+      "target": "src_worktree_worktreeerror_from"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_worktree"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_worktreeerror"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_git"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_is_clean"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_remove"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_exists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_repo_with_commit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L117",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_create_succeeds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_not_a_repo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_no_commits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L154",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_branch_exists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L163",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_clean_then_dirty"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_worktree_rs",
+      "target": "src_worktree_remove_clean"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_worktreeerror",
+      "target": "src_worktree_worktreeerror_from"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "platform_unix_home_dir",
+      "target": "src_worktree_worktreeerror_from"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_create",
+      "target": "src_worktree_git"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_is_clean",
+      "target": "src_worktree_git"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_remove",
+      "target": "src_worktree_git"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_create_succeeds",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L139",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_not_a_repo",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L149",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_no_commits",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L158",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_branch_exists",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_clean_then_dirty",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L178",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_remove_clean",
+      "target": "src_worktree_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L179",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_remove_clean",
+      "target": "src_worktree_remove"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_repo_with_commit",
+      "target": "src_worktree_run"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L126",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_create_succeeds",
+      "target": "src_worktree_run"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L148",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_no_commits",
+      "target": "src_worktree_run"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L157",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_branch_exists",
+      "target": "src_worktree_run"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_create_succeeds",
+      "target": "src_worktree_repo_with_commit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L156",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_branch_exists",
+      "target": "src_worktree_repo_with_commit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L165",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_clean_then_dirty",
+      "target": "src_worktree_repo_with_commit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L177",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_worktree_remove_clean",
+      "target": "src_worktree_repo_with_commit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/worktree.rs",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "src_worktree_clean_then_dirty",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_pty_rs",
+      "target": "src_pty_ptyhandle"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_pty_rs",
+      "target": "src_pty_shell_quote"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_pty_rs",
+      "target": "src_pty_spawn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L122",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_pty_rs",
+      "target": "src_pty_runs_command_and_streams_output"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_pty_rs",
+      "target": "src_pty_write_exit_ends_shell"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_ptyhandle",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_ptyhandle",
+      "target": "src_pty_ptyhandle_resize"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_ptyhandle",
+      "target": "src_pty_ptyhandle_kill"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L127",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_runs_command_and_streams_output",
+      "target": "src_pty_spawn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L150",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_write_exit_ends_shell",
+      "target": "src_pty_spawn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/pty.rs",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_pty_write_exit_ends_shell",
+      "target": "src_pty_ptyhandle_write"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_platform_unix_rs",
+      "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_platform_unix_rs",
+      "target": "platform_unix_login_shell"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/platform/unix.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_tauri_src_platform_unix_rs",
+      "target": "platform_unix_login_shell_is_non_empty"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main_ts",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main_ts",
+      "target": "src_app_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "source": "src_app_svelte",
+      "target": "src_lib_sidebar_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "source": "src_app_svelte",
+      "target": "src_lib_statusbar_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
+      "source": "src_app_svelte",
+      "target": "src_lib_newtabdialog_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
+      "source": "src_app_svelte",
+      "target": "src_lib_terminal_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
+      "source": "src_app_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
+      "source": "src_app_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
+      "source": "src_app_svelte",
+      "target": "src_lib_tabbar_svelte"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Sidebar.svelte",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "src_lib_sidebar_svelte",
+      "target": "lib_sidebar_active",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Sidebar.svelte",
+      "source": "src_lib_sidebar_svelte",
+      "target": "svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Sidebar.svelte",
+      "source": "src_lib_sidebar_svelte",
+      "target": "plugin_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Sidebar.svelte",
+      "source": "src_lib_sidebar_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/StatusBar.svelte",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_lib_statusbar_svelte",
+      "target": "lib_statusbar_left",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/StatusBar.svelte",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_lib_statusbar_svelte",
+      "target": "lib_statusbar_running",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/StatusBar.svelte",
+      "source": "src_lib_statusbar_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/NewTabDialog.svelte",
+      "source": "src_lib_newtabdialog_svelte",
+      "target": "svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/NewTabDialog.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_newtabdialog_svelte",
+      "target": "plugin_dialog"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/NewTabDialog.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_newtabdialog_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "xterm"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "addon_fit"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "core"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "xterm_css"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/Terminal.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_terminal_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/TabBar.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_tabbar_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/TabBar.svelte",
+      "confidence_score": 1.0,
+      "source": "src_lib_tabbar_svelte",
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "core"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_agentkind"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_sessioninfo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_tab"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_store"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_early"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_loadprojects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_addproject",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_addpending"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_resolve"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_fail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_setactive"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_initstatuslistener"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_remove"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_closeoutcome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_closetab"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_sessions_svelte_ts",
+      "target": "lib_sessions_svelte_restoretabs"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "lib_sessions_svelte_restoretabs",
+      "target": "lib_sessions_svelte_loadprojects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sessions.svelte.ts",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_sessions_svelte_closetab",
+      "target": "lib_sessions_svelte_remove"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "product_md",
+      "target": "agentfleet_product_agentfleet_m1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_what_why"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_primary_user_story"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_scope_m1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_out_of_scope"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_stack_constraints_fixed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PRODUCT.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_product_agentfleet_m1",
+      "target": "agentfleet_product_success_demo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "STATE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "state_md",
+      "target": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "STATE.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
+      "target": "agentfleet_state_now"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "STATE.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
+      "target": "agentfleet_state_next"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "STATE.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
+      "target": "agentfleet_state_decisions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "STATE.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
+      "target": "agentfleet_state_blockers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_md",
+      "target": "agentfleet_readme_agentfleet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_07_persist_restore_md",
+      "target": "tickets_07_persist_restore_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_07_persist_restore_md",
+      "target": "tickets_07_persist_restore_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_07_persist_restore_md",
+      "target": "tickets_07_persist_restore_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_07_persist_restore_md",
+      "target": "tickets_07_persist_restore_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/07-persist-restore.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_07_persist_restore_md",
+      "target": "tickets_07_persist_restore_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "tickets_09_sidebar_md",
+      "target": "tickets_09_sidebar_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tickets_09_sidebar_md",
+      "target": "tickets_09_sidebar_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "tickets_09_sidebar_md",
+      "target": "tickets_09_sidebar_checks_run_in_order_cheapest_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tickets_09_sidebar_md",
+      "target": "tickets_09_sidebar_done_when",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/09-sidebar.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tickets_09_sidebar_md",
+      "target": "tickets_09_sidebar_not_included",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_md",
+      "target": "tickets_03_pty_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_md",
+      "target": "tickets_03_pty_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_md",
+      "target": "tickets_03_pty_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_md",
+      "target": "tickets_03_pty_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_md",
+      "target": "tickets_03_pty_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/03-pty.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_03_pty_context",
+      "target": "tickets_03_pty_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_04_shell_tab_md",
+      "target": "tickets_04_shell_tab_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_04_shell_tab_md",
+      "target": "tickets_04_shell_tab_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_04_shell_tab_md",
+      "target": "tickets_04_shell_tab_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_04_shell_tab_md",
+      "target": "tickets_04_shell_tab_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/04-shell-tab.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_04_shell_tab_md",
+      "target": "tickets_04_shell_tab_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_md",
+      "target": "tickets_05_claude_status_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_md",
+      "target": "tickets_05_claude_status_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_md",
+      "target": "tickets_05_claude_status_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_md",
+      "target": "tickets_05_claude_status_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_md",
+      "target": "tickets_05_claude_status_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/05-claude-status.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_05_claude_status_context",
+      "target": "tickets_05_claude_status_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_06_close_tab_md",
+      "target": "tickets_06_close_tab_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_06_close_tab_md",
+      "target": "tickets_06_close_tab_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_06_close_tab_md",
+      "target": "tickets_06_close_tab_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_06_close_tab_md",
+      "target": "tickets_06_close_tab_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/06-close-tab.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_06_close_tab_md",
+      "target": "tickets_06_close_tab_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_01_scaffold_md",
+      "target": "tickets_01_scaffold_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_01_scaffold_md",
+      "target": "tickets_01_scaffold_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_01_scaffold_md",
+      "target": "tickets_01_scaffold_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_01_scaffold_md",
+      "target": "tickets_01_scaffold_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/01-scaffold.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_01_scaffold_md",
+      "target": "tickets_01_scaffold_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_md",
+      "target": "tickets_02_worktree_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_md",
+      "target": "tickets_02_worktree_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_md",
+      "target": "tickets_02_worktree_checks_run_in_order_cheapest_first"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_md",
+      "target": "tickets_02_worktree_done_when"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_md",
+      "target": "tickets_02_worktree_not_included"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/02-worktree.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tickets_02_worktree_context",
+      "target": "tickets_02_worktree_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "tickets_08_projects_md",
+      "target": "tickets_08_projects_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tickets_08_projects_md",
+      "target": "tickets_08_projects_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tickets_08_projects_md",
+      "target": "tickets_08_projects_checks_run_in_order_cheapest_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "tickets_08_projects_md",
+      "target": "tickets_08_projects_done_when",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tickets/08-projects.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "tickets_08_projects_md",
+      "target": "tickets_08_projects_not_included",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_md",
+      "target": "docs_orchestra_prd_orchestra_0_3_1_replication_prd"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_overview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_how_it_was_built"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_feature_inventory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_integrations_and_network"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_ui_and_ux"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L168",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_replication_requirements"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/orchestra-prd.md",
+      "source_location": "L211",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
+      "target": "docs_orchestra_prd_unknowns_and_risks"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_roadmap_md",
+      "target": "docs_roadmap_agentfleet_roadmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_roadmap_agentfleet_roadmap",
+      "target": "docs_roadmap_shape_fixed_in_m1_do_not_rework",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "docs_roadmap_agentfleet_roadmap",
+      "target": "docs_roadmap_m2_inter_session_messaging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "docs_roadmap_agentfleet_roadmap",
+      "target": "docs_roadmap_m3_release",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/roadmap.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "docs_roadmap_agentfleet_roadmap",
+      "target": "docs_roadmap_later_optional",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_md",
+      "target": "docs_discovery_m1_agentfleet_m1_discovery_brief"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_product_class"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_who"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_one_job_m1_only"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_explicitly_out_of_m1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_done_when_i_can"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/discovery-m1.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_discovery_m1_agentfleet_m1_discovery_brief",
+      "target": "docs_discovery_m1_stack_constraints_fixed_not_up_for_grill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/TabBar.svelte",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_tabbar_svelte",
+      "target": "lib_tabbar_active"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "4df3a0e9f4da62ce2a93e911b324bd172b8e07f8"
+}
