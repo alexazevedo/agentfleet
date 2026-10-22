@@ -1,4 +1,4 @@
-# baton
+# agentfleet
 
 Desktop cockpit for running multiple coding agents (Claude Code, Codex, ...) side by side, each in its own git worktree, with a message channel between sessions.
 

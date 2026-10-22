@@ -1,4 +1,4 @@
-> Reference spec, exported 2026-10-22 from the Claude Doc https://claude.ai/artifact/BZcd8f3GFcHPrLxWJqH3EU (rev 9). Two architecture diagrams did not export; see the doc. Requirements only; baton copies no Orchestra code.
+> Reference spec, exported 2026-10-22 from the Claude Doc https://claude.ai/artifact/BZcd8f3GFcHPrLxWJqH3EU (rev 9). Two architecture diagrams did not export; see the doc. Requirements only; agentfleet copies no Orchestra code.
 
 # Orchestra 0.3.1 Replication PRD
 
