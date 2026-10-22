@@ -34,6 +34,37 @@ pub fn run() {
             tauri::async_runtime::spawn(broker::serve(app.handle().clone()));
             Ok(())
         })
+        .on_window_event(|window, event| {
+            use tauri_plugin_dialog::{DialogExt, MessageDialogButtons, MessageDialogKind};
+            if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+                let app = window.app_handle().clone();
+                let confirm = app
+                    .state::<settings::SettingsState>()
+                    .lock()
+                    .map(|s| s.confirm_quit)
+                    .unwrap_or(true);
+                let n = session::running_count(&app);
+                if session::should_confirm(confirm, n) {
+                    api.prevent_close();
+                    window
+                        .dialog()
+                        .message(format!("{n} session(s) are running. Quit anyway?"))
+                        .title("Quit agentfleet")
+                        .kind(MessageDialogKind::Warning)
+                        .buttons(MessageDialogButtons::OkCancelCustom(
+                            "Quit".into(),
+                            "Cancel".into(),
+                        ))
+                        .show(move |yes| {
+                            if yes {
+                                session::shutdown(&app);
+                            }
+                        });
+                } else {
+                    session::shutdown(&app);
+                }
+            }
+        })
         .invoke_handler(tauri::generate_handler![
             session::create_session,
             session::write_session,

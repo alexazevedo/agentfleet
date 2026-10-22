@@ -495,9 +495,55 @@ pub fn close_session(
     Ok(outcome)
 }
 
+/// Pure: whether closing the window should ask for confirmation.
+pub fn should_confirm(confirm_quit: bool, running: usize) -> bool {
+    confirm_quit && running > 0
+}
+
+/// Number of sessions with a live PTY (lock-and-release).
+pub fn running_count(app: &AppHandle) -> usize {
+    app.state::<Sessions>()
+        .lock()
+        .map(|m| m.values().filter(|s| s.pty.is_some()).count())
+        .unwrap_or(0)
+}
+
+/// Kill every PTY and stop pollers, then exit the app.
+pub fn shutdown(app: &AppHandle) {
+    let (handles, stops) = {
+        let mut handles = Vec::new();
+        let mut stops = Vec::new();
+        if let Ok(mut map) = app.state::<Sessions>().lock() {
+            for s in map.values_mut() {
+                if let Some(h) = s.pty.take() {
+                    handles.push(h);
+                }
+                if let Some(tx) = s.poller_stop.take() {
+                    stops.push(tx);
+                }
+            }
+        }
+        (handles, stops)
+    };
+    for tx in &stops {
+        let _ = tx.send(true);
+    }
+    for mut h in handles {
+        let _ = h.kill();
+    }
+    app.exit(0);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn confirm_decision() {
+        assert!(should_confirm(true, 2));
+        assert!(!should_confirm(true, 0));
+        assert!(!should_confirm(false, 2));
+    }
 
     #[test]
     fn close_decisions() {

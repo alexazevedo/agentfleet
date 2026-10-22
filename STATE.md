@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-22-quit-guard-release-script — dispatched (sonnet)
+23-release-workflow — dispatched (sonnet)
 
 ## Next
-23-release-workflow → 24-cut-releases
+24-cut-releases
 
 ## Decisions
 - execution: sequential
