@@ -16,16 +16,16 @@
     "hash": "4f08ca7a6f3a041247b07a99c4537fb3"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/session.rs": {
-    "mtime": 1792706388.2253,
-    "hash": "226ed2227a6da812737e67621e53250b"
+    "mtime": 1792708001.0436368,
+    "hash": "092968b7117ae577fcbde54ae3cf3e22"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/runtime.rs": {
     "mtime": 1792688311.968743,
     "hash": "c00a6b4c071900b5070853d6351f4c75"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/lib.rs": {
-    "mtime": 1792706388.2254202,
-    "hash": "4e6f5c47e136650857519f70190b8d97"
+    "mtime": 1792708001.0434842,
+    "hash": "c56761363e0f40f4fc826767894b2a5c"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/scratchpad.rs": {
     "mtime": 1792688855.529179,
@@ -92,16 +92,16 @@
     "hash": "fa588c67b49f9d6a7083ba161c2d5306"
   },
   "/Users/aazevedo/dev/agentfleet/src/App.svelte": {
-    "mtime": 1792706401.8706136,
-    "hash": "ec1b51d32624f16ab1611a32aec89e19"
+    "mtime": 1792708030.567968,
+    "hash": "690b8e9ba43e6c35f6508974c8931917"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/RestoreDialog.svelte": {
     "mtime": 1792706401.8795807,
     "hash": "796614c2e1cac9d33ede0aca12c99eb0"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/sessions.svelte.ts": {
-    "mtime": 1792706401.8701487,
-    "hash": "75ad2c05d184211ad5cacd2604d60d7f"
+    "mtime": 1792708030.5681832,
+    "hash": "b3d01c6ad50df721daff474024190d04"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/collab.svelte.ts": {
     "mtime": 1792688757.8013468,
@@ -148,36 +148,40 @@
     "hash": "3bbd1328a99c9b08293b6eb71f6b94e5"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/Sidebar.svelte": {
-    "mtime": 1792696016.020042,
-    "hash": "5a667969843d224550487aa8547b34a7"
+    "mtime": 1792708001.044699,
+    "hash": "a8624646cf53056410a49f53fc893421"
+  },
+  "/Users/aazevedo/dev/agentfleet/src/lib/RemoveProjectDialog.svelte": {
+    "mtime": 1792708001.0443056,
+    "hash": "7303b132aebdab06cc1c0fc4bfe2376e"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/updater.svelte.ts": {
     "mtime": 1792696166.4129293,
     "hash": "7eb9993a903b1ca402db0b7e2bba2a3b"
   },
   "/Users/aazevedo/dev/agentfleet/PRODUCT.md": {
-    "mtime": 1792703272.431333,
-    "hash": "7b22cbbd978338c3aa64be9c52d1b9c9"
+    "mtime": 1792708001.040361,
+    "hash": "a50e010aea93ffd4e5a2bec1342fa36e"
   },
   "/Users/aazevedo/dev/agentfleet/index.html": {
     "mtime": 1792683102.4976833,
     "hash": "296ab2daceb75e6b90caa184795a8861"
   },
   "/Users/aazevedo/dev/agentfleet/STATE.md": {
-    "mtime": 1792706348.7816439,
-    "hash": "21f4be05885027dcf67adb08cbe9f58e"
+    "mtime": 1792708017.5714772,
+    "hash": "23cecc3922e76738d3946354d140aad5"
   },
   "/Users/aazevedo/dev/agentfleet/README.md": {
     "mtime": 1792688950.4201186,
     "hash": "bb145bedddfddee730a6f0d6ff675a98"
   },
-  "/Users/aazevedo/dev/agentfleet/tickets/26-terminal-prefs.md": {
-    "mtime": 1792706348.7677472,
-    "hash": "93262117c07db21e5f8fc8ba2eb5cf0b"
+  "/Users/aazevedo/dev/agentfleet/tickets/28-remove-project-cascade.md": {
+    "mtime": 1792708001.0451908,
+    "hash": "9641ce328ac505fe5d17a3c50cb96fd8"
   },
-  "/Users/aazevedo/dev/agentfleet/tickets/27-restore-prompt.md": {
-    "mtime": 1792706435.9694543,
-    "hash": "216f749571de8fff5769f06b646a89d1"
+  "/Users/aazevedo/dev/agentfleet/tickets/29-remove-project-ui.md": {
+    "mtime": 1792708001.0454264,
+    "hash": "ebb0d70b33face4aebb8065e3c609967"
   },
   "/Users/aazevedo/dev/agentfleet/docs/orchestra-prd.md": {
     "mtime": 1792682031.23037,
@@ -194,6 +198,22 @@
   "/Users/aazevedo/dev/agentfleet/docs/discovery-m1.md": {
     "mtime": 1792682031.2224724,
     "hash": "7cc40533c0b4733108b6c67ce84cf2e3"
+  },
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/PRODUCT.md": {
+    "mtime": 1792708001.0407987,
+    "hash": "7b22cbbd978338c3aa64be9c52d1b9c9"
+  },
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/STATE.md": {
+    "mtime": 1792708017.5559146,
+    "hash": "6bc999a02db2b3ace0f558e405962387"
+  },
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/26-terminal-prefs.md": {
+    "mtime": 1792708001.0411334,
+    "hash": "93262117c07db21e5f8fc8ba2eb5cf0b"
+  },
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/27-restore-prompt.md": {
+    "mtime": 1792708001.0412273,
+    "hash": "216f749571de8fff5769f06b646a89d1"
   },
   "/Users/aazevedo/dev/agentfleet/docs/forge-m1/PRODUCT.md": {
     "mtime": 1792684741.781378,
