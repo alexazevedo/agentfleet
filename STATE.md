@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-23-release-workflow — dispatched (sonnet)
+24-cut-releases — waiting on CI green + user go-ahead for tag pushes
 
 ## Next
-24-cut-releases
+(none — last ticket) → final review → commit
 
 ## Decisions
 - execution: sequential
