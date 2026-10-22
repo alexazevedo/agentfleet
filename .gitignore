@@ -1,0 +1,15 @@
+# Rust / Tauri
+target/
+src-tauri/target/
+src-tauri/gen/schemas/
+# Node
+node_modules/
+dist/
+.vite/
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log
+# forge runtime
+.forge/
