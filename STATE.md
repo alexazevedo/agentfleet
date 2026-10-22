@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-26-terminal-prefs — dispatched (sonnet)
+27-restore-prompt — dispatched (sonnet)
 
 ## Next
-27-restore-prompt
+(none — last ticket) → final review
 
 ## Decisions
 - execution: sequential

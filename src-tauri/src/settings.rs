@@ -12,6 +12,27 @@ use crate::platform;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", default)]
+pub struct TerminalSettings {
+    /// Empty = system monospace.
+    pub font_family: String,
+    pub font_size: u8,
+    pub line_height: f32,
+    pub cursor_blink: bool,
+}
+
+impl Default for TerminalSettings {
+    fn default() -> Self {
+        TerminalSettings {
+            font_family: String::new(),
+            font_size: 13,
+            line_height: 1.0,
+            cursor_blink: true,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", default)]
 pub struct Settings {
     pub worktrees_root: PathBuf,
     pub default_agent: String,
@@ -19,6 +40,8 @@ pub struct Settings {
     pub auto_delivery: bool,
     pub confirm_quit: bool,
     pub update_checks: bool,
+    #[serde(default)]
+    pub terminal: TerminalSettings,
 }
 
 impl Default for Settings {
@@ -30,6 +53,7 @@ impl Default for Settings {
             auto_delivery: true,
             confirm_quit: true,
             update_checks: true,
+            terminal: TerminalSettings::default(),
         }
     }
 }
@@ -75,6 +99,12 @@ fn validate(s: &Settings) -> Result<(), String> {
     }
     if s.default_agent != "claude" && s.default_agent != "shell" {
         return Err(format!("unknown agent: {}", s.default_agent));
+    }
+    if !(9..=24).contains(&s.terminal.font_size) {
+        return Err("font size must be 9–24".into());
+    }
+    if !(1.0..=1.6).contains(&s.terminal.line_height) {
+        return Err("line height must be 1.0–1.6".into());
     }
     Ok(())
 }
@@ -122,6 +152,10 @@ mod tests {
         // Partial file fills the rest with defaults.
         let p: Settings = serde_json::from_str(r#"{"autoDelivery":false}"#).unwrap();
         assert!(!p.auto_delivery && p.auto_permission);
+        assert_eq!(p.terminal, TerminalSettings::default());
+        assert_eq!(s.terminal.font_size, 13);
+        assert_eq!(s.terminal.line_height, 1.0);
+        assert!(s.terminal.cursor_blink && s.terminal.font_family.is_empty());
     }
 
     #[test]
@@ -151,5 +185,25 @@ mod tests {
         };
         assert!(validate(&rel).is_err());
         assert!(validate(&Settings::default()).is_ok());
+        for size in [8, 25] {
+            let s = Settings {
+                terminal: TerminalSettings {
+                    font_size: size,
+                    ..Default::default()
+                },
+                ..Settings::default()
+            };
+            assert_eq!(validate(&s).unwrap_err(), "font size must be 9–24");
+        }
+        for lh in [0.9, 1.7] {
+            let s = Settings {
+                terminal: TerminalSettings {
+                    line_height: lh,
+                    ..Default::default()
+                },
+                ..Settings::default()
+            };
+            assert_eq!(validate(&s).unwrap_err(), "line height must be 1.0–1.6");
+        }
     }
 }

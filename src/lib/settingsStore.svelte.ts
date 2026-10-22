@@ -1,6 +1,13 @@
 import { invoke } from "@tauri-apps/api/core";
 import type { AgentKind } from "./sessions.svelte";
 
+export interface TerminalSettings {
+  fontFamily: string;
+  fontSize: number;
+  lineHeight: number;
+  cursorBlink: boolean;
+}
+
 export interface Settings {
   worktreesRoot: string;
   defaultAgent: AgentKind;
@@ -8,6 +15,7 @@ export interface Settings {
   autoDelivery: boolean;
   confirmQuit: boolean;
   updateChecks: boolean;
+  terminal: TerminalSettings;
 }
 
 export interface AppInfo {
@@ -24,6 +32,7 @@ export const settings = $state({
     autoDelivery: true,
     confirmQuit: true,
     updateChecks: true,
+    terminal: { fontFamily: "", fontSize: 13, lineHeight: 1.0, cursorBlink: true },
   } as Settings,
 });
 

@@ -5,6 +5,7 @@
   import { Channel, invoke } from "@tauri-apps/api/core";
   import "@xterm/xterm/css/xterm.css";
   import { fail, resolve, type SessionInfo, type Tab } from "./sessions.svelte";
+  import { settings } from "./settingsStore.svelte";
 
   let { tab, active }: { tab: Tab; active: boolean } = $props();
 
@@ -19,6 +20,22 @@
     if (id) invoke("resize_session", { id, cols: term.cols, rows: term.rows }).catch(() => {});
   }
 
+  function family(f: string) {
+    return f ? `${f}, ui-monospace, Menlo, monospace` : "ui-monospace, Menlo, monospace";
+  }
+
+  let opened = false;
+  $effect(() => {
+    const t = settings.value.terminal;
+    const o = [family(t.fontFamily), t.fontSize, t.lineHeight, t.cursorBlink] as const;
+    if (!opened) return; // initial values applied at creation
+    term.options.fontFamily = o[0];
+    term.options.fontSize = o[1];
+    term.options.lineHeight = o[2];
+    term.options.cursorBlink = o[3];
+    refit();
+  });
+
   $effect(() => {
     if (active && term) {
       refit();
@@ -27,11 +44,18 @@
   });
 
   onMount(() => {
-    term = new Terminal({ cursorBlink: true, fontSize: 13 });
+    const t = settings.value.terminal;
+    term = new Terminal({
+      cursorBlink: t.cursorBlink,
+      fontSize: t.fontSize,
+      lineHeight: t.lineHeight,
+      fontFamily: family(t.fontFamily),
+    });
     fit = new FitAddon();
     term.loadAddon(fit);
     term.open(container);
     fit.fit();
+    opened = true;
 
     term.onData((d) => {
       if (id) invoke("write_session", { id, data: Array.from(new TextEncoder().encode(d)) });

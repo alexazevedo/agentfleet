@@ -4,7 +4,7 @@
   import { checkForUpdate, updater } from "./updater.svelte";
   import { appInfo, loadSettings, saveSettings, settings, type AppInfo, type Settings } from "./settingsStore.svelte";
 
-  let form = $state<Settings>({ ...settings.value });
+  let form = $state<Settings>(structuredClone($state.snapshot(settings.value)));
   let info = $state<AppInfo | null>(null);
   let error = $state("");
   let saved = $state(false);
@@ -12,7 +12,7 @@
   onMount(async () => {
     try {
       await loadSettings();
-      form = { ...settings.value };
+      form = structuredClone($state.snapshot(settings.value));
       info = await appInfo();
     } catch (e) {
       error = String(e);
@@ -27,8 +27,8 @@
   async function save() {
     saved = false;
     try {
-      await saveSettings({ ...form });
-      form = { ...settings.value };
+      await saveSettings($state.snapshot(form));
+      form = structuredClone($state.snapshot(settings.value));
       error = "";
       saved = true;
     } catch (e) {
@@ -62,6 +62,20 @@
     </button>
     {#if updater.error}<span class="err">{updater.error}</span>{:else if updater.lastResult}<span>{updater.lastResult}</span>{/if}
   </div>
+  <h3>Terminal</h3>
+  <label class="field">
+    <span>Font family</span>
+    <input type="text" placeholder="system monospace" bind:value={form.terminal.fontFamily} />
+  </label>
+  <label class="field">
+    <span>Font size</span>
+    <input type="number" min="9" max="24" step="1" bind:value={form.terminal.fontSize} />
+  </label>
+  <label class="field">
+    <span>Line height</span>
+    <input type="number" min="1.0" max="1.6" step="0.05" bind:value={form.terminal.lineHeight} />
+  </label>
+  <label><input type="checkbox" bind:checked={form.terminal.cursorBlink} /> Cursor blink</label>
   <div class="row">
     <button type="button" onclick={save}>Save</button>
     {#if saved}<span class="ok">Saved</span>{/if}
@@ -91,6 +105,9 @@
     flex-direction: column;
     gap: 4px;
     max-width: 480px;
+  }
+  h3 {
+    margin: 8px 0 0;
   }
   .row {
     display: flex;
