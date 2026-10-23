@@ -24,9 +24,9 @@ Prints id8, agent, status and full id.
 
 ## Spawn a session
 
-    agentfleet spawn [--agent claude|codex|shell] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
+    agentfleet spawn [--agent claude|codex|shell] [--no-worktree] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
 
-Starts a sibling session in this project, queues the prompt as a request to it, and prints `<id8> <run>`. Follow with `agentfleet wait <run>`. Example:
+Starts a sibling session in this project, queues the prompt as a request to it, and prints `<id8> <run>`. Follow with `agentfleet wait <run>`. `--no-worktree` runs the session in the project root on the current branch instead of a dedicated worktree. Example:
 
     agentfleet spawn --agent claude --role reviewer "Review branch X against main"
     agentfleet spawn --agent codex --role reviewer "Review branch X against main"

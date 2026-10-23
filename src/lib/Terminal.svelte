@@ -121,6 +121,8 @@
         agent: tab.agent,
         cols: term.cols,
         rows: term.rows,
+        name: tab.name ?? "",
+        worktree: tab.worktree ?? true,
         onData: channel,
       })
         .then((info) => {

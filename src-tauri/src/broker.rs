@@ -45,6 +45,8 @@ pub struct Request {
     pub name: Option<String>,
     #[serde(default)]
     pub agent_args: Option<Vec<String>>,
+    #[serde(default)]
+    pub worktree: Option<bool>,
 }
 
 /// Constant-time byte compare: early exit only on length mismatch.
@@ -325,9 +327,10 @@ pub async fn spawn(req: &Request, app: &AppHandle) -> Value {
     }
     let name = req.name.clone().unwrap_or_default();
     let args = req.agent_args.clone().unwrap_or_default();
+    let use_worktree = req.worktree.unwrap_or(true);
     let h = app.clone();
     let info = match tokio::task::spawn_blocking(move || {
-        session::register(&h, project, agent, &name, args)
+        session::register(&h, project, agent, &name, args, use_worktree)
     })
     .await
     {
@@ -534,6 +537,8 @@ mod tests {
             draft_len: 0,
             name: String::new(),
             agent_args: Vec::new(),
+            owns_worktree: true,
+            model: String::new(),
         }
     }
 
