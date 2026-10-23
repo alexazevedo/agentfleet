@@ -20,6 +20,7 @@ export interface SessionInfo {
   worktreePath: string;
   repoName: string;
   name: string;
+  model: string;
 }
 
 export function labelOf(agent: AgentKind): string {
@@ -48,6 +49,8 @@ export interface Tab {
   closing?: "kept" | null;
   keptPath?: string;
   resume?: boolean;
+  name?: string;
+  worktree?: boolean;
 }
 
 export const store = $state({
@@ -110,9 +113,14 @@ export async function addProjectOrOfferInit(
   }
 }
 
-export function addPending(projectId: string, agent: AgentKind): string {
+export function addPending(
+  projectId: string,
+  agent: AgentKind,
+  name = "",
+  worktree = true,
+): string {
   const key = crypto.randomUUID();
-  store.tabs.push({ key, projectId, agent });
+  store.tabs.push({ key, projectId, agent, name, worktree });
   store.activeKey = key;
   return key;
 }
@@ -147,6 +155,10 @@ export function initStatusListener() {
     const t = store.tabs.find((t) => t.info?.id === e.payload.id);
     if (t) t.status = e.payload.status;
     else early.set(e.payload.id, e.payload.status);
+  });
+  listen<{ id: string; model: string }>("session-model", (e) => {
+    const t = store.tabs.find((t) => t.info?.id === e.payload.id);
+    if (t?.info) t.info.model = e.payload.model;
   });
 }
 

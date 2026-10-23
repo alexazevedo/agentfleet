@@ -72,6 +72,10 @@ pub struct Session {
     pub name: String,
     /// Extra agent CLI args appended to the launch command.
     pub agent_args: Vec<String>,
+    /// False when running in the project root: close never touches the checkout.
+    pub owns_worktree: bool,
+    /// Last known agent model (display name); empty until reported.
+    pub model: String,
 }
 
 #[derive(Serialize)]
@@ -85,6 +89,7 @@ pub struct SessionInfo {
     pub worktree_path: String,
     pub repo_name: String,
     pub name: String,
+    pub model: String,
 }
 
 pub type Sessions = Mutex<HashMap<Uuid, Session>>;
@@ -124,6 +129,7 @@ pub fn register(
     agent: Agent,
     name: &str,
     agent_args: Vec<String>,
+    use_worktree: bool,
 ) -> Result<SessionInfo, String> {
     if !agent_args.is_empty() && agent == Agent::Shell {
         return Err("agent args need an agent session (not shell)".into());
@@ -140,15 +146,19 @@ pub fn register(
     let id = Uuid::new_v4();
     let id8: String = id.simple().to_string().chars().take(8).collect();
 
-    let root = app
-        .state::<SettingsState>()
-        .lock()
-        .map_err(|e| e.to_string())?
-        .worktrees_root
-        .clone();
-    std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
-    let wt = worktree::create(&repo, agent.as_str(), &id8, &root)
-        .map_err(|e| worktree_error_message(&e))?;
+    let wt = if use_worktree {
+        let root = app
+            .state::<SettingsState>()
+            .lock()
+            .map_err(|e| e.to_string())?
+            .worktrees_root
+            .clone();
+        std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+        worktree::create(&repo, agent.as_str(), &id8, &root)
+    } else {
+        worktree::current(&repo)
+    }
+    .map_err(|e| worktree_error_message(&e))?;
 
     let session = Session {
         id,
@@ -164,6 +174,8 @@ pub fn register(
         draft_len: 0,
         name: name.to_string(),
         agent_args,
+        owns_worktree: use_worktree,
+        model: String::new(),
     };
     let info = info_for(&session);
     let mut map = sessions.lock().map_err(|e| e.to_string())?;
@@ -182,6 +194,7 @@ pub fn create_session(
     rows: u16,
     name: Option<String>,
     agent_args: Option<Vec<String>>,
+    worktree: Option<bool>,
     on_data: Channel<InvokeResponseBody>,
     sessions: State<'_, Sessions>,
     projects: State<'_, Projects>,
@@ -195,6 +208,7 @@ pub fn create_session(
         agent,
         &name.unwrap_or_default(),
         agent_args.unwrap_or_default(),
+        worktree.unwrap_or(true),
     )?;
     let id = Uuid::parse_str(&info.id).map_err(|e| e.to_string())?;
     let mut map = sessions.lock().map_err(|e| e.to_string())?;
@@ -243,6 +257,7 @@ fn spawn_for(
             let s = s.lock().map_err(|e| e.to_string())?;
             agent::Permission::from_settings(s.auto_permission, s.bypass_permissions)
         };
+        let model_source;
         let launch = match session.agent {
             Agent::Codex => {
                 let script = run.join(format!("{id}.codex-hook.sh"));
@@ -253,6 +268,7 @@ fn spawn_for(
                 }
                 agent::write_codex_hook(&status_file, &payload, &script)
                     .map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::CodexPayload(payload.clone());
                 let resume_id = if resume {
                     agent::payload_session_id(&payload)
                 } else {
@@ -270,6 +286,7 @@ fn spawn_for(
                 let guide = run.join(format!("{id}.guide.md"));
                 agent::write_pi_extension(&status_file, &ext).map_err(|e| e.to_string())?;
                 agent::write_guide_file(&guide).map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::None;
                 // `--session-id` creates or loads the session, so resume is the same command.
                 agent::pi_launch(id, &ext, &guide, &session.agent_args)
             }
@@ -285,18 +302,21 @@ fn spawn_for(
                 } else {
                     None
                 };
+                model_source = status::ModelSource::None;
                 let cfg = agent::opencode_config_content(&plugin, &guide, permission);
                 agent::opencode_launch(&cfg, resume_id.as_deref(), permission, &session.agent_args)
             }
             Agent::Claude | Agent::Shell => {
                 let settings = run.join(format!("{id}.settings.json"));
-                agent::write_hooks_settings(&status_file, &rt.shim, &settings)
+                let model_file = run.join(format!("{id}.model"));
+                agent::write_hooks_settings(&status_file, &rt.shim, &model_file, &settings)
                     .map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::PlainFile(model_file);
                 agent::claude_launch(id, &settings, resume, permission, &session.agent_args)
             }
         };
         command = format!("{path_prefix}exec {launch}");
-        status::spawn_poller(app.clone(), id, status_file, stop_rx);
+        status::spawn_poller(app.clone(), id, status_file, model_source, stop_rx);
         poller_stop = Some(stop_tx.clone());
     }
     let exit_app = app.clone();
@@ -383,6 +403,7 @@ fn info_for(s: &Session) -> SessionInfo {
             .map(|n| n.to_string_lossy().to_string())
             .unwrap_or_else(|| "repo".into()),
         name: s.name.clone(),
+        model: s.model.clone(),
     }
 }
 
@@ -401,6 +422,8 @@ pub fn persist(sessions: &HashMap<Uuid, Session>, projects: &[Project]) {
             base_commit: s.worktree.base_commit.clone(),
             name: s.name.clone(),
             agent_args: s.agent_args.clone(),
+            owns_worktree: s.owns_worktree,
+            model: s.model.clone(),
         })
         .collect();
     list.sort_by(|a, b| a.id8.cmp(&b.id8));
@@ -472,6 +495,8 @@ pub fn list_restorable(
                     draft_len: 0,
                     name: p.name,
                     agent_args: p.agent_args,
+                    owns_worktree: p.owns_worktree,
+                    model: p.model,
                 },
             );
         }
@@ -597,6 +622,11 @@ fn close_decision(
     }
 }
 
+/// Sessions running in the project root never touch the checkout on close.
+fn unowned_close(owns_worktree: bool) -> Option<CloseOutcome> {
+    (!owns_worktree).then_some(CloseOutcome::Removed)
+}
+
 #[tauri::command]
 pub fn close_session(id: String, app: AppHandle) -> Result<CloseOutcome, String> {
     let uuid = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
@@ -640,8 +670,12 @@ pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
         "opencode-plugin.js",
         "opencode-session.json",
         "guide.md",
+        "model",
     ] {
         let _ = std::fs::remove_file(run.join(format!("{uuid}.{ext}")));
+    }
+    if let Some(o) = unowned_close(s.owns_worktree) {
+        return Ok(o);
     }
     let path = s.worktree.path.to_string_lossy().to_string();
     let outcome = match worktree::is_clean(&s.worktree.path) {
@@ -788,6 +822,8 @@ mod tests {
                 draft_len: 0,
                 name: String::new(),
                 agent_args: Vec::new(),
+                owns_worktree: true,
+                model: String::new(),
             },
         )
     }
@@ -844,6 +880,38 @@ mod tests {
                 path: "/p \u{2014} boom".into()
             }
         );
+    }
+
+    #[test]
+    fn no_worktree_close_removes_and_leaves_checkout() {
+        let tmp = tempfile::tempdir().unwrap();
+        let repo = tmp.path().join("r");
+        std::fs::create_dir_all(&repo).unwrap();
+        let git = |a: &[&str]| {
+            assert!(std::process::Command::new("git")
+                .current_dir(&repo)
+                .args(a)
+                .status()
+                .unwrap()
+                .success())
+        };
+        git(&["init"]);
+        git(&[
+            "-c",
+            "user.email=t@t",
+            "-c",
+            "user.name=t",
+            "commit",
+            "--allow-empty",
+            "-m",
+            "i",
+        ]);
+        let wt = worktree::current(&repo).unwrap();
+        std::fs::write(repo.join("dirty.txt"), "x").unwrap();
+        assert_eq!(unowned_close(false), Some(CloseOutcome::Removed));
+        assert_eq!(unowned_close(true), None);
+        assert!(repo.join("dirty.txt").exists());
+        assert!(worktree::exists(&wt));
     }
 
     fn ids(n: usize) -> Vec<Uuid> {

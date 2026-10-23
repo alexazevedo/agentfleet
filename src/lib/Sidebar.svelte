@@ -103,6 +103,7 @@
             <AgentIcon agent={tab.info.agent} size={14} />
             <span>{tabTitle(tab.info)}</span>
             <span class="id8">{tab.info.id8}</span>
+            {#if tab.info.model}<span class="model">{tab.info.model}</span>{/if}
           {:else}
             <span class="id8">starting…</span>
           {/if}
@@ -232,6 +233,14 @@
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
+  }
+  .model {
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    max-width: 9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .spacer {
     flex: 1;

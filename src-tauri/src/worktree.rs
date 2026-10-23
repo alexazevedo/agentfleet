@@ -64,6 +64,24 @@ pub fn create(repo: &Path, agent: &str, id8: &str, root: &Path) -> Result<Worktr
     })
 }
 
+/// Use the repo itself as the "worktree": current branch (or short HEAD if detached), nothing created.
+pub fn current(repo: &Path) -> Result<Worktree, WorktreeError> {
+    if !repo.is_dir() || git(repo, &["rev-parse", "--show-toplevel"])?.is_err() {
+        return Err(WorktreeError::NotARepo);
+    }
+    let base_commit = git(repo, &["rev-parse", "HEAD"])?.map_err(|_| WorktreeError::NoCommits)?;
+    let branch = match git(repo, &["symbolic-ref", "--short", "HEAD"])? {
+        Ok(b) => b,
+        Err(_) => git(repo, &["rev-parse", "--short", "HEAD"])?.map_err(WorktreeError::Git)?,
+    };
+    Ok(Worktree {
+        repo: repo.to_path_buf(),
+        path: repo.to_path_buf(),
+        branch,
+        base_commit,
+    })
+}
+
 pub fn is_clean(path: &Path) -> Result<bool, WorktreeError> {
     let out = git(path, &["status", "--porcelain"])?.map_err(WorktreeError::Git)?;
     Ok(out.is_empty())
@@ -131,6 +149,34 @@ mod tests {
                 "refs/heads/agentfleet/claude-abcd1234",
             ],
         );
+    }
+
+    #[test]
+    fn current_uses_repo_root_and_branch() {
+        let tmp = tempfile::tempdir().unwrap();
+        let repo = repo_with_commit(tmp.path());
+        let wt = current(&repo).unwrap();
+        assert_eq!(wt.path, repo);
+        let expect = git(&repo, &["symbolic-ref", "--short", "HEAD"])
+            .unwrap()
+            .unwrap();
+        assert_eq!(wt.branch, expect);
+        assert!(!wt.base_commit.is_empty());
+        let branches = git(&repo, &["branch", "--list", "agentfleet/*"])
+            .unwrap()
+            .unwrap();
+        assert!(branches.is_empty());
+        assert!(current(tmp.path()).is_err());
+    }
+
+    #[test]
+    fn current_detached_uses_short_commit() {
+        let tmp = tempfile::tempdir().unwrap();
+        let repo = repo_with_commit(tmp.path());
+        run(&repo, &["checkout", "--detach", "HEAD"]);
+        let wt = current(&repo).unwrap();
+        assert!(wt.base_commit.starts_with(&wt.branch));
+        assert!(wt.branch.len() < wt.base_commit.len());
     }
 
     #[test]

@@ -71,15 +71,27 @@ pub fn claude_launch(
 /// Claude hook settings. `shim` is the absolute path of the `agentfleet` CLI shim: SessionStart
 /// also runs `agentfleet hook-context`, which injects the skill guide into the model context.
 /// The `agentfleet` CLI is pre-allowed so replying to a request never needs a permission click.
-pub fn write_hooks_settings(status_file: &Path, shim: &Path, dest: &Path) -> std::io::Result<()> {
+/// The status line runs `agentfleet statusline <model_file>`, which records the live model.
+pub fn write_hooks_settings(
+    status_file: &Path,
+    shim: &Path,
+    model_file: &Path,
+    dest: &Path,
+) -> std::io::Result<()> {
     let q = shell_quote(&status_file.to_string_lossy());
+    let shim_q = shell_quote(&shim.to_string_lossy());
     let hook = |word: &str| json!({ "type": "command", "command": format!("printf {word} > {q}") });
     let context = json!({
         "type": "command",
-        "command": format!("{} hook-context", shell_quote(&shim.to_string_lossy())),
+        "command": format!("{shim_q} hook-context"),
+    });
+    let status_line = json!({
+        "type": "command",
+        "command": format!("{shim_q} statusline {}", shell_quote(&model_file.to_string_lossy())),
     });
     let settings = json!({
         "permissions": {"allow": ["Bash(agentfleet:*)"]},
+        "statusLine": status_line,
         "hooks": {
             "SessionStart": [{"hooks": [hook("waiting"), context]}],
             "UserPromptSubmit": [{"hooks": [hook("working")]}],
@@ -362,6 +374,16 @@ pub fn payload_session_id(payload_file: &Path) -> Option<String> {
     }
 }
 
+/// Codex model from the last hook payload (top-level `"model"`), if present.
+pub fn codex_model(payload_file: &Path) -> Option<String> {
+    let bytes = std::fs::read(payload_file).ok()?;
+    let v: serde_json::Value = serde_json::from_slice(&bytes).ok()?;
+    match v.get("model")?.as_str() {
+        Some(m) if !m.is_empty() => Some(m.to_string()),
+        _ => None,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -401,10 +423,19 @@ mod tests {
         let status = dir.path().join("it's.status");
         let dest = dir.path().join("s.json");
         let shim = PathBuf::from("/t/agentfleet-1/agentfleet");
-        write_hooks_settings(&status, &shim, &dest).unwrap();
+        let model = dir.path().join("it's.model");
+        write_hooks_settings(&status, &shim, &model, &dest).unwrap();
         let v: serde_json::Value = serde_json::from_slice(&std::fs::read(&dest).unwrap()).unwrap();
         let quoted = shell_quote(&status.to_string_lossy());
         assert_eq!(v["permissions"]["allow"][0], "Bash(agentfleet:*)");
+        assert_eq!(v["statusLine"]["type"], "command");
+        assert_eq!(
+            v["statusLine"]["command"].as_str().unwrap(),
+            format!(
+                "'/t/agentfleet-1/agentfleet' statusline {}",
+                shell_quote(&model.to_string_lossy())
+            )
+        );
         let hooks = v["hooks"].as_object().unwrap();
         assert_eq!(hooks.len(), 5);
         for (event, groups) in hooks {
@@ -688,5 +719,20 @@ mod tests {
             r.ends_with("opencode --session 'ses_abc' '-m' 'o'\\''3'"),
             "{r}"
         );
+    }
+
+    #[test]
+    fn codex_model_extraction() {
+        let dir = tempfile::tempdir().unwrap();
+        let p = dir.path().join("p.json");
+        assert_eq!(codex_model(&p), None);
+        std::fs::write(&p, r#"{"session_id":"x","model":"gpt-5.5-codex"}"#).unwrap();
+        assert_eq!(codex_model(&p).as_deref(), Some("gpt-5.5-codex"));
+        std::fs::write(&p, r#"{"session_id":"x"}"#).unwrap();
+        assert_eq!(codex_model(&p), None);
+        std::fs::write(&p, r#"{"model":""}"#).unwrap();
+        assert_eq!(codex_model(&p), None);
+        std::fs::write(&p, "not json").unwrap();
+        assert_eq!(codex_model(&p), None);
     }
 }

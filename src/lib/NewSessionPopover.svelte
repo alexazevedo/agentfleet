@@ -8,6 +8,8 @@
 
   let projectId = $state("");
   let agent = $state<AgentKind>("claude");
+  let name = $state("");
+  let worktree = $state(true);
 
   const target = $derived(store.newSession);
   const fixedProject = $derived(
@@ -18,6 +20,8 @@
   $effect(() => {
     if (!target) return;
     const preset = target.projectId;
+    name = "";
+    worktree = true;
     (async () => {
       try {
         if (!settings.loaded) await loadSettings();
@@ -57,7 +61,7 @@
       store.error = "choose or add a project";
       return;
     }
-    addPending(projectId, agent);
+    addPending(projectId, agent, name.trim(), worktree);
     store.error = "";
     close();
   }
@@ -88,6 +92,7 @@
     {:else}
       <div class="caption">{fixedProject?.name ?? ""}</div>
     {/if}
+    <input type="text" placeholder="Session name (optional)" aria-label="Session name" bind:value={name} />
     <SegmentedControl
       options={[
         { value: "claude", label: "Claude Code" },
@@ -98,6 +103,7 @@
       ]}
       bind:value={agent}
     />
+    <label class="check"><input type="checkbox" bind:checked={worktree} /> Create worktree</label>
     {#if store.error}<p class="error">{store.error}</p>{/if}
     <div class="footer">
       <!-- svelte-ignore a11y_autofocus -->
@@ -124,6 +130,13 @@
     min-width: 0;
   }
   .caption {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+  .check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     color: var(--text-muted);
     font-size: var(--text-sm);
   }

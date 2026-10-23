@@ -24,6 +24,16 @@ pub struct PersistedSession {
     pub name: String,
     #[serde(default)]
     pub agent_args: Vec<String>,
+    /// False for sessions running in the project root (no worktree to remove on close).
+    #[serde(default = "default_true")]
+    pub owns_worktree: bool,
+    /// Last known agent model (display name); empty when unknown.
+    #[serde(default)]
+    pub model: String,
+}
+
+fn default_true() -> bool {
+    true
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -96,6 +106,8 @@ mod tests {
                 base_commit: "deadbeef".into(),
                 name: "label".into(),
                 agent_args: vec!["--x".into(), "a b".into()],
+                owns_worktree: false,
+                model: "Opus 5.5".into(),
             }],
             projects: vec![project],
         }
@@ -126,6 +138,8 @@ mod tests {
         let st = load(&p).unwrap();
         assert_eq!(st.sessions[0].name, "");
         assert!(st.sessions[0].agent_args.is_empty());
+        assert!(st.sessions[0].owns_worktree);
+        assert_eq!(st.sessions[0].model, "");
     }
 
     #[test]
