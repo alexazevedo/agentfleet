@@ -24,6 +24,8 @@ use crate::{platform, pty};
 pub enum Agent {
     Claude,
     Codex,
+    Pi,
+    Opencode,
     Shell,
 }
 
@@ -32,6 +34,8 @@ impl Agent {
         match self {
             Agent::Claude => "claude",
             Agent::Codex => "codex",
+            Agent::Pi => "pi",
+            Agent::Opencode => "opencode",
             Agent::Shell => "shell",
         }
     }
@@ -40,6 +44,8 @@ impl Agent {
         match s {
             "claude" => Ok(Agent::Claude),
             "codex" => Ok(Agent::Codex),
+            "pi" => Ok(Agent::Pi),
+            "opencode" => Ok(Agent::Opencode),
             "shell" => Ok(Agent::Shell),
             other => Err(format!("unknown agent: {other}")),
         }
@@ -126,7 +132,7 @@ pub fn register(
     use_worktree: bool,
 ) -> Result<SessionInfo, String> {
     if !agent_args.is_empty() && agent == Agent::Shell {
-        return Err("agent args need a claude or codex session".into());
+        return Err("agent args need an agent session (not shell)".into());
     }
     let sessions = app.state::<Sessions>();
     let projects = app.state::<Projects>();
@@ -252,33 +258,62 @@ fn spawn_for(
             agent::Permission::from_settings(s.auto_permission, s.bypass_permissions)
         };
         let model_source;
-        let launch = if session.agent == Agent::Codex {
-            let script = run.join(format!("{id}.codex-hook.sh"));
-            let payload = run.join(format!("{id}.codex-hook.json"));
-            let sp = script.to_string_lossy();
-            if sp.contains('"') || sp.contains('\\') {
-                return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
+        let launch = match session.agent {
+            Agent::Codex => {
+                let script = run.join(format!("{id}.codex-hook.sh"));
+                let payload = run.join(format!("{id}.codex-hook.json"));
+                let sp = script.to_string_lossy();
+                if sp.contains('"') || sp.contains('\\') {
+                    return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
+                }
+                agent::write_codex_hook(&status_file, &payload, &script)
+                    .map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::CodexPayload(payload.clone());
+                let resume_id = if resume {
+                    agent::payload_session_id(&payload)
+                } else {
+                    None
+                };
+                agent::codex_launch(
+                    &script,
+                    resume_id.as_deref(),
+                    permission,
+                    &session.agent_args,
+                )
             }
-            agent::write_codex_hook(&status_file, &payload, &script).map_err(|e| e.to_string())?;
-            model_source = status::ModelSource::CodexPayload(payload.clone());
-            let resume_id = if resume {
-                agent::codex_session_id(&payload)
-            } else {
-                None
-            };
-            agent::codex_launch(
-                &script,
-                resume_id.as_deref(),
-                permission,
-                &session.agent_args,
-            )
-        } else {
-            let settings = run.join(format!("{id}.settings.json"));
-            let model_file = run.join(format!("{id}.model"));
-            agent::write_hooks_settings(&status_file, &rt.shim, &model_file, &settings)
-                .map_err(|e| e.to_string())?;
-            model_source = status::ModelSource::PlainFile(model_file);
-            agent::claude_launch(id, &settings, resume, permission, &session.agent_args)
+            Agent::Pi => {
+                model_source = status::ModelSource::None;
+                let ext = run.join(format!("{id}.pi-ext.js"));
+                let guide = run.join(format!("{id}.guide.md"));
+                agent::write_pi_extension(&status_file, &ext).map_err(|e| e.to_string())?;
+                agent::write_guide_file(&guide).map_err(|e| e.to_string())?;
+                // `--session-id` creates or loads the session, so resume is the same command.
+                agent::pi_launch(id, &ext, &guide, &session.agent_args)
+            }
+            Agent::Opencode => {
+                model_source = status::ModelSource::None;
+                let plugin = run.join(format!("{id}.opencode-plugin.js"));
+                let payload = run.join(format!("{id}.opencode-session.json"));
+                let guide = run.join(format!("{id}.guide.md"));
+                agent::write_opencode_plugin(&status_file, &payload, &plugin)
+                    .map_err(|e| e.to_string())?;
+                agent::write_guide_file(&guide).map_err(|e| e.to_string())?;
+                let resume_id = if resume {
+                    agent::payload_session_id(&payload)
+                } else {
+                    None
+                };
+                let cfg = agent::opencode_config_content(&plugin, &guide, permission);
+                agent::opencode_launch(&cfg, resume_id.as_deref(), permission, &session.agent_args)
+            }
+            Agent::Claude | Agent::Shell => {
+                let settings = run.join(format!("{id}.settings.json"));
+                let model_file = run.join(format!("{id}.model"));
+                agent::write_hooks_settings(&status_file, &rt.shim, &model_file, &settings)
+                    .map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::PlainFile(model_file);
+                agent::claude_launch(id, &settings, resume, permission, &session.agent_args)
+            }
         };
         command = format!("{path_prefix}exec {launch}");
         status::spawn_poller(app.clone(), id, status_file, model_source, stop_rx);
@@ -305,7 +340,10 @@ fn spawn_for(
             let _ = on_data.send(InvokeResponseBody::Raw(chunk));
         })
     };
-    if session.agent == Agent::Codex {
+    // Codex: see above. Pi: `session_start` fires at startup but a project-trust
+    // prompt can precede it. opencode: the plugin only loads once a session exists.
+    // The timer marks `waiting` if no status word has landed by then.
+    if matches!(session.agent, Agent::Codex | Agent::Pi | Agent::Opencode) {
         let fallback_app = app.clone();
         tauri::async_runtime::spawn(async move {
             tokio::time::sleep(std::time::Duration::from_secs(6)).await;
@@ -629,6 +667,10 @@ pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
         "codex-hook.sh",
         "codex-hook.json",
         "model",
+        "pi-ext.js",
+        "opencode-plugin.js",
+        "opencode-session.json",
+        "guide.md",
     ] {
         let _ = std::fs::remove_file(run.join(format!("{uuid}.{ext}")));
     }

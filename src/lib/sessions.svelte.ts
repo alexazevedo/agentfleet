@@ -1,7 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 
-export type AgentKind = "claude" | "codex" | "shell";
+export type AgentKind = "claude" | "codex" | "pi" | "opencode" | "shell";
 
 export type Status = "unknown" | "working" | "waiting" | "ended";
 
@@ -24,7 +24,15 @@ export interface SessionInfo {
 }
 
 export function labelOf(agent: AgentKind): string {
-  return agent === "claude" ? "Claude Code" : agent === "codex" ? "Codex" : "Shell";
+  return agent === "claude"
+    ? "Claude Code"
+    : agent === "codex"
+      ? "Codex"
+      : agent === "pi"
+        ? "Pi"
+        : agent === "opencode"
+          ? "opencode"
+          : "Shell";
 }
 
 export function tabTitle(info: SessionInfo): string {

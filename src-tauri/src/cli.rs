@@ -11,7 +11,7 @@ const USAGE: &str = "usage: agentfleet <command>
 commands:
   list                      list the sessions in this project
   send <session> <text...>  send a request to an agent session (id8 or full id)
-  spawn [--agent claude|codex|shell] [--no-worktree] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
+  spawn [--agent claude|codex|pi|opencode|shell] [--no-worktree] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
                             start a sibling session, queue the prompt, print '<id8> <run>'
   close <session>           close a sibling session in this project
   inbox                     list requests to/from this session
@@ -25,7 +25,7 @@ commands:
   scratchpad append [--if-revision N] <text...|->
                             append a line to the scratchpad ('-' reads stdin)
   guide                     print the agentfleet skill (works outside sessions)
-  skill install             write the skill to ~/.claude/skills and ~/.codex/skills (outside sessions too)
+  skill install             write the skill to ~/.claude/skills, ~/.codex/skills and ~/.pi/agent/skills (outside sessions too)
   hook-context              print the skill as SessionStart hook JSON (used by the app's hooks)
   statusline <file>         record the model from Claude status-line JSON on stdin (used by the app)
   help                      show this help
@@ -313,17 +313,25 @@ pub fn statusline(mut input: impl std::io::Read, file: &Path) -> String {
     model
 }
 
-/// Where `skill install` writes: always Claude's skills dir, Codex's too when `~/.codex` exists.
-pub fn skill_targets(home: &Path, codex_exists: bool) -> Vec<PathBuf> {
+/// Where `skill install` writes: always Claude's skills dir, Codex's and pi's too
+/// when `~/.codex` / `~/.pi` exist. opencode discovers `~/.claude/skills` itself.
+pub fn skill_targets(home: &Path, codex_exists: bool, pi_exists: bool) -> Vec<PathBuf> {
     let mut v = vec![home.join(".claude/skills/agentfleet/SKILL.md")];
     if codex_exists {
         v.push(home.join(".codex/skills/agentfleet/SKILL.md"));
+    }
+    if pi_exists {
+        v.push(home.join(".pi/agent/skills/agentfleet/SKILL.md"));
     }
     v
 }
 
 fn install_skill(home: &Path) -> Result<Vec<PathBuf>, String> {
-    let targets = skill_targets(home, home.join(".codex").is_dir());
+    let targets = skill_targets(
+        home,
+        home.join(".codex").is_dir(),
+        home.join(".pi").is_dir(),
+    );
     for p in &targets {
         if let Some(dir) = p.parent() {
             std::fs::create_dir_all(dir).map_err(|e| format!("{}: {e}", dir.display()))?;
@@ -766,19 +774,22 @@ mod tests {
     #[test]
     fn skill_install_targets() {
         let home = Path::new("/home/u");
-        let both = skill_targets(home, true);
+        let all = skill_targets(home, true, true);
         assert_eq!(
-            both,
+            all,
             vec![
                 PathBuf::from("/home/u/.claude/skills/agentfleet/SKILL.md"),
                 PathBuf::from("/home/u/.codex/skills/agentfleet/SKILL.md"),
+                PathBuf::from("/home/u/.pi/agent/skills/agentfleet/SKILL.md"),
             ]
         );
-        assert_eq!(skill_targets(home, false).len(), 1);
+        assert_eq!(skill_targets(home, false, false).len(), 1);
+        assert_eq!(skill_targets(home, false, true).len(), 2);
         let dir = tempfile::tempdir().unwrap();
         std::fs::create_dir(dir.path().join(".codex")).unwrap();
+        std::fs::create_dir(dir.path().join(".pi")).unwrap();
         let written = install_skill(dir.path()).unwrap();
-        assert_eq!(written.len(), 2);
+        assert_eq!(written.len(), 3);
         for p in written {
             assert_eq!(std::fs::read_to_string(p).unwrap(), GUIDE);
         }

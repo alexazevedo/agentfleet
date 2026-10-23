@@ -14,6 +14,8 @@ use crate::session::Sessions;
 /// Where a session's current model is read from.
 #[derive(Debug, Clone)]
 pub enum ModelSource {
+    /// Agent has no model reporting channel.
+    None,
     /// Plain text file (Claude: written by `agentfleet statusline`).
     PlainFile(PathBuf),
     /// Codex hook payload JSON with a top-level `model`.
@@ -23,6 +25,7 @@ pub enum ModelSource {
 /// Current model from `src`; None when unavailable or empty.
 pub fn read_model(src: &ModelSource) -> Option<String> {
     match src {
+        ModelSource::None => None,
         ModelSource::PlainFile(p) => std::fs::read_to_string(p)
             .ok()
             .map(|s| s.trim().to_string())

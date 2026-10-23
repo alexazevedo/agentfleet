@@ -1,16 +1,16 @@
-# STATE — rewrite after every ticket completes; never append. ≤30 lines total.
+# STATE
 
 ## Now
-M6 complete: tickets 35–39 all done, every attempt 1. Final checks: cargo 69 passed, svelte-check 0 errors, vitest 10 passed. Graph updated. Approved, committed (8d2d819) and pushed; PR #1 open; rustfmt CI fix applied.
+M6 session/model changes and Pi/OpenCode support integrated. Core correctness fixes in progress from the 12-finding review.
 
 ## Next
-CI green on PR #1 → merge. Live probe pending in `npm run tauri dev`: popover name+worktree→session in repo root; model appears in sidebar for Claude (statusLine) and Codex (payload `model` key, may stay blank).
+Regression checks, commit fixes, merge to main.
 
 ## Decisions
-- Dispatch: sequential in place (user choice at forge:run; matches parallel_default)
-- No-worktree session = Worktree{path: repo root, branch: current HEAD}, owns_worktree=false; close returns Removed without touching files; old state.json rows default owns_worktree=true
-- Claude model channel = per-session settings statusLine command → ~/.agentfleet/run/<id>.model; Codex = `model` key from captured hook payload, blank if absent
-- M5 artifacts archived to docs/forge-m5/
+- No-worktree sessions run in the project checkout; close never removes it.
+- Claude model comes from statusLine; Codex model comes from hook payloads.
+- Pi and OpenCode launch/status/resume support retained from local main.
+- Prior milestone details remain in docs/forge-m4/ and docs/forge-m5/.
 
 ## Blockers
 (none)

@@ -59,6 +59,8 @@
     options={[
       { value: "claude", label: "Claude" },
       { value: "codex", label: "Codex" },
+      { value: "pi", label: "Pi" },
+      { value: "opencode", label: "opencode" },
       { value: "shell", label: "Shell" },
     ]}
     bind:value={() => settings.value.defaultAgent, (v) => apply("defaultAgent", { defaultAgent: v as Settings["defaultAgent"] })}

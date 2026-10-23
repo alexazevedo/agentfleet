@@ -1,4 +1,4 @@
-//! Claude Code / Codex launch strings and status-hook settings.
+//! Claude Code / Codex / pi / opencode launch strings and status-hook settings.
 use std::path::Path;
 
 use serde_json::json;
@@ -6,6 +6,17 @@ use uuid::Uuid;
 
 pub fn shell_quote(s: &str) -> String {
     format!("'{}'", s.replace('\'', "'\\''"))
+}
+
+/// Escape `s` as a double-quoted JS string literal (JSON escaping), quotes included.
+fn js_string(s: &str) -> String {
+    serde_json::Value::String(s.to_string()).to_string()
+}
+
+/// Write the agentfleet guide for agents that take it as a file:
+/// pi via `--append-system-prompt`, opencode via config `instructions`.
+pub fn write_guide_file(dest: &Path) -> std::io::Result<()> {
+    std::fs::write(dest, crate::cli::GUIDE)
 }
 
 /// How an agent handles tool-call permission prompts.
@@ -219,8 +230,142 @@ pub fn codex_ready_scan(seen_working: &mut bool, chunk: &[u8]) -> bool {
     }
 }
 
-/// Codex session id from the last hook payload, if present.
-pub fn codex_session_id(payload_file: &Path) -> Option<String> {
+/// Write the pi status extension: a JS module that mirrors the Claude/Codex status
+/// hooks by writing a status word on lifecycle events. `session_start` fires at TUI
+/// startup, so it doubles as the readiness signal.
+pub fn write_pi_extension(status_file: &Path, dest: &Path) -> std::io::Result<()> {
+    let status = js_string(&status_file.to_string_lossy());
+    let body = format!(
+        r#"import fs from "node:fs";
+const STATUS = {status};
+const write = (word) => {{ try {{ fs.writeFileSync(STATUS, word); }} catch {{}} }};
+export default function (pi) {{
+  pi.on("session_start", async () => write("waiting"));
+  pi.on("agent_start", async () => write("working"));
+  pi.on("agent_end", async () => write("waiting"));
+}}
+"#
+    );
+    std::fs::write(dest, body)
+}
+
+/// Pi launch string. `--session-id` takes our UUID and creates the session when it
+/// does not exist yet, so restore is the same command as the first launch. Pi runs
+/// tools without permission prompts; `Permission` does not apply.
+pub fn pi_launch(session_id: Uuid, extension: &Path, guide: &Path, extra: &[String]) -> String {
+    let mut s = format!(
+        "pi --session-id {} -e {} --append-system-prompt {}",
+        session_id,
+        shell_quote(&extension.to_string_lossy()),
+        shell_quote(&guide.to_string_lossy()),
+    );
+    for a in extra {
+        s.push(' ');
+        s.push_str(&shell_quote(a));
+    }
+    s
+}
+
+/// Write the opencode status plugin: it tracks the root session (the one without
+/// `parentID`), stores its id in `payload_file` for resume, and writes status words
+/// (`session.status` busy/idle, permission asked/replied, prompt received).
+pub fn write_opencode_plugin(
+    status_file: &Path,
+    payload_file: &Path,
+    dest: &Path,
+) -> std::io::Result<()> {
+    let status = js_string(&status_file.to_string_lossy());
+    let payload = js_string(&payload_file.to_string_lossy());
+    let body = format!(
+        r#"import fs from "node:fs";
+const STATUS = {status};
+const PAYLOAD = {payload};
+const write = (word) => {{ try {{ fs.writeFileSync(STATUS, word); }} catch {{}} }};
+const root = () => {{
+  try {{ return JSON.parse(fs.readFileSync(PAYLOAD, "utf8")).session_id; }} catch {{ return undefined; }}
+}};
+const mine = (id) => {{ const r = root(); return !r || r === id; }};
+export const AgentfleetStatus = async () => ({{
+  event: async ({{ event }}) => {{
+    const p = event.properties;
+    switch (event.type) {{
+      case "session.created":
+        if (p.info && !p.info.parentID && !root()) {{
+          try {{ fs.writeFileSync(PAYLOAD, JSON.stringify({{ session_id: p.info.id }})); }} catch {{}}
+          write("waiting");
+        }}
+        break;
+      case "session.status":
+        if (mine(p.sessionID)) write(p.status && p.status.type === "idle" ? "waiting" : "working");
+        break;
+      case "session.idle":
+      case "permission.updated":
+        if (mine(p.sessionID)) write("waiting");
+        break;
+      case "permission.replied":
+        if (mine(p.sessionID)) write("working");
+        break;
+    }}
+  }},
+  "chat.message": async (input) => {{ if (mine(input.sessionID)) write("working"); }},
+}});
+"#
+    );
+    std::fs::write(dest, body)
+}
+
+/// Config overlay passed as `OPENCODE_CONFIG_CONTENT` (merged on top of the user's
+/// config): load the status plugin, inject the guide as instructions, and on Bypass
+/// allow every permission.
+pub fn opencode_config_content(plugin: &Path, guide: &Path, permission: Permission) -> String {
+    let mut cfg = json!({
+        "plugin": [format!("file://{}", plugin.to_string_lossy())],
+        "instructions": [guide.to_string_lossy()],
+    });
+    if permission == Permission::Bypass {
+        cfg["permission"] = json!({
+            "edit": "allow",
+            "bash": "allow",
+            "webfetch": "allow",
+            "doom_loop": "allow",
+            "external_directory": "allow",
+        });
+    }
+    cfg.to_string()
+}
+
+/// opencode launch string. The TUI picks its own session id; the plugin stores it in
+/// the payload file, and resume is `--session <id>`. `--auto` auto-approves
+/// permissions that are not explicitly denied (opencode's closest analogue of both
+/// Auto and Bypass; Bypass additionally allows everything via the config overlay).
+pub fn opencode_launch(
+    config_content: &str,
+    resume_id: Option<&str>,
+    permission: Permission,
+    extra: &[String],
+) -> String {
+    let mut s = format!(
+        "env OPENCODE_CONFIG_CONTENT={} opencode",
+        shell_quote(config_content)
+    );
+    match permission {
+        Permission::Ask => {}
+        Permission::Auto | Permission::Bypass => s.push_str(" --auto"),
+    }
+    if let Some(id) = resume_id {
+        s.push_str(" --session ");
+        s.push_str(&shell_quote(id));
+    }
+    for a in extra {
+        s.push(' ');
+        s.push_str(&shell_quote(a));
+    }
+    s
+}
+
+/// Session id from the last hook/plugin payload (`{"session_id": …}`), if present.
+/// Written by the Codex hook script and the opencode plugin.
+pub fn payload_session_id(payload_file: &Path) -> Option<String> {
     let bytes = std::fs::read(payload_file).ok()?;
     let v: serde_json::Value = serde_json::from_slice(&bytes).ok()?;
     match v.get("session_id")?.as_str() {
@@ -452,17 +597,128 @@ mod tests {
         assert!(body.starts_with("#!/bin/sh\n"));
         assert!(body.contains(&shell_quote(&status.to_string_lossy())));
         assert!(body.contains(&shell_quote(&payload.to_string_lossy())));
-        assert_eq!(codex_session_id(&payload), None);
+        assert_eq!(payload_session_id(&payload), None);
         std::fs::write(
             &payload,
             r#"{"session_id":"019a-x","cwd":"/w","hook_event_name":"Stop"}"#,
         )
         .unwrap();
-        assert_eq!(codex_session_id(&payload).as_deref(), Some("019a-x"));
+        assert_eq!(payload_session_id(&payload).as_deref(), Some("019a-x"));
         std::fs::write(&payload, r#"{"session_id":""}"#).unwrap();
-        assert_eq!(codex_session_id(&payload), None);
+        assert_eq!(payload_session_id(&payload), None);
         std::fs::write(&payload, "not json").unwrap();
-        assert_eq!(codex_session_id(&payload), None);
+        assert_eq!(payload_session_id(&payload), None);
+    }
+
+    #[test]
+    fn pi_launch_flags() {
+        let id = Uuid::new_v4();
+        let ext = PathBuf::from("/h/x.pi-ext.js");
+        let guide = PathBuf::from("/h/x.guide.md");
+        let s = pi_launch(id, &ext, &guide, &[]);
+        assert_eq!(
+            s,
+            format!(
+                "pi --session-id {id} -e '/h/x.pi-ext.js' --append-system-prompt '/h/x.guide.md'"
+            )
+        );
+        let x = pi_launch(id, &ext, &guide, &["--model".into(), "o'p".into()]);
+        assert!(x.ends_with("'--model' 'o'\\''p'"), "{x}");
+    }
+
+    #[test]
+    fn pi_extension_contents() {
+        let dir = tempfile::tempdir().unwrap();
+        let status = dir.path().join("it's \"q\".status");
+        let dest = dir.path().join("ext.js");
+        write_pi_extension(&status, &dest).unwrap();
+        let body = std::fs::read_to_string(&dest).unwrap();
+        assert!(
+            body.contains(&js_string(&status.to_string_lossy())),
+            "{body}"
+        );
+        for ev in ["session_start", "agent_start", "agent_end"] {
+            assert!(body.contains(ev), "{ev}");
+        }
+        assert!(body.contains(r#"write("working")"#));
+        assert!(body.contains(r#"write("waiting")"#));
+    }
+
+    #[test]
+    fn opencode_plugin_contents() {
+        let dir = tempfile::tempdir().unwrap();
+        let status = dir.path().join("s.status");
+        let payload = dir.path().join("p.json");
+        let dest = dir.path().join("plugin.js");
+        write_opencode_plugin(&status, &payload, &dest).unwrap();
+        let body = std::fs::read_to_string(&dest).unwrap();
+        assert!(body.contains(&js_string(&status.to_string_lossy())));
+        assert!(body.contains(&js_string(&payload.to_string_lossy())));
+        for ev in [
+            "session.created",
+            "session.status",
+            "session.idle",
+            "permission.updated",
+            "permission.replied",
+            "chat.message",
+        ] {
+            assert!(body.contains(ev), "{ev}");
+        }
+        assert!(body.contains("session_id"));
+    }
+
+    #[test]
+    fn opencode_config_overlay() {
+        let plugin = PathBuf::from("/h/x.opencode-plugin.js");
+        let guide = PathBuf::from("/h/x.guide.md");
+        let c = opencode_config_content(&plugin, &guide, Permission::Ask);
+        let v: serde_json::Value = serde_json::from_str(&c).unwrap();
+        assert_eq!(v["plugin"][0], "file:///h/x.opencode-plugin.js");
+        assert_eq!(v["instructions"][0], "/h/x.guide.md");
+        assert!(v.get("permission").is_none());
+        let a: serde_json::Value =
+            serde_json::from_str(&opencode_config_content(&plugin, &guide, Permission::Auto))
+                .unwrap();
+        assert!(a.get("permission").is_none());
+        let b: serde_json::Value = serde_json::from_str(&opencode_config_content(
+            &plugin,
+            &guide,
+            Permission::Bypass,
+        ))
+        .unwrap();
+        for key in [
+            "edit",
+            "bash",
+            "webfetch",
+            "doom_loop",
+            "external_directory",
+        ] {
+            assert_eq!(b["permission"][key], "allow", "{key}");
+        }
+    }
+
+    #[test]
+    fn opencode_launch_flags() {
+        let cfg = r#"{"plugin":["file:///h/p.js"]}"#;
+        let n = opencode_launch(cfg, None, Permission::Ask, &[]);
+        assert_eq!(
+            n,
+            format!("env OPENCODE_CONFIG_CONTENT={} opencode", shell_quote(cfg))
+        );
+        let a = opencode_launch(cfg, None, Permission::Auto, &[]);
+        assert!(a.ends_with("opencode --auto"), "{a}");
+        let b = opencode_launch(cfg, None, Permission::Bypass, &[]);
+        assert!(b.ends_with("opencode --auto"), "{b}");
+        let r = opencode_launch(
+            cfg,
+            Some("ses_abc"),
+            Permission::Ask,
+            &["-m".into(), "o'3".into()],
+        );
+        assert!(
+            r.ends_with("opencode --session 'ses_abc' '-m' 'o'\\''3'"),
+            "{r}"
+        );
     }
 
     #[test]
