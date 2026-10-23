@@ -1,562 +1,562 @@
 {
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/svelte.config.js": {
-    "mtime": 1792779614.1645424,
+  "/Users/aazevedo/dev/agentfleet/svelte.config.js": {
+    "mtime": 1792683102.4783094,
     "hash": "bf7174b10541059709a0e8f876f69c6a"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/vite.config.ts": {
-    "mtime": 1792779614.166798,
+  "/Users/aazevedo/dev/agentfleet/vite.config.ts": {
+    "mtime": 1792721422.9654372,
     "hash": "2807658a51131af4f01acc99e44b5f78"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/scripts/release.mjs": {
-    "mtime": 1792779614.1426208,
+  "/Users/aazevedo/dev/agentfleet/scripts/release.mjs": {
+    "mtime": 1792696355.3631024,
     "hash": "27283dfb2289348735f3f90e34c505c2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/build.rs": {
-    "mtime": 1792779614.1442375,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/build.rs": {
+    "mtime": 1792695775.3662045,
     "hash": "4f08ca7a6f3a041247b07a99c4537fb3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/session.rs": {
-    "mtime": 1792782809.7408774,
-    "hash": "e173ca6c88c85d4bae35a382c778b98b"
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/session.rs": {
+    "mtime": 1792791840.8123777,
+    "hash": "66655c6726dfd5a09739429eef975422"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/runtime.rs": {
-    "mtime": 1792779614.150842,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/runtime.rs": {
+    "mtime": 1792688311.968743,
     "hash": "c00a6b4c071900b5070853d6351f4c75"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/lib.rs": {
-    "mtime": 1792779614.1494462,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/lib.rs": {
+    "mtime": 1792758726.884841,
     "hash": "e1261a6f8f38c434e7036402ce0d73db"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/scratchpad.rs": {
-    "mtime": 1792779614.1510737,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/scratchpad.rs": {
+    "mtime": 1792688855.529179,
     "hash": "d803e58bfd6e238e1de0930924483736"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/deliver.rs": {
-    "mtime": 1792779614.1492476,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/deliver.rs": {
+    "mtime": 1792763614.9149942,
     "hash": "33aabb2dceca3e5713bc36f0970fdd56"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/status.rs": {
-    "mtime": 1792782836.717127,
-    "hash": "9e01144fb8f400f550c291e35495b2e3"
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/status.rs": {
+    "mtime": 1792791872.0919898,
+    "hash": "04bc4bae470e47fe956967149be1fd84"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/project.rs": {
-    "mtime": 1792779614.1504333,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/project.rs": {
+    "mtime": 1792758726.8844023,
     "hash": "15cc1be92bde5f9e6fab3e05e1561cb8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/state.rs": {
-    "mtime": 1792782809.7405071,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/state.rs": {
+    "mtime": 1792791683.6162295,
     "hash": "bde0a951d418ff0de044107bc1066129"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/main.rs": {
-    "mtime": 1792779614.1496556,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/main.rs": {
+    "mtime": 1792688311.9772604,
     "hash": "22e9c1b88bc203d8e664919509a7eb57"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/broker.rs": {
-    "mtime": 1792782798.6574383,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/broker.rs": {
+    "mtime": 1792791683.6155028,
     "hash": "0868e8104ba0287a8a1de702f228d705"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/agent.rs": {
-    "mtime": 1792782822.44353,
-    "hash": "57253d8053469ea6b49d80904bf98120"
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/agent.rs": {
+    "mtime": 1792791683.6150393,
+    "hash": "b8bbb4652b276eb3cd9a454aa28912a8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/worktree.rs": {
-    "mtime": 1792782590.7592726,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/worktree.rs": {
+    "mtime": 1792791683.6201727,
     "hash": "f3dea9da1ef48624a21bfe3b82fda5d1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/pty.rs": {
-    "mtime": 1792779614.1506615,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/pty.rs": {
+    "mtime": 1792696069.9484072,
     "hash": "ad5b4ca8469f724a35681356bbc7cbfd"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/settings.rs": {
-    "mtime": 1792779614.1516912,
-    "hash": "e7a390813959593d8569bf92fe807934"
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/settings.rs": {
+    "mtime": 1792788277.5103607,
+    "hash": "9db370130423c83a2bc5cb547d6279ff"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/cli.rs": {
-    "mtime": 1792782851.3571079,
-    "hash": "f84883d4cc0201b76f1ff262ef5726ef"
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/cli.rs": {
+    "mtime": 1792791840.8119764,
+    "hash": "32069bab1b4f29cf799e64bd95e8a38f"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/collab.rs": {
-    "mtime": 1792779614.1490204,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/collab.rs": {
+    "mtime": 1792722717.4572675,
     "hash": "6232b3bda87c19074983b9317db346bd"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/platform/unix.rs": {
-    "mtime": 1792779614.1502185,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/platform/unix.rs": {
+    "mtime": 1792683109.804203,
     "hash": "feeed81323238bac1348bdb5fac9ffb4"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/src/platform/mod.rs": {
-    "mtime": 1792779614.150001,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/src/platform/mod.rs": {
+    "mtime": 1792683466.7885249,
     "hash": "fb7f031054e16bd9e53f7c33a5846f79"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/main.ts": {
-    "mtime": 1792779614.164011,
+  "/Users/aazevedo/dev/agentfleet/src/main.ts": {
+    "mtime": 1792721422.964281,
     "hash": "d21a32502dcc51fa5c2c4509d92f1bba"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/test-setup.ts": {
-    "mtime": 1792779614.16433,
+  "/Users/aazevedo/dev/agentfleet/src/test-setup.ts": {
+    "mtime": 1792721422.9643824,
     "hash": "3709e3aa95abf0544678f0f2d9b46702"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/App.svelte": {
-    "mtime": 1792779614.153268,
+  "/Users/aazevedo/dev/agentfleet/src/App.svelte": {
+    "mtime": 1792758752.7679994,
     "hash": "88d475d5d0678f81cccfa9971153027c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/RestoreDialog.svelte": {
-    "mtime": 1792779614.1552677,
+  "/Users/aazevedo/dev/agentfleet/src/lib/RestoreDialog.svelte": {
+    "mtime": 1792721422.9610665,
     "hash": "0c15173802ad352104ef5e98eddb1ee1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/sessions.svelte.ts": {
-    "mtime": 1792782908.9540386,
-    "hash": "81b7cf0986bbca31b981497725404cdd"
+  "/Users/aazevedo/dev/agentfleet/src/lib/sessions.svelte.ts": {
+    "mtime": 1792791683.621193,
+    "hash": "a6dcbeaa301dacad4947235cb9bdeb50"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/collab.svelte.ts": {
-    "mtime": 1792779614.1569147,
+  "/Users/aazevedo/dev/agentfleet/src/lib/collab.svelte.ts": {
+    "mtime": 1792688757.8013468,
     "hash": "d32dc0f484808ca6664b431d51aa9958"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/Terminal.svelte": {
-    "mtime": 1792782715.1924827,
+  "/Users/aazevedo/dev/agentfleet/src/lib/Terminal.svelte": {
+    "mtime": 1792791683.6210525,
     "hash": "bab390b28f6ab2b503f3f1e4d6b68efa"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/InitRepoDialog.svelte": {
-    "mtime": 1792779614.1543047,
+  "/Users/aazevedo/dev/agentfleet/src/lib/InitRepoDialog.svelte": {
+    "mtime": 1792758752.7765968,
     "hash": "2a82d86bf1a85e33b72804dfb59d41b0"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/StatusBar.svelte": {
-    "mtime": 1792779614.1563003,
+  "/Users/aazevedo/dev/agentfleet/src/lib/StatusBar.svelte": {
+    "mtime": 1792722717.459119,
     "hash": "e01a05d7d42ce9db3cc6315b527d3699"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/Messages.svelte": {
-    "mtime": 1792779614.1546042,
-    "hash": "ece67379d5d33a0b0d5e13508f95b77a"
+  "/Users/aazevedo/dev/agentfleet/src/lib/Messages.svelte": {
+    "mtime": 1792788277.5140996,
+    "hash": "eba025224f1408867aa4c132dfe529e4"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/theme.svelte.ts": {
-    "mtime": 1792779614.1597025,
+  "/Users/aazevedo/dev/agentfleet/src/lib/theme.svelte.ts": {
+    "mtime": 1792721422.9627712,
     "hash": "353de2ee38a5d3eb0d7fc1ca8abf2612"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settingsStore.svelte.ts": {
-    "mtime": 1792779614.159214,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settingsStore.svelte.ts": {
+    "mtime": 1792762726.5472243,
     "hash": "51846355b3fb238aa7b354f2dafb1fc3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/SettingsPane.svelte": {
-    "mtime": 1792779614.1557038,
+  "/Users/aazevedo/dev/agentfleet/src/lib/SettingsPane.svelte": {
+    "mtime": 1792721422.9614222,
     "hash": "6ca7158e54d72d1fea24480d4d64253a"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/AgentIcon.svelte": {
-    "mtime": 1792779614.1538873,
-    "hash": "ae9b7479b0eb68c49b305f0fd5528706"
+  "/Users/aazevedo/dev/agentfleet/src/lib/AgentIcon.svelte": {
+    "mtime": 1792788277.5137162,
+    "hash": "c18bb9906e6e697a7ae091f9c0b36eaa"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/Scratchpad.svelte": {
-    "mtime": 1792779614.155424,
+  "/Users/aazevedo/dev/agentfleet/src/lib/Scratchpad.svelte": {
+    "mtime": 1792721422.9611824,
     "hash": "14872b22f5261e92654b3a7cfb537392"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/scratchpadStore.svelte.ts": {
-    "mtime": 1792779614.1572773,
+  "/Users/aazevedo/dev/agentfleet/src/lib/scratchpadStore.svelte.ts": {
+    "mtime": 1792688873.9130557,
     "hash": "6c39f2df3f3a18108016d7a00c660dac"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/UpdateDialog.svelte": {
-    "mtime": 1792779614.1567326,
+  "/Users/aazevedo/dev/agentfleet/src/lib/UpdateDialog.svelte": {
+    "mtime": 1792721422.9618995,
     "hash": "fdd68961d8a38acc8be2bb148cd4c427"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/Sidebar.svelte": {
-    "mtime": 1792782910.9566345,
+  "/Users/aazevedo/dev/agentfleet/src/lib/Sidebar.svelte": {
+    "mtime": 1792791683.620816,
     "hash": "f7d9ad9877ac76ff7c7512047caeff51"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/RemoveProjectDialog.svelte": {
-    "mtime": 1792779614.155074,
+  "/Users/aazevedo/dev/agentfleet/src/lib/RemoveProjectDialog.svelte": {
+    "mtime": 1792721422.960935,
     "hash": "5f6f520baac1d9817dad16f3ad9edc00"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/theme.test.ts": {
-    "mtime": 1792779614.160056,
+  "/Users/aazevedo/dev/agentfleet/src/lib/theme.test.ts": {
+    "mtime": 1792721422.962861,
     "hash": "8db32f7c19dffd912ec53a7104d9dbe0"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/NewSessionPopover.svelte": {
-    "mtime": 1792782715.1930628,
-    "hash": "aba222671796def7ec4ff716d725646a"
+  "/Users/aazevedo/dev/agentfleet/src/lib/NewSessionPopover.svelte": {
+    "mtime": 1792791683.6204367,
+    "hash": "ee1c63d3c588853afa1bcadf1a86946a"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settingsStore.test.ts": {
-    "mtime": 1792779614.1593945,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settingsStore.test.ts": {
+    "mtime": 1792721422.9626758,
     "hash": "bd7e56bdcf1bd8d9e2eae144fd4c5cb3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/updater.svelte.ts": {
-    "mtime": 1792779614.1638234,
+  "/Users/aazevedo/dev/agentfleet/src/lib/updater.svelte.ts": {
+    "mtime": 1792696166.4129293,
     "hash": "7eb9993a903b1ca402db0b7e2bba2a3b"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Switch.test.ts": {
-    "mtime": 1792779614.161881,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Switch.test.ts": {
+    "mtime": 1792721422.9635096,
     "hash": "73756fe795ef901d7dbe65b6f2b99501"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/SegmentedControl.svelte": {
-    "mtime": 1792779614.1614869,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/SegmentedControl.svelte": {
+    "mtime": 1792721422.9633224,
     "hash": "a2141182c11ffb328812d549effb1cdd"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Tabs.svelte": {
-    "mtime": 1792779614.1621962,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Tabs.svelte": {
+    "mtime": 1792721422.9635966,
     "hash": "3445c821008616ed44fffcec6b724d97"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Button.svelte": {
-    "mtime": 1792779614.1604378,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Button.svelte": {
+    "mtime": 1792721422.9629736,
     "hash": "81f0fb67156a3ee642532d725132b6ae"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Switch.svelte": {
-    "mtime": 1792779614.1617053,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Switch.svelte": {
+    "mtime": 1792721422.9634175,
     "hash": "fbe33142369d88d9d31f5b347b8c2aa3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Tabs.test.ts": {
-    "mtime": 1792779614.1627026,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Tabs.test.ts": {
+    "mtime": 1792721422.963685,
     "hash": "4a523225f197f26ca7c11c21eb095eb5"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Popover.test.ts": {
-    "mtime": 1792779614.1610968,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Popover.test.ts": {
+    "mtime": 1792721422.9632325,
     "hash": "6a586f7956bdc2b5985afff99dac2977"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Popover.svelte": {
-    "mtime": 1792779614.1608567,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Popover.svelte": {
+    "mtime": 1792721422.9631522,
     "hash": "0df5e5630dda38ad6f518262e8bf4dad"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/Dialog.svelte": {
-    "mtime": 1792779614.1606398,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/Dialog.svelte": {
+    "mtime": 1792721422.9630601,
     "hash": "4897b39f0f7ec049ba25b9451546927c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/__fixtures__/TabsHost.svelte": {
-    "mtime": 1792779614.163402,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/__fixtures__/TabsHost.svelte": {
+    "mtime": 1792721422.9640057,
     "hash": "2a21f3aac0f037cd3a14839230990b0f"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/__fixtures__/PopoverHost.svelte": {
-    "mtime": 1792779614.162924,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/__fixtures__/PopoverHost.svelte": {
+    "mtime": 1792721422.9638085,
     "hash": "891590097451553c08620ed4f0ed5df1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/ui/__fixtures__/SwitchHost.svelte": {
-    "mtime": 1792779614.1631594,
+  "/Users/aazevedo/dev/agentfleet/src/lib/ui/__fixtures__/SwitchHost.svelte": {
+    "mtime": 1792721422.9639149,
     "hash": "40ca86ce503f51f5da8f25fe046619e1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settings/AboutTab.svelte": {
-    "mtime": 1792779614.1577654,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settings/AboutTab.svelte": {
+    "mtime": 1792721422.962127,
     "hash": "2c0f676203a84e4adcb1cb3b558a8a3b"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settings/Field.svelte": {
-    "mtime": 1792779614.158237,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settings/Field.svelte": {
+    "mtime": 1792721422.9622147,
     "hash": "f2376b34303de3d4c7c3f015363952ec"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settings/GeneralTab.svelte": {
-    "mtime": 1792779614.1584747,
-    "hash": "5771f2aaf12a889415fee2b08a8829a9"
+  "/Users/aazevedo/dev/agentfleet/src/lib/settings/GeneralTab.svelte": {
+    "mtime": 1792788277.515744,
+    "hash": "ede7d6e473ac3b424725e5fa7fba2e7c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settings/UpdatesTab.svelte": {
-    "mtime": 1792779614.158989,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settings/UpdatesTab.svelte": {
+    "mtime": 1792721422.9624667,
     "hash": "c9fa8c6e564f7ccbca61aaeb2c759d76"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src/lib/settings/TerminalTab.svelte": {
-    "mtime": 1792779614.158788,
+  "/Users/aazevedo/dev/agentfleet/src/lib/settings/TerminalTab.svelte": {
+    "mtime": 1792721422.9623852,
     "hash": "c78c233b24c8a20633a721199656cd98"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/PRODUCT.md": {
-    "mtime": 1792782217.3428125,
+  "/Users/aazevedo/dev/agentfleet/PRODUCT.md": {
+    "mtime": 1792791683.6056814,
     "hash": "a4540cbec9c9f4fb1f80eb503ccfc8f8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/index.html": {
-    "mtime": 1792779614.141215,
+  "/Users/aazevedo/dev/agentfleet/index.html": {
+    "mtime": 1792683102.4976833,
     "hash": "296ab2daceb75e6b90caa184795a8861"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/STATE.md": {
-    "mtime": 1792782884.2994924,
-    "hash": "a19d2d5191e0506a3c42b923f94d0cd7"
+  "/Users/aazevedo/dev/agentfleet/STATE.md": {
+    "mtime": 1792791872.0921085,
+    "hash": "d0cee622709198f258c5d9fccac5a380"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/README.md": {
-    "mtime": 1792779614.1231198,
-    "hash": "0ddaa0b48b4b5021ededefcefc70c40f"
+  "/Users/aazevedo/dev/agentfleet/README.md": {
+    "mtime": 1792780568.4262412,
+    "hash": "53ea5fc31312d619844503b703c0c895"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/tickets/35-no-worktree-backend.md": {
-    "mtime": 1792782632.199213,
+  "/Users/aazevedo/dev/agentfleet/tickets/35-no-worktree-backend.md": {
+    "mtime": 1792791683.6216118,
     "hash": "1297a1b5259b026981eb5fbd6b9cbdae"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/tickets/38-live-model-backend.md": {
-    "mtime": 1792782879.932032,
+  "/Users/aazevedo/dev/agentfleet/tickets/38-live-model-backend.md": {
+    "mtime": 1792791683.6222758,
     "hash": "0ad3bb0ea40c614fad54fb61af124bb2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/tickets/39-model-in-sidebar.md": {
-    "mtime": 1792782937.9539452,
+  "/Users/aazevedo/dev/agentfleet/tickets/39-model-in-sidebar.md": {
+    "mtime": 1792791683.6223874,
     "hash": "35c1c928c936d8929dee3c8ddd3b661a"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/tickets/36-no-worktree-cli.md": {
-    "mtime": 1792782680.588466,
+  "/Users/aazevedo/dev/agentfleet/tickets/36-no-worktree-cli.md": {
+    "mtime": 1792791683.6219623,
     "hash": "0fb7661f15bbda02c1d18fb8bed93dfd"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/tickets/37-popover-name-worktree.md": {
-    "mtime": 1792782752.7432642,
+  "/Users/aazevedo/dev/agentfleet/tickets/37-popover-name-worktree.md": {
+    "mtime": 1792791683.622146,
     "hash": "2e67b5ef99a14a380fb89b42931af954"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/orchestra-prd.md": {
-    "mtime": 1792779614.1376834,
+  "/Users/aazevedo/dev/agentfleet/docs/orchestra-prd.md": {
+    "mtime": 1792682031.23037,
     "hash": "7192030d0ca64389ff31043d88f5d531"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/release.md": {
-    "mtime": 1792779614.1378877,
+  "/Users/aazevedo/dev/agentfleet/docs/release.md": {
+    "mtime": 1792696420.2092433,
     "hash": "a894f96eac3f13f10a30cbadf187879e"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/roadmap.md": {
-    "mtime": 1792779614.138084,
+  "/Users/aazevedo/dev/agentfleet/docs/roadmap.md": {
+    "mtime": 1792721422.9581501,
     "hash": "cf29f2e76cd9644d554a724ef13f2f7c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/discovery-m1.md": {
-    "mtime": 1792779614.124005,
+  "/Users/aazevedo/dev/agentfleet/docs/discovery-m1.md": {
+    "mtime": 1792682031.2224724,
     "hash": "7cc40533c0b4733108b6c67ce84cf2e3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/ui.md": {
-    "mtime": 1792779614.1383002,
+  "/Users/aazevedo/dev/agentfleet/docs/ui.md": {
+    "mtime": 1792721422.9582376,
     "hash": "88914cf48e1093272de6e65223527537"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/adr/0001-hand-rolled-ui-primitives.md": {
-    "mtime": 1792779614.123727,
+  "/Users/aazevedo/dev/agentfleet/docs/adr/0001-hand-rolled-ui-primitives.md": {
+    "mtime": 1792721422.9575498,
     "hash": "692b724d53b7c67217370688bfa66a2c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.1/PRODUCT.md": {
-    "mtime": 1792779614.1294165,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/PRODUCT.md": {
+    "mtime": 1792708001.0407987,
     "hash": "7b22cbbd978338c3aa64be9c52d1b9c9"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.1/STATE.md": {
-    "mtime": 1792779614.1296933,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/STATE.md": {
+    "mtime": 1792708017.5559146,
     "hash": "6bc999a02db2b3ace0f558e405962387"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.1/tickets/26-terminal-prefs.md": {
-    "mtime": 1792779614.1299248,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/26-terminal-prefs.md": {
+    "mtime": 1792708001.0411334,
     "hash": "93262117c07db21e5f8fc8ba2eb5cf0b"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.1/tickets/27-restore-prompt.md": {
-    "mtime": 1792779614.1303341,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/27-restore-prompt.md": {
+    "mtime": 1792708001.0412273,
     "hash": "216f749571de8fff5769f06b646a89d1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/PRODUCT.md": {
-    "mtime": 1792779614.1243303,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/PRODUCT.md": {
+    "mtime": 1792684741.781378,
     "hash": "6f80213485ca32f43598be92f0ffa92b"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/STATE.md": {
-    "mtime": 1792779614.1245341,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/STATE.md": {
+    "mtime": 1792684906.4283867,
     "hash": "5e5b94b25e4bc68118c027ccda72e980"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/07-persist-restore.md": {
-    "mtime": 1792779614.1265302,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/07-persist-restore.md": {
+    "mtime": 1792683805.1923444,
     "hash": "ce4ad7c63810ebb018a4b8820ea091e9"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/09-sidebar.md": {
-    "mtime": 1792779614.1269906,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/09-sidebar.md": {
+    "mtime": 1792684898.960099,
     "hash": "5d4bb7c12f65e1825da53ab7f576989c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/03-pty.md": {
-    "mtime": 1792779614.1254292,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/03-pty.md": {
+    "mtime": 1792683408.6717956,
     "hash": "9eeab8c65b7bdf9164dac95eaa412fad"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/04-shell-tab.md": {
-    "mtime": 1792779614.1257617,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/04-shell-tab.md": {
+    "mtime": 1792683543.9991345,
     "hash": "c9aaa3d3e561908c0b03784d1fd9d87d"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/05-claude-status.md": {
-    "mtime": 1792779614.1259716,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/05-claude-status.md": {
+    "mtime": 1792683637.4825873,
     "hash": "ac9ca65770ad6312094a120041a66e97"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/06-close-tab.md": {
-    "mtime": 1792779614.126272,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/06-close-tab.md": {
+    "mtime": 1792683717.2900128,
     "hash": "3de2b28e3d1ec410500ed6d2889ec692"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/01-scaffold.md": {
-    "mtime": 1792779614.1249018,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/01-scaffold.md": {
+    "mtime": 1792683289.225268,
     "hash": "b95048ba9798d2462d9be502b3ac9df2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/02-worktree.md": {
-    "mtime": 1792779614.1251707,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/02-worktree.md": {
+    "mtime": 1792683344.8931518,
     "hash": "488a5022aab97dc10e8da6c73ca9eaac"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m1/tickets/08-projects.md": {
-    "mtime": 1792779614.1268656,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/08-projects.md": {
+    "mtime": 1792684842.8036742,
     "hash": "10149b4de3b10927e921014175af5ff3"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.2/PRODUCT.md": {
-    "mtime": 1792779614.1309397,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.2/PRODUCT.md": {
+    "mtime": 1792721422.957683,
     "hash": "a50e010aea93ffd4e5a2bec1342fa36e"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.2/STATE.md": {
-    "mtime": 1792779614.1311364,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.2/STATE.md": {
+    "mtime": 1792721422.957776,
     "hash": "68110379e61d1ec3b25f86b5518ffdb8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.2/tickets/28-remove-project-cascade.md": {
-    "mtime": 1792779614.1315403,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.2/tickets/28-remove-project-cascade.md": {
+    "mtime": 1792721422.9579039,
     "hash": "9641ce328ac505fe5d17a3c50cb96fd8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3.2/tickets/29-remove-project-ui.md": {
-    "mtime": 1792779614.131771,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.2/tickets/29-remove-project-ui.md": {
+    "mtime": 1792721422.9580033,
     "hash": "ebb0d70b33face4aebb8065e3c609967"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/PRODUCT.md": {
-    "mtime": 1792779614.1320803,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/PRODUCT.md": {
+    "mtime": 1792695771.4113498,
     "hash": "c7d664e9ff555e236423b36dba10515c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/STATE.md": {
-    "mtime": 1792779614.1322777,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/STATE.md": {
+    "mtime": 1792699710.805197,
     "hash": "de6ca75e8daaa2930b68fa429662cd13"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/24-cut-releases.md": {
-    "mtime": 1792779614.1340744,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/24-cut-releases.md": {
+    "mtime": 1792695771.412366,
     "hash": "1c2543f358f93f9512e4b8bb6283bac2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/22-quit-guard-release-script.md": {
-    "mtime": 1792779614.1333501,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/22-quit-guard-release-script.md": {
+    "mtime": 1792696381.6448267,
     "hash": "7cfef79cd7fdcfef36e5b23a33c9b0f6"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/19-bundle-ci.md": {
-    "mtime": 1792779614.1324997,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/19-bundle-ci.md": {
+    "mtime": 1792695930.2924933,
     "hash": "06f703908ce1fbb516682b2c6cab6fe1"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/25-env-scrub.md": {
-    "mtime": 1792779614.134389,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/25-env-scrub.md": {
+    "mtime": 1792696099.331136,
     "hash": "1bf66ec5ecd2e425389014556e16ae55"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/23-release-workflow.md": {
-    "mtime": 1792779614.1337357,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/23-release-workflow.md": {
+    "mtime": 1792696466.6760652,
     "hash": "2f6f9d791288213bc548ad2c8ca354c2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/21-updater.md": {
-    "mtime": 1792779614.133137,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/21-updater.md": {
+    "mtime": 1792696279.0426347,
     "hash": "deb6915b8970bba55b4f97e3d26732c0"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m3/tickets/20-settings.md": {
-    "mtime": 1792779614.1328073,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/20-settings.md": {
+    "mtime": 1792696050.289745,
     "hash": "86f943fac6be3fdab1a3315109a989de"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/PRODUCT.md": {
-    "mtime": 1792779614.1346614,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/PRODUCT.md": {
+    "mtime": 1792722717.4489799,
     "hash": "4605b9e26f2a52834d9fa2cee657a302"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/STATE.md": {
-    "mtime": 1792779614.1348586,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/STATE.md": {
+    "mtime": 1792722717.4490757,
     "hash": "346c4424ab999e696d27ce2379c4deba"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/33-new-session-popover.md": {
-    "mtime": 1792779614.1360922,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/33-new-session-popover.md": {
+    "mtime": 1792722717.4495015,
     "hash": "ecfe1dd4b5a1bed785e5705f6554f819"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/35-chrome-restyle.md": {
-    "mtime": 1792779614.1366796,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/35-chrome-restyle.md": {
+    "mtime": 1792722717.449698,
     "hash": "7ccec6a6a236dd6b4c7efd87ad52cee5"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/37-docs-and-gate.md": {
-    "mtime": 1792779614.1372304,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/37-docs-and-gate.md": {
+    "mtime": 1792722717.4498754,
     "hash": "2698c20bccf6c5bfd3bb86da370100a7"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/38-theme-load-fallback.md": {
-    "mtime": 1792779614.137413,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/38-theme-load-fallback.md": {
+    "mtime": 1792722717.4499636,
     "hash": "d7e2c11278732b58f9e948728564c276"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/32-ui-primitives.md": {
-    "mtime": 1792779614.1357512,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/32-ui-primitives.md": {
+    "mtime": 1792722717.4493997,
     "hash": "16e2963478aca59ba5da4f94495a3ed2"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/36-dialogs-on-primitive.md": {
-    "mtime": 1792779614.1368876,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/36-dialogs-on-primitive.md": {
+    "mtime": 1792722717.4497838,
     "hash": "bd5af83a656a64bbd4a7477f6f522c1a"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/34-settings-tabs-autosave.md": {
-    "mtime": 1792779614.1364067,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/34-settings-tabs-autosave.md": {
+    "mtime": 1792722717.449602,
     "hash": "919d014de64d291b6507fd8761b172ea"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m4/tickets/31-test-harness.md": {
-    "mtime": 1792779614.135449,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m4/tickets/31-test-harness.md": {
+    "mtime": 1792722717.4493005,
     "hash": "482087b27daa6b9289461040b8f218cf"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/PRODUCT.md": {
-    "mtime": 1792779614.1227362,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/PRODUCT.md": {
+    "mtime": 1792791683.6061065,
     "hash": "1d7c788845cbb5c9d9dadf8a7e0c66db"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/STATE.md": {
-    "mtime": 1792779614.1234753,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/STATE.md": {
+    "mtime": 1792791683.6061974,
     "hash": "7a18b7ccbdc77d7f4b75eded7cea7de7"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/tickets/30-session-register-label-args.md": {
-    "mtime": 1792779614.1647947,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/tickets/30-session-register-label-args.md": {
+    "mtime": 1792791683.6064355,
     "hash": "5428a6337e9bbbd0b2b7eefccec1e7b6"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/tickets/34-codex-no-daemon-ready.md": {
-    "mtime": 1792779614.1660614,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/tickets/34-codex-no-daemon-ready.md": {
+    "mtime": 1792791683.6074085,
     "hash": "88f7cc12b7fdab6759d0681f5d3ea364"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/tickets/33-skill-discovery.md": {
-    "mtime": 1792779614.165806,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/tickets/33-skill-discovery.md": {
+    "mtime": 1792791683.6071973,
     "hash": "368fd3ffa374dded94a1125f0abc5781"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/tickets/32-codex-agent.md": {
-    "mtime": 1792779614.1655443,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/tickets/32-codex-agent.md": {
+    "mtime": 1792791683.6069987,
     "hash": "3da1b46987378608626a5529a67d53bf"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m5/tickets/31-spawn-close-cli.md": {
-    "mtime": 1792779614.165253,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m5/tickets/31-spawn-close-cli.md": {
+    "mtime": 1792791683.6066582,
     "hash": "df799cdd0cf62646081ad92e537f89bc"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/PRODUCT.md": {
-    "mtime": 1792779614.1273007,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/PRODUCT.md": {
+    "mtime": 1792686165.809526,
     "hash": "ccd60cf02ede390b907733180b32525f"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/STATE.md": {
-    "mtime": 1792779614.1275244,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/STATE.md": {
+    "mtime": 1792692659.7286444,
     "hash": "ca76ceb89d6d9b6c8a1ca91be88101b6"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/14-scratchpad.md": {
-    "mtime": 1792779614.1286352,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/14-scratchpad.md": {
+    "mtime": 1792688905.496224,
     "hash": "2f186c038f75705680704cd549774319"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/13-messages-ui.md": {
-    "mtime": 1792779614.1284246,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/13-messages-ui.md": {
+    "mtime": 1792688795.5880542,
     "hash": "93e6039e203993a3b89bb9adb309c4c7"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/11-runs.md": {
-    "mtime": 1792779614.1280038,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/11-runs.md": {
+    "mtime": 1792688601.4217575,
     "hash": "cdfc378964c88fc706e36b1f9c513801"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/15-skill-guide.md": {
-    "mtime": 1792779614.1287458,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/15-skill-guide.md": {
+    "mtime": 1792688980.027921,
     "hash": "b6a6d4267dbd3ef47de7a5e72031b536"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/12-delivery.md": {
-    "mtime": 1792779614.1283042,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/12-delivery.md": {
+    "mtime": 1792688700.5059865,
     "hash": "059b48a8e99a439feaaaa28effae8089"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/17-sidebar-polish.md": {
-    "mtime": 1792779614.1290004,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/17-sidebar-polish.md": {
+    "mtime": 1792692312.9803548,
     "hash": "7e2c111970c6b69bbd2598264d4173d7"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/18-2d-icons.md": {
-    "mtime": 1792779614.1291094,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/18-2d-icons.md": {
+    "mtime": 1792692430.7164752,
     "hash": "adb2ba3b7494ca0ebf2cf00a444c3a50"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/16-draft-fix.md": {
-    "mtime": 1792779614.1288755,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/16-draft-fix.md": {
+    "mtime": 1792692271.748452,
     "hash": "b8a50f6476d7beea514065cacede63f8"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/docs/forge-m2/tickets/10-cli-broker.md": {
-    "mtime": 1792779614.1277454,
+  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/10-cli-broker.md": {
+    "mtime": 1792688425.4558554,
     "hash": "cc45b811607c0ac5db2bc96215642ec5"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/skills/agentfleet/SKILL.md": {
-    "mtime": 1792782665.0061157,
-    "hash": "d30c9fc2f9193bee2eb489e84899e0b7"
+  "/Users/aazevedo/dev/agentfleet/skills/agentfleet/SKILL.md": {
+    "mtime": 1792791840.8121467,
+    "hash": "12533164acab81ca191d930867ce498c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/icon.png": {
-    "mtime": 1792779614.1472924,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/icon.png": {
+    "mtime": 1792695768.127238,
     "hash": "0cb8d845e0a65d7f4556fb413c951e24"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/128x128.png": {
-    "mtime": 1792779614.144977,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/128x128.png": {
+    "mtime": 1792695768.0881424,
     "hash": "47e2968d83c826e42f76b021c048992f"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/source.png": {
-    "mtime": 1792779614.147553,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/source.png": {
+    "mtime": 1792695763.8188224,
     "hash": "a9661d7f8485e47131e88318aec7af6c"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/32x32.png": {
-    "mtime": 1792779614.145412,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/32x32.png": {
+    "mtime": 1792695768.0650728,
     "hash": "1e89ccb0104a9b82e6378fdfdc1cdb7d"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/128x128@2x.png": {
-    "mtime": 1792779614.1452258,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/128x128@2x.png": {
+    "mtime": 1792695768.1025157,
     "hash": "e98b226620018b0f540cd97a84d5a1f7"
   },
-  "/Users/aazevedo/.agentfleet/worktrees/agentfleet/fc40a3e6/src-tauri/icons/64x64.png": {
-    "mtime": 1792779614.145638,
+  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/64x64.png": {
+    "mtime": 1792695768.0753193,
     "hash": "1a0c6bc9fe1fd559cbc96b181a56c027"
   }
 }

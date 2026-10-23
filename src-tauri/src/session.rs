@@ -309,16 +309,15 @@ fn spawn_for(
                 )
             }
             Agent::Pi => {
-                model_source = status::ModelSource::None;
                 let ext = run.join(format!("{id}.pi-ext.js"));
                 let guide = run.join(format!("{id}.guide.md"));
                 agent::write_pi_extension(&status_file, &ext).map_err(|e| e.to_string())?;
                 agent::write_guide_file(&guide).map_err(|e| e.to_string())?;
+                model_source = status::ModelSource::None;
                 // `--session-id` creates or loads the session, so resume is the same command.
                 agent::pi_launch(id, &ext, &guide, &session.agent_args)
             }
             Agent::Opencode => {
-                model_source = status::ModelSource::None;
                 let plugin = run.join(format!("{id}.opencode-plugin.js"));
                 let payload = run.join(format!("{id}.opencode-session.json"));
                 let guide = run.join(format!("{id}.guide.md"));
@@ -330,6 +329,7 @@ fn spawn_for(
                 } else {
                     None
                 };
+                model_source = status::ModelSource::None;
                 let cfg = agent::opencode_config_content(&plugin, &guide, permission);
                 agent::opencode_launch(&cfg, resume_id.as_deref(), permission, &session.agent_args)
             }
@@ -710,11 +710,11 @@ pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
         "settings.json",
         "codex-hook.sh",
         "codex-hook.json",
-        "model",
         "pi-ext.js",
         "opencode-plugin.js",
         "opencode-session.json",
         "guide.md",
+        "model",
     ] {
         let _ = std::fs::remove_file(run.join(format!("{uuid}.{ext}")));
     }
