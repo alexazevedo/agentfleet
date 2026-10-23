@@ -42,6 +42,8 @@ pub struct Settings {
     pub update_checks: bool,
     /// "ask" | "always" | "never"
     pub restore_sessions: String,
+    /// "system" | "light" | "dark"
+    pub theme: String,
     #[serde(default)]
     pub terminal: TerminalSettings,
 }
@@ -56,6 +58,7 @@ impl Default for Settings {
             confirm_quit: true,
             update_checks: true,
             restore_sessions: "ask".into(),
+            theme: "system".into(),
             terminal: TerminalSettings::default(),
         }
     }
@@ -105,6 +108,9 @@ fn validate(s: &Settings) -> Result<(), String> {
     }
     if !matches!(s.restore_sessions.as_str(), "ask" | "always" | "never") {
         return Err("restore sessions must be ask, always or never".into());
+    }
+    if !matches!(s.theme.as_str(), "system" | "light" | "dark") {
+        return Err("theme must be system, light or dark".into());
     }
     if !(9..=24).contains(&s.terminal.font_size) {
         return Err("font size must be 9–24".into());
@@ -159,6 +165,9 @@ mod tests {
         let p: Settings = serde_json::from_str(r#"{"autoDelivery":false}"#).unwrap();
         assert!(!p.auto_delivery && p.auto_permission);
         assert_eq!(p.terminal, TerminalSettings::default());
+        assert_eq!(s.theme, "system");
+        let t: Settings = serde_json::from_str(r#"{"theme":"dark"}"#).unwrap();
+        assert_eq!(t.theme, "dark");
         assert_eq!(s.terminal.font_size, 13);
         assert_eq!(s.terminal.line_height, 1.0);
         assert!(s.terminal.cursor_blink && s.terminal.font_family.is_empty());
@@ -171,6 +180,7 @@ mod tests {
         let s = Settings {
             default_agent: "shell".into(),
             auto_permission: false,
+            theme: "light".into(),
             ..Settings::default()
         };
         save(&s, &p).unwrap();
@@ -200,6 +210,14 @@ mod tests {
             "restore sessions must be ask, always or never"
         );
         assert_eq!(Settings::default().restore_sessions, "ask");
+        let bad_theme = Settings {
+            theme: "purple".into(),
+            ..Settings::default()
+        };
+        assert_eq!(
+            validate(&bad_theme).unwrap_err(),
+            "theme must be system, light or dark"
+        );
         for size in [8, 25] {
             let s = Settings {
                 terminal: TerminalSettings {

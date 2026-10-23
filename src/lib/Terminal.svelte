@@ -6,6 +6,8 @@
   import "@xterm/xterm/css/xterm.css";
   import { fail, resolve, type SessionInfo, type Tab } from "./sessions.svelte";
   import { settings } from "./settingsStore.svelte";
+  import { theme } from "./theme.svelte";
+  import type { ITheme } from "@xterm/xterm";
 
   let { tab, active }: { tab: Tab; active: boolean } = $props();
 
@@ -24,7 +26,39 @@
     return f ? `${f}, ui-monospace, Menlo, monospace` : "ui-monospace, Menlo, monospace";
   }
 
+  function xtermTheme(): ITheme {
+    const cs = getComputedStyle(document.documentElement);
+    const v = (name: string) => cs.getPropertyValue(name).trim();
+    return {
+      background: v("--term-bg"),
+      foreground: v("--term-fg"),
+      cursor: v("--term-cursor"),
+      selectionBackground: v("--term-selection"),
+      black: v("--term-black"),
+      red: v("--term-red"),
+      green: v("--term-green"),
+      yellow: v("--term-yellow"),
+      blue: v("--term-blue"),
+      magenta: v("--term-magenta"),
+      cyan: v("--term-cyan"),
+      white: v("--term-white"),
+      brightBlack: v("--term-bright-black"),
+      brightRed: v("--term-bright-red"),
+      brightGreen: v("--term-bright-green"),
+      brightYellow: v("--term-bright-yellow"),
+      brightBlue: v("--term-bright-blue"),
+      brightMagenta: v("--term-bright-magenta"),
+      brightCyan: v("--term-bright-cyan"),
+      brightWhite: v("--term-bright-white"),
+    };
+  }
+
   let opened = false;
+  $effect(() => {
+    void theme.resolved; // re-run when the resolved theme changes
+    if (!opened) return;
+    term.options.theme = xtermTheme();
+  });
   $effect(() => {
     const t = settings.value.terminal;
     const o = [family(t.fontFamily), t.fontSize, t.lineHeight, t.cursorBlink] as const;
@@ -50,6 +84,7 @@
       fontSize: t.fontSize,
       lineHeight: t.lineHeight,
       fontFamily: family(t.fontFamily),
+      theme: xtermTheme(),
     });
     fit = new FitAddon();
     term.loadAddon(fit);

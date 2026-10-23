@@ -10,6 +10,7 @@
   import Scratchpad from "./lib/Scratchpad.svelte";
   import { queuedCount } from "./lib/collab.svelte";
   import { onMount } from "svelte";
+  import { applyTheme, initTheme } from "./lib/theme.svelte";
   import { attachRestored, forgetRestorable, listRestorable, store } from "./lib/sessions.svelte";
   import { loadSettings, settings } from "./lib/settingsStore.svelte";
   import { startScheduler, stopScheduler, updater } from "./lib/updater.svelte";
@@ -18,6 +19,9 @@
 
   const KEY = "agentfleet.sidebarCollapsed";
   let collapsed = $state(false);
+
+  onMount(() => initTheme());
+  $effect(() => applyTheme(settings.value.theme));
 
   onMount(async () => {
     try {

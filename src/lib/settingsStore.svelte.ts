@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import type { AgentKind } from "./sessions.svelte";
+import type { ThemeSetting } from "./theme.svelte";
 
 export interface TerminalSettings {
   fontFamily: string;
@@ -16,6 +17,7 @@ export interface Settings {
   confirmQuit: boolean;
   updateChecks: boolean;
   restoreSessions: "ask" | "always" | "never";
+  theme: ThemeSetting;
   terminal: TerminalSettings;
 }
 
@@ -34,6 +36,7 @@ export const settings = $state({
     confirmQuit: true,
     updateChecks: true,
     restoreSessions: "ask",
+    theme: "system",
     terminal: { fontFamily: "", fontSize: 13, lineHeight: 1.0, cursorBlink: true },
   } as Settings,
 });
