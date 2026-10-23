@@ -1,16 +1,16 @@
 # Graph Report - agentfleet  (2026-10-23)
 
 ## Corpus Check
-- 125 files · ~54,762 words
+- 126 files · ~55,477 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 955 nodes · 1471 edges · 86 communities (85 shown, 1 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 130 edges (avg confidence: 0.8)
+- 965 nodes · 1498 edges · 87 communities (86 shown, 1 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 133 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `be8cd8ed`
+- Built from commit: `65d387a3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -96,18 +96,19 @@
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
 - [[_COMMUNITY_Community 80|Community 80]]
+- [[_COMMUNITY_Community 81|Community 81]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `err()` - 35 edges
+1. `err()` - 37 edges
 2. `spawn_for()` - 16 edges
 3. `handle_inner()` - 15 edges
-4. `persist()` - 13 edges
+4. `persist()` - 14 edges
 5. `home_dir()` - 13 edges
 6. `create_session()` - 11 edges
 7. `close_one()` - 11 edges
 8. `serve()` - 11 edges
 9. `run()` - 11 edges
-10. `spawn()` - 10 edges
+10. `./sessions.svelte` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `onKey()` --calls--> `close()`  [INFERRED]
@@ -121,59 +122,59 @@
 - `create_session()` --calls--> `err()`  [INFERRED]
   src-tauri/src/session.rs → src-tauri/src/broker.rs
 
-## Communities (86 total, 1 thin omitted)
+## Communities (87 total, 1 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
 Nodes (52): @xterm/addon-fit, svelte/elements, error, onKey(), otherAgent, send(), target, text (+44 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.06
-Nodes (69): auth(), close(), close_target(), close_target_rules(), connection(), ct_eq(), err(), fixture() (+61 more)
+Cohesion: 0.07
+Nodes (68): auth(), close(), close_target(), close_target_rules(), connection(), ct_eq(), err(), fixture() (+60 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.07
-Nodes (44): home_dir(), collab_path(), interrupt_all_for(), run(), add_project(), add_to(), add_twice_same_id(), Project (+36 more)
+Nodes (49): home_dir(), collab_path(), apply_draft(), run(), add_project(), add_to(), add_twice_same_id(), git() (+41 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.1
-Nodes (27): PtyHandle, runs_command_and_streams_output(), scrubs_claude_code_markers_from_env(), spawn(), write_exit_ends_shell(), bad_json_errors(), load(), old_rows_default_name_and_args() (+19 more)
+Cohesion: 0.06
+Nodes (43): login_shell(), claude_launch(), codex_hook_and_session_id(), codex_hook_overrides(), codex_launch(), codex_launch_flags(), codex_overrides(), codex_ready_scan() (+35 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (26): login_shell(), claude_launch(), codex_hook_and_session_id(), codex_hook_overrides(), codex_launch(), codex_launch_flags(), codex_overrides(), codex_ready_scan() (+18 more)
+Cohesion: 0.09
+Nodes (17): confirm(), addProject(), addProjectOrOfferInit(), ClosedSession, CloseOutcome, closeTab(), early, initProject() (+9 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.09
-Nodes (16): confirm(), ClosedSession, CloseOutcome, closeTab(), early, labelOf(), listRestorable(), loadProjects() (+8 more)
-
-### Community 6 - "Community 6"
 Cohesion: 0.13
 Nodes (25): agentfleet (M1), agentfleet (M2 — inter-session messaging), agentfleet (M3.2 — remove project), agentfleet (M4 — native-feeling UI), agentfleet (M5 — spawn sessions from a session + Codex agent), Out of scope, Primary user story, Scope (+17 more)
 
-### Community 7 - "Community 7"
+### Community 6 - "Community 6"
 Cohesion: 0.16
 Nodes (20): call(), call_timeout(), Cmd, env(), hook_context_is_valid_json_with_guide(), hook_context_json(), install_skill(), main() (+12 more)
 
-### Community 8 - "Community 8"
+### Community 7 - "Community 7"
 Cohesion: 0.21
 Nodes (16): append(), append_in(), append_separator_only_when_non_empty(), dir(), emit_changed(), missing_is_empty(), parse_id(), read() (+8 more)
 
-### Community 9 - "Community 9"
+### Community 8 - "Community 8"
 Cohesion: 0.17
 Nodes (12): AppInfo, defaults(), invalid_rejected(), load(), round_trip(), save(), set_settings(), Settings (+4 more)
 
-### Community 10 - "Community 10"
+### Community 9 - "Community 9"
 Cohesion: 0.14
 Nodes (11): AgentKind, AppInfo, chain, DeepPartial, Settings, TerminalSettings, updateSettings(), a (+3 more)
 
-### Community 11 - "Community 11"
+### Community 10 - "Community 10"
 Cohesion: 0.12
 Nodes (15): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total., Blockers, Decisions, Next (+7 more)
 
-### Community 12 - "Community 12"
+### Community 11 - "Community 11"
 Cohesion: 0.19
 Nodes (12): Button.svelte, Checks (run in order — cheapest first), Context, Dialog.svelte, Done when, Goal, Not included, Popover.svelte (+4 more)
+
+### Community 12 - "Community 12"
+Cohesion: 0.37
+Nodes (12): branch_exists(), clean_then_dirty(), create(), create_succeeds(), git(), no_commits(), not_a_repo(), remove() (+4 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.21
@@ -443,6 +444,10 @@ Nodes (4): ADR 0001 — Hand-rolled UI primitives on native `<dialog>` and a pos
 Cohesion: 0.5
 Nodes (3): Release runbook, Secrets, Unnotarized builds
 
+### Community 81 - "Community 81"
+Cohesion: 1.0
+Nodes (3): listRestorable(), loadProjects(), restoreTabs()
+
 ## Knowledge Gaps
 - **297 isolated node(s):** `dry`, `ver`, `edits`, `t`, `t2` (+292 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -452,16 +457,16 @@ Nodes (3): Release runbook, Secrets, Unnotarized builds
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `close()` connect `Community 1` to `Community 0`, `Community 2`?**
-  _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Why does `err()` connect `Community 1` to `Community 2`, `Community 3`, `Community 4`, `Community 7`, `Community 8`, `Community 9`?**
-  _High betweenness centrality (0.078) - this node is a cross-community bridge._
-- **Are the 23 inferred relationships involving `err()` (e.g. with `.parse()` and `register()`) actually correct?**
-  _`err()` has 23 INFERRED edges - model-reasoned connections that need verification._
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **Why does `err()` connect `Community 1` to `Community 2`, `Community 3`, `Community 6`, `Community 7`, `Community 8`, `Community 12`?**
+  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+- **Are the 25 inferred relationships involving `err()` (e.g. with `.parse()` and `register()`) actually correct?**
+  _`err()` has 25 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 12 inferred relationships involving `spawn_for()` (e.g. with `home_dir()` and `err()`) actually correct?**
   _`spawn_for()` has 12 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 6 inferred relationships involving `handle_inner()` (e.g. with `lookup()` and `resolve_id()`) actually correct?**
   _`handle_inner()` has 6 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 4 inferred relationships involving `persist()` (e.g. with `state_path()` and `add_project()`) actually correct?**
-  _`persist()` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 5 inferred relationships involving `persist()` (e.g. with `state_path()` and `register()`) actually correct?**
+  _`persist()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 12 inferred relationships involving `home_dir()` (e.g. with `spawn_for()` and `close_one()`) actually correct?**
   _`home_dir()` has 12 INFERRED edges - model-reasoned connections that need verification._

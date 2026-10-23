@@ -24,8 +24,8 @@
     "hash": "c00a6b4c071900b5070853d6351f4c75"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/lib.rs": {
-    "mtime": 1792708001.0434842,
-    "hash": "c56761363e0f40f4fc826767894b2a5c"
+    "mtime": 1792758726.884841,
+    "hash": "e1261a6f8f38c434e7036402ce0d73db"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/scratchpad.rs": {
     "mtime": 1792688855.529179,
@@ -40,8 +40,8 @@
     "hash": "01a79e45b7e5224e11db7943bc7f5a69"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/project.rs": {
-    "mtime": 1792684803.8057745,
-    "hash": "c82bec4cc272f9a1ca345edf50515baf"
+    "mtime": 1792758726.8844023,
+    "hash": "15cc1be92bde5f9e6fab3e05e1561cb8"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/state.rs": {
     "mtime": 1792722717.4582872,
@@ -96,16 +96,16 @@
     "hash": "3709e3aa95abf0544678f0f2d9b46702"
   },
   "/Users/aazevedo/dev/agentfleet/src/App.svelte": {
-    "mtime": 1792721422.9602923,
-    "hash": "2027fc78b570ac069e4dfef06b8aa5ee"
+    "mtime": 1792758752.7679994,
+    "hash": "88d475d5d0678f81cccfa9971153027c"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/RestoreDialog.svelte": {
     "mtime": 1792721422.9610665,
     "hash": "0c15173802ad352104ef5e98eddb1ee1"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/sessions.svelte.ts": {
-    "mtime": 1792722717.4593778,
-    "hash": "f0abf08ee4cad3b62b22ac3ce797e3aa"
+    "mtime": 1792758752.766953,
+    "hash": "b7a88bfb9711eacbdaf3554afdce9c85"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/collab.svelte.ts": {
     "mtime": 1792688757.8013468,
@@ -114,6 +114,10 @@
   "/Users/aazevedo/dev/agentfleet/src/lib/Terminal.svelte": {
     "mtime": 1792722717.4592423,
     "hash": "5ca46fb3a971097fdb0bfd05027f6940"
+  },
+  "/Users/aazevedo/dev/agentfleet/src/lib/InitRepoDialog.svelte": {
+    "mtime": 1792758752.7765968,
+    "hash": "2a82d86bf1a85e33b72804dfb59d41b0"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/StatusBar.svelte": {
     "mtime": 1792722717.459119,
@@ -152,8 +156,8 @@
     "hash": "fdd68961d8a38acc8be2bb148cd4c427"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/Sidebar.svelte": {
-    "mtime": 1792722717.458907,
-    "hash": "241780f50b1f17acb8fef9e5d14efc50"
+    "mtime": 1792758752.7672517,
+    "hash": "21f6bb7f90ef415d4e0249d4df73b790"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/RemoveProjectDialog.svelte": {
     "mtime": 1792721422.960935,
@@ -164,8 +168,8 @@
     "hash": "8db32f7c19dffd912ec53a7104d9dbe0"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/NewSessionPopover.svelte": {
-    "mtime": 1792722717.4587688,
-    "hash": "d1d5022dc657e97c2057b18300795634"
+    "mtime": 1792758752.7676241,
+    "hash": "fdba98f89de9c5067e05b968d415f3d8"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/settingsStore.test.ts": {
     "mtime": 1792721422.9626758,
