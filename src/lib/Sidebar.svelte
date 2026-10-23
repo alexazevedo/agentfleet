@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
-  import { Folder, NotebookPen, Settings, Plus, Trash2, X } from "lucide-svelte";
+  import { Folder, NotebookPen, Settings, Plus, FolderPlus, Trash2, X } from "lucide-svelte";
   import AgentIcon from "./AgentIcon.svelte";
+  import NewSessionPopover from "./NewSessionPopover.svelte";
   import { collab, initCollabListener, loadRuns, queuedCount } from "./collab.svelte";
   import {
     addProject,
@@ -45,24 +46,32 @@
     store.view = "settings";
   }
 
-  function onNewSession(projectId: string) {
+  function onNewSession(e: MouseEvent, projectId: string | null) {
     store.error = "";
-    store.preselectedProjectId = projectId;
-    store.dialogOpen = true;
+    store.newSession = { anchor: e.currentTarget as HTMLElement, projectId };
   }
 </script>
 
 <aside class="sidebar">
   <div class="header">
     <span>Projects</span>
-    <button type="button" aria-label="Add project" onclick={onAddProject}><Plus size={14} strokeWidth={1.75} /></button>
+    <span class="actions">
+      <button type="button" aria-label="Add project" onclick={onAddProject}><FolderPlus size={14} strokeWidth={1.75} /></button>
+      <button type="button" aria-label="New session" onclick={(e) => onNewSession(e, null)}><Plus size={14} strokeWidth={1.75} /></button>
+    </span>
   </div>
+  {#if store.error && store.newSession === null}
+    <div class="banner" role="alert">
+      {store.error}
+      <button type="button" aria-label="Dismiss" onclick={() => (store.error = "")}>×</button>
+    </div>
+  {/if}
   <div class="list">
     {#each store.projects as p (p.id)}
       <div class="project">
         <span class="name" title={p.path}><Folder size={14} strokeWidth={1.75} /> {p.name}</span>
         <span class="actions">
-          <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
+          <button type="button" aria-label="New session" onclick={(e) => onNewSession(e, p.id)}><Plus size={14} strokeWidth={1.75} /></button>
           <button type="button" class="remove" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></button>
         </span>
       </div>
@@ -125,6 +134,7 @@
   >
     <Settings size={14} strokeWidth={1.75} /> Settings
   </div>
+  <NewSessionPopover />
 </aside>
 
 <style>
@@ -149,6 +159,12 @@
     font-size: 12px;
     color: #aaa;
     padding-top: 10px;
+  }
+  .banner {
+    background: color-mix(in srgb, var(--danger) 15%, transparent);
+    color: var(--danger);
+    font-size: var(--text-sm);
+    padding: var(--space-1) var(--space-2);
   }
   .list {
     flex: 1;

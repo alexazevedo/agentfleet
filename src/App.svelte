@@ -1,7 +1,6 @@
 <script lang="ts">
   import Sidebar from "./lib/Sidebar.svelte";
   import StatusBar from "./lib/StatusBar.svelte";
-  import NewTabDialog from "./lib/NewTabDialog.svelte";
   import RemoveProjectDialog from "./lib/RemoveProjectDialog.svelte";
   import Terminal from "./lib/Terminal.svelte";
   import { NotebookPen, PanelLeft, Settings as SettingsIcon } from "lucide-svelte";
@@ -95,7 +94,6 @@
     {/if}
   </section>
   <StatusBar />
-  {#if store.dialogOpen}<NewTabDialog />{/if}
   {#if store.restoreDialogOpen}<RestoreDialog />{/if}
   {#if store.removeProjectId}<RemoveProjectDialog />{/if}
   {#if updater.available}<UpdateDialog />{/if}
