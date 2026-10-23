@@ -1,9 +1,14 @@
 <script lang="ts">
   import { attachRestored, forgetRestorable, store } from "./sessions.svelte";
   import { saveSettings, settings } from "./settingsStore.svelte";
+  import Dialog from "./ui/Dialog.svelte";
+  import Button from "./ui/Button.svelte";
+  import Switch from "./ui/Switch.svelte";
 
   let remember = $state(false);
   let busy = $state(false);
+
+  const count = $derived(store.pendingRestore.length);
 
   function label(i: (typeof store.pendingRestore)[number]) {
     const name = store.projects.find((p) => p.id === i.projectId)?.name ?? i.repoName;
@@ -29,61 +34,41 @@
   }
 </script>
 
-<div class="overlay">
-  <div class="dialog" role="dialog" aria-modal="true">
-    <h3>Restore {store.pendingRestore.length} session{store.pendingRestore.length === 1 ? "" : "s"}?</h3>
+<Dialog
+  bind:open={
+    () => store.restoreDialogOpen,
+    (v) => {
+      store.restoreDialogOpen = v;
+    }
+  }
+  title="Restore {count} session{count === 1 ? '' : 's'}?"
+  dismissible={false}
+>
+  <div class="content">
     <ul>
       {#each store.pendingRestore as i (i.id)}<li>{label(i)}</li>{/each}
     </ul>
-    <label><input type="checkbox" bind:checked={remember} /> Don't ask again</label>
-    <div class="row">
-      <button type="button" disabled={busy} onclick={() => choose("fresh")}>Start fresh</button>
-      <button type="button" disabled={busy} onclick={() => choose("restore")}>Restore</button>
-    </div>
+    <Switch bind:checked={remember}>
+      {#snippet label()}Don't ask again{/snippet}
+    </Switch>
   </div>
-</div>
+  {#snippet footer()}
+    <Button disabled={busy} onclick={() => choose("fresh")}>Start fresh</Button>
+    <Button variant="primary" disabled={busy} onclick={() => choose("restore")} autofocus>Restore</Button>
+  {/snippet}
+</Dialog>
 
 <style>
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-  }
-  .dialog {
-    background: #252526;
-    border: 1px solid #444;
-    border-radius: 4px;
-    padding: 16px;
-    width: 440px;
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 13px;
-  }
-  h3 {
-    margin: 0;
+    gap: var(--space-2);
+    font-size: var(--text-md);
   }
   ul {
     margin: 0;
     padding-left: 18px;
     max-height: 240px;
     overflow: auto;
-  }
-  .row {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-  }
-  button {
-    background: #333;
-    border: 1px solid #444;
-    color: inherit;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 4px 12px;
   }
 </style>

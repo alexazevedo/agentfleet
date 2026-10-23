@@ -1,5 +1,7 @@
 <script lang="ts">
   import { dismissUpdate, installUpdate, updater } from "./updater.svelte";
+  import Dialog from "./ui/Dialog.svelte";
+  import Button from "./ui/Button.svelte";
   let busy = $state(false);
 
   async function install() {
@@ -9,64 +11,43 @@
   }
 </script>
 
-<div class="overlay">
-  <div class="dialog" role="dialog" aria-modal="true">
-    <h3>Update available: {updater.available?.version}</h3>
+<Dialog
+  bind:open={
+    () => !!updater.available,
+    (v) => {
+      if (!v) dismissUpdate();
+    }
+  }
+  title="Update available: {updater.available?.version}"
+  dismissible={!busy}
+  onclose={dismissUpdate}
+>
+  <div class="content">
     <pre class="notes">{updater.available?.body || "No release notes."}</pre>
     {#if updater.progress}<div>{updater.progress}</div>{/if}
     {#if updater.error}<div class="err">{updater.error}</div>{/if}
-    <div class="row">
-      <button type="button" disabled={busy} onclick={install}>Install</button>
-      <button type="button" disabled={busy} onclick={dismissUpdate}>Later</button>
-    </div>
   </div>
-</div>
+  {#snippet footer()}
+    <Button disabled={busy} onclick={dismissUpdate}>Later</Button>
+    <Button variant="primary" disabled={busy} onclick={install}>Install</Button>
+  {/snippet}
+</Dialog>
 
 <style>
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-  }
-  .dialog {
-    background: #252526;
-    border: 1px solid #444;
-    border-radius: 4px;
-    padding: 16px;
-    width: 440px;
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 13px;
-  }
-  h3 {
-    margin: 0;
+    gap: var(--space-2);
+    font-size: var(--text-md);
   }
   .notes {
     margin: 0;
     max-height: 240px;
     overflow: auto;
     white-space: pre-wrap;
-    font-family: inherit;
-  }
-  .row {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-  }
-  button {
-    background: #333;
-    border: 1px solid #444;
-    color: inherit;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 4px 12px;
+    font-family: var(--font-ui);
   }
   .err {
-    color: #f85149;
+    color: var(--danger);
   }
 </style>
