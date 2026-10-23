@@ -16,8 +16,8 @@
     "hash": "4f08ca7a6f3a041247b07a99c4537fb3"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/session.rs": {
-    "mtime": 1792752301.905827,
-    "hash": "18443aa6fc25d82e819c862b430263d5"
+    "mtime": 1792762726.546995,
+    "hash": "6550c971711e54018ea09649447f7d1f"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/runtime.rs": {
     "mtime": 1792688311.968743,
@@ -56,8 +56,8 @@
     "hash": "7d1416bc3c9277eef178e4cbbc58890b"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/agent.rs": {
-    "mtime": 1792752334.2939703,
-    "hash": "24a1d0320e03a77d01eb4f5c5d4a4210"
+    "mtime": 1792762734.187797,
+    "hash": "7db0470ced7642850fe9bf52f4fca1e8"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/worktree.rs": {
     "mtime": 1792683466.7793264,
@@ -68,8 +68,8 @@
     "hash": "ad5b4ca8469f724a35681356bbc7cbfd"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/settings.rs": {
-    "mtime": 1792722717.457975,
-    "hash": "d648ba897efbb8808dacbb195a7b1ae0"
+    "mtime": 1792762726.5465512,
+    "hash": "e7a390813959593d8569bf92fe807934"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/cli.rs": {
     "mtime": 1792752200.2199943,
@@ -132,8 +132,8 @@
     "hash": "353de2ee38a5d3eb0d7fc1ca8abf2612"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/settingsStore.svelte.ts": {
-    "mtime": 1792721422.9625785,
-    "hash": "5eb135f5b0d89d020b7d71c2b07bfcfb"
+    "mtime": 1792762726.5472243,
+    "hash": "51846355b3fb238aa7b354f2dafb1fc3"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/SettingsPane.svelte": {
     "mtime": 1792721422.9614222,
@@ -236,8 +236,8 @@
     "hash": "f2376b34303de3d4c7c3f015363952ec"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/settings/GeneralTab.svelte": {
-    "mtime": 1792722717.4596574,
-    "hash": "8bc4bd6e71fc280ea1ef8584e534afd6"
+    "mtime": 1792762726.5474465,
+    "hash": "5771f2aaf12a889415fee2b08a8829a9"
   },
   "/Users/aazevedo/dev/agentfleet/src/lib/settings/UpdatesTab.svelte": {
     "mtime": 1792721422.9624667,

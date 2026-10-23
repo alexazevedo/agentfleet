@@ -27,7 +27,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L1",
       "id": "scripts_release_mjs",
-      "community": 16,
+      "community": 17,
       "norm_label": "release.mjs"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L5",
       "id": "scripts_release_args",
-      "community": 16,
+      "community": 17,
       "norm_label": "args"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L6",
       "id": "scripts_release_dry",
-      "community": 16,
+      "community": 17,
       "norm_label": "dry"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L7",
       "id": "scripts_release_ver",
-      "community": 16,
+      "community": 17,
       "norm_label": "ver"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L12",
       "id": "scripts_release_sh",
-      "community": 16,
+      "community": 17,
       "norm_label": "sh()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L20",
       "id": "scripts_release_jsonedit",
-      "community": 16,
+      "community": 17,
       "norm_label": "jsonedit()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L25",
       "id": "scripts_release_edits",
-      "community": 16,
+      "community": 17,
       "norm_label": "edits"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L53",
       "id": "scripts_release_t",
-      "community": 16,
+      "community": 17,
       "norm_label": "t"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "scripts/release.mjs",
       "source_location": "L54",
       "id": "scripts_release_t2",
-      "community": 16,
+      "community": 17,
       "norm_label": "t2"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "src-tauri/build.rs",
       "source_location": "L1",
       "id": "src_tauri_build_rs",
-      "community": 82,
+      "community": 81,
       "norm_label": "build.rs"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "src-tauri/build.rs",
       "source_location": "L3",
       "id": "src_tauri_build_main",
-      "community": 82,
+      "community": 81,
       "norm_label": "main()"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "src-tauri/src/session.rs",
       "source_location": "L505",
       "id": "src_session_write_session",
-      "community": 2,
+      "community": 12,
       "norm_label": "write_session()"
     },
     {
@@ -414,7 +414,7 @@
       "source_file": "src-tauri/src/session.rs",
       "source_location": "L728",
       "id": "src_session_fake",
-      "community": 3,
+      "community": 2,
       "norm_label": "fake()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "src-tauri/src/session.rs",
       "source_location": "L756",
       "id": "src_session_drain_unattached_keeps_live",
-      "community": 3,
+      "community": 2,
       "norm_label": "drain_unattached_keeps_live()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L1",
       "id": "src_tauri_src_scratchpad_rs",
-      "community": 7,
+      "community": 8,
       "norm_label": "scratchpad.rs"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L20",
       "id": "src_scratchpad_scratchpad",
-      "community": 7,
+      "community": 8,
       "norm_label": "scratchpad"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L25",
       "id": "src_scratchpad_dir",
-      "community": 7,
+      "community": 8,
       "norm_label": "dir()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L29",
       "id": "src_scratchpad_read_in",
-      "community": 7,
+      "community": 8,
       "norm_label": "read_in()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L37",
       "id": "src_scratchpad_store",
-      "community": 7,
+      "community": 8,
       "norm_label": "store()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L46",
       "id": "src_scratchpad_update",
-      "community": 7,
+      "community": 8,
       "norm_label": "update()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L71",
       "id": "src_scratchpad_write_in",
-      "community": 7,
+      "community": 8,
       "norm_label": "write_in()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L80",
       "id": "src_scratchpad_append_in",
-      "community": 7,
+      "community": 8,
       "norm_label": "append_in()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L95",
       "id": "src_scratchpad_read",
-      "community": 7,
+      "community": 8,
       "norm_label": "read()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L99",
       "id": "src_scratchpad_write",
-      "community": 7,
+      "community": 8,
       "norm_label": "write()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L103",
       "id": "src_scratchpad_append",
-      "community": 7,
+      "community": 8,
       "norm_label": "append()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L107",
       "id": "src_scratchpad_emit_changed",
-      "community": 7,
+      "community": 8,
       "norm_label": "emit_changed()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L114",
       "id": "src_scratchpad_parse_id",
-      "community": 7,
+      "community": 8,
       "norm_label": "parse_id()"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L119",
       "id": "src_scratchpad_read_scratchpad",
-      "community": 7,
+      "community": 8,
       "norm_label": "read_scratchpad()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L124",
       "id": "src_scratchpad_write_scratchpad",
-      "community": 7,
+      "community": 8,
       "norm_label": "write_scratchpad()"
     },
     {
@@ -684,7 +684,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L141",
       "id": "src_scratchpad_missing_is_empty",
-      "community": 7,
+      "community": 8,
       "norm_label": "missing_is_empty()"
     },
     {
@@ -693,7 +693,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L148",
       "id": "src_scratchpad_write_bumps_and_locks",
-      "community": 7,
+      "community": 8,
       "norm_label": "write_bumps_and_locks()"
     },
     {
@@ -702,7 +702,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L167",
       "id": "src_scratchpad_append_separator_only_when_non_empty",
-      "community": 7,
+      "community": 8,
       "norm_label": "append_separator_only_when_non_empty()"
     },
     {
@@ -711,7 +711,7 @@
       "source_file": "src-tauri/src/scratchpad.rs",
       "source_location": "L177",
       "id": "src_scratchpad_cap_enforced",
-      "community": 7,
+      "community": 8,
       "norm_label": "cap_enforced()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L1",
       "id": "src_tauri_src_deliver_rs",
-      "community": 1,
+      "community": 12,
       "norm_label": "deliver.rs"
     },
     {
@@ -729,7 +729,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L11",
       "id": "src_deliver_decision",
-      "community": 1,
+      "community": 12,
       "norm_label": "decision"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L17",
       "id": "src_deliver_can_deliver",
-      "community": 1,
+      "community": 12,
       "norm_label": "can_deliver()"
     },
     {
@@ -747,7 +747,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L42",
       "id": "src_deliver_apply_draft",
-      "community": 2,
+      "community": 12,
       "norm_label": "apply_draft()"
     },
     {
@@ -756,7 +756,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L70",
       "id": "src_deliver_paste_bytes",
-      "community": 1,
+      "community": 12,
       "norm_label": "paste_bytes()"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L78",
       "id": "src_deliver_try_deliver",
-      "community": 1,
+      "community": 12,
       "norm_label": "try_deliver()"
     },
     {
@@ -774,7 +774,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L127",
       "id": "src_deliver_auto_delivery",
-      "community": 1,
+      "community": 12,
       "norm_label": "auto_delivery()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L134",
       "id": "src_deliver_on_status",
-      "community": 1,
+      "community": 12,
       "norm_label": "on_status()"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L186",
       "id": "src_deliver_on_request_created",
-      "community": 1,
+      "community": 12,
       "norm_label": "on_request_created()"
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L196",
       "id": "src_deliver_execute_run",
-      "community": 1,
+      "community": 12,
       "norm_label": "execute_run()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L202",
       "id": "src_deliver_cancel_run",
-      "community": 1,
+      "community": 12,
       "norm_label": "cancel_run()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L228",
       "id": "src_deliver_decisions",
-      "community": 1,
+      "community": 12,
       "norm_label": "decisions()"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L259",
       "id": "src_deliver_draft_tracking",
-      "community": 1,
+      "community": 12,
       "norm_label": "draft_tracking()"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "src-tauri/src/deliver.rs",
       "source_location": "L271",
       "id": "src_deliver_paste_encoding",
-      "community": 1,
+      "community": 12,
       "norm_label": "paste_encoding()"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L1",
       "id": "src_tauri_src_state_rs",
-      "community": 3,
+      "community": 4,
       "norm_label": "state.rs"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L14",
       "id": "src_state_persistedsession",
-      "community": 3,
+      "community": 4,
       "norm_label": "persistedsession"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L30",
       "id": "src_state_persistedstate",
-      "community": 3,
+      "community": 4,
       "norm_label": "persistedstate"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L37",
       "id": "src_state_persistedstate_empty",
-      "community": 3,
+      "community": 4,
       "norm_label": ".empty()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L50",
       "id": "src_state_save",
-      "community": 3,
+      "community": 4,
       "norm_label": "save()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L63",
       "id": "src_state_load",
-      "community": 3,
+      "community": 4,
       "norm_label": "load()"
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L80",
       "id": "src_state_sample",
-      "community": 3,
+      "community": 4,
       "norm_label": "sample()"
     },
     {
@@ -1134,7 +1134,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L105",
       "id": "src_state_round_trip",
-      "community": 3,
+      "community": 4,
       "norm_label": "round_trip()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L116",
       "id": "src_state_old_rows_default_name_and_args",
-      "community": 3,
+      "community": 4,
       "norm_label": "old_rows_default_name_and_args()"
     },
     {
@@ -1152,7 +1152,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L132",
       "id": "src_state_missing_file_is_empty",
-      "community": 3,
+      "community": 4,
       "norm_label": "missing_file_is_empty()"
     },
     {
@@ -1161,7 +1161,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L141",
       "id": "src_state_bad_json_errors",
-      "community": 3,
+      "community": 4,
       "norm_label": "bad_json_errors()"
     },
     {
@@ -1170,7 +1170,7 @@
       "source_file": "src-tauri/src/state.rs",
       "source_location": "L149",
       "id": "src_state_wrong_version_errors",
-      "community": 3,
+      "community": 4,
       "norm_label": "wrong_version_errors()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "src-tauri/src/main.rs",
       "source_location": "L1",
       "id": "src_tauri_src_main_rs",
-      "community": 16,
+      "community": 17,
       "norm_label": "main.rs"
     },
     {
@@ -1188,7 +1188,7 @@
       "source_file": "src-tauri/src/main.rs",
       "source_location": "L4",
       "id": "src_main_main",
-      "community": 16,
+      "community": 17,
       "norm_label": "main()"
     },
     {
@@ -1462,10 +1462,28 @@
       "norm_label": "shell_quote()"
     },
     {
+      "label": "Permission",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L13",
+      "id": "src_agent_permission",
+      "community": 3,
+      "norm_label": "permission"
+    },
+    {
+      "label": ".from_settings()",
+      "file_type": "code",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L23",
+      "id": "src_agent_permission_from_settings",
+      "community": 3,
+      "norm_label": ".from_settings()"
+    },
+    {
       "label": "claude_launch()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L11",
+      "source_location": "L34",
       "id": "src_agent_claude_launch",
       "community": 3,
       "norm_label": "claude_launch()"
@@ -1474,7 +1492,7 @@
       "label": "write_hooks_settings()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L39",
+      "source_location": "L63",
       "id": "src_agent_write_hooks_settings",
       "community": 3,
       "norm_label": "write_hooks_settings()"
@@ -1483,7 +1501,7 @@
       "label": "write_codex_hook()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L68",
+      "source_location": "L95",
       "id": "src_agent_write_codex_hook",
       "community": 3,
       "norm_label": "write_codex_hook()"
@@ -1492,7 +1510,7 @@
       "label": "codex_hook_overrides()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L89",
+      "source_location": "L116",
       "id": "src_agent_codex_hook_overrides",
       "community": 3,
       "norm_label": "codex_hook_overrides()"
@@ -1501,7 +1519,7 @@
       "label": "toml_basic_string()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L100",
+      "source_location": "L127",
       "id": "src_agent_toml_basic_string",
       "community": 3,
       "norm_label": "toml_basic_string()"
@@ -1510,7 +1528,7 @@
       "label": "codex_launch()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L123",
+      "source_location": "L150",
       "id": "src_agent_codex_launch",
       "community": 3,
       "norm_label": "codex_launch()"
@@ -1519,7 +1537,7 @@
       "label": "codex_ready_scan()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L159",
+      "source_location": "L188",
       "id": "src_agent_codex_ready_scan",
       "community": 3,
       "norm_label": "codex_ready_scan()"
@@ -1528,7 +1546,7 @@
       "label": "codex_session_id()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L182",
+      "source_location": "L211",
       "id": "src_agent_codex_session_id",
       "community": 3,
       "norm_label": "codex_session_id()"
@@ -1537,7 +1555,7 @@
       "label": "launch_flags()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L197",
+      "source_location": "L226",
       "id": "src_agent_launch_flags",
       "community": 3,
       "norm_label": "launch_flags()"
@@ -1546,7 +1564,7 @@
       "label": "settings_roundtrip()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L216",
+      "source_location": "L254",
       "id": "src_agent_settings_roundtrip",
       "community": 3,
       "norm_label": "settings_roundtrip()"
@@ -1555,7 +1573,7 @@
       "label": "codex_overrides()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L243",
+      "source_location": "L282",
       "id": "src_agent_codex_overrides",
       "community": 3,
       "norm_label": "codex_overrides()"
@@ -1564,7 +1582,7 @@
       "label": "toml_strings()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L257",
+      "source_location": "L296",
       "id": "src_agent_toml_strings",
       "community": 3,
       "norm_label": "toml_strings()"
@@ -1573,7 +1591,7 @@
       "label": "Value",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L274",
+      "source_location": "L313",
       "id": "src_agent_value",
       "community": 3,
       "norm_label": "value"
@@ -1582,7 +1600,7 @@
       "label": "parse()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L275",
+      "source_location": "L314",
       "id": "src_agent_parse",
       "community": 3,
       "norm_label": "parse()"
@@ -1591,7 +1609,7 @@
       "label": "codex_launch_flags()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L302",
+      "source_location": "L341",
       "id": "src_agent_codex_launch_flags",
       "community": 3,
       "norm_label": "codex_launch_flags()"
@@ -1600,7 +1618,7 @@
       "label": "codex_ready_from_osc_7501()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L320",
+      "source_location": "L378",
       "id": "src_agent_codex_ready_from_osc_7501",
       "community": 3,
       "norm_label": "codex_ready_from_osc_7501()"
@@ -1609,7 +1627,7 @@
       "label": "codex_hook_and_session_id()",
       "file_type": "code",
       "source_file": "src-tauri/src/agent.rs",
-      "source_location": "L356",
+      "source_location": "L414",
       "id": "src_agent_codex_hook_and_session_id",
       "community": 3,
       "norm_label": "codex_hook_and_session_id()"
@@ -1620,7 +1638,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L1",
       "id": "src_tauri_src_worktree_rs",
-      "community": 12,
+      "community": 4,
       "norm_label": "worktree.rs"
     },
     {
@@ -1629,7 +1647,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L7",
       "id": "src_worktree_worktree",
-      "community": 12,
+      "community": 4,
       "norm_label": "worktree"
     },
     {
@@ -1656,7 +1674,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L30",
       "id": "src_worktree_git",
-      "community": 12,
+      "community": 4,
       "norm_label": "git()"
     },
     {
@@ -1665,7 +1683,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L39",
       "id": "src_worktree_create",
-      "community": 12,
+      "community": 4,
       "norm_label": "create()"
     },
     {
@@ -1683,7 +1701,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L72",
       "id": "src_worktree_remove",
-      "community": 12,
+      "community": 4,
       "norm_label": "remove()"
     },
     {
@@ -1701,7 +1719,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L87",
       "id": "src_worktree_run",
-      "community": 12,
+      "community": 4,
       "norm_label": "run()"
     },
     {
@@ -1710,7 +1728,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L96",
       "id": "src_worktree_repo_with_commit",
-      "community": 12,
+      "community": 4,
       "norm_label": "repo_with_commit()"
     },
     {
@@ -1719,7 +1737,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L117",
       "id": "src_worktree_create_succeeds",
-      "community": 12,
+      "community": 4,
       "norm_label": "create_succeeds()"
     },
     {
@@ -1728,7 +1746,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L137",
       "id": "src_worktree_not_a_repo",
-      "community": 12,
+      "community": 4,
       "norm_label": "not_a_repo()"
     },
     {
@@ -1737,7 +1755,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L144",
       "id": "src_worktree_no_commits",
-      "community": 12,
+      "community": 4,
       "norm_label": "no_commits()"
     },
     {
@@ -1746,7 +1764,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L154",
       "id": "src_worktree_branch_exists",
-      "community": 12,
+      "community": 4,
       "norm_label": "branch_exists()"
     },
     {
@@ -1755,7 +1773,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L163",
       "id": "src_worktree_clean_then_dirty",
-      "community": 12,
+      "community": 4,
       "norm_label": "clean_then_dirty()"
     },
     {
@@ -1764,7 +1782,7 @@
       "source_file": "src-tauri/src/worktree.rs",
       "source_location": "L175",
       "id": "src_worktree_remove_clean",
-      "community": 12,
+      "community": 4,
       "norm_label": "remove_clean()"
     },
     {
@@ -1773,7 +1791,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L1",
       "id": "src_tauri_src_pty_rs",
-      "community": 3,
+      "community": 4,
       "norm_label": "pty.rs"
     },
     {
@@ -1782,7 +1800,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L13",
       "id": "src_pty_ptyhandle",
-      "community": 3,
+      "community": 4,
       "norm_label": "ptyhandle"
     },
     {
@@ -1791,7 +1809,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L20",
       "id": "src_pty_shell_quote",
-      "community": 3,
+      "community": 4,
       "norm_label": "shell_quote()"
     },
     {
@@ -1800,7 +1818,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L25",
       "id": "src_pty_spawn",
-      "community": 3,
+      "community": 4,
       "norm_label": "spawn()"
     },
     {
@@ -1809,7 +1827,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L91",
       "id": "src_pty_ptyhandle_write",
-      "community": 3,
+      "community": 4,
       "norm_label": ".write()"
     },
     {
@@ -1818,7 +1836,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L98",
       "id": "src_pty_ptyhandle_resize",
-      "community": 3,
+      "community": 4,
       "norm_label": ".resize()"
     },
     {
@@ -1827,7 +1845,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L109",
       "id": "src_pty_ptyhandle_kill",
-      "community": 3,
+      "community": 4,
       "norm_label": ".kill()"
     },
     {
@@ -1836,7 +1854,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L126",
       "id": "src_pty_runs_command_and_streams_output",
-      "community": 3,
+      "community": 4,
       "norm_label": "runs_command_and_streams_output()"
     },
     {
@@ -1845,7 +1863,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L150",
       "id": "src_pty_scrubs_claude_code_markers_from_env",
-      "community": 3,
+      "community": 4,
       "norm_label": "scrubs_claude_code_markers_from_env()"
     },
     {
@@ -1854,7 +1872,7 @@
       "source_file": "src-tauri/src/pty.rs",
       "source_location": "L180",
       "id": "src_pty_write_exit_ends_shell",
-      "community": 3,
+      "community": 4,
       "norm_label": "write_exit_ends_shell()"
     },
     {
@@ -1863,7 +1881,7 @@
       "source_file": "src-tauri/src/settings.rs",
       "source_location": "L1",
       "id": "src_tauri_src_settings_rs",
-      "community": 8,
+      "community": 9,
       "norm_label": "settings.rs"
     },
     {
@@ -1872,7 +1890,7 @@
       "source_file": "src-tauri/src/settings.rs",
       "source_location": "L15",
       "id": "src_settings_terminalsettings",
-      "community": 8,
+      "community": 9,
       "norm_label": "terminalsettings"
     },
     {
@@ -1881,7 +1899,7 @@
       "source_file": "src-tauri/src/settings.rs",
       "source_location": "L24",
       "id": "src_settings_terminalsettings_default",
-      "community": 8,
+      "community": 9,
       "norm_label": ".default()"
     },
     {
@@ -1890,133 +1908,133 @@
       "source_file": "src-tauri/src/settings.rs",
       "source_location": "L36",
       "id": "src_settings_settings",
-      "community": 8,
+      "community": 9,
       "norm_label": "settings"
     },
     {
       "label": ".default()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L52",
+      "source_location": "L56",
       "id": "src_settings_settings_default",
-      "community": 8,
+      "community": 9,
       "norm_label": ".default()"
     },
     {
       "label": "settings_path()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L70",
+      "source_location": "L75",
       "id": "src_settings_settings_path",
-      "community": 8,
+      "community": 9,
       "norm_label": "settings_path()"
     },
     {
       "label": "load()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L74",
+      "source_location": "L79",
       "id": "src_settings_load",
-      "community": 8,
+      "community": 9,
       "norm_label": "load()"
     },
     {
       "label": "save()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L89",
+      "source_location": "L94",
       "id": "src_settings_save",
-      "community": 8,
+      "community": 9,
       "norm_label": "save()"
     },
     {
       "label": "normalize()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L103",
+      "source_location": "L108",
       "id": "src_settings_normalize",
-      "community": 8,
+      "community": 9,
       "norm_label": "normalize()"
     },
     {
       "label": "validate()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L114",
+      "source_location": "L119",
       "id": "src_settings_validate",
-      "community": 8,
+      "community": 9,
       "norm_label": "validate()"
     },
     {
       "label": "get_settings()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L137",
+      "source_location": "L142",
       "id": "src_settings_get_settings",
-      "community": 8,
+      "community": 9,
       "norm_label": "get_settings()"
     },
     {
       "label": "set_settings()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L142",
+      "source_location": "L147",
       "id": "src_settings_set_settings",
-      "community": 8,
+      "community": 9,
       "norm_label": "set_settings()"
     },
     {
       "label": "AppInfo",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L153",
+      "source_location": "L158",
       "id": "src_settings_appinfo",
-      "community": 8,
+      "community": 9,
       "norm_label": "appinfo"
     },
     {
       "label": "app_info()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L159",
+      "source_location": "L164",
       "id": "src_settings_app_info",
-      "community": 8,
+      "community": 9,
       "norm_label": "app_info()"
     },
     {
       "label": "defaults()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L171",
+      "source_location": "L176",
       "id": "src_settings_defaults",
-      "community": 8,
+      "community": 9,
       "norm_label": "defaults()"
     },
     {
       "label": "round_trip()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L189",
+      "source_location": "L195",
       "id": "src_settings_round_trip",
-      "community": 8,
+      "community": 9,
       "norm_label": "round_trip()"
     },
     {
       "label": "unknown_theme_falls_back()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L204",
+      "source_location": "L210",
       "id": "src_settings_unknown_theme_falls_back",
-      "community": 8,
+      "community": 9,
       "norm_label": "unknown_theme_falls_back()"
     },
     {
       "label": "invalid_rejected()",
       "file_type": "code",
       "source_file": "src-tauri/src/settings.rs",
-      "source_location": "L214",
+      "source_location": "L220",
       "id": "src_settings_invalid_rejected",
-      "community": 8,
+      "community": 9,
       "norm_label": "invalid_rejected()"
     },
     {
@@ -2025,7 +2043,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L1",
       "id": "src_tauri_src_cli_rs",
-      "community": 6,
+      "community": 7,
       "norm_label": "cli.rs"
     },
     {
@@ -2034,7 +2052,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L37",
       "id": "src_cli_cmd",
-      "community": 6,
+      "community": 7,
       "norm_label": "cmd"
     },
     {
@@ -2043,7 +2061,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L81",
       "id": "src_cli_parse_scratch",
-      "community": 6,
+      "community": 7,
       "norm_label": "parse_scratch()"
     },
     {
@@ -2052,7 +2070,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L114",
       "id": "src_cli_parse_spawn",
-      "community": 6,
+      "community": 7,
       "norm_label": "parse_spawn()"
     },
     {
@@ -2061,7 +2079,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L156",
       "id": "src_cli_with_role",
-      "community": 6,
+      "community": 7,
       "norm_label": "with_role()"
     },
     {
@@ -2070,7 +2088,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L163",
       "id": "src_cli_parse",
-      "community": 6,
+      "community": 7,
       "norm_label": "parse()"
     },
     {
@@ -2079,7 +2097,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L204",
       "id": "src_cli_main",
-      "community": 6,
+      "community": 7,
       "norm_label": "main()"
     },
     {
@@ -2088,7 +2106,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L260",
       "id": "src_cli_hook_context_json",
-      "community": 6,
+      "community": 7,
       "norm_label": "hook_context_json()"
     },
     {
@@ -2097,7 +2115,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L271",
       "id": "src_cli_skill_targets",
-      "community": 6,
+      "community": 7,
       "norm_label": "skill_targets()"
     },
     {
@@ -2106,7 +2124,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L279",
       "id": "src_cli_install_skill",
-      "community": 6,
+      "community": 7,
       "norm_label": "install_skill()"
     },
     {
@@ -2115,7 +2133,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L290",
       "id": "src_cli_obj",
-      "community": 6,
+      "community": 7,
       "norm_label": "obj()"
     },
     {
@@ -2124,7 +2142,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L297",
       "id": "src_cli_read_stdin",
-      "community": 6,
+      "community": 7,
       "norm_label": "read_stdin()"
     },
     {
@@ -2133,7 +2151,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L304",
       "id": "src_cli_resolve_session",
-      "community": 6,
+      "community": 7,
       "norm_label": "resolve_session()"
     },
     {
@@ -2142,7 +2160,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L316",
       "id": "src_cli_run",
-      "community": 6,
+      "community": 7,
       "norm_label": "run()"
     },
     {
@@ -2151,7 +2169,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L452",
       "id": "src_cli_env",
-      "community": 6,
+      "community": 7,
       "norm_label": "env()"
     },
     {
@@ -2160,7 +2178,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L463",
       "id": "src_cli_call",
-      "community": 6,
+      "community": 7,
       "norm_label": "call()"
     },
     {
@@ -2169,7 +2187,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L467",
       "id": "src_cli_call_timeout",
-      "community": 6,
+      "community": 7,
       "norm_label": "call_timeout()"
     },
     {
@@ -2178,7 +2196,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L499",
       "id": "src_cli_print_list",
-      "community": 6,
+      "community": 7,
       "norm_label": "print_list()"
     },
     {
@@ -2187,7 +2205,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L513",
       "id": "src_cli_print_inbox",
-      "community": 6,
+      "community": 7,
       "norm_label": "print_inbox()"
     },
     {
@@ -2196,7 +2214,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L539",
       "id": "src_cli_a",
-      "community": 6,
+      "community": 7,
       "norm_label": "a()"
     },
     {
@@ -2205,7 +2223,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L544",
       "id": "src_cli_parses_verbs",
-      "community": 6,
+      "community": 7,
       "norm_label": "parses_verbs()"
     },
     {
@@ -2214,7 +2232,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L666",
       "id": "src_cli_hook_context_is_valid_json_with_guide",
-      "community": 6,
+      "community": 7,
       "norm_label": "hook_context_is_valid_json_with_guide()"
     },
     {
@@ -2223,7 +2241,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L676",
       "id": "src_cli_skill_install_targets",
-      "community": 6,
+      "community": 7,
       "norm_label": "skill_install_targets()"
     },
     {
@@ -2232,7 +2250,7 @@
       "source_file": "src-tauri/src/cli.rs",
       "source_location": "L697",
       "id": "src_cli_with_role_prepends",
-      "community": 6,
+      "community": 7,
       "norm_label": "with_role_prepends()"
     },
     {
@@ -2839,7 +2857,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_sessions_svelte_ts",
-      "community": 4,
+      "community": 5,
       "norm_label": "sessions.svelte.ts"
     },
     {
@@ -2848,7 +2866,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L4",
       "id": "lib_sessions_svelte_agentkind",
-      "community": 9,
+      "community": 10,
       "norm_label": "agentkind"
     },
     {
@@ -2857,7 +2875,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L6",
       "id": "lib_sessions_svelte_status",
-      "community": 4,
+      "community": 5,
       "norm_label": "status"
     },
     {
@@ -2866,7 +2884,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L8",
       "id": "lib_sessions_svelte_project",
-      "community": 4,
+      "community": 5,
       "norm_label": "project"
     },
     {
@@ -2875,7 +2893,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L14",
       "id": "lib_sessions_svelte_sessioninfo",
-      "community": 4,
+      "community": 5,
       "norm_label": "sessioninfo"
     },
     {
@@ -2884,7 +2902,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L25",
       "id": "lib_sessions_svelte_labelof",
-      "community": 4,
+      "community": 5,
       "norm_label": "labelof()"
     },
     {
@@ -2893,7 +2911,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L29",
       "id": "lib_sessions_svelte_tabtitle",
-      "community": 4,
+      "community": 5,
       "norm_label": "tabtitle()"
     },
     {
@@ -2902,7 +2920,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L34",
       "id": "lib_sessions_svelte_tab",
-      "community": 4,
+      "community": 5,
       "norm_label": "tab"
     },
     {
@@ -2911,7 +2929,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L45",
       "id": "lib_sessions_svelte_store",
-      "community": 17,
+      "community": 18,
       "norm_label": "store"
     },
     {
@@ -2920,7 +2938,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L63",
       "id": "lib_sessions_svelte_early",
-      "community": 4,
+      "community": 5,
       "norm_label": "early"
     },
     {
@@ -2929,7 +2947,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L65",
       "id": "lib_sessions_svelte_loadprojects",
-      "community": 81,
+      "community": 5,
       "norm_label": "loadprojects()"
     },
     {
@@ -2938,7 +2956,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L76",
       "id": "lib_sessions_svelte_remember",
-      "community": 4,
+      "community": 5,
       "norm_label": "remember()"
     },
     {
@@ -2947,7 +2965,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L81",
       "id": "lib_sessions_svelte_addproject",
-      "community": 4,
+      "community": 5,
       "norm_label": "addproject()"
     },
     {
@@ -2956,7 +2974,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L86",
       "id": "lib_sessions_svelte_initproject",
-      "community": 4,
+      "community": 5,
       "norm_label": "initproject()"
     },
     {
@@ -2965,7 +2983,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L92",
       "id": "lib_sessions_svelte_addprojectorofferinit",
-      "community": 4,
+      "community": 5,
       "norm_label": "addprojectorofferinit()"
     },
     {
@@ -2974,7 +2992,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L105",
       "id": "lib_sessions_svelte_addpending",
-      "community": 4,
+      "community": 5,
       "norm_label": "addpending()"
     },
     {
@@ -2983,7 +3001,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L112",
       "id": "lib_sessions_svelte_resolve",
-      "community": 4,
+      "community": 5,
       "norm_label": "resolve()"
     },
     {
@@ -2992,7 +3010,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L122",
       "id": "lib_sessions_svelte_fail",
-      "community": 4,
+      "community": 5,
       "norm_label": "fail()"
     },
     {
@@ -3001,7 +3019,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L129",
       "id": "lib_sessions_svelte_setactive",
-      "community": 4,
+      "community": 5,
       "norm_label": "setactive()"
     },
     {
@@ -3010,7 +3028,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L135",
       "id": "lib_sessions_svelte_initstatuslistener",
-      "community": 4,
+      "community": 5,
       "norm_label": "initstatuslistener()"
     },
     {
@@ -3019,7 +3037,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L146",
       "id": "lib_sessions_svelte_initspawnlistener",
-      "community": 4,
+      "community": 5,
       "norm_label": "initspawnlistener()"
     },
     {
@@ -3028,7 +3046,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L169",
       "id": "lib_sessions_svelte_remove",
-      "community": 4,
+      "community": 5,
       "norm_label": "remove()"
     },
     {
@@ -3037,7 +3055,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L175",
       "id": "lib_sessions_svelte_closeoutcome",
-      "community": 4,
+      "community": 5,
       "norm_label": "closeoutcome"
     },
     {
@@ -3046,7 +3064,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L177",
       "id": "lib_sessions_svelte_closetab",
-      "community": 4,
+      "community": 5,
       "norm_label": "closetab()"
     },
     {
@@ -3055,7 +3073,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L193",
       "id": "lib_sessions_svelte_closedsession",
-      "community": 4,
+      "community": 5,
       "norm_label": "closedsession"
     },
     {
@@ -3064,7 +3082,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L196",
       "id": "lib_sessions_svelte_removeproject",
-      "community": 4,
+      "community": 82,
       "norm_label": "removeproject()"
     },
     {
@@ -3073,7 +3091,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L214",
       "id": "lib_sessions_svelte_listrestorable",
-      "community": 81,
+      "community": 5,
       "norm_label": "listrestorable()"
     },
     {
@@ -3082,7 +3100,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L228",
       "id": "lib_sessions_svelte_attachrestored",
-      "community": 4,
+      "community": 5,
       "norm_label": "attachrestored()"
     },
     {
@@ -3091,7 +3109,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L245",
       "id": "lib_sessions_svelte_forgetrestorable",
-      "community": 4,
+      "community": 5,
       "norm_label": "forgetrestorable()"
     },
     {
@@ -3100,7 +3118,7 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L254",
       "id": "lib_sessions_svelte_restoretabs",
-      "community": 81,
+      "community": 5,
       "norm_label": "restoretabs()"
     },
     {
@@ -3109,7 +3127,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_collab_svelte_ts",
-      "community": 17,
+      "community": 18,
       "norm_label": "collab.svelte.ts"
     },
     {
@@ -3118,7 +3136,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L5",
       "id": "lib_collab_svelte_runstatus",
-      "community": 17,
+      "community": 18,
       "norm_label": "runstatus"
     },
     {
@@ -3127,7 +3145,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L13",
       "id": "lib_collab_svelte_run",
-      "community": 17,
+      "community": 18,
       "norm_label": "run"
     },
     {
@@ -3136,7 +3154,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L26",
       "id": "lib_collab_svelte_collab",
-      "community": 17,
+      "community": 18,
       "norm_label": "collab"
     },
     {
@@ -3145,7 +3163,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L28",
       "id": "lib_collab_svelte_loadruns",
-      "community": 17,
+      "community": 18,
       "norm_label": "loadruns()"
     },
     {
@@ -3154,7 +3172,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L37",
       "id": "lib_collab_svelte_initcollablistener",
-      "community": 17,
+      "community": 18,
       "norm_label": "initcollablistener()"
     },
     {
@@ -3163,7 +3181,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L47",
       "id": "lib_collab_svelte_queuedcount",
-      "community": 17,
+      "community": 18,
       "norm_label": "queuedcount()"
     },
     {
@@ -3172,7 +3190,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L53",
       "id": "lib_collab_svelte_executerun",
-      "community": 17,
+      "community": 18,
       "norm_label": "executerun()"
     },
     {
@@ -3181,7 +3199,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L57",
       "id": "lib_collab_svelte_cancelrun",
-      "community": 17,
+      "community": 18,
       "norm_label": "cancelrun()"
     },
     {
@@ -3190,7 +3208,7 @@
       "source_file": "src/lib/collab.svelte.ts",
       "source_location": "L61",
       "id": "lib_collab_svelte_sendrequest",
-      "community": 17,
+      "community": 18,
       "norm_label": "sendrequest()"
     },
     {
@@ -3217,7 +3235,7 @@
       "source_file": "@tauri-apps/api/core",
       "confidence": "EXTRACTED",
       "id": "core",
-      "community": 22,
+      "community": 24,
       "norm_label": "@tauri-apps/api/core"
     },
     {
@@ -3344,7 +3362,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_theme_svelte_ts",
-      "community": 24,
+      "community": 21,
       "norm_label": "theme.svelte.ts"
     },
     {
@@ -3353,7 +3371,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L1",
       "id": "lib_theme_svelte_themesetting",
-      "community": 24,
+      "community": 21,
       "norm_label": "themesetting"
     },
     {
@@ -3362,7 +3380,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L2",
       "id": "lib_theme_svelte_resolvedtheme",
-      "community": 24,
+      "community": 21,
       "norm_label": "resolvedtheme"
     },
     {
@@ -3371,7 +3389,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L6",
       "id": "lib_theme_svelte_resolvetheme",
-      "community": 24,
+      "community": 21,
       "norm_label": "resolvetheme()"
     },
     {
@@ -3380,7 +3398,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L11",
       "id": "lib_theme_svelte_theme",
-      "community": 24,
+      "community": 21,
       "norm_label": "theme"
     },
     {
@@ -3389,7 +3407,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L15",
       "id": "lib_theme_svelte_prefersdark",
-      "community": 24,
+      "community": 21,
       "norm_label": "prefersdark()"
     },
     {
@@ -3398,7 +3416,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L19",
       "id": "lib_theme_svelte_applytheme",
-      "community": 24,
+      "community": 21,
       "norm_label": "applytheme()"
     },
     {
@@ -3407,7 +3425,7 @@
       "source_file": "src/lib/theme.svelte.ts",
       "source_location": "L28",
       "id": "lib_theme_svelte_inittheme",
-      "community": 62,
+      "community": 21,
       "norm_label": "inittheme()"
     },
     {
@@ -3416,7 +3434,7 @@
       "source_file": "src/lib/settingsStore.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_settingsstore_svelte_ts",
-      "community": 9,
+      "community": 10,
       "norm_label": "settingsstore.svelte.ts"
     },
     {
@@ -3425,7 +3443,7 @@
       "source_file": "src/lib/settingsStore.svelte.ts",
       "source_location": "L5",
       "id": "lib_settingsstore_svelte_terminalsettings",
-      "community": 9,
+      "community": 10,
       "norm_label": "terminalsettings"
     },
     {
@@ -3434,61 +3452,61 @@
       "source_file": "src/lib/settingsStore.svelte.ts",
       "source_location": "L12",
       "id": "lib_settingsstore_svelte_settings",
-      "community": 9,
+      "community": 10,
       "norm_label": "settings"
     },
     {
       "label": "AppInfo",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "lib_settingsstore_svelte_appinfo",
-      "community": 9,
+      "community": 10,
       "norm_label": "appinfo"
     },
     {
       "label": "loadSettings()",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L44",
+      "source_location": "L46",
       "id": "lib_settingsstore_svelte_loadsettings",
-      "community": 9,
+      "community": 10,
       "norm_label": "loadsettings()"
     },
     {
       "label": "saveSettings()",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L50",
+      "source_location": "L52",
       "id": "lib_settingsstore_svelte_savesettings",
-      "community": 9,
+      "community": 10,
       "norm_label": "savesettings()"
     },
     {
       "label": "DeepPartial",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L55",
+      "source_location": "L57",
       "id": "lib_settingsstore_svelte_deeppartial",
-      "community": 9,
+      "community": 10,
       "norm_label": "deeppartial"
     },
     {
       "label": "chain",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L57",
+      "source_location": "L59",
       "id": "lib_settingsstore_svelte_chain",
-      "community": 9,
+      "community": 10,
       "norm_label": "chain"
     },
     {
       "label": "updateSettings()",
       "file_type": "code",
       "source_file": "src/lib/settingsStore.svelte.ts",
-      "source_location": "L60",
+      "source_location": "L62",
       "id": "lib_settingsstore_svelte_updatesettings",
-      "community": 9,
+      "community": 10,
       "norm_label": "updatesettings()"
     },
     {
@@ -3556,7 +3574,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_scratchpadstore_svelte_ts",
-      "community": 22,
+      "community": 24,
       "norm_label": "scratchpadstore.svelte.ts"
     },
     {
@@ -3565,7 +3583,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L4",
       "id": "lib_scratchpadstore_svelte_scratchpad",
-      "community": 22,
+      "community": 24,
       "norm_label": "scratchpad"
     },
     {
@@ -3574,7 +3592,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L9",
       "id": "lib_scratchpadstore_svelte_listener",
-      "community": 22,
+      "community": 24,
       "norm_label": "listener"
     },
     {
@@ -3583,7 +3601,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L10",
       "id": "lib_scratchpadstore_svelte_listeners",
-      "community": 22,
+      "community": 24,
       "norm_label": "listeners"
     },
     {
@@ -3592,7 +3610,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L12",
       "id": "lib_scratchpadstore_svelte_loadscratchpad",
-      "community": 22,
+      "community": 24,
       "norm_label": "loadscratchpad()"
     },
     {
@@ -3601,7 +3619,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L16",
       "id": "lib_scratchpadstore_svelte_savescratchpad",
-      "community": 22,
+      "community": 24,
       "norm_label": "savescratchpad()"
     },
     {
@@ -3610,7 +3628,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L21",
       "id": "lib_scratchpadstore_svelte_onscratchpadchanged",
-      "community": 22,
+      "community": 24,
       "norm_label": "onscratchpadchanged()"
     },
     {
@@ -3619,7 +3637,7 @@
       "source_file": "src/lib/scratchpadStore.svelte.ts",
       "source_location": "L27",
       "id": "lib_scratchpadstore_svelte_initscratchpadlistener",
-      "community": 22,
+      "community": 24,
       "norm_label": "initscratchpadlistener()"
     },
     {
@@ -3692,7 +3710,7 @@
       "source_file": "src/lib/RemoveProjectDialog.svelte",
       "source_location": "L16",
       "id": "lib_removeprojectdialog_confirm",
-      "community": 4,
+      "community": 82,
       "norm_label": "confirm()"
     },
     {
@@ -3701,7 +3719,7 @@
       "source_file": "src/lib/theme.test.ts",
       "source_location": "L1",
       "id": "src_lib_theme_test_ts",
-      "community": 24,
+      "community": 21,
       "norm_label": "theme.test.ts"
     },
     {
@@ -3730,7 +3748,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L1",
       "id": "src_lib_settingsstore_test_ts",
-      "community": 9,
+      "community": 10,
       "norm_label": "settingsstore.test.ts"
     },
     {
@@ -3739,7 +3757,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L8",
       "id": "lib_settingsstore_test_mocked",
-      "community": 9,
+      "community": 10,
       "norm_label": "mocked"
     },
     {
@@ -3748,7 +3766,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L10",
       "id": "lib_settingsstore_test_snap",
-      "community": 9,
+      "community": 10,
       "norm_label": "snap()"
     },
     {
@@ -3757,7 +3775,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L27",
       "id": "lib_settingsstore_test_before",
-      "community": 9,
+      "community": 10,
       "norm_label": "before"
     },
     {
@@ -3766,7 +3784,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L36",
       "id": "lib_settingsstore_test_a",
-      "community": 9,
+      "community": 10,
       "norm_label": "a"
     },
     {
@@ -3775,7 +3793,7 @@
       "source_file": "src/lib/settingsStore.test.ts",
       "source_location": "L37",
       "id": "lib_settingsstore_test_b",
-      "community": 9,
+      "community": 10,
       "norm_label": "b"
     },
     {
@@ -3784,7 +3802,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L1",
       "id": "src_lib_updater_svelte_ts",
-      "community": 34,
+      "community": 35,
       "norm_label": "updater.svelte.ts"
     },
     {
@@ -3793,7 +3811,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L4",
       "id": "lib_updater_svelte_updater",
-      "community": 34,
+      "community": 35,
       "norm_label": "updater"
     },
     {
@@ -3802,7 +3820,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L16",
       "id": "lib_updater_svelte_checkforupdate",
-      "community": 34,
+      "community": 35,
       "norm_label": "checkforupdate()"
     },
     {
@@ -3811,7 +3829,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L39",
       "id": "lib_updater_svelte_installupdate",
-      "community": 34,
+      "community": 35,
       "norm_label": "installupdate()"
     },
     {
@@ -3820,7 +3838,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L60",
       "id": "lib_updater_svelte_dismissupdate",
-      "community": 34,
+      "community": 35,
       "norm_label": "dismissupdate()"
     },
     {
@@ -3829,7 +3847,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L66",
       "id": "lib_updater_svelte_startscheduler",
-      "community": 34,
+      "community": 35,
       "norm_label": "startscheduler()"
     },
     {
@@ -3838,7 +3856,7 @@
       "source_file": "src/lib/updater.svelte.ts",
       "source_location": "L74",
       "id": "lib_updater_svelte_stopscheduler",
-      "community": 34,
+      "community": 35,
       "norm_label": "stopscheduler()"
     },
     {
@@ -3847,7 +3865,7 @@
       "source_file": "src/lib/ui/Switch.test.ts",
       "source_location": "L1",
       "id": "src_lib_ui_switch_test_ts",
-      "community": 62,
+      "community": 0,
       "norm_label": "switch.test.ts"
     },
     {
@@ -3856,7 +3874,7 @@
       "source_file": "src/lib/ui/Switch.test.ts",
       "source_location": "L8",
       "id": "ui_switch_test_user",
-      "community": 62,
+      "community": 0,
       "norm_label": "user"
     },
     {
@@ -3865,7 +3883,7 @@
       "source_file": "src/lib/ui/Switch.test.ts",
       "source_location": "L9",
       "id": "ui_switch_test_onchange",
-      "community": 62,
+      "community": 21,
       "norm_label": "onchange"
     },
     {
@@ -3874,7 +3892,7 @@
       "source_file": "src/lib/ui/Switch.test.ts",
       "source_location": "L11",
       "id": "ui_switch_test_sw",
-      "community": 62,
+      "community": 0,
       "norm_label": "sw"
     },
     {
@@ -4018,7 +4036,7 @@
       "source_file": "src/lib/ui/__fixtures__/SwitchHost.svelte",
       "source_location": "L1",
       "id": "src_lib_ui_fixtures_switchhost_svelte",
-      "community": 62,
+      "community": 0,
       "norm_label": "switchhost.svelte"
     },
     {
@@ -4046,7 +4064,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L1",
       "id": "product_md",
-      "community": 5,
+      "community": 6,
       "norm_label": "product.md"
     },
     {
@@ -4055,7 +4073,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L8",
       "id": "agentfleet_product_agentfleet_m5_spawn_sessions_from_a_session_codex_agent",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m5 \u2014 spawn sessions from a session + codex agent)"
     },
     {
@@ -4064,7 +4082,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L10",
       "id": "agentfleet_product_what_why",
-      "community": 5,
+      "community": 6,
       "norm_label": "what / why"
     },
     {
@@ -4073,7 +4091,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L13",
       "id": "agentfleet_product_primary_user_story",
-      "community": 5,
+      "community": 6,
       "norm_label": "primary user story"
     },
     {
@@ -4082,7 +4100,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L16",
       "id": "agentfleet_product_scope",
-      "community": 5,
+      "community": 6,
       "norm_label": "scope"
     },
     {
@@ -4091,7 +4109,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L26",
       "id": "agentfleet_product_out_of_scope",
-      "community": 5,
+      "community": 6,
       "norm_label": "out of scope"
     },
     {
@@ -4100,7 +4118,7 @@
       "source_file": "PRODUCT.md",
       "source_location": "L34",
       "id": "agentfleet_product_success_demo",
-      "community": 5,
+      "community": 6,
       "norm_label": "success demo"
     },
     {
@@ -4109,7 +4127,7 @@
       "source_file": "STATE.md",
       "source_location": "L1",
       "id": "state_md",
-      "community": 10,
+      "community": 11,
       "norm_label": "state.md"
     },
     {
@@ -4118,7 +4136,7 @@
       "source_file": "STATE.md",
       "source_location": "L1",
       "id": "agentfleet_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total",
-      "community": 10,
+      "community": 11,
       "norm_label": "state \u2014 rewrite after every ticket completes; never append. \u226430 lines total."
     },
     {
@@ -4127,7 +4145,7 @@
       "source_file": "STATE.md",
       "source_location": "L3",
       "id": "agentfleet_state_now",
-      "community": 10,
+      "community": 11,
       "norm_label": "now"
     },
     {
@@ -4136,7 +4154,7 @@
       "source_file": "STATE.md",
       "source_location": "L6",
       "id": "agentfleet_state_next",
-      "community": 10,
+      "community": 11,
       "norm_label": "next"
     },
     {
@@ -4145,7 +4163,7 @@
       "source_file": "STATE.md",
       "source_location": "L9",
       "id": "agentfleet_state_decisions",
-      "community": 10,
+      "community": 11,
       "norm_label": "decisions"
     },
     {
@@ -4154,7 +4172,7 @@
       "source_file": "STATE.md",
       "source_location": "L20",
       "id": "agentfleet_state_blockers",
-      "community": 10,
+      "community": 11,
       "norm_label": "blockers"
     },
     {
@@ -4163,7 +4181,7 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "readme_md",
-      "community": 23,
+      "community": 25,
       "norm_label": "readme.md"
     },
     {
@@ -4172,7 +4190,7 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "agentfleet_readme_agentfleet",
-      "community": 23,
+      "community": 25,
       "norm_label": "agentfleet"
     },
     {
@@ -4181,7 +4199,7 @@
       "source_file": "README.md",
       "source_location": "L7",
       "id": "agentfleet_readme_features",
-      "community": 23,
+      "community": 25,
       "norm_label": "features"
     },
     {
@@ -4190,7 +4208,7 @@
       "source_file": "README.md",
       "source_location": "L13",
       "id": "agentfleet_readme_messaging_between_sessions",
-      "community": 23,
+      "community": 25,
       "norm_label": "messaging between sessions"
     },
     {
@@ -4199,7 +4217,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L1",
       "id": "tickets_30_session_register_label_args_md",
-      "community": 25,
+      "community": 26,
       "norm_label": "30-session-register-label-args.md"
     },
     {
@@ -4208,7 +4226,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L16",
       "id": "tickets_30_session_register_label_args_goal",
-      "community": 25,
+      "community": 26,
       "norm_label": "goal"
     },
     {
@@ -4217,7 +4235,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L19",
       "id": "tickets_30_session_register_label_args_context",
-      "community": 25,
+      "community": 26,
       "norm_label": "context"
     },
     {
@@ -4226,7 +4244,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L22",
       "id": "tickets_30_session_register_label_args_backend_changes",
-      "community": 25,
+      "community": 26,
       "norm_label": "backend changes"
     },
     {
@@ -4235,7 +4253,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L29",
       "id": "tickets_30_session_register_label_args_frontend_changes",
-      "community": 25,
+      "community": 26,
       "norm_label": "frontend changes"
     },
     {
@@ -4244,7 +4262,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L34",
       "id": "tickets_30_session_register_label_args_checks_run_in_order_cheapest_first",
-      "community": 25,
+      "community": 26,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -4253,7 +4271,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L40",
       "id": "tickets_30_session_register_label_args_done_when",
-      "community": 25,
+      "community": 26,
       "norm_label": "done when"
     },
     {
@@ -4262,7 +4280,7 @@
       "source_file": "tickets/30-session-register-label-args.md",
       "source_location": "L46",
       "id": "tickets_30_session_register_label_args_not_included",
-      "community": 25,
+      "community": 26,
       "norm_label": "not included"
     },
     {
@@ -4271,7 +4289,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L1",
       "id": "tickets_34_codex_no_daemon_ready_md",
-      "community": 35,
+      "community": 36,
       "norm_label": "34-codex-no-daemon-ready.md"
     },
     {
@@ -4280,7 +4298,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L13",
       "id": "tickets_34_codex_no_daemon_ready_goal",
-      "community": 35,
+      "community": 36,
       "norm_label": "goal"
     },
     {
@@ -4289,7 +4307,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L16",
       "id": "tickets_34_codex_no_daemon_ready_context_verified_2026_10_23_against_codex_cli_0_163_0_by_driving_the_tui_in_a_pty",
-      "community": 35,
+      "community": 36,
       "norm_label": "context (verified 2026-10-23 against codex-cli 0.163.0 by driving the tui in a pty)"
     },
     {
@@ -4298,7 +4316,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L22",
       "id": "tickets_34_codex_no_daemon_ready_changes",
-      "community": 35,
+      "community": 36,
       "norm_label": "changes"
     },
     {
@@ -4307,7 +4325,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L27",
       "id": "tickets_34_codex_no_daemon_ready_checks_run_in_order_cheapest_first",
-      "community": 35,
+      "community": 36,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -4316,7 +4334,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L32",
       "id": "tickets_34_codex_no_daemon_ready_done_when",
-      "community": 35,
+      "community": 36,
       "norm_label": "done when"
     },
     {
@@ -4325,7 +4343,7 @@
       "source_file": "tickets/34-codex-no-daemon-ready.md",
       "source_location": "L35",
       "id": "tickets_34_codex_no_daemon_ready_not_included",
-      "community": 35,
+      "community": 36,
       "norm_label": "not included"
     },
     {
@@ -4334,7 +4352,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L1",
       "id": "tickets_33_skill_discovery_md",
-      "community": 36,
+      "community": 37,
       "norm_label": "33-skill-discovery.md"
     },
     {
@@ -4343,7 +4361,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L14",
       "id": "tickets_33_skill_discovery_goal",
-      "community": 36,
+      "community": 37,
       "norm_label": "goal"
     },
     {
@@ -4352,7 +4370,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L17",
       "id": "tickets_33_skill_discovery_context",
-      "community": 36,
+      "community": 37,
       "norm_label": "context"
     },
     {
@@ -4361,7 +4379,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L20",
       "id": "tickets_33_skill_discovery_changes",
-      "community": 36,
+      "community": 37,
       "norm_label": "changes"
     },
     {
@@ -4370,7 +4388,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L27",
       "id": "tickets_33_skill_discovery_checks_run_in_order_cheapest_first",
-      "community": 36,
+      "community": 37,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -4379,7 +4397,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L33",
       "id": "tickets_33_skill_discovery_done_when",
-      "community": 36,
+      "community": 37,
       "norm_label": "done when"
     },
     {
@@ -4388,7 +4406,7 @@
       "source_file": "tickets/33-skill-discovery.md",
       "source_location": "L36",
       "id": "tickets_33_skill_discovery_not_included",
-      "community": 36,
+      "community": 37,
       "norm_label": "not included"
     },
     {
@@ -4397,7 +4415,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L1",
       "id": "tickets_32_codex_agent_md",
-      "community": 20,
+      "community": 22,
       "norm_label": "32-codex-agent.md"
     },
     {
@@ -4406,7 +4424,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L21",
       "id": "tickets_32_codex_agent_goal",
-      "community": 20,
+      "community": 22,
       "norm_label": "goal"
     },
     {
@@ -4415,7 +4433,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L24",
       "id": "tickets_32_codex_agent_context",
-      "community": 20,
+      "community": 22,
       "norm_label": "context"
     },
     {
@@ -4424,7 +4442,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L33",
       "id": "tickets_32_codex_agent_backend",
-      "community": 20,
+      "community": 22,
       "norm_label": "backend"
     },
     {
@@ -4433,7 +4451,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L37",
       "id": "tickets_32_codex_agent_codeblock_1",
-      "community": 20,
+      "community": 22,
       "norm_label": "code:sh (#!/bin/sh)"
     },
     {
@@ -4442,7 +4460,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L51",
       "id": "tickets_32_codex_agent_frontend",
-      "community": 20,
+      "community": 22,
       "norm_label": "frontend"
     },
     {
@@ -4451,7 +4469,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L55",
       "id": "tickets_32_codex_agent_probe_script",
-      "community": 20,
+      "community": 22,
       "norm_label": "probe script"
     },
     {
@@ -4460,7 +4478,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L58",
       "id": "tickets_32_codex_agent_checks_run_in_order_cheapest_first",
-      "community": 20,
+      "community": 22,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -4469,7 +4487,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L65",
       "id": "tickets_32_codex_agent_done_when",
-      "community": 20,
+      "community": 22,
       "norm_label": "done when"
     },
     {
@@ -4478,7 +4496,7 @@
       "source_file": "tickets/32-codex-agent.md",
       "source_location": "L69",
       "id": "tickets_32_codex_agent_not_included",
-      "community": 20,
+      "community": 22,
       "norm_label": "not included"
     },
     {
@@ -4487,7 +4505,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L1",
       "id": "tickets_31_spawn_close_cli_md",
-      "community": 18,
+      "community": 19,
       "norm_label": "31-spawn-close-cli.md"
     },
     {
@@ -4496,7 +4514,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L16",
       "id": "tickets_31_spawn_close_cli_goal",
-      "community": 18,
+      "community": 19,
       "norm_label": "goal"
     },
     {
@@ -4505,7 +4523,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L19",
       "id": "tickets_31_spawn_close_cli_context",
-      "community": 18,
+      "community": 19,
       "norm_label": "context"
     },
     {
@@ -4514,7 +4532,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L26",
       "id": "tickets_31_spawn_close_cli_broker",
-      "community": 18,
+      "community": 19,
       "norm_label": "broker"
     },
     {
@@ -4523,7 +4541,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L36",
       "id": "tickets_31_spawn_close_cli_cli",
-      "community": 18,
+      "community": 19,
       "norm_label": "cli"
     },
     {
@@ -4532,7 +4550,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L38",
       "id": "tickets_31_spawn_close_cli_codeblock_1",
-      "community": 18,
+      "community": 19,
       "norm_label": "code:rust (spawn { agent: option<string>, name: option<string>, role: o)"
     },
     {
@@ -4541,7 +4559,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L48",
       "id": "tickets_31_spawn_close_cli_frontend",
-      "community": 18,
+      "community": 19,
       "norm_label": "frontend"
     },
     {
@@ -4550,7 +4568,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L52",
       "id": "tickets_31_spawn_close_cli_docs",
-      "community": 18,
+      "community": 19,
       "norm_label": "docs"
     },
     {
@@ -4559,7 +4577,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L55",
       "id": "tickets_31_spawn_close_cli_checks_run_in_order_cheapest_first",
-      "community": 18,
+      "community": 19,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -4568,7 +4586,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L62",
       "id": "tickets_31_spawn_close_cli_done_when",
-      "community": 18,
+      "community": 19,
       "norm_label": "done when"
     },
     {
@@ -4577,7 +4595,7 @@
       "source_file": "tickets/31-spawn-close-cli.md",
       "source_location": "L66",
       "id": "tickets_31_spawn_close_cli_not_included",
-      "community": 18,
+      "community": 19,
       "norm_label": "not included"
     },
     {
@@ -4586,7 +4604,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L1",
       "id": "docs_orchestra_prd_md",
-      "community": 21,
+      "community": 23,
       "norm_label": "orchestra-prd.md"
     },
     {
@@ -4595,7 +4613,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L3",
       "id": "docs_orchestra_prd_orchestra_0_3_1_replication_prd",
-      "community": 21,
+      "community": 23,
       "norm_label": "orchestra 0.3.1 replication prd"
     },
     {
@@ -4604,7 +4622,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L7",
       "id": "docs_orchestra_prd_overview",
-      "community": 21,
+      "community": 23,
       "norm_label": "overview"
     },
     {
@@ -4613,7 +4631,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L23",
       "id": "docs_orchestra_prd_how_it_was_built",
-      "community": 21,
+      "community": 23,
       "norm_label": "how it was built"
     },
     {
@@ -4622,7 +4640,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L49",
       "id": "docs_orchestra_prd_feature_inventory",
-      "community": 21,
+      "community": 23,
       "norm_label": "feature inventory"
     },
     {
@@ -4631,7 +4649,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L86",
       "id": "docs_orchestra_prd_architecture",
-      "community": 21,
+      "community": 23,
       "norm_label": "architecture"
     },
     {
@@ -4640,7 +4658,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L109",
       "id": "docs_orchestra_prd_integrations_and_network",
-      "community": 21,
+      "community": 23,
       "norm_label": "integrations and network"
     },
     {
@@ -4649,7 +4667,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L133",
       "id": "docs_orchestra_prd_ui_and_ux",
-      "community": 21,
+      "community": 23,
       "norm_label": "ui and ux"
     },
     {
@@ -4658,7 +4676,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L168",
       "id": "docs_orchestra_prd_replication_requirements",
-      "community": 21,
+      "community": 23,
       "norm_label": "replication requirements"
     },
     {
@@ -4667,7 +4685,7 @@
       "source_file": "docs/orchestra-prd.md",
       "source_location": "L211",
       "id": "docs_orchestra_prd_unknowns_and_risks",
-      "community": 21,
+      "community": 23,
       "norm_label": "unknowns and risks"
     },
     {
@@ -4712,7 +4730,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L1",
       "id": "docs_roadmap_md",
-      "community": 37,
+      "community": 38,
       "norm_label": "roadmap.md"
     },
     {
@@ -4721,7 +4739,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L1",
       "id": "docs_roadmap_agentfleet_roadmap",
-      "community": 37,
+      "community": 38,
       "norm_label": "agentfleet roadmap"
     },
     {
@@ -4730,7 +4748,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L5",
       "id": "docs_roadmap_shape_fixed_in_m1_do_not_rework",
-      "community": 37,
+      "community": 38,
       "norm_label": "shape fixed in m1 (do not rework)"
     },
     {
@@ -4739,7 +4757,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L13",
       "id": "docs_roadmap_m2_inter_session_messaging",
-      "community": 37,
+      "community": 38,
       "norm_label": "m2 \u2014 inter-session messaging"
     },
     {
@@ -4748,7 +4766,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L21",
       "id": "docs_roadmap_m3_release",
-      "community": 37,
+      "community": 38,
       "norm_label": "m3 \u2014 release"
     },
     {
@@ -4757,7 +4775,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L27",
       "id": "docs_roadmap_m4_native_feeling_ui_done",
-      "community": 37,
+      "community": 38,
       "norm_label": "m4 \u2014 native-feeling ui (done)"
     },
     {
@@ -4766,7 +4784,7 @@
       "source_file": "docs/roadmap.md",
       "source_location": "L34",
       "id": "docs_roadmap_later_optional",
-      "community": 37,
+      "community": 38,
       "norm_label": "later / optional"
     },
     {
@@ -4775,7 +4793,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L1",
       "id": "docs_discovery_m1_md",
-      "community": 26,
+      "community": 27,
       "norm_label": "discovery-m1.md"
     },
     {
@@ -4784,7 +4802,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L1",
       "id": "docs_discovery_m1_agentfleet_m1_discovery_brief",
-      "community": 26,
+      "community": 27,
       "norm_label": "agentfleet \u2014 m1 discovery brief"
     },
     {
@@ -4793,7 +4811,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L5",
       "id": "docs_discovery_m1_product_class",
-      "community": 26,
+      "community": 27,
       "norm_label": "product class"
     },
     {
@@ -4802,7 +4820,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L8",
       "id": "docs_discovery_m1_who",
-      "community": 26,
+      "community": 27,
       "norm_label": "who"
     },
     {
@@ -4811,7 +4829,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L11",
       "id": "docs_discovery_m1_one_job_m1_only",
-      "community": 26,
+      "community": 27,
       "norm_label": "one job (m1 only)"
     },
     {
@@ -4820,7 +4838,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L14",
       "id": "docs_discovery_m1_explicitly_out_of_m1",
-      "community": 26,
+      "community": 27,
       "norm_label": "explicitly out of m1"
     },
     {
@@ -4829,7 +4847,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L21",
       "id": "docs_discovery_m1_done_when_i_can",
-      "community": 26,
+      "community": 27,
       "norm_label": "done when i can"
     },
     {
@@ -4838,7 +4856,7 @@
       "source_file": "docs/discovery-m1.md",
       "source_location": "L29",
       "id": "docs_discovery_m1_stack_constraints_fixed_not_up_for_grill",
-      "community": 26,
+      "community": 27,
       "norm_label": "stack constraints (fixed, not up for grill)"
     },
     {
@@ -4847,7 +4865,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L1",
       "id": "docs_ui_md",
-      "community": 38,
+      "community": 39,
       "norm_label": "ui.md"
     },
     {
@@ -4856,7 +4874,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L1",
       "id": "docs_ui_ui_layer",
-      "community": 38,
+      "community": 39,
       "norm_label": "ui layer"
     },
     {
@@ -4865,7 +4883,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L5",
       "id": "docs_ui_tokens_src_lib_ui_tokens_css",
-      "community": 38,
+      "community": 39,
       "norm_label": "tokens (`src/lib/ui/tokens.css`)"
     },
     {
@@ -4874,7 +4892,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L16",
       "id": "docs_ui_theming",
-      "community": 38,
+      "community": 39,
       "norm_label": "theming"
     },
     {
@@ -4883,7 +4901,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L23",
       "id": "docs_ui_primitives_src_lib_ui_svelte",
-      "community": 38,
+      "community": 39,
       "norm_label": "primitives (`src/lib/ui/*.svelte`)"
     },
     {
@@ -4892,7 +4910,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L32",
       "id": "docs_ui_rule",
-      "community": 38,
+      "community": 39,
       "norm_label": "rule"
     },
     {
@@ -4901,7 +4919,7 @@
       "source_file": "docs/ui.md",
       "source_location": "L38",
       "id": "docs_ui_codeblock_1",
-      "community": 38,
+      "community": 39,
       "norm_label": "code:sh (grep -rne '#[0-9a-fa-f]{3,8}\\b' src --include='*.svelte' --i)"
     },
     {
@@ -4955,7 +4973,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m3_1_product_md",
-      "community": 39,
+      "community": 40,
       "norm_label": "product.md"
     },
     {
@@ -4964,7 +4982,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m3_1_product_agentfleet_m3_1_terminal_preferences_restore_prompt",
-      "community": 39,
+      "community": 40,
       "norm_label": "agentfleet (m3.1 \u2014 terminal preferences + restore prompt)"
     },
     {
@@ -4973,7 +4991,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m3_1_product_what_why",
-      "community": 39,
+      "community": 40,
       "norm_label": "what / why"
     },
     {
@@ -4982,7 +5000,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m3_1_product_primary_user_story",
-      "community": 39,
+      "community": 40,
       "norm_label": "primary user story"
     },
     {
@@ -4991,7 +5009,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m3_1_product_scope",
-      "community": 39,
+      "community": 40,
       "norm_label": "scope"
     },
     {
@@ -5000,7 +5018,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L22",
       "id": "forge_m3_1_product_out_of_scope",
-      "community": 39,
+      "community": 40,
       "norm_label": "out of scope"
     },
     {
@@ -5009,7 +5027,7 @@
       "source_file": "docs/forge-m3.1/PRODUCT.md",
       "source_location": "L27",
       "id": "forge_m3_1_product_success_demo",
-      "community": 39,
+      "community": 40,
       "norm_label": "success demo"
     },
     {
@@ -5180,7 +5198,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m1_product_md",
-      "community": 27,
+      "community": 28,
       "norm_label": "product.md"
     },
     {
@@ -5189,7 +5207,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m1_product_agentfleet_m1",
-      "community": 27,
+      "community": 28,
       "norm_label": "agentfleet (m1)"
     },
     {
@@ -5198,7 +5216,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m1_product_what_why",
-      "community": 27,
+      "community": 28,
       "norm_label": "what / why"
     },
     {
@@ -5207,7 +5225,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m1_product_primary_user_story",
-      "community": 27,
+      "community": 28,
       "norm_label": "primary user story"
     },
     {
@@ -5216,7 +5234,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m1_product_scope_m1",
-      "community": 27,
+      "community": 28,
       "norm_label": "scope (m1)"
     },
     {
@@ -5225,7 +5243,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L26",
       "id": "forge_m1_product_out_of_scope",
-      "community": 27,
+      "community": 28,
       "norm_label": "out of scope"
     },
     {
@@ -5234,7 +5252,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L37",
       "id": "forge_m1_product_stack_constraints_fixed",
-      "community": 27,
+      "community": 28,
       "norm_label": "stack constraints (fixed)"
     },
     {
@@ -5243,7 +5261,7 @@
       "source_file": "docs/forge-m1/PRODUCT.md",
       "source_location": "L40",
       "id": "forge_m1_product_success_demo",
-      "community": 27,
+      "community": 28,
       "norm_label": "success demo"
     },
     {
@@ -5306,7 +5324,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_07_persist_restore_md",
-      "community": 40,
+      "community": 41,
       "norm_label": "07-persist-restore.md"
     },
     {
@@ -5315,7 +5333,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L15",
       "id": "tickets_07_persist_restore_goal",
-      "community": 40,
+      "community": 41,
       "norm_label": "goal"
     },
     {
@@ -5324,7 +5342,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L18",
       "id": "tickets_07_persist_restore_context",
-      "community": 40,
+      "community": 41,
       "norm_label": "context"
     },
     {
@@ -5333,7 +5351,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L25",
       "id": "tickets_07_persist_restore_checks_run_in_order_cheapest_first",
-      "community": 40,
+      "community": 41,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5342,7 +5360,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L31",
       "id": "tickets_07_persist_restore_done_when",
-      "community": 40,
+      "community": 41,
       "norm_label": "done when"
     },
     {
@@ -5351,7 +5369,7 @@
       "source_file": "docs/forge-m1/tickets/07-persist-restore.md",
       "source_location": "L35",
       "id": "tickets_07_persist_restore_not_included",
-      "community": 40,
+      "community": 41,
       "norm_label": "not included"
     },
     {
@@ -5360,7 +5378,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_09_sidebar_md",
-      "community": 41,
+      "community": 42,
       "norm_label": "09-sidebar.md"
     },
     {
@@ -5369,7 +5387,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L16",
       "id": "tickets_09_sidebar_goal",
-      "community": 41,
+      "community": 42,
       "norm_label": "goal"
     },
     {
@@ -5378,7 +5396,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L19",
       "id": "tickets_09_sidebar_context",
-      "community": 41,
+      "community": 42,
       "norm_label": "context"
     },
     {
@@ -5387,7 +5405,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L24",
       "id": "tickets_09_sidebar_checks_run_in_order_cheapest_first",
-      "community": 41,
+      "community": 42,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5396,7 +5414,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L29",
       "id": "tickets_09_sidebar_done_when",
-      "community": 41,
+      "community": 42,
       "norm_label": "done when"
     },
     {
@@ -5405,7 +5423,7 @@
       "source_file": "docs/forge-m1/tickets/09-sidebar.md",
       "source_location": "L32",
       "id": "tickets_09_sidebar_not_included",
-      "community": 41,
+      "community": 42,
       "norm_label": "not included"
     },
     {
@@ -5414,7 +5432,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_03_pty_md",
-      "community": 28,
+      "community": 29,
       "norm_label": "03-pty.md"
     },
     {
@@ -5423,7 +5441,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L10",
       "id": "tickets_03_pty_goal",
-      "community": 28,
+      "community": 29,
       "norm_label": "goal"
     },
     {
@@ -5432,7 +5450,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L13",
       "id": "tickets_03_pty_context",
-      "community": 28,
+      "community": 29,
       "norm_label": "context"
     },
     {
@@ -5441,7 +5459,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L16",
       "id": "tickets_03_pty_codeblock_1",
-      "community": 28,
+      "community": 29,
       "norm_label": "code:rust (pub type ondata = box<dyn fn(vec<u8>) + send + 'static>;)"
     },
     {
@@ -5450,7 +5468,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L31",
       "id": "tickets_03_pty_checks_run_in_order_cheapest_first",
-      "community": 28,
+      "community": 29,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5459,7 +5477,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L35",
       "id": "tickets_03_pty_done_when",
-      "community": 28,
+      "community": 29,
       "norm_label": "done when"
     },
     {
@@ -5468,7 +5486,7 @@
       "source_file": "docs/forge-m1/tickets/03-pty.md",
       "source_location": "L39",
       "id": "tickets_03_pty_not_included",
-      "community": 28,
+      "community": 29,
       "norm_label": "not included"
     },
     {
@@ -5477,7 +5495,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_04_shell_tab_md",
-      "community": 42,
+      "community": 43,
       "norm_label": "04-shell-tab.md"
     },
     {
@@ -5486,7 +5504,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L19",
       "id": "tickets_04_shell_tab_goal",
-      "community": 42,
+      "community": 43,
       "norm_label": "goal"
     },
     {
@@ -5495,7 +5513,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L22",
       "id": "tickets_04_shell_tab_context",
-      "community": 42,
+      "community": 43,
       "norm_label": "context"
     },
     {
@@ -5504,7 +5522,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L33",
       "id": "tickets_04_shell_tab_checks_run_in_order_cheapest_first",
-      "community": 42,
+      "community": 43,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5513,7 +5531,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L39",
       "id": "tickets_04_shell_tab_done_when",
-      "community": 42,
+      "community": 43,
       "norm_label": "done when"
     },
     {
@@ -5522,7 +5540,7 @@
       "source_file": "docs/forge-m1/tickets/04-shell-tab.md",
       "source_location": "L44",
       "id": "tickets_04_shell_tab_not_included",
-      "community": 42,
+      "community": 43,
       "norm_label": "not included"
     },
     {
@@ -5531,7 +5549,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_05_claude_status_md",
-      "community": 29,
+      "community": 30,
       "norm_label": "05-claude-status.md"
     },
     {
@@ -5540,7 +5558,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L15",
       "id": "tickets_05_claude_status_goal",
-      "community": 29,
+      "community": 30,
       "norm_label": "goal"
     },
     {
@@ -5549,7 +5567,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L18",
       "id": "tickets_05_claude_status_context",
-      "community": 29,
+      "community": 30,
       "norm_label": "context"
     },
     {
@@ -5558,7 +5576,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L21",
       "id": "tickets_05_claude_status_codeblock_1",
-      "community": 29,
+      "community": 30,
       "norm_label": "code:json ({\"hooks\":{)"
     },
     {
@@ -5567,7 +5585,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L36",
       "id": "tickets_05_claude_status_checks_run_in_order_cheapest_first",
-      "community": 29,
+      "community": 30,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5576,7 +5594,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L42",
       "id": "tickets_05_claude_status_done_when",
-      "community": 29,
+      "community": 30,
       "norm_label": "done when"
     },
     {
@@ -5585,7 +5603,7 @@
       "source_file": "docs/forge-m1/tickets/05-claude-status.md",
       "source_location": "L45",
       "id": "tickets_05_claude_status_not_included",
-      "community": 29,
+      "community": 30,
       "norm_label": "not included"
     },
     {
@@ -5594,7 +5612,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_06_close_tab_md",
-      "community": 43,
+      "community": 44,
       "norm_label": "06-close-tab.md"
     },
     {
@@ -5603,7 +5621,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L13",
       "id": "tickets_06_close_tab_goal",
-      "community": 43,
+      "community": 44,
       "norm_label": "goal"
     },
     {
@@ -5612,7 +5630,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L16",
       "id": "tickets_06_close_tab_context",
-      "community": 43,
+      "community": 44,
       "norm_label": "context"
     },
     {
@@ -5621,7 +5639,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L21",
       "id": "tickets_06_close_tab_checks_run_in_order_cheapest_first",
-      "community": 43,
+      "community": 44,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5630,7 +5648,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L27",
       "id": "tickets_06_close_tab_done_when",
-      "community": 43,
+      "community": 44,
       "norm_label": "done when"
     },
     {
@@ -5639,7 +5657,7 @@
       "source_file": "docs/forge-m1/tickets/06-close-tab.md",
       "source_location": "L31",
       "id": "tickets_06_close_tab_not_included",
-      "community": 43,
+      "community": 44,
       "norm_label": "not included"
     },
     {
@@ -5648,7 +5666,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_01_scaffold_md",
-      "community": 44,
+      "community": 45,
       "norm_label": "01-scaffold.md"
     },
     {
@@ -5657,7 +5675,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L33",
       "id": "tickets_01_scaffold_goal",
-      "community": 44,
+      "community": 45,
       "norm_label": "goal"
     },
     {
@@ -5666,7 +5684,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L36",
       "id": "tickets_01_scaffold_context",
-      "community": 44,
+      "community": 45,
       "norm_label": "context"
     },
     {
@@ -5675,7 +5693,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L43",
       "id": "tickets_01_scaffold_checks_run_in_order_cheapest_first",
-      "community": 44,
+      "community": 45,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5684,7 +5702,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L49",
       "id": "tickets_01_scaffold_done_when",
-      "community": 44,
+      "community": 45,
       "norm_label": "done when"
     },
     {
@@ -5693,7 +5711,7 @@
       "source_file": "docs/forge-m1/tickets/01-scaffold.md",
       "source_location": "L53",
       "id": "tickets_01_scaffold_not_included",
-      "community": 44,
+      "community": 45,
       "norm_label": "not included"
     },
     {
@@ -5702,7 +5720,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_02_worktree_md",
-      "community": 30,
+      "community": 31,
       "norm_label": "02-worktree.md"
     },
     {
@@ -5711,7 +5729,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L10",
       "id": "tickets_02_worktree_goal",
-      "community": 30,
+      "community": 31,
       "norm_label": "goal"
     },
     {
@@ -5720,7 +5738,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L13",
       "id": "tickets_02_worktree_context",
-      "community": 30,
+      "community": 31,
       "norm_label": "context"
     },
     {
@@ -5729,7 +5747,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L16",
       "id": "tickets_02_worktree_codeblock_1",
-      "community": 30,
+      "community": 31,
       "norm_label": "code:rust (pub struct worktree { pub repo: pathbuf, pub path: pathbuf, )"
     },
     {
@@ -5738,7 +5756,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L29",
       "id": "tickets_02_worktree_checks_run_in_order_cheapest_first",
-      "community": 30,
+      "community": 31,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5747,7 +5765,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L33",
       "id": "tickets_02_worktree_done_when",
-      "community": 30,
+      "community": 31,
       "norm_label": "done when"
     },
     {
@@ -5756,7 +5774,7 @@
       "source_file": "docs/forge-m1/tickets/02-worktree.md",
       "source_location": "L36",
       "id": "tickets_02_worktree_not_included",
-      "community": 30,
+      "community": 31,
       "norm_label": "not included"
     },
     {
@@ -5765,7 +5783,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L1",
       "id": "docs_forge_m1_tickets_08_projects_md",
-      "community": 45,
+      "community": 46,
       "norm_label": "08-projects.md"
     },
     {
@@ -5774,7 +5792,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L17",
       "id": "tickets_08_projects_goal",
-      "community": 45,
+      "community": 46,
       "norm_label": "goal"
     },
     {
@@ -5783,7 +5801,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L20",
       "id": "tickets_08_projects_context",
-      "community": 45,
+      "community": 46,
       "norm_label": "context"
     },
     {
@@ -5792,7 +5810,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L29",
       "id": "tickets_08_projects_checks_run_in_order_cheapest_first",
-      "community": 45,
+      "community": 46,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5801,7 +5819,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L35",
       "id": "tickets_08_projects_done_when",
-      "community": 45,
+      "community": 46,
       "norm_label": "done when"
     },
     {
@@ -5810,7 +5828,7 @@
       "source_file": "docs/forge-m1/tickets/08-projects.md",
       "source_location": "L39",
       "id": "tickets_08_projects_not_included",
-      "community": 45,
+      "community": 46,
       "norm_label": "not included"
     },
     {
@@ -5819,7 +5837,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m3_2_product_md",
-      "community": 46,
+      "community": 47,
       "norm_label": "product.md"
     },
     {
@@ -5828,7 +5846,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m3_2_product_agentfleet_m3_2_remove_project",
-      "community": 46,
+      "community": 47,
       "norm_label": "agentfleet (m3.2 \u2014 remove project)"
     },
     {
@@ -5837,7 +5855,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m3_2_product_what_why",
-      "community": 46,
+      "community": 47,
       "norm_label": "what / why"
     },
     {
@@ -5846,7 +5864,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m3_2_product_primary_user_story",
-      "community": 46,
+      "community": 47,
       "norm_label": "primary user story"
     },
     {
@@ -5855,7 +5873,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m3_2_product_scope",
-      "community": 46,
+      "community": 47,
       "norm_label": "scope"
     },
     {
@@ -5864,7 +5882,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L24",
       "id": "forge_m3_2_product_out_of_scope",
-      "community": 46,
+      "community": 47,
       "norm_label": "out of scope"
     },
     {
@@ -5873,7 +5891,7 @@
       "source_file": "docs/forge-m3.2/PRODUCT.md",
       "source_location": "L30",
       "id": "forge_m3_2_product_success_demo",
-      "community": 46,
+      "community": 47,
       "norm_label": "success demo"
     },
     {
@@ -5936,7 +5954,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L1",
       "id": "docs_forge_m3_2_tickets_28_remove_project_cascade_md",
-      "community": 31,
+      "community": 32,
       "norm_label": "28-remove-project-cascade.md"
     },
     {
@@ -5945,7 +5963,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L11",
       "id": "tickets_28_remove_project_cascade_goal",
-      "community": 31,
+      "community": 32,
       "norm_label": "goal"
     },
     {
@@ -5954,7 +5972,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L14",
       "id": "tickets_28_remove_project_cascade_context",
-      "community": 31,
+      "community": 32,
       "norm_label": "context"
     },
     {
@@ -5963,7 +5981,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L21",
       "id": "tickets_28_remove_project_cascade_codeblock_1",
-      "community": 31,
+      "community": 32,
       "norm_label": "code:rust (#[derive(serialize, debug, partialeq)])"
     },
     {
@@ -5972,7 +5990,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L41",
       "id": "tickets_28_remove_project_cascade_checks_run_in_order_cheapest_first",
-      "community": 31,
+      "community": 32,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -5981,7 +5999,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L45",
       "id": "tickets_28_remove_project_cascade_done_when",
-      "community": 31,
+      "community": 32,
       "norm_label": "done when"
     },
     {
@@ -5990,7 +6008,7 @@
       "source_file": "docs/forge-m3.2/tickets/28-remove-project-cascade.md",
       "source_location": "L49",
       "id": "tickets_28_remove_project_cascade_not_included",
-      "community": 31,
+      "community": 32,
       "norm_label": "not included"
     },
     {
@@ -5999,7 +6017,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L1",
       "id": "docs_forge_m3_2_tickets_29_remove_project_ui_md",
-      "community": 32,
+      "community": 33,
       "norm_label": "29-remove-project-ui.md"
     },
     {
@@ -6008,7 +6026,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L13",
       "id": "tickets_29_remove_project_ui_goal",
-      "community": 32,
+      "community": 33,
       "norm_label": "goal"
     },
     {
@@ -6017,7 +6035,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L16",
       "id": "tickets_29_remove_project_ui_context",
-      "community": 32,
+      "community": 33,
       "norm_label": "context"
     },
     {
@@ -6026,7 +6044,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L21",
       "id": "tickets_29_remove_project_ui_codeblock_1",
-      "community": 32,
+      "community": 33,
       "norm_label": "code:ts (export async function removeproject(id: string): promise<voi)"
     },
     {
@@ -6035,7 +6053,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L32",
       "id": "tickets_29_remove_project_ui_checks_run_in_order_cheapest_first",
-      "community": 32,
+      "community": 33,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -6044,7 +6062,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L37",
       "id": "tickets_29_remove_project_ui_done_when",
-      "community": 32,
+      "community": 33,
       "norm_label": "done when"
     },
     {
@@ -6053,7 +6071,7 @@
       "source_file": "docs/forge-m3.2/tickets/29-remove-project-ui.md",
       "source_location": "L41",
       "id": "tickets_29_remove_project_ui_not_included",
-      "community": 32,
+      "community": 33,
       "norm_label": "not included"
     },
     {
@@ -6062,7 +6080,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m3_product_md",
-      "community": 47,
+      "community": 48,
       "norm_label": "product.md"
     },
     {
@@ -6071,7 +6089,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m3_product_agentfleet_m3_release",
-      "community": 47,
+      "community": 48,
       "norm_label": "agentfleet (m3 \u2014 release)"
     },
     {
@@ -6080,7 +6098,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m3_product_what_why",
-      "community": 47,
+      "community": 48,
       "norm_label": "what / why"
     },
     {
@@ -6089,7 +6107,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m3_product_primary_user_story",
-      "community": 47,
+      "community": 48,
       "norm_label": "primary user story"
     },
     {
@@ -6098,7 +6116,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m3_product_scope_m3",
-      "community": 47,
+      "community": 48,
       "norm_label": "scope (m3)"
     },
     {
@@ -6107,7 +6125,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L24",
       "id": "forge_m3_product_out_of_scope",
-      "community": 47,
+      "community": 48,
       "norm_label": "out of scope"
     },
     {
@@ -6116,7 +6134,7 @@
       "source_file": "docs/forge-m3/PRODUCT.md",
       "source_location": "L30",
       "id": "forge_m3_product_success_demo",
-      "community": 47,
+      "community": 48,
       "norm_label": "success demo"
     },
     {
@@ -6557,7 +6575,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m4_product_md",
-      "community": 48,
+      "community": 49,
       "norm_label": "product.md"
     },
     {
@@ -6566,7 +6584,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m4_product_agentfleet_m4_native_feeling_ui",
-      "community": 48,
+      "community": 49,
       "norm_label": "agentfleet (m4 \u2014 native-feeling ui)"
     },
     {
@@ -6575,7 +6593,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m4_product_what_why",
-      "community": 48,
+      "community": 49,
       "norm_label": "what / why"
     },
     {
@@ -6584,7 +6602,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m4_product_primary_user_story",
-      "community": 48,
+      "community": 49,
       "norm_label": "primary user story"
     },
     {
@@ -6593,7 +6611,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m4_product_scope",
-      "community": 48,
+      "community": 49,
       "norm_label": "scope"
     },
     {
@@ -6602,7 +6620,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L25",
       "id": "forge_m4_product_out_of_scope",
-      "community": 48,
+      "community": 49,
       "norm_label": "out of scope"
     },
     {
@@ -6611,7 +6629,7 @@
       "source_file": "docs/forge-m4/PRODUCT.md",
       "source_location": "L31",
       "id": "forge_m4_product_success_demo",
-      "community": 48,
+      "community": 49,
       "norm_label": "success demo"
     },
     {
@@ -6674,7 +6692,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_33_new_session_popover_md",
-      "community": 13,
+      "community": 14,
       "norm_label": "33-new-session-popover.md"
     },
     {
@@ -6683,7 +6701,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L14",
       "id": "tickets_33_new_session_popover_goal",
-      "community": 13,
+      "community": 14,
       "norm_label": "goal"
     },
     {
@@ -6692,7 +6710,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L17",
       "id": "tickets_33_new_session_popover_context",
-      "community": 13,
+      "community": 14,
       "norm_label": "context"
     },
     {
@@ -6701,7 +6719,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L20",
       "id": "tickets_33_new_session_popover_store_changes",
-      "community": 13,
+      "community": 14,
       "norm_label": "store changes"
     },
     {
@@ -6710,7 +6728,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L22",
       "id": "tickets_33_new_session_popover_codeblock_1",
-      "community": 13,
+      "community": 14,
       "norm_label": "code:ts (newsession: null as { anchor: htmlelement; projectid: string)"
     },
     {
@@ -6719,7 +6737,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L27",
       "id": "tickets_33_new_session_popover_sidebar_svelte",
-      "community": 13,
+      "community": 14,
       "norm_label": "sidebar.svelte"
     },
     {
@@ -6728,7 +6746,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L33",
       "id": "tickets_33_new_session_popover_newsessionpopover_svelte_new",
-      "community": 13,
+      "community": 14,
       "norm_label": "newsessionpopover.svelte (new)"
     },
     {
@@ -6737,7 +6755,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L34",
       "id": "tickets_33_new_session_popover_codeblock_2",
-      "community": 13,
+      "community": 14,
       "norm_label": "code:svelte (<popover anchor={store.newsession?.anchor ?? null} open={sto)"
     },
     {
@@ -6746,7 +6764,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L39",
       "id": "tickets_33_new_session_popover_cleanup",
-      "community": 13,
+      "community": 14,
       "norm_label": "cleanup"
     },
     {
@@ -6755,7 +6773,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L42",
       "id": "tickets_33_new_session_popover_checks_run_in_order_cheapest_first",
-      "community": 13,
+      "community": 14,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -6764,7 +6782,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L49",
       "id": "tickets_33_new_session_popover_done_when",
-      "community": 13,
+      "community": 14,
       "norm_label": "done when"
     },
     {
@@ -6773,7 +6791,7 @@
       "source_file": "docs/forge-m4/tickets/33-new-session-popover.md",
       "source_location": "L55",
       "id": "tickets_33_new_session_popover_not_included",
-      "community": 13,
+      "community": 14,
       "norm_label": "not included"
     },
     {
@@ -6782,7 +6800,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_35_chrome_restyle_md",
-      "community": 15,
+      "community": 16,
       "norm_label": "35-chrome-restyle.md"
     },
     {
@@ -6791,7 +6809,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L15",
       "id": "tickets_35_chrome_restyle_goal",
-      "community": 15,
+      "community": 16,
       "norm_label": "goal"
     },
     {
@@ -6800,7 +6818,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L18",
       "id": "tickets_35_chrome_restyle_context",
-      "community": 15,
+      "community": 16,
       "norm_label": "context"
     },
     {
@@ -6809,7 +6827,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L21",
       "id": "tickets_35_chrome_restyle_sidebar_svelte",
-      "community": 15,
+      "community": 16,
       "norm_label": "sidebar.svelte"
     },
     {
@@ -6818,7 +6836,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L29",
       "id": "tickets_35_chrome_restyle_statusbar_svelte",
-      "community": 15,
+      "community": 16,
       "norm_label": "statusbar.svelte"
     },
     {
@@ -6827,7 +6845,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L32",
       "id": "tickets_35_chrome_restyle_app_svelte",
-      "community": 15,
+      "community": 16,
       "norm_label": "app.svelte"
     },
     {
@@ -6836,7 +6854,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L35",
       "id": "tickets_35_chrome_restyle_agenticon_svelte",
-      "community": 15,
+      "community": 16,
       "norm_label": "agenticon.svelte"
     },
     {
@@ -6845,7 +6863,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L38",
       "id": "tickets_35_chrome_restyle_messages_svelte_scratchpad_svelte_substitution_only",
-      "community": 15,
+      "community": 16,
       "norm_label": "messages.svelte, scratchpad.svelte (substitution only)"
     },
     {
@@ -6854,7 +6872,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L41",
       "id": "tickets_35_chrome_restyle_checks_run_in_order_cheapest_first",
-      "community": 15,
+      "community": 16,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -6863,7 +6881,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L48",
       "id": "tickets_35_chrome_restyle_done_when",
-      "community": 15,
+      "community": 16,
       "norm_label": "done when"
     },
     {
@@ -6872,7 +6890,7 @@
       "source_file": "docs/forge-m4/tickets/35-chrome-restyle.md",
       "source_location": "L52",
       "id": "tickets_35_chrome_restyle_not_included",
-      "community": 15,
+      "community": 16,
       "norm_label": "not included"
     },
     {
@@ -6881,7 +6899,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_37_docs_and_gate_md",
-      "community": 49,
+      "community": 50,
       "norm_label": "37-docs-and-gate.md"
     },
     {
@@ -6890,7 +6908,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L12",
       "id": "tickets_37_docs_and_gate_goal",
-      "community": 49,
+      "community": 50,
       "norm_label": "goal"
     },
     {
@@ -6899,7 +6917,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L15",
       "id": "tickets_37_docs_and_gate_context",
-      "community": 49,
+      "community": 50,
       "norm_label": "context"
     },
     {
@@ -6908,7 +6926,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L22",
       "id": "tickets_37_docs_and_gate_checks_run_in_order_cheapest_first",
-      "community": 49,
+      "community": 50,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -6917,7 +6935,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L29",
       "id": "tickets_37_docs_and_gate_done_when",
-      "community": 49,
+      "community": 50,
       "norm_label": "done when"
     },
     {
@@ -6926,7 +6944,7 @@
       "source_file": "docs/forge-m4/tickets/37-docs-and-gate.md",
       "source_location": "L32",
       "id": "tickets_37_docs_and_gate_not_included",
-      "community": 49,
+      "community": 50,
       "norm_label": "not included"
     },
     {
@@ -6935,7 +6953,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_38_theme_load_fallback_md",
-      "community": 50,
+      "community": 51,
       "norm_label": "38-theme-load-fallback.md"
     },
     {
@@ -6944,7 +6962,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L10",
       "id": "tickets_38_theme_load_fallback_goal",
-      "community": 50,
+      "community": 51,
       "norm_label": "goal"
     },
     {
@@ -6953,7 +6971,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L13",
       "id": "tickets_38_theme_load_fallback_context",
-      "community": 50,
+      "community": 51,
       "norm_label": "context"
     },
     {
@@ -6962,7 +6980,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L18",
       "id": "tickets_38_theme_load_fallback_checks",
-      "community": 50,
+      "community": 51,
       "norm_label": "checks"
     },
     {
@@ -6971,7 +6989,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L21",
       "id": "tickets_38_theme_load_fallback_done_when",
-      "community": 50,
+      "community": 51,
       "norm_label": "done when"
     },
     {
@@ -6980,7 +6998,7 @@
       "source_file": "docs/forge-m4/tickets/38-theme-load-fallback.md",
       "source_location": "L24",
       "id": "tickets_38_theme_load_fallback_not_included",
-      "community": 50,
+      "community": 51,
       "norm_label": "not included"
     },
     {
@@ -6989,7 +7007,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_32_ui_primitives_md",
-      "community": 11,
+      "community": 13,
       "norm_label": "32-ui-primitives.md"
     },
     {
@@ -6998,7 +7016,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L19",
       "id": "tickets_32_ui_primitives_goal",
-      "community": 11,
+      "community": 13,
       "norm_label": "goal"
     },
     {
@@ -7007,7 +7025,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L22",
       "id": "tickets_32_ui_primitives_context",
-      "community": 11,
+      "community": 13,
       "norm_label": "context"
     },
     {
@@ -7016,7 +7034,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L25",
       "id": "tickets_32_ui_primitives_button_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "button.svelte"
     },
     {
@@ -7025,7 +7043,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L28",
       "id": "tickets_32_ui_primitives_switch_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "switch.svelte"
     },
     {
@@ -7034,7 +7052,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L31",
       "id": "tickets_32_ui_primitives_segmentedcontrol_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "segmentedcontrol.svelte"
     },
     {
@@ -7043,7 +7061,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L34",
       "id": "tickets_32_ui_primitives_tabs_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "tabs.svelte"
     },
     {
@@ -7052,7 +7070,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L37",
       "id": "tickets_32_ui_primitives_popover_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "popover.svelte"
     },
     {
@@ -7061,7 +7079,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L40",
       "id": "tickets_32_ui_primitives_dialog_svelte",
-      "community": 11,
+      "community": 13,
       "norm_label": "dialog.svelte"
     },
     {
@@ -7070,7 +7088,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L43",
       "id": "tickets_32_ui_primitives_tests_testing_library_svelte_user_event",
-      "community": 11,
+      "community": 13,
       "norm_label": "tests (`@testing-library/svelte` + `user-event`)"
     },
     {
@@ -7079,7 +7097,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L48",
       "id": "tickets_32_ui_primitives_checks_run_in_order_cheapest_first",
-      "community": 11,
+      "community": 13,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7088,7 +7106,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L54",
       "id": "tickets_32_ui_primitives_done_when",
-      "community": 11,
+      "community": 13,
       "norm_label": "done when"
     },
     {
@@ -7097,7 +7115,7 @@
       "source_file": "docs/forge-m4/tickets/32-ui-primitives.md",
       "source_location": "L57",
       "id": "tickets_32_ui_primitives_not_included",
-      "community": 11,
+      "community": 13,
       "norm_label": "not included"
     },
     {
@@ -7106,7 +7124,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_36_dialogs_on_primitive_md",
-      "community": 51,
+      "community": 52,
       "norm_label": "36-dialogs-on-primitive.md"
     },
     {
@@ -7115,7 +7133,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L12",
       "id": "tickets_36_dialogs_on_primitive_goal",
-      "community": 51,
+      "community": 52,
       "norm_label": "goal"
     },
     {
@@ -7124,7 +7142,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L15",
       "id": "tickets_36_dialogs_on_primitive_context",
-      "community": 51,
+      "community": 52,
       "norm_label": "context"
     },
     {
@@ -7133,7 +7151,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L23",
       "id": "tickets_36_dialogs_on_primitive_checks_run_in_order_cheapest_first",
-      "community": 51,
+      "community": 52,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7142,7 +7160,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L29",
       "id": "tickets_36_dialogs_on_primitive_done_when",
-      "community": 51,
+      "community": 52,
       "norm_label": "done when"
     },
     {
@@ -7151,7 +7169,7 @@
       "source_file": "docs/forge-m4/tickets/36-dialogs-on-primitive.md",
       "source_location": "L32",
       "id": "tickets_36_dialogs_on_primitive_not_included",
-      "community": 51,
+      "community": 52,
       "norm_label": "not included"
     },
     {
@@ -7160,7 +7178,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_34_settings_tabs_autosave_md",
-      "community": 14,
+      "community": 15,
       "norm_label": "34-settings-tabs-autosave.md"
     },
     {
@@ -7169,7 +7187,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L17",
       "id": "tickets_34_settings_tabs_autosave_goal",
-      "community": 14,
+      "community": 15,
       "norm_label": "goal"
     },
     {
@@ -7178,7 +7196,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L20",
       "id": "tickets_34_settings_tabs_autosave_context",
-      "community": 14,
+      "community": 15,
       "norm_label": "context"
     },
     {
@@ -7187,7 +7205,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L23",
       "id": "tickets_34_settings_tabs_autosave_settingsstore_svelte_ts",
-      "community": 14,
+      "community": 15,
       "norm_label": "settingsstore.svelte.ts"
     },
     {
@@ -7196,7 +7214,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L25",
       "id": "tickets_34_settings_tabs_autosave_codeblock_1",
-      "community": 14,
+      "community": 15,
       "norm_label": "code:ts (/** deep-merge `patch` into a snapshot of the current settin)"
     },
     {
@@ -7205,7 +7223,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L31",
       "id": "tickets_34_settings_tabs_autosave_settingsstore_test_ts",
-      "community": 14,
+      "community": 15,
       "norm_label": "`settingsstore.test.ts`"
     },
     {
@@ -7214,7 +7232,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L34",
       "id": "tickets_34_settings_tabs_autosave_field_svelte_layout_helper",
-      "community": 14,
+      "community": 15,
       "norm_label": "`field.svelte` (layout helper)"
     },
     {
@@ -7223,7 +7241,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L37",
       "id": "tickets_34_settings_tabs_autosave_tabs_each_a_component_receiving_nothing_they_read_settings_value_and_call_updatesettings",
-      "community": 14,
+      "community": 15,
       "norm_label": "tabs (each a component receiving nothing; they read `settings.value` and call `updatesettings`)"
     },
     {
@@ -7232,7 +7250,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L45",
       "id": "tickets_34_settings_tabs_autosave_settingspane_svelte",
-      "community": 14,
+      "community": 15,
       "norm_label": "settingspane.svelte"
     },
     {
@@ -7241,7 +7259,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L48",
       "id": "tickets_34_settings_tabs_autosave_checks_run_in_order_cheapest_first",
-      "community": 14,
+      "community": 15,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7250,7 +7268,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L55",
       "id": "tickets_34_settings_tabs_autosave_done_when",
-      "community": 14,
+      "community": 15,
       "norm_label": "done when"
     },
     {
@@ -7259,7 +7277,7 @@
       "source_file": "docs/forge-m4/tickets/34-settings-tabs-autosave.md",
       "source_location": "L61",
       "id": "tickets_34_settings_tabs_autosave_not_included",
-      "community": 14,
+      "community": 15,
       "norm_label": "not included"
     },
     {
@@ -7268,7 +7286,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L1",
       "id": "docs_forge_m4_tickets_31_test_harness_md",
-      "community": 33,
+      "community": 34,
       "norm_label": "31-test-harness.md"
     },
     {
@@ -7277,7 +7295,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L13",
       "id": "tickets_31_test_harness_goal",
-      "community": 33,
+      "community": 34,
       "norm_label": "goal"
     },
     {
@@ -7286,7 +7304,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L16",
       "id": "tickets_31_test_harness_context",
-      "community": 33,
+      "community": 34,
       "norm_label": "context"
     },
     {
@@ -7295,7 +7313,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L22",
       "id": "tickets_31_test_harness_codeblock_1",
-      "community": 33,
+      "community": 34,
       "norm_label": "code:ts (test: { environment: \"jsdom\", include: [\"src/**/*.test.ts\"],)"
     },
     {
@@ -7304,7 +7322,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L29",
       "id": "tickets_31_test_harness_checks_run_in_order_cheapest_first",
-      "community": 33,
+      "community": 34,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7313,7 +7331,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L34",
       "id": "tickets_31_test_harness_done_when",
-      "community": 33,
+      "community": 34,
       "norm_label": "done when"
     },
     {
@@ -7322,7 +7340,7 @@
       "source_file": "docs/forge-m4/tickets/31-test-harness.md",
       "source_location": "L37",
       "id": "tickets_31_test_harness_not_included",
-      "community": 33,
+      "community": 34,
       "norm_label": "not included"
     },
     {
@@ -7331,7 +7349,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L1",
       "id": "docs_forge_m2_product_md",
-      "community": 52,
+      "community": 53,
       "norm_label": "product.md"
     },
     {
@@ -7340,7 +7358,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L8",
       "id": "forge_m2_product_agentfleet_m2_inter_session_messaging",
-      "community": 52,
+      "community": 53,
       "norm_label": "agentfleet (m2 \u2014 inter-session messaging)"
     },
     {
@@ -7349,7 +7367,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L10",
       "id": "forge_m2_product_what_why",
-      "community": 52,
+      "community": 53,
       "norm_label": "what / why"
     },
     {
@@ -7358,7 +7376,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L13",
       "id": "forge_m2_product_primary_user_story",
-      "community": 52,
+      "community": 53,
       "norm_label": "primary user story"
     },
     {
@@ -7367,7 +7385,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L16",
       "id": "forge_m2_product_scope_m2",
-      "community": 52,
+      "community": 53,
       "norm_label": "scope (m2)"
     },
     {
@@ -7376,7 +7394,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L25",
       "id": "forge_m2_product_out_of_scope",
-      "community": 52,
+      "community": 53,
       "norm_label": "out of scope"
     },
     {
@@ -7385,7 +7403,7 @@
       "source_file": "docs/forge-m2/PRODUCT.md",
       "source_location": "L31",
       "id": "forge_m2_product_success_demo",
-      "community": 52,
+      "community": 53,
       "norm_label": "success demo"
     },
     {
@@ -7448,7 +7466,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_14_scratchpad_md",
-      "community": 53,
+      "community": 54,
       "norm_label": "14-scratchpad.md"
     },
     {
@@ -7457,7 +7475,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L18",
       "id": "tickets_14_scratchpad_goal",
-      "community": 53,
+      "community": 54,
       "norm_label": "goal"
     },
     {
@@ -7466,7 +7484,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L21",
       "id": "tickets_14_scratchpad_context",
-      "community": 53,
+      "community": 54,
       "norm_label": "context"
     },
     {
@@ -7475,7 +7493,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L28",
       "id": "tickets_14_scratchpad_checks_run_in_order_cheapest_first",
-      "community": 53,
+      "community": 54,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7484,7 +7502,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L33",
       "id": "tickets_14_scratchpad_done_when",
-      "community": 53,
+      "community": 54,
       "norm_label": "done when"
     },
     {
@@ -7493,7 +7511,7 @@
       "source_file": "docs/forge-m2/tickets/14-scratchpad.md",
       "source_location": "L36",
       "id": "tickets_14_scratchpad_not_included",
-      "community": 53,
+      "community": 54,
       "norm_label": "not included"
     },
     {
@@ -7502,7 +7520,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_13_messages_ui_md",
-      "community": 54,
+      "community": 55,
       "norm_label": "13-messages-ui.md"
     },
     {
@@ -7511,7 +7529,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L17",
       "id": "tickets_13_messages_ui_goal",
-      "community": 54,
+      "community": 55,
       "norm_label": "goal"
     },
     {
@@ -7520,7 +7538,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L20",
       "id": "tickets_13_messages_ui_context",
-      "community": 54,
+      "community": 55,
       "norm_label": "context"
     },
     {
@@ -7529,7 +7547,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L27",
       "id": "tickets_13_messages_ui_checks_run_in_order_cheapest_first",
-      "community": 54,
+      "community": 55,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7538,7 +7556,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L33",
       "id": "tickets_13_messages_ui_done_when",
-      "community": 54,
+      "community": 55,
       "norm_label": "done when"
     },
     {
@@ -7547,7 +7565,7 @@
       "source_file": "docs/forge-m2/tickets/13-messages-ui.md",
       "source_location": "L37",
       "id": "tickets_13_messages_ui_not_included",
-      "community": 54,
+      "community": 55,
       "norm_label": "not included"
     },
     {
@@ -7556,7 +7574,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_11_runs_md",
-      "community": 55,
+      "community": 56,
       "norm_label": "11-runs.md"
     },
     {
@@ -7565,7 +7583,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L14",
       "id": "tickets_11_runs_goal",
-      "community": 55,
+      "community": 56,
       "norm_label": "goal"
     },
     {
@@ -7574,7 +7592,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L17",
       "id": "tickets_11_runs_context",
-      "community": 55,
+      "community": 56,
       "norm_label": "context"
     },
     {
@@ -7583,7 +7601,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L28",
       "id": "tickets_11_runs_checks_run_in_order_cheapest_first",
-      "community": 55,
+      "community": 56,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7592,7 +7610,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L33",
       "id": "tickets_11_runs_done_when",
-      "community": 55,
+      "community": 56,
       "norm_label": "done when"
     },
     {
@@ -7601,7 +7619,7 @@
       "source_file": "docs/forge-m2/tickets/11-runs.md",
       "source_location": "L38",
       "id": "tickets_11_runs_not_included",
-      "community": 55,
+      "community": 56,
       "norm_label": "not included"
     },
     {
@@ -7610,7 +7628,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_15_skill_guide_md",
-      "community": 56,
+      "community": 57,
       "norm_label": "15-skill-guide.md"
     },
     {
@@ -7619,7 +7637,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L12",
       "id": "tickets_15_skill_guide_goal",
-      "community": 56,
+      "community": 57,
       "norm_label": "goal"
     },
     {
@@ -7628,7 +7646,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L15",
       "id": "tickets_15_skill_guide_context",
-      "community": 56,
+      "community": 57,
       "norm_label": "context"
     },
     {
@@ -7637,7 +7655,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L20",
       "id": "tickets_15_skill_guide_checks_run_in_order_cheapest_first",
-      "community": 56,
+      "community": 57,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7646,7 +7664,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L25",
       "id": "tickets_15_skill_guide_done_when",
-      "community": 56,
+      "community": 57,
       "norm_label": "done when"
     },
     {
@@ -7655,7 +7673,7 @@
       "source_file": "docs/forge-m2/tickets/15-skill-guide.md",
       "source_location": "L28",
       "id": "tickets_15_skill_guide_not_included",
-      "community": 56,
+      "community": 57,
       "norm_label": "not included"
     },
     {
@@ -7664,7 +7682,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_12_delivery_md",
-      "community": 57,
+      "community": 58,
       "norm_label": "12-delivery.md"
     },
     {
@@ -7673,7 +7691,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L14",
       "id": "tickets_12_delivery_goal",
-      "community": 57,
+      "community": 58,
       "norm_label": "goal"
     },
     {
@@ -7682,7 +7700,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L17",
       "id": "tickets_12_delivery_context",
-      "community": 57,
+      "community": 58,
       "norm_label": "context"
     },
     {
@@ -7691,7 +7709,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L26",
       "id": "tickets_12_delivery_checks_run_in_order_cheapest_first",
-      "community": 57,
+      "community": 58,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7700,7 +7718,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L31",
       "id": "tickets_12_delivery_done_when",
-      "community": 57,
+      "community": 58,
       "norm_label": "done when"
     },
     {
@@ -7709,7 +7727,7 @@
       "source_file": "docs/forge-m2/tickets/12-delivery.md",
       "source_location": "L36",
       "id": "tickets_12_delivery_not_included",
-      "community": 57,
+      "community": 58,
       "norm_label": "not included"
     },
     {
@@ -7718,7 +7736,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_17_sidebar_polish_md",
-      "community": 58,
+      "community": 59,
       "norm_label": "17-sidebar-polish.md"
     },
     {
@@ -7727,7 +7745,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L13",
       "id": "tickets_17_sidebar_polish_goal",
-      "community": 58,
+      "community": 59,
       "norm_label": "goal"
     },
     {
@@ -7736,7 +7754,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L16",
       "id": "tickets_17_sidebar_polish_context",
-      "community": 58,
+      "community": 59,
       "norm_label": "context"
     },
     {
@@ -7745,7 +7763,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L21",
       "id": "tickets_17_sidebar_polish_checks_run_in_order_cheapest_first",
-      "community": 58,
+      "community": 59,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7754,7 +7772,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L25",
       "id": "tickets_17_sidebar_polish_done_when",
-      "community": 58,
+      "community": 59,
       "norm_label": "done when"
     },
     {
@@ -7763,7 +7781,7 @@
       "source_file": "docs/forge-m2/tickets/17-sidebar-polish.md",
       "source_location": "L28",
       "id": "tickets_17_sidebar_polish_not_included",
-      "community": 58,
+      "community": 59,
       "norm_label": "not included"
     },
     {
@@ -7772,7 +7790,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_18_2d_icons_md",
-      "community": 59,
+      "community": 60,
       "norm_label": "18-2d-icons.md"
     },
     {
@@ -7781,7 +7799,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L15",
       "id": "tickets_18_2d_icons_goal",
-      "community": 59,
+      "community": 60,
       "norm_label": "goal"
     },
     {
@@ -7790,7 +7808,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L18",
       "id": "tickets_18_2d_icons_context",
-      "community": 59,
+      "community": 60,
       "norm_label": "context"
     },
     {
@@ -7799,7 +7817,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L21",
       "id": "tickets_18_2d_icons_checks_run_in_order_cheapest_first",
-      "community": 59,
+      "community": 60,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7808,7 +7826,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L25",
       "id": "tickets_18_2d_icons_done_when",
-      "community": 59,
+      "community": 60,
       "norm_label": "done when"
     },
     {
@@ -7817,7 +7835,7 @@
       "source_file": "docs/forge-m2/tickets/18-2d-icons.md",
       "source_location": "L28",
       "id": "tickets_18_2d_icons_not_included",
-      "community": 59,
+      "community": 60,
       "norm_label": "not included"
     },
     {
@@ -7826,7 +7844,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_16_draft_fix_md",
-      "community": 60,
+      "community": 61,
       "norm_label": "16-draft-fix.md"
     },
     {
@@ -7835,7 +7853,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L11",
       "id": "tickets_16_draft_fix_goal",
-      "community": 60,
+      "community": 61,
       "norm_label": "goal"
     },
     {
@@ -7844,7 +7862,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L14",
       "id": "tickets_16_draft_fix_context",
-      "community": 60,
+      "community": 61,
       "norm_label": "context"
     },
     {
@@ -7853,7 +7871,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L21",
       "id": "tickets_16_draft_fix_checks_run_in_order_cheapest_first",
-      "community": 60,
+      "community": 61,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7862,7 +7880,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L26",
       "id": "tickets_16_draft_fix_done_when",
-      "community": 60,
+      "community": 61,
       "norm_label": "done when"
     },
     {
@@ -7871,7 +7889,7 @@
       "source_file": "docs/forge-m2/tickets/16-draft-fix.md",
       "source_location": "L29",
       "id": "tickets_16_draft_fix_not_included",
-      "community": 60,
+      "community": 61,
       "norm_label": "not included"
     },
     {
@@ -7880,7 +7898,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L1",
       "id": "docs_forge_m2_tickets_10_cli_broker_md",
-      "community": 61,
+      "community": 62,
       "norm_label": "10-cli-broker.md"
     },
     {
@@ -7889,7 +7907,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L17",
       "id": "tickets_10_cli_broker_goal",
-      "community": 61,
+      "community": 62,
       "norm_label": "goal"
     },
     {
@@ -7898,7 +7916,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L20",
       "id": "tickets_10_cli_broker_context",
-      "community": 61,
+      "community": 62,
       "norm_label": "context"
     },
     {
@@ -7907,7 +7925,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L31",
       "id": "tickets_10_cli_broker_checks_run_in_order_cheapest_first",
-      "community": 61,
+      "community": 62,
       "norm_label": "checks (run in order \u2014 cheapest first)"
     },
     {
@@ -7916,7 +7934,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L37",
       "id": "tickets_10_cli_broker_done_when",
-      "community": 61,
+      "community": 62,
       "norm_label": "done when"
     },
     {
@@ -7925,7 +7943,7 @@
       "source_file": "docs/forge-m2/tickets/10-cli-broker.md",
       "source_location": "L41",
       "id": "tickets_10_cli_broker_not_included",
-      "community": 61,
+      "community": 62,
       "norm_label": "not included"
     },
     {
@@ -7934,7 +7952,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L1",
       "id": "skills_agentfleet_skill_md",
-      "community": 19,
+      "community": 20,
       "norm_label": "skill.md"
     },
     {
@@ -7943,7 +7961,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L6",
       "id": "agentfleet_skill_agentfleet",
-      "community": 19,
+      "community": 20,
       "norm_label": "agentfleet"
     },
     {
@@ -7952,7 +7970,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L12",
       "id": "agentfleet_skill_find_sessions",
-      "community": 19,
+      "community": 20,
       "norm_label": "find sessions"
     },
     {
@@ -7961,7 +7979,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L18",
       "id": "agentfleet_skill_delegate_work",
-      "community": 19,
+      "community": 20,
       "norm_label": "delegate work"
     },
     {
@@ -7970,7 +7988,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L25",
       "id": "agentfleet_skill_spawn_a_session",
-      "community": 19,
+      "community": 20,
       "norm_label": "spawn a session"
     },
     {
@@ -7979,7 +7997,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L36",
       "id": "agentfleet_skill_roles",
-      "community": 19,
+      "community": 20,
       "norm_label": "roles"
     },
     {
@@ -7988,7 +8006,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L44",
       "id": "agentfleet_skill_close_a_session",
-      "community": 19,
+      "community": 20,
       "norm_label": "close a session"
     },
     {
@@ -7997,7 +8015,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L50",
       "id": "agentfleet_skill_handle_incoming_work",
-      "community": 19,
+      "community": 20,
       "norm_label": "handle incoming work"
     },
     {
@@ -8006,7 +8024,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L59",
       "id": "agentfleet_skill_scratchpad",
-      "community": 19,
+      "community": 20,
       "norm_label": "scratchpad"
     },
     {
@@ -8015,7 +8033,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L69",
       "id": "agentfleet_skill_ids",
-      "community": 19,
+      "community": 20,
       "norm_label": "ids"
     },
     {
@@ -8024,7 +8042,7 @@
       "source_file": "skills/agentfleet/SKILL.md",
       "source_location": "L73",
       "id": "agentfleet_skill_exit_codes",
-      "community": 19,
+      "community": 20,
       "norm_label": "exit codes"
     },
     {
@@ -8086,7 +8104,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m5 \u2014 spawn sessions from a session + codex agent)",
       "id": "spawn_codex_product_agentfleet_m5_spawn_sessions_from_a_session_codex_agent"
     },
@@ -8095,7 +8113,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L10",
-      "community": 5,
+      "community": 6,
       "norm_label": "what / why",
       "id": "spawn_codex_product_what_why"
     },
@@ -8104,7 +8122,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L13",
-      "community": 5,
+      "community": 6,
       "norm_label": "primary user story",
       "id": "spawn_codex_product_primary_user_story"
     },
@@ -8113,7 +8131,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L16",
-      "community": 5,
+      "community": 6,
       "norm_label": "scope",
       "id": "spawn_codex_product_scope"
     },
@@ -8122,7 +8140,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L26",
-      "community": 5,
+      "community": 6,
       "norm_label": "out of scope",
       "id": "spawn_codex_product_out_of_scope"
     },
@@ -8131,7 +8149,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L34",
-      "community": 5,
+      "community": 6,
       "norm_label": "success demo",
       "id": "spawn_codex_product_success_demo"
     },
@@ -8140,7 +8158,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L1",
-      "community": 10,
+      "community": 11,
       "norm_label": "state \u2014 rewrite after every ticket completes; never append. \u226430 lines total.",
       "id": "spawn_codex_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total"
     },
@@ -8149,7 +8167,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L3",
-      "community": 10,
+      "community": 11,
       "norm_label": "now",
       "id": "spawn_codex_state_now"
     },
@@ -8158,7 +8176,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L6",
-      "community": 10,
+      "community": 11,
       "norm_label": "next",
       "id": "spawn_codex_state_next"
     },
@@ -8167,7 +8185,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L9",
-      "community": 10,
+      "community": 11,
       "norm_label": "decisions",
       "id": "spawn_codex_state_decisions"
     },
@@ -8176,7 +8194,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L18",
-      "community": 10,
+      "community": 11,
       "norm_label": "blockers",
       "id": "spawn_codex_state_blockers"
     },
@@ -8185,7 +8203,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
-      "community": 23,
+      "community": 25,
       "norm_label": "agentfleet",
       "id": "spawn_codex_readme_agentfleet"
     },
@@ -8194,7 +8212,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L7",
-      "community": 23,
+      "community": 25,
       "norm_label": "features",
       "id": "spawn_codex_readme_features"
     },
@@ -8203,7 +8221,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L13",
-      "community": 23,
+      "community": 25,
       "norm_label": "messaging between sessions",
       "id": "spawn_codex_readme_messaging_between_sessions"
     },
@@ -8212,7 +8230,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m4 \u2014 native-feeling ui)",
       "id": "agentfleet_product_agentfleet_m4_native_feeling_ui"
     },
@@ -8221,7 +8239,7 @@
       "file_type": "document",
       "source_file": "tickets/33-new-session-popover.md",
       "source_location": "L1",
-      "community": 13,
+      "community": 14,
       "norm_label": "33-new-session-popover.md",
       "id": "tickets_33_new_session_popover_md"
     },
@@ -8230,7 +8248,7 @@
       "file_type": "document",
       "source_file": "tickets/35-chrome-restyle.md",
       "source_location": "L1",
-      "community": 15,
+      "community": 16,
       "norm_label": "35-chrome-restyle.md",
       "id": "tickets_35_chrome_restyle_md"
     },
@@ -8239,7 +8257,7 @@
       "file_type": "document",
       "source_file": "tickets/37-docs-and-gate.md",
       "source_location": "L1",
-      "community": 49,
+      "community": 50,
       "norm_label": "37-docs-and-gate.md",
       "id": "tickets_37_docs_and_gate_md"
     },
@@ -8248,7 +8266,7 @@
       "file_type": "document",
       "source_file": "tickets/38-theme-load-fallback.md",
       "source_location": "L1",
-      "community": 50,
+      "community": 51,
       "norm_label": "38-theme-load-fallback.md",
       "id": "tickets_38_theme_load_fallback_md"
     },
@@ -8257,7 +8275,7 @@
       "file_type": "document",
       "source_file": "tickets/32-ui-primitives.md",
       "source_location": "L1",
-      "community": 11,
+      "community": 13,
       "norm_label": "32-ui-primitives.md",
       "id": "tickets_32_ui_primitives_md"
     },
@@ -8266,7 +8284,7 @@
       "file_type": "document",
       "source_file": "tickets/36-dialogs-on-primitive.md",
       "source_location": "L1",
-      "community": 51,
+      "community": 52,
       "norm_label": "36-dialogs-on-primitive.md",
       "id": "tickets_36_dialogs_on_primitive_md"
     },
@@ -8275,7 +8293,7 @@
       "file_type": "document",
       "source_file": "tickets/34-settings-tabs-autosave.md",
       "source_location": "L1",
-      "community": 14,
+      "community": 15,
       "norm_label": "34-settings-tabs-autosave.md",
       "id": "tickets_34_settings_tabs_autosave_md"
     },
@@ -8284,7 +8302,7 @@
       "file_type": "document",
       "source_file": "tickets/31-test-harness.md",
       "source_location": "L1",
-      "community": 33,
+      "community": 34,
       "norm_label": "31-test-harness.md",
       "id": "tickets_31_test_harness_md"
     },
@@ -8303,7 +8321,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m3.2 \u2014 remove project)",
       "id": "agentfleet_product_agentfleet_m3_2_remove_project"
     },
@@ -8312,7 +8330,7 @@
       "file_type": "document",
       "source_file": "tickets/28-remove-project-cascade.md",
       "source_location": "L1",
-      "community": 31,
+      "community": 32,
       "norm_label": "28-remove-project-cascade.md",
       "id": "tickets_28_remove_project_cascade_md"
     },
@@ -8321,7 +8339,7 @@
       "file_type": "document",
       "source_file": "tickets/29-remove-project-ui.md",
       "source_location": "L1",
-      "community": 32,
+      "community": 33,
       "norm_label": "29-remove-project-ui.md",
       "id": "tickets_29_remove_project_ui_md"
     },
@@ -8375,7 +8393,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m3.2 \u2014 remove project)",
       "id": "remove_project_product_agentfleet_m3_2_remove_project"
     },
@@ -8384,7 +8402,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L10",
-      "community": 5,
+      "community": 6,
       "norm_label": "what / why",
       "id": "remove_project_product_what_why"
     },
@@ -8393,7 +8411,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L13",
-      "community": 5,
+      "community": 6,
       "norm_label": "primary user story",
       "id": "remove_project_product_primary_user_story"
     },
@@ -8402,7 +8420,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L16",
-      "community": 5,
+      "community": 6,
       "norm_label": "scope",
       "id": "remove_project_product_scope"
     },
@@ -8411,7 +8429,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L24",
-      "community": 5,
+      "community": 6,
       "norm_label": "out of scope",
       "id": "remove_project_product_out_of_scope"
     },
@@ -8420,7 +8438,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L30",
-      "community": 5,
+      "community": 6,
       "norm_label": "success demo",
       "id": "remove_project_product_success_demo"
     },
@@ -8429,7 +8447,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L1",
-      "community": 10,
+      "community": 11,
       "norm_label": "state \u2014 rewrite after every ticket completes; never append. \u226430 lines total.",
       "id": "remove_project_state_state_rewrite_after_every_ticket_completes_never_append_30_lines_total"
     },
@@ -8438,7 +8456,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L3",
-      "community": 10,
+      "community": 11,
       "norm_label": "now",
       "id": "remove_project_state_now"
     },
@@ -8447,7 +8465,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L6",
-      "community": 10,
+      "community": 11,
       "norm_label": "next",
       "id": "remove_project_state_next"
     },
@@ -8456,7 +8474,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L9",
-      "community": 10,
+      "community": 11,
       "norm_label": "decisions",
       "id": "remove_project_state_decisions"
     },
@@ -8465,7 +8483,7 @@
       "file_type": "document",
       "source_file": "STATE.md",
       "source_location": "L19",
-      "community": 10,
+      "community": 11,
       "norm_label": "blockers",
       "id": "remove_project_state_blockers"
     },
@@ -8474,7 +8492,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
-      "community": 23,
+      "community": 25,
       "norm_label": "agentfleet",
       "id": "remove_project_readme_agentfleet"
     },
@@ -8483,7 +8501,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L9",
-      "community": 23,
+      "community": 25,
       "norm_label": "messaging between sessions",
       "id": "remove_project_readme_messaging_between_sessions"
     },
@@ -8492,7 +8510,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m2 \u2014 inter-session messaging)",
       "id": "agentfleet_product_agentfleet_m2_inter_session_messaging"
     },
@@ -8501,7 +8519,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L16",
-      "community": 5,
+      "community": 6,
       "norm_label": "scope (m2)",
       "id": "agentfleet_product_scope_m2"
     },
@@ -8510,7 +8528,7 @@
       "file_type": "document",
       "source_file": "tickets/14-scratchpad.md",
       "source_location": "L1",
-      "community": 53,
+      "community": 54,
       "norm_label": "14-scratchpad.md",
       "id": "tickets_14_scratchpad_md"
     },
@@ -8519,7 +8537,7 @@
       "file_type": "document",
       "source_file": "tickets/13-messages-ui.md",
       "source_location": "L1",
-      "community": 54,
+      "community": 55,
       "norm_label": "13-messages-ui.md",
       "id": "tickets_13_messages_ui_md"
     },
@@ -8528,7 +8546,7 @@
       "file_type": "document",
       "source_file": "tickets/11-runs.md",
       "source_location": "L1",
-      "community": 55,
+      "community": 56,
       "norm_label": "11-runs.md",
       "id": "tickets_11_runs_md"
     },
@@ -8537,7 +8555,7 @@
       "file_type": "document",
       "source_file": "tickets/15-skill-guide.md",
       "source_location": "L1",
-      "community": 56,
+      "community": 57,
       "norm_label": "15-skill-guide.md",
       "id": "tickets_15_skill_guide_md"
     },
@@ -8546,7 +8564,7 @@
       "file_type": "document",
       "source_file": "tickets/12-delivery.md",
       "source_location": "L1",
-      "community": 57,
+      "community": 58,
       "norm_label": "12-delivery.md",
       "id": "tickets_12_delivery_md"
     },
@@ -8555,7 +8573,7 @@
       "file_type": "document",
       "source_file": "tickets/17-sidebar-polish.md",
       "source_location": "L1",
-      "community": 58,
+      "community": 59,
       "norm_label": "17-sidebar-polish.md",
       "id": "tickets_17_sidebar_polish_md"
     },
@@ -8564,7 +8582,7 @@
       "file_type": "document",
       "source_file": "tickets/18-2d-icons.md",
       "source_location": "L1",
-      "community": 59,
+      "community": 60,
       "norm_label": "18-2d-icons.md",
       "id": "tickets_18_2d_icons_md"
     },
@@ -8573,7 +8591,7 @@
       "file_type": "document",
       "source_file": "tickets/16-draft-fix.md",
       "source_location": "L1",
-      "community": 60,
+      "community": 61,
       "norm_label": "16-draft-fix.md",
       "id": "tickets_16_draft_fix_md"
     },
@@ -8582,7 +8600,7 @@
       "file_type": "document",
       "source_file": "tickets/10-cli-broker.md",
       "source_location": "L1",
-      "community": 61,
+      "community": 62,
       "norm_label": "10-cli-broker.md",
       "id": "tickets_10_cli_broker_md"
     },
@@ -8591,7 +8609,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L8",
-      "community": 5,
+      "community": 6,
       "norm_label": "agentfleet (m1)",
       "id": "agentfleet_product_agentfleet_m1"
     },
@@ -8600,7 +8618,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L16",
-      "community": 5,
+      "community": 6,
       "norm_label": "scope (m1)",
       "id": "agentfleet_product_scope_m1"
     },
@@ -8609,7 +8627,7 @@
       "file_type": "document",
       "source_file": "PRODUCT.md",
       "source_location": "L37",
-      "community": 5,
+      "community": 6,
       "norm_label": "stack constraints (fixed)",
       "id": "agentfleet_product_stack_constraints_fixed"
     },
@@ -8618,7 +8636,7 @@
       "file_type": "document",
       "source_file": "tickets/07-persist-restore.md",
       "source_location": "L1",
-      "community": 40,
+      "community": 41,
       "norm_label": "07-persist-restore.md",
       "id": "tickets_07_persist_restore_md"
     },
@@ -8627,7 +8645,7 @@
       "file_type": "document",
       "source_file": "tickets/09-sidebar.md",
       "source_location": "L1",
-      "community": 41,
+      "community": 42,
       "norm_label": "09-sidebar.md",
       "id": "tickets_09_sidebar_md"
     },
@@ -8636,7 +8654,7 @@
       "file_type": "document",
       "source_file": "tickets/03-pty.md",
       "source_location": "L1",
-      "community": 28,
+      "community": 29,
       "norm_label": "03-pty.md",
       "id": "tickets_03_pty_md"
     },
@@ -8645,7 +8663,7 @@
       "file_type": "document",
       "source_file": "tickets/04-shell-tab.md",
       "source_location": "L1",
-      "community": 42,
+      "community": 43,
       "norm_label": "04-shell-tab.md",
       "id": "tickets_04_shell_tab_md"
     },
@@ -8654,7 +8672,7 @@
       "file_type": "document",
       "source_file": "tickets/05-claude-status.md",
       "source_location": "L1",
-      "community": 29,
+      "community": 30,
       "norm_label": "05-claude-status.md",
       "id": "tickets_05_claude_status_md"
     },
@@ -8663,7 +8681,7 @@
       "file_type": "document",
       "source_file": "tickets/06-close-tab.md",
       "source_location": "L1",
-      "community": 43,
+      "community": 44,
       "norm_label": "06-close-tab.md",
       "id": "tickets_06_close_tab_md"
     },
@@ -8672,7 +8690,7 @@
       "file_type": "document",
       "source_file": "tickets/01-scaffold.md",
       "source_location": "L1",
-      "community": 44,
+      "community": 45,
       "norm_label": "01-scaffold.md",
       "id": "tickets_01_scaffold_md"
     },
@@ -8681,7 +8699,7 @@
       "file_type": "document",
       "source_file": "tickets/02-worktree.md",
       "source_location": "L1",
-      "community": 30,
+      "community": 31,
       "norm_label": "02-worktree.md",
       "id": "tickets_02_worktree_md"
     },
@@ -8690,7 +8708,7 @@
       "file_type": "document",
       "source_file": "tickets/08-projects.md",
       "source_location": "L1",
-      "community": 45,
+      "community": 46,
       "norm_label": "08-projects.md",
       "id": "tickets_08_projects_md"
     },
@@ -9589,6 +9607,17 @@
       "weight": 1.0,
       "source": "src_session_spawn_for",
       "target": "platform_unix_home_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src-tauri/src/session.rs",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "src_session_spawn_for",
+      "target": "src_agent_permission_from_settings"
     },
     {
       "relation": "calls",
@@ -11226,9 +11255,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_git_ok",
-      "confidence_score": 1.0
+      "target": "src_project_git_ok"
     },
     {
       "relation": "contains",
@@ -11236,9 +11265,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_git",
-      "confidence_score": 1.0
+      "target": "src_project_git"
     },
     {
       "relation": "contains",
@@ -11246,9 +11275,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_init_repo",
-      "confidence_score": 1.0
+      "target": "src_project_init_repo"
     },
     {
       "relation": "contains",
@@ -11286,9 +11315,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_register",
-      "confidence_score": 1.0
+      "target": "src_project_register"
     },
     {
       "relation": "contains",
@@ -11306,9 +11335,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_init_project",
-      "confidence_score": 1.0
+      "target": "src_project_init_project"
     },
     {
       "relation": "contains",
@@ -11356,9 +11385,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_tauri_src_project_rs",
-      "target": "src_project_init_repo_makes_addable_with_head",
-      "confidence_score": 1.0
+      "target": "src_project_init_repo_makes_addable_with_head"
     },
     {
       "relation": "contains",
@@ -11377,9 +11406,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_init_repo",
-      "target": "src_project_git_ok",
-      "confidence_score": 1.0
+      "target": "src_project_git_ok"
     },
     {
       "relation": "calls",
@@ -11388,9 +11417,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_add_to",
-      "target": "src_project_git_ok",
-      "confidence_score": 1.0
+      "target": "src_project_git_ok"
     },
     {
       "relation": "calls",
@@ -11399,9 +11428,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_init_repo",
-      "target": "src_project_git",
-      "confidence_score": 1.0
+      "target": "src_project_git"
     },
     {
       "relation": "calls",
@@ -11421,9 +11450,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_init_project",
-      "target": "src_project_init_repo",
-      "confidence_score": 1.0
+      "target": "src_project_init_repo"
     },
     {
       "relation": "calls",
@@ -11432,9 +11461,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L201",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_init_repo_makes_addable_with_head",
-      "target": "src_project_init_repo",
-      "confidence_score": 1.0
+      "target": "src_project_init_repo"
     },
     {
       "relation": "calls",
@@ -11454,9 +11483,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_register",
-      "target": "src_project_add_to",
-      "confidence_score": 1.0
+      "target": "src_project_add_to"
     },
     {
       "relation": "calls",
@@ -11542,9 +11571,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_add_project",
-      "target": "src_project_register",
-      "confidence_score": 1.0
+      "target": "src_project_register"
     },
     {
       "relation": "calls",
@@ -11553,9 +11582,9 @@
       "source_file": "src-tauri/src/project.rs",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_project_init_project",
-      "target": "src_project_register",
-      "confidence_score": 1.0
+      "target": "src_project_register"
     },
     {
       "relation": "calls",
@@ -12928,6 +12957,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_permission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -13078,6 +13117,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L369",
+      "weight": 1.0,
+      "source": "src_tauri_src_agent_rs",
+      "target": "src_agent_permission_from_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
       "source_location": "L320",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -13137,6 +13186,16 @@
       "confidence_score": 1.0,
       "source": "src_agent_settings_roundtrip",
       "target": "src_agent_shell_quote"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src-tauri/src/agent.rs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "src_agent_permission",
+      "target": "src_agent_permission_from_settings",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15504,9 +15563,9 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/App.svelte",
+      "confidence_score": 1.0,
       "source": "src_app_svelte",
-      "target": "src_lib_initrepodialog_svelte",
-      "confidence_score": 1.0
+      "target": "src_lib_initrepodialog_svelte"
     },
     {
       "relation": "imports_from",
@@ -15952,25 +16011,25 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/InitRepoDialog.svelte",
+      "confidence_score": 1.0,
       "source": "src_lib_initrepodialog_svelte",
-      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte",
-      "confidence_score": 1.0
+      "target": "users_aazevedo_dev_agentfleet_src_lib_sessions_svelte"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/InitRepoDialog.svelte",
+      "confidence_score": 1.0,
       "source": "src_lib_initrepodialog_svelte",
-      "target": "src_lib_ui_dialog_svelte",
-      "confidence_score": 1.0
+      "target": "src_lib_ui_dialog_svelte"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/InitRepoDialog.svelte",
+      "confidence_score": 1.0,
       "source": "src_lib_initrepodialog_svelte",
-      "target": "src_lib_ui_button_svelte",
-      "confidence_score": 1.0
+      "target": "src_lib_ui_button_svelte"
     },
     {
       "relation": "imports_from",
@@ -16820,9 +16879,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_sessions_svelte_ts",
-      "target": "lib_sessions_svelte_remember",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_remember"
     },
     {
       "relation": "contains",
@@ -16840,9 +16899,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_sessions_svelte_ts",
-      "target": "lib_sessions_svelte_initproject",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_initproject"
     },
     {
       "relation": "contains",
@@ -16850,9 +16909,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_sessions_svelte_ts",
-      "target": "lib_sessions_svelte_addprojectorofferinit",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_addprojectorofferinit"
     },
     {
       "relation": "contains",
@@ -17088,9 +17147,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sessions_svelte_addproject",
-      "target": "lib_sessions_svelte_remember",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_remember"
     },
     {
       "relation": "calls",
@@ -17099,9 +17158,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sessions_svelte_initproject",
-      "target": "lib_sessions_svelte_remember",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_remember"
     },
     {
       "relation": "calls",
@@ -17110,9 +17169,9 @@
       "source_file": "src/lib/sessions.svelte.ts",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sessions_svelte_addprojectorofferinit",
-      "target": "lib_sessions_svelte_addproject",
-      "confidence_score": 1.0
+      "target": "lib_sessions_svelte_addproject"
     },
     {
       "relation": "calls",
@@ -23806,5 +23865,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "65d387a38519208b1929ebd495a052d40b49d8aa"
+  "built_at_commit": "4314207678518871cc7307644cbf9e93f4d3573d"
 }
