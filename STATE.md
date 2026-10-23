@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-M5 tickets 30–32 done (1 attempt each; 56 Rust tests, svelte-check 0 errors, build ok; Codex hook probe passed: exit 0, status `waiting`, session_id captured). Uncommitted on worktree-spawn-codex. Awaiting approval 2 of 2 (diff summary).
+M5 done and approved (2 of 2): tickets 30–32, 56 Rust tests, svelte-check 0 errors, build ok, Codex hook probe passed. Committed 3cf7621 on worktree-spawn-codex; NOT merged (main's working tree holds the M4 session's uncommitted PRODUCT.md/STATE.md/tickets).
 
 ## Next
-manual probe in `npm run tauri dev`: spawn claude + codex from a Claude session, wait, close; restore a Codex session → then commit + merge to main (expect overlap with M4 session)
+manual probe in `npm run tauri dev` (spawn claude + codex, wait, close, restore Codex) → merge into main once M4 commits or stashes: `git merge worktree-spawn-codex`
 
 ## Decisions
 - branch `worktree-spawn-codex` (worktree under .claude/worktrees/spawn-codex), base main@0f121eb
