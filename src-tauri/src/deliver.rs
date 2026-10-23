@@ -10,9 +10,14 @@ use crate::status::Status;
 #[derive(Debug, PartialEq)]
 pub enum Decision {
     Deliver,
-    Wait,
+    /// Keep the run queued; the text says what it is waiting for.
+    Wait(&'static str),
     NeedsAttention(&'static str),
 }
+
+pub const WAIT_BUSY: &str = "waiting: target is working";
+pub const WAIT_DRAFT: &str =
+    "waiting: target has unsent text in its prompt (press Enter or Esc there, or Execute)";
 
 pub fn can_deliver(
     status: Status,
@@ -32,13 +37,20 @@ pub fn can_deliver(
     }
     if force || (status == Status::Waiting && draft_len == 0) {
         Decision::Deliver
+    } else if status == Status::Waiting {
+        Decision::Wait(WAIT_DRAFT)
     } else {
-        Decision::Wait
+        Decision::Wait(WAIT_BUSY)
     }
 }
 
-/// Track the user's draft length across a chunk of terminal input, ignoring
-/// control/reply sequences. Shortcut: sequences split across writes are not handled.
+/// Track the user's draft length across a chunk of terminal input.
+///
+/// Counts printable characters typed into the agent's prompt and ignores everything
+/// xterm.js sends on its own: CSI (arrows, focus, cursor reports, DA), SS3 keys, and
+/// string sequences (OSC colour replies, DCS/APC/PM/SOS). Enter, Esc, Ctrl-C and Ctrl-U
+/// all clear the prompt in Claude Code and Codex, so they reset the count.
+/// Shortcut: sequences split across writes are not handled.
 pub fn apply_draft(draft: usize, bytes: &[u8]) -> usize {
     let mut d = draft;
     let mut i = 0;
@@ -55,10 +67,25 @@ pub fn apply_draft(draft: usize, bytes: &[u8]) -> usize {
                     i += 1; // final byte
                 }
                 Some(b'O') => i += 2,
-                Some(_) => i += 1,
-                None => {}
+                // OSC / DCS / APC / PM / SOS: runs until BEL or ST (ESC \).
+                Some(b']' | b'P' | b'_' | b'^' | b'X') => {
+                    i += 1;
+                    while i < bytes.len() {
+                        if bytes[i] == 0x07 {
+                            i += 1;
+                            break;
+                        }
+                        if bytes[i] == 0x1b && bytes.get(i + 1) == Some(&b'\\') {
+                            i += 2;
+                            break;
+                        }
+                        i += 1;
+                    }
+                }
+                // Esc key (alone, or followed by a plain key): clears the prompt.
+                Some(_) | None => d = 0,
             },
-            b'\r' | b'\n' => d = 0,
+            b'\r' | b'\n' | 0x03 | 0x15 => d = 0,
             0x7f | 0x08 => d = d.saturating_sub(1),
             0..=0x1f | 0x80..=0xbf => {}
             _ => d += 1,
@@ -93,7 +120,13 @@ pub fn try_deliver(app: &AppHandle, run_id: Uuid, force: bool) -> Result<bool, S
             None => Decision::NeedsAttention("session ended"),
         };
         match decision {
-            Decision::Wait => return Ok(false),
+            Decision::Wait(why) => {
+                // Still queued; record why so Messages can show it. Nothing to notify if unchanged.
+                if run.detail.as_deref() == Some(why) {
+                    return Ok(false);
+                }
+                collab::set_status(&mut c, run_id, RunStatus::Queued, Some(why), now);
+            }
             Decision::NeedsAttention(msg) => {
                 collab::set_status(&mut c, run_id, RunStatus::NeedsAttention, Some(msg), now);
             }
@@ -229,9 +262,18 @@ mod tests {
         use Decision::*;
         let c = Agent::Claude;
         assert_eq!(can_deliver(Status::Waiting, 0, c, true, false), Deliver);
-        assert_eq!(can_deliver(Status::Waiting, 3, c, true, false), Wait);
-        assert_eq!(can_deliver(Status::Working, 0, c, true, false), Wait);
-        assert_eq!(can_deliver(Status::Unknown, 0, c, true, false), Wait);
+        assert_eq!(
+            can_deliver(Status::Waiting, 3, c, true, false),
+            Wait(WAIT_DRAFT)
+        );
+        assert_eq!(
+            can_deliver(Status::Working, 0, c, true, false),
+            Wait(WAIT_BUSY)
+        );
+        assert_eq!(
+            can_deliver(Status::Unknown, 0, c, true, false),
+            Wait(WAIT_BUSY)
+        );
         assert_eq!(can_deliver(Status::Working, 5, c, true, true), Deliver);
         assert!(matches!(
             can_deliver(Status::Waiting, 0, c, false, false),
@@ -243,7 +285,7 @@ mod tests {
         );
         assert_eq!(
             can_deliver(Status::Working, 0, Agent::Codex, true, false),
-            Wait
+            Wait(WAIT_BUSY)
         );
         assert!(matches!(
             can_deliver(Status::Waiting, 0, Agent::Shell, true, true),
@@ -265,6 +307,19 @@ mod tests {
         assert_eq!(apply_draft(0, b"ab\x7f"), 1);
         assert_eq!(apply_draft(0, b"abc\r"), 0);
         assert_eq!(apply_draft(0, b"\x1b[200~hi\x1b[201~"), 2);
+        // xterm.js replies: OSC colour (BEL or ST terminated), DCS, DA, kitty keyboard.
+        assert_eq!(apply_draft(2, b"\x1b]11;rgb:1e1e/1e1e/1e1e\x1b\\"), 2);
+        assert_eq!(apply_draft(2, b"\x1b]10;rgb:dddd/dddd/dddd\x07"), 2);
+        assert_eq!(apply_draft(2, b"\x1bP>|xterm.js(6.0.0)\x1b\\"), 2);
+        assert_eq!(apply_draft(2, b"\x1b[?1;2c\x1b[?0u"), 2);
+        // Unterminated string sequence swallows the rest of the chunk, nothing more.
+        assert_eq!(apply_draft(2, b"\x1b]11;rgb:1e"), 2);
+        // Esc, Ctrl-C and Ctrl-U clear the agent's prompt.
+        assert_eq!(apply_draft(4, b"\x1b"), 0);
+        assert_eq!(apply_draft(4, b"\x1bk"), 1);
+        assert_eq!(apply_draft(4, b"\x03"), 0);
+        assert_eq!(apply_draft(4, b"\x15"), 0);
+        assert_eq!(apply_draft(0, b"ab\x15cd"), 2);
     }
 
     #[test]
