@@ -11,7 +11,7 @@ const USAGE: &str = "usage: agentfleet <command>
 commands:
   list                      list the sessions in this project
   send <session> <text...>  send a request to an agent session (id8 or full id)
-  spawn [--agent claude|codex|shell] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
+  spawn [--agent claude|codex|shell] [--no-worktree] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
                             start a sibling session, queue the prompt, print '<id8> <run>'
   close <session>           close a sibling session in this project
   inbox                     list requests to/from this session
@@ -27,6 +27,7 @@ commands:
   guide                     print the agentfleet skill (works outside sessions)
   skill install             write the skill to ~/.claude/skills and ~/.codex/skills (outside sessions too)
   hook-context              print the skill as SessionStart hook JSON (used by the app's hooks)
+  statusline <file>         record the model from Claude status-line JSON on stdin (used by the app)
   help                      show this help
 ";
 
@@ -40,6 +41,9 @@ pub enum Cmd {
     Guide,
     HookContext,
     SkillInstall,
+    StatusLine {
+        file: PathBuf,
+    },
     Send {
         session: String,
         text: String,
@@ -65,6 +69,8 @@ pub enum Cmd {
         role: Option<String>,
         agent_args: Vec<String>,
         text: Option<String>,
+        /// `false` for `--no-worktree`: run in the project root on the current branch.
+        worktree: bool,
     },
     Close {
         session: String,
@@ -114,9 +120,15 @@ fn parse_scratch(rest: &[String]) -> Result<Cmd, String> {
 fn parse_spawn(rest: &[String]) -> Result<Cmd, String> {
     let (mut agent, mut name, mut role) = (None, None, None);
     let mut agent_args = Vec::new();
+    let mut worktree = true;
     let mut i = 0;
     while i < rest.len() && rest[i] != "-" && rest[i].starts_with("--") {
         let flag = rest[i].as_str();
+        if flag == "--no-worktree" {
+            worktree = false;
+            i += 1;
+            continue;
+        }
         let val = rest
             .get(i + 1)
             .cloned()
@@ -149,6 +161,7 @@ fn parse_spawn(rest: &[String]) -> Result<Cmd, String> {
         role,
         agent_args,
         text,
+        worktree,
     })
 }
 
@@ -184,6 +197,7 @@ pub fn parse(args: &[String]) -> Result<Cmd, String> {
         Some("guide") => Err("guide takes no arguments".into()),
         Some("hook-context") if rest.is_empty() => Ok(Cmd::HookContext),
         Some("hook-context") => Err("hook-context takes no arguments".into()),
+        Some("statusline") => one("statusline").map(|f| Cmd::StatusLine { file: f.into() }),
         Some("skill") => match rest {
             [v] if v == "install" => Ok(Cmd::SkillInstall),
             _ => Err("skill needs install".into()),
@@ -213,6 +227,11 @@ pub fn main(args: Vec<String>) -> i32 {
         }
         Ok(Cmd::HookContext) => {
             println!("{}", hook_context_json());
+            return 0;
+        }
+        Ok(Cmd::StatusLine { file }) => {
+            let model = statusline(std::io::stdin(), &file);
+            print!("{model}");
             return 0;
         }
         Ok(Cmd::SkillInstall) => {
@@ -267,6 +286,33 @@ pub fn hook_context_json() -> String {
     .to_string()
 }
 
+/// Claude status-line handler: read the JSON from `input`, take `model.display_name`
+/// (fallback `model.id`), write it to `file` and return it for stdout. Never fails:
+/// bad input yields "" and leaves `file` untouched.
+pub fn statusline(mut input: impl std::io::Read, file: &Path) -> String {
+    let mut buf = String::new();
+    if input.read_to_string(&mut buf).is_err() {
+        return String::new();
+    }
+    let v: Value = match serde_json::from_str(&buf) {
+        Ok(v) => v,
+        Err(_) => return String::new(),
+    };
+    let pick = |k: &str| {
+        v["model"][k]
+            .as_str()
+            .filter(|s| !s.is_empty())
+            .map(str::to_string)
+    };
+    let model = pick("display_name")
+        .or_else(|| pick("id"))
+        .unwrap_or_default();
+    if !model.is_empty() {
+        let _ = std::fs::write(file, &model);
+    }
+    model
+}
+
 /// Where `skill install` writes: always Claude's skills dir, Codex's too when `~/.codex` exists.
 pub fn skill_targets(home: &Path, codex_exists: bool) -> Vec<PathBuf> {
     let mut v = vec![home.join(".claude/skills/agentfleet/SKILL.md")];
@@ -315,7 +361,9 @@ fn resolve_session(session: &str) -> Result<String, String> {
 
 fn run(cmd: Cmd) -> Result<i32, String> {
     match cmd {
-        Cmd::Help | Cmd::Guide | Cmd::HookContext | Cmd::SkillInstall => unreachable!(),
+        Cmd::Help | Cmd::Guide | Cmd::HookContext | Cmd::SkillInstall | Cmd::StatusLine { .. } => {
+            unreachable!()
+        }
         Cmd::List => {
             print_list(&call("session.list", Map::new())?);
             Ok(0)
@@ -326,6 +374,7 @@ fn run(cmd: Cmd) -> Result<i32, String> {
             role,
             agent_args,
             text,
+            worktree,
         } => {
             let text = match text {
                 Some(t) => Some(t),
@@ -355,6 +404,9 @@ fn run(cmd: Cmd) -> Result<i32, String> {
             }
             if !agent_args.is_empty() {
                 extra.insert("agentArgs".into(), agent_args.into());
+            }
+            if !worktree {
+                extra.insert("worktree".into(), false.into());
             }
             let v = call_timeout("session.spawn", extra, 30)?;
             println!(
@@ -560,6 +612,13 @@ mod tests {
         assert_eq!(parse(&a(&["hook-context"])), Ok(Cmd::HookContext));
         assert!(parse(&a(&["hook-context", "x"])).is_err());
         assert_eq!(parse(&a(&["skill", "install"])), Ok(Cmd::SkillInstall));
+        assert_eq!(
+            parse(&a(&["statusline", "/r/x.model"])),
+            Ok(Cmd::StatusLine {
+                file: "/r/x.model".into()
+            })
+        );
+        assert!(parse(&a(&["statusline"])).is_err());
         assert!(parse(&a(&["skill"])).is_err());
         assert!(parse(&a(&["skill", "remove"])).is_err());
         assert_eq!(
@@ -603,7 +662,38 @@ mod tests {
                 name: Some("rev".into()),
                 role: Some("r".into()),
                 agent_args: vec!["--model".into(), "opus".into()],
-                text: Some("do it".into())
+                text: Some("do it".into()),
+                worktree: true
+            })
+        );
+        assert_eq!(
+            parse(&a(&["spawn", "--no-worktree", "--name", "x", "hi"])),
+            Ok(Cmd::Spawn {
+                agent: None,
+                name: Some("x".into()),
+                role: None,
+                agent_args: vec![],
+                text: Some("hi".into()),
+                worktree: false
+            })
+        );
+        assert_eq!(
+            parse(&a(&[
+                "spawn",
+                "--agent",
+                "claude",
+                "--no-worktree",
+                "--role",
+                "r",
+                "go"
+            ])),
+            Ok(Cmd::Spawn {
+                agent: Some("claude".into()),
+                name: None,
+                role: Some("r".into()),
+                agent_args: vec![],
+                text: Some("go".into()),
+                worktree: false
             })
         );
         assert_eq!(
@@ -613,7 +703,8 @@ mod tests {
                 name: None,
                 role: None,
                 agent_args: vec![],
-                text: None
+                text: None,
+                worktree: true
             })
         );
         assert!(parse(&a(&["spawn", "--agent", "shell", "hi"])).is_err());
@@ -691,6 +782,23 @@ mod tests {
         for p in written {
             assert_eq!(std::fs::read_to_string(p).unwrap(), GUIDE);
         }
+    }
+
+    #[test]
+    fn statusline_records_model() {
+        let dir = tempfile::tempdir().unwrap();
+        let f = dir.path().join("x.model");
+        let json = r#"{"model":{"display_name":"Opus 5.5","id":"claude-opus-5-5"}}"#;
+        assert_eq!(statusline(json.as_bytes(), &f), "Opus 5.5");
+        assert_eq!(std::fs::read_to_string(&f).unwrap(), "Opus 5.5");
+        let id_only = r#"{"model":{"id":"claude-opus-5-5"}}"#;
+        assert_eq!(statusline(id_only.as_bytes(), &f), "claude-opus-5-5");
+        assert_eq!(std::fs::read_to_string(&f).unwrap(), "claude-opus-5-5");
+        let g = dir.path().join("y.model");
+        assert_eq!(statusline("not json".as_bytes(), &g), "");
+        assert!(!g.exists());
+        assert_eq!(statusline("{}".as_bytes(), &g), "");
+        assert!(!g.exists());
     }
 
     #[test]
