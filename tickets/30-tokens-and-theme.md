@@ -66,7 +66,7 @@ Add `function xtermTheme()` that reads the `--term-*` vars via `getComputedStyle
 
 ## Done when
 - `npm run tauri dev` with macOS in light mode: window background is `#f5f5f7`, text dark, terminal white with dark text. Switch macOS to dark: app and terminal flip without reload.
-- `~/.agentfleet/settings.json` with `"theme": "dark"` + relaunch: dark regardless of OS. `"theme": "purple"` + relaunch: file ignored with the stderr message already printed by `load` (defaults used). `invoke set_settings` with bad theme rejects with the exact message.
+- `~/.agentfleet/settings.json` with `"theme": "dark"` + relaunch: dark regardless of OS. `"theme": "purple"` + relaunch: loads as `system` with a stderr note (ticket 38). `invoke set_settings` with bad theme rejects with the exact message.
 - `cargo test` all green (49 + new).
 
 ## Not included

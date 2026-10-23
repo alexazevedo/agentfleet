@@ -73,7 +73,7 @@ pub fn settings_path() -> PathBuf {
 
 pub fn load(path: &Path) -> Settings {
     match fs::read_to_string(path) {
-        Ok(t) => serde_json::from_str(&t).unwrap_or_else(|e| {
+        Ok(t) => serde_json::from_str(&t).map(normalize).unwrap_or_else(|e| {
             eprintln!("agentfleet: bad settings.json, using defaults: {e}");
             Settings::default()
         }),
@@ -97,6 +97,18 @@ pub fn save(s: &Settings, path: &Path) -> io::Result<()> {
     fs::write(&tmp, json)?;
     fs::set_permissions(&tmp, fs::Permissions::from_mode(0o600))?;
     fs::rename(&tmp, path)
+}
+
+/// Repair values a hand-edited file may contain that the frontend cannot represent.
+fn normalize(mut s: Settings) -> Settings {
+    if !matches!(s.theme.as_str(), "system" | "light" | "dark") {
+        eprintln!(
+            "agentfleet: unknown theme {:?} in settings.json, using system",
+            s.theme
+        );
+        s.theme = "system".into();
+    }
+    s
 }
 
 fn validate(s: &Settings) -> Result<(), String> {
@@ -186,6 +198,16 @@ mod tests {
         save(&s, &p).unwrap();
         assert_eq!(load(&p), s);
         assert_eq!(load(&dir.path().join("nope.json")), Settings::default());
+    }
+
+    #[test]
+    fn unknown_theme_falls_back() {
+        let dir = tempfile::tempdir().unwrap();
+        let p = dir.path().join("settings.json");
+        fs::write(&p, r#"{"theme":"purple","autoDelivery":false}"#).unwrap();
+        let s = load(&p);
+        assert_eq!(s.theme, "system");
+        assert!(!s.auto_delivery);
     }
 
     #[test]
