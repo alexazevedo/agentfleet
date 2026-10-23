@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import {
     initScratchpadListener,
     loadScratchpad,
@@ -12,39 +12,67 @@
   let revision = $state(0);
   let dirty = $state(false);
   let error = $state("");
+  let saving = $state(false);
+  let edits = 0;
+  let loadVersion = 0;
+  let projectVersion = 0;
 
   async function reload() {
+    const source = projectId;
+    const version = ++loadVersion;
+    const editVersion = edits;
     try {
-      const p = await loadScratchpad(projectId);
+      const p = await loadScratchpad(source);
+      if (source !== projectId || version !== loadVersion || editVersion !== edits) return;
       text = p.text;
       revision = p.revision;
       dirty = false;
       error = "";
     } catch (e) {
-      error = String(e);
+      if (source === projectId && version === loadVersion) error = String(e);
     }
   }
 
   async function save() {
+    if (saving) return;
+    const source = projectId;
+    const snapshot = text;
+    const editVersion = edits;
+    const generation = projectVersion;
+    ++loadVersion;
+    saving = true;
     try {
-      revision = await saveScratchpad(projectId, text, revision);
-      dirty = false;
+      const savedRevision = await saveScratchpad(source, snapshot, revision);
+      if (generation !== projectVersion) return;
+      revision = savedRevision;
+      dirty = editVersion !== edits;
       error = "";
     } catch (e) {
-      error = String(e);
+      if (generation === projectVersion) error = String(e);
+    } finally {
+      if (generation === projectVersion) saving = false;
     }
   }
 
   // Reload when the project changes.
   $effect(() => {
     projectId;
-    reload();
+    untrack(() => {
+      text = "";
+      revision = 0;
+      dirty = false;
+      saving = false;
+      ++projectVersion;
+      ++edits;
+      reload();
+    });
+    return () => { ++loadVersion; };
   });
 
   onMount(() => {
     initScratchpadListener();
     return onScratchpadChanged((id) => {
-      if (id === projectId && !dirty) reload();
+      if (id === projectId && !dirty && !saving) reload();
     });
   });
 </script>
@@ -52,19 +80,19 @@
 <div class="pad">
   <div class="bar">
     <span class="rev">rev {revision}{dirty ? " (edited)" : ""}</span>
-    <button type="button" disabled={!dirty} onclick={save}>Save</button>
-    <button type="button" onclick={reload}>Reload</button>
+    <button type="button" disabled={!dirty || saving} onclick={save}>Save</button>
+    <button type="button" disabled={saving} onclick={reload}>Reload</button>
   </div>
   {#if error}
     <div class="err">
       {error}
-      <button type="button" onclick={reload}>Reload</button>
+      <button type="button" disabled={saving} onclick={reload}>Reload</button>
     </div>
   {/if}
   <textarea
     placeholder="Project scratchpad (Markdown). Agents can use `agentfleet scratchpad`."
     bind:value={text}
-    oninput={() => (dirty = true)}
+    oninput={() => { dirty = true; ++edits; ++loadVersion; }}
   ></textarea>
 </div>
 

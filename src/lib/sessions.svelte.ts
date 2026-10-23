@@ -3,7 +3,7 @@ import { listen } from "@tauri-apps/api/event";
 
 export type AgentKind = "claude" | "codex" | "pi" | "opencode" | "shell";
 
-export type Status = "unknown" | "working" | "waiting" | "ended";
+export type Status = "unknown" | "working" | "waiting" | "blocked" | "ended";
 
 export interface Project {
   id: string;

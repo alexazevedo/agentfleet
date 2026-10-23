@@ -297,6 +297,9 @@
   .dot.waiting {
     background: var(--warning);
   }
+  .dot.blocked {
+    background: var(--warning);
+  }
   .dot.ended {
     background: var(--danger);
   }

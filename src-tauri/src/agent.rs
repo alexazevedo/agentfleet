@@ -96,7 +96,7 @@ pub fn write_hooks_settings(
             "SessionStart": [{"hooks": [hook("waiting"), context]}],
             "UserPromptSubmit": [{"hooks": [hook("working")]}],
             "PreToolUse": [{"matcher": "", "hooks": [hook("working")]}],
-            "PermissionRequest": [{"hooks": [hook("waiting")]}],
+            "PermissionRequest": [{"hooks": [hook("blocked")]}],
             "Stop": [{"hooks": [hook("waiting")]}],
         },
     });
@@ -105,10 +105,11 @@ pub fn write_hooks_settings(
 
 /// Codex hook events and the status word each one writes.
 const CODEX_HOOKS: [(&str, &str); 6] = [
-    ("SessionStart", "waiting"),
+    // Codex fires this on the first submitted turn; startup readiness comes from OSC.
+    ("SessionStart", "working"),
     ("UserPromptSubmit", "working"),
     ("PreToolUse", "working"),
-    ("PermissionRequest", "waiting"),
+    ("PermissionRequest", "blocked"),
     ("Stop", "waiting"),
     ("Interrupt", "waiting"),
 ];
@@ -292,15 +293,18 @@ export const AgentfleetStatus = async () => ({{
       case "session.created":
         if (p.info && !p.info.parentID && !root()) {{
           try {{ fs.writeFileSync(PAYLOAD, JSON.stringify({{ session_id: p.info.id }})); }} catch {{}}
-          write("waiting");
+          write("working");
         }}
         break;
       case "session.status":
         if (mine(p.sessionID)) write(p.status && p.status.type === "idle" ? "waiting" : "working");
         break;
       case "session.idle":
-      case "permission.updated":
         if (mine(p.sessionID)) write("waiting");
+        break;
+      case "permission.updated":
+      case "permission.asked":
+        if (mine(p.sessionID)) write("blocked");
         break;
       case "permission.replied":
         if (mine(p.sessionID)) write("working");
@@ -426,6 +430,10 @@ mod tests {
         let model = dir.path().join("it's.model");
         write_hooks_settings(&status, &shim, &model, &dest).unwrap();
         let v: serde_json::Value = serde_json::from_slice(&std::fs::read(&dest).unwrap()).unwrap();
+        assert!(v["hooks"]["PermissionRequest"][0]["hooks"][0]["command"]
+            .as_str()
+            .unwrap()
+            .contains("blocked"));
         let quoted = shell_quote(&status.to_string_lossy());
         assert_eq!(v["permissions"]["allow"][0], "Bash(agentfleet:*)");
         assert_eq!(v["statusLine"]["type"], "command");
@@ -456,6 +464,14 @@ mod tests {
 
     #[test]
     fn codex_overrides() {
+        assert_eq!(
+            CODEX_HOOKS
+                .iter()
+                .find(|(event, _)| *event == "PermissionRequest")
+                .unwrap()
+                .1,
+            "blocked"
+        );
         let o = codex_hook_overrides(&PathBuf::from("/h/x.codex-hook.sh"));
         assert_eq!(o.len(), 6);
         for (event, word) in CODEX_HOOKS {

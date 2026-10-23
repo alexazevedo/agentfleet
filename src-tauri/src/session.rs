@@ -179,9 +179,35 @@ pub fn register(
     };
     let info = info_for(&session);
     let mut map = sessions.lock().map_err(|e| e.to_string())?;
-    map.insert(id, session);
-    persist(&map, &projects.lock().map_err(|e| e.to_string())?);
+    let list = projects.lock().map_err(|e| e.to_string())?;
+    insert_registered(&mut map, &list, session)?;
+    persist(&map, &list);
     Ok(info)
+}
+
+/// Recheck the project at commit time: it may have been removed during git work.
+fn insert_registered(
+    map: &mut HashMap<Uuid, Session>,
+    projects: &[Project],
+    session: Session,
+) -> Result<(), String> {
+    if !projects
+        .iter()
+        .any(|p| p.id == session.project_id && p.path == session.repo)
+    {
+        if session.owns_worktree {
+            worktree::remove(&session.worktree).map_err(|e| {
+                format!(
+                    "project removed; worktree kept at {}: {}",
+                    session.worktree.path.display(),
+                    worktree_error_message(&e)
+                )
+            })?;
+        }
+        return Err("project was removed while creating the session".into());
+    }
+    map.insert(session.id, session);
+    Ok(())
 }
 
 // Lock order everywhere: sessions, then projects.
@@ -197,7 +223,6 @@ pub fn create_session(
     worktree: Option<bool>,
     on_data: Channel<InvokeResponseBody>,
     sessions: State<'_, Sessions>,
-    projects: State<'_, Projects>,
     app: AppHandle,
 ) -> Result<SessionInfo, String> {
     let agent = Agent::parse(&agent)?;
@@ -214,8 +239,8 @@ pub fn create_session(
     let mut map = sessions.lock().map_err(|e| e.to_string())?;
     let s = map.get_mut(&id).ok_or("no such session")?;
     if let Err(e) = spawn_for(s, &app, cols, rows, on_data, false) {
-        map.remove(&id);
-        persist(&map, &projects.lock().map_err(|e| e.to_string())?);
+        drop(map);
+        close_one(&app, id).map_err(|cleanup| format!("{e}; cleanup failed: {cleanup}"))?;
         return Err(e);
     }
     Ok(info)
@@ -248,10 +273,12 @@ fn spawn_for(
     );
     let mut command = format!("{path_prefix}exec \"$SHELL\" -i");
     let mut poller_stop = None;
+    let mut poller = None;
     if session.agent != Agent::Shell {
         let run = platform::home_dir().join(".agentfleet/run");
         std::fs::create_dir_all(&run).map_err(|e| e.to_string())?;
         let status_file = run.join(format!("{id}.status"));
+        reset_status_file(&status_file).map_err(|e| e.to_string())?;
         let permission = {
             let s = app.state::<SettingsState>();
             let s = s.lock().map_err(|e| e.to_string())?;
@@ -316,7 +343,7 @@ fn spawn_for(
             }
         };
         command = format!("{path_prefix}exec {launch}");
-        status::spawn_poller(app.clone(), id, status_file, model_source, stop_rx);
+        poller = Some((status_file, model_source, stop_rx));
         poller_stop = Some(stop_tx.clone());
     }
     let exit_app = app.clone();
@@ -330,7 +357,12 @@ fn spawn_for(
             if let Ok(mut st) = ready.lock() {
                 if !st.1 && agent::codex_ready_scan(&mut st.0, &chunk) {
                     st.1 = true;
-                    mark_waiting_if_unknown(&ready_app, id);
+                    let app = ready_app.clone();
+                    // Never run delivery on the PTY reader: a paste can fill the
+                    // input buffer while the agent is blocked writing output.
+                    tauri::async_runtime::spawn_blocking(move || {
+                        status::mark_waiting_if_unknown(&app, id)
+                    });
                 }
             }
             let _ = on_data.send(InvokeResponseBody::Raw(chunk));
@@ -347,7 +379,7 @@ fn spawn_for(
         let fallback_app = app.clone();
         tauri::async_runtime::spawn(async move {
             tokio::time::sleep(std::time::Duration::from_secs(6)).await;
-            mark_waiting_if_unknown(&fallback_app, id);
+            status::mark_waiting_if_unknown(&fallback_app, id);
         });
     }
     let handle = pty::spawn(
@@ -370,22 +402,17 @@ fn spawn_for(
     session.token = token;
     session.status = Status::Unknown;
     session.draft_len = 0;
+    if let Some((file, source, stop)) = poller {
+        status::spawn_poller(app.clone(), id, file, source, stop);
+    }
     Ok(())
 }
 
-/// Emit `waiting` for `id` only while its status is still `Unknown` (lock-and-release first).
-fn mark_waiting_if_unknown(app: &AppHandle, id: Uuid) {
-    let unknown = app
-        .state::<Sessions>()
-        .lock()
-        .map(|m| {
-            m.get(&id)
-                .map(|s| s.status == Status::Unknown)
-                .unwrap_or(false)
-        })
-        .unwrap_or(false);
-    if unknown {
-        status::emit(app, id, Status::Waiting);
+fn reset_status_file(path: &std::path::Path) -> std::io::Result<()> {
+    match std::fs::remove_file(path) {
+        Ok(()) => Ok(()),
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(()),
+        Err(e) => Err(e),
     }
 }
 
@@ -570,19 +597,29 @@ pub fn write_session(
     app: AppHandle,
 ) -> Result<(), String> {
     let id = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
-    let retrigger = {
+    let (writer, retrigger, submitted) = {
         let mut map = sessions.lock().map_err(|e| e.to_string())?;
         let s = map.get_mut(&id).ok_or("no such session")?;
         let before = s.draft_len;
         let after = crate::deliver::apply_draft(before, &data);
         s.draft_len = after;
-        let p = s.pty.as_ref().ok_or("session has no pty")?;
-        p.write(&data).map_err(|e| e.to_string())?;
-        before > 0
+        let writer = s.pty.as_ref().ok_or("session has no pty")?.writer();
+        let submitted = s.agent != Agent::Shell
+            && s.status == Status::Waiting
+            && data.iter().any(|b| *b == b'\r' || *b == b'\n');
+        if submitted {
+            s.status = Status::Working;
+        }
+        let retrigger = before > 0
             && after == 0
             && !data.iter().any(|b| *b == b'\r' || *b == b'\n')
-            && s.status == Status::Waiting
+            && s.status == Status::Waiting;
+        (writer, retrigger, submitted)
     };
+    if submitted {
+        status::publish(&app, id, Status::Working);
+    }
+    writer.write(&data).map_err(|e| e.to_string())?;
     if retrigger {
         crate::deliver::on_status(&app, id, Status::Waiting);
     }
@@ -658,7 +695,14 @@ pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
         let _ = tx.send(true);
     }
     if let Some(mut p) = s.pty.take() {
-        let _ = p.kill();
+        if let Err(e) = p.kill() {
+            return Ok(CloseOutcome::Kept {
+                path: format!(
+                    "{} — failed to stop terminal: {e}",
+                    s.worktree.path.display()
+                ),
+            });
+        }
     }
     let run = platform::home_dir().join(".agentfleet/run");
     for ext in [
@@ -826,6 +870,61 @@ mod tests {
                 model: String::new(),
             },
         )
+    }
+
+    #[test]
+    fn attachment_discards_old_process_status() {
+        let tmp = tempfile::tempdir().unwrap();
+        let status = tmp.path().join("old.status");
+        for word in ["working", "waiting"] {
+            std::fs::write(&status, word).unwrap();
+            reset_status_file(&status).unwrap();
+            assert!(!status.exists());
+        }
+        reset_status_file(&status).unwrap();
+    }
+
+    #[test]
+    fn registration_after_project_removal_rolls_back_owned_worktree() {
+        let tmp = tempfile::tempdir().unwrap();
+        let repo = tmp.path().join("repo");
+        std::fs::create_dir(&repo).unwrap();
+        for args in [
+            vec!["init", "-q"],
+            vec![
+                "-c",
+                "user.name=t",
+                "-c",
+                "user.email=t@t",
+                "commit",
+                "--allow-empty",
+                "-qm",
+                "base",
+            ],
+        ] {
+            assert!(std::process::Command::new("git")
+                .current_dir(&repo)
+                .args(args)
+                .status()
+                .unwrap()
+                .success());
+        }
+        let mut map = HashMap::new();
+        let (_, mut s) = fake(None);
+        s.repo = repo.clone();
+        s.worktree = worktree::create(&repo, "claude", &s.id8, &tmp.path().join("trees")).unwrap();
+        let path = s.worktree.path.clone();
+        assert!(insert_registered(&mut map, &[], s).is_err());
+        assert!(map.is_empty());
+        assert!(!path.exists());
+
+        let (_, mut s) = fake(None);
+        s.repo = repo.clone();
+        s.worktree = worktree::current(&repo).unwrap();
+        s.owns_worktree = false;
+        std::fs::write(repo.join("work.txt"), "keep").unwrap();
+        assert!(insert_registered(&mut map, &[], s).is_err());
+        assert!(repo.join("work.txt").exists());
     }
 
     #[test]

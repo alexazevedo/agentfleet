@@ -35,6 +35,9 @@ pub fn can_deliver(
     if status == Status::Ended {
         return Decision::NeedsAttention("session ended");
     }
+    if status == Status::Blocked {
+        return Decision::Wait("waiting: target needs permission");
+    }
     if force || (status == Status::Waiting && draft_len == 0) {
         Decision::Deliver
     } else if status == Status::Waiting {
@@ -42,6 +45,20 @@ pub fn can_deliver(
     } else {
         Decision::Wait(WAIT_BUSY)
     }
+}
+
+fn reserve(
+    status: &mut Status,
+    draft_len: usize,
+    agent: Agent,
+    has_pty: bool,
+    force: bool,
+) -> Decision {
+    let decision = can_deliver(*status, draft_len, agent, has_pty, force);
+    if decision == Decision::Deliver {
+        *status = Status::Working;
+    }
+    decision
 }
 
 /// Track the user's draft length across a chunk of terminal input.
@@ -105,8 +122,8 @@ pub fn paste_bytes(prompt: &str) -> Vec<u8> {
 pub fn try_deliver(app: &AppHandle, run_id: Uuid, force: bool) -> Result<bool, String> {
     let sessions = app.state::<Sessions>();
     let collab_state = app.state::<CollabState>();
-    let project = {
-        let map = sessions.lock().map_err(|e| e.to_string())?;
+    let (project, delivery) = {
+        let mut map = sessions.lock().map_err(|e| e.to_string())?;
         let mut c = collab_state.lock().map_err(|e| e.to_string())?;
         let Some(run) = c.runs.iter().find(|r| r.id == run_id).cloned() else {
             return Ok(false);
@@ -115,8 +132,9 @@ pub fn try_deliver(app: &AppHandle, run_id: Uuid, force: bool) -> Result<bool, S
             return Ok(false);
         }
         let now = collab::now();
-        let decision = match map.get(&run.to_session_id) {
-            Some(s) => can_deliver(s.status, s.draft_len, s.agent, s.pty.is_some(), force),
+        let mut delivery = None;
+        let decision = match map.get_mut(&run.to_session_id) {
+            Some(s) => reserve(&mut s.status, s.draft_len, s.agent, s.pty.is_some(), force),
             None => Decision::NeedsAttention("session ended"),
         };
         match decision {
@@ -131,28 +149,38 @@ pub fn try_deliver(app: &AppHandle, run_id: Uuid, force: bool) -> Result<bool, S
                 collab::set_status(&mut c, run_id, RunStatus::NeedsAttention, Some(msg), now);
             }
             Decision::Deliver => {
-                let pty = map
+                let writer = map
                     .get(&run.to_session_id)
                     .and_then(|s| s.pty.as_ref())
-                    .ok_or("session has no pty")?;
-                match pty.write(&paste_bytes(&run.prompt)) {
-                    Ok(()) => collab::set_status(&mut c, run_id, RunStatus::Running, None, now),
-                    Err(e) => {
-                        let msg = format!("delivery failed: {e}");
-                        collab::set_status(
-                            &mut c,
-                            run_id,
-                            RunStatus::NeedsAttention,
-                            Some(&msg),
-                            now,
-                        );
-                    }
-                }
+                    .ok_or("session has no pty")?
+                    .writer();
+                collab::set_status(&mut c, run_id, RunStatus::Running, None, now);
+                delivery = Some((writer, run.to_session_id, paste_bytes(&run.prompt)));
             }
         }
         collab::save(&c);
-        run.project_id
+        (run.project_id, delivery)
     };
+    if let Some((writer, target, bytes)) = delivery {
+        crate::status::publish(app, target, Status::Working);
+        if let Err(e) = writer.write(&bytes) {
+            let mut c = collab_state.lock().map_err(|e| e.to_string())?;
+            // A close, cancellation or reply during I/O must remain terminal.
+            if c.runs
+                .iter()
+                .any(|r| r.id == run_id && r.status == RunStatus::Running)
+            {
+                collab::set_status(
+                    &mut c,
+                    run_id,
+                    RunStatus::NeedsAttention,
+                    Some(&format!("delivery failed: {e}")),
+                    collab::now(),
+                );
+                collab::save(&c);
+            }
+        }
+    }
     collab::changed(app, &app.state::<CollabNotify>().0, &[project]);
     Ok(true)
 }
@@ -220,15 +248,20 @@ pub fn on_request_created(app: &AppHandle, run_id: Uuid) {
     if !auto_delivery(app) {
         return;
     }
-    if let Err(e) = try_deliver(app, run_id, false) {
-        eprintln!("agentfleet: delivery failed: {e}");
-    }
+    let app = app.clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        if let Err(e) = try_deliver(&app, run_id, false) {
+            eprintln!("agentfleet: delivery failed: {e}");
+        }
+    });
 }
 
 #[tauri::command]
-pub fn execute_run(id: String, app: AppHandle) -> Result<bool, String> {
+pub async fn execute_run(id: String, app: AppHandle) -> Result<bool, String> {
     let id = Uuid::parse_str(&id).map_err(|e| e.to_string())?;
-    try_deliver(&app, id, true)
+    tokio::task::spawn_blocking(move || try_deliver(&app, id, true))
+        .await
+        .map_err(|e| e.to_string())?
 }
 
 #[tauri::command]
@@ -256,6 +289,27 @@ pub fn cancel_run(id: String, app: AppHandle) -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn delivery_reserves_the_recipient_and_never_answers_permission_prompts() {
+        let mut status = Status::Waiting;
+        assert_eq!(
+            reserve(&mut status, 0, Agent::Claude, true, false),
+            Decision::Deliver
+        );
+        assert_eq!(
+            reserve(&mut status, 0, Agent::Claude, true, false),
+            Decision::Wait(WAIT_BUSY)
+        );
+        for agent in [Agent::Claude, Agent::Codex, Agent::Opencode] {
+            for force in [false, true] {
+                assert!(matches!(
+                    can_deliver(Status::Blocked, 0, agent, true, force),
+                    Decision::Wait(_)
+                ));
+            }
+        }
+    }
 
     #[test]
     fn decisions() {

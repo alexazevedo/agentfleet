@@ -241,8 +241,12 @@ pub async fn wait(
             Ok(id) => id,
             Err(e) => return e,
         };
-        if let Err(e) = participant(&c, id, me) {
-            return e;
+        let r = match participant(&c, id, me) {
+            Ok(r) => r,
+            Err(e) => return e,
+        };
+        if r.status.is_terminal() {
+            return json!({ "run": r, "timedOut": false });
         }
         if let Err(e) = collab::begin_wait(&mut c, me, id) {
             return err(&e);
@@ -302,7 +306,26 @@ pub fn close_target(
     Ok(id)
 }
 
-/// `session.spawn`: register a sibling session, announce it, queue the prompt as a run.
+fn validate_spawn(agent: session::Agent, req: &Request) -> Result<(), String> {
+    if agent == session::Agent::Shell {
+        if req.text.is_some() {
+            return Err("shell sessions take no prompt".into());
+        }
+        if req.agent_args.as_ref().is_some_and(|a| !a.is_empty()) {
+            return Err("agent args need an agent session".into());
+        }
+    }
+    if req
+        .text
+        .as_ref()
+        .is_some_and(|t| t.len() > collab::MAX_PROMPT)
+    {
+        return Err("prompt too large (max 256 KB)".into());
+    }
+    Ok(())
+}
+
+/// Register a sibling, queue its request, then announce it so the UI can attach.
 pub async fn spawn(req: &Request, app: &AppHandle) -> Value {
     let sessions = app.state::<Sessions>();
     let project = match auth(&sessions, req) {
@@ -322,8 +345,8 @@ pub async fn spawn(req: &Request, app: &AppHandle) -> Value {
         Ok(a) => a,
         Err(e) => return err(&e),
     };
-    if agent == session::Agent::Shell && req.text.is_some() {
-        return err("shell sessions take no prompt");
+    if let Err(e) = validate_spawn(agent, req) {
+        return err(&e);
     }
     let name = req.name.clone().unwrap_or_default();
     let args = req.agent_args.clone().unwrap_or_default();
@@ -338,40 +361,45 @@ pub async fn spawn(req: &Request, app: &AppHandle) -> Value {
         Ok(Err(e)) => return err(&e),
         Err(e) => return err(&e.to_string()),
     };
-    let _ = app.emit("session-spawned", &info);
-    let mut run = Value::Null;
-    if let (Some(text), false) = (req.text.as_deref(), agent == session::Agent::Shell) {
-        let Ok(new_id) = Uuid::parse_str(&info.id) else {
-            return err("bad session id");
-        };
+    let new_id = Uuid::parse_str(&info.id).expect("registered session UUID");
+    // The UI must not attach (and emit its first idle event) until the run exists.
+    let created = (|| -> Result<Option<Run>, String> {
         let collab = app.state::<CollabState>();
-        let created = {
-            let map = match sessions.lock() {
-                Ok(m) => m,
-                Err(e) => return err(&e.to_string()),
-            };
-            let mut c = match collab.lock() {
-                Ok(c) => c,
-                Err(e) => return err(&e.to_string()),
-            };
+        let map = sessions.lock().map_err(|e| e.to_string())?;
+        let source = map
+            .get(&req.source)
+            .ok_or("source session closed during spawn")?;
+        if source.token.is_empty() || !ct_eq(source.token.as_bytes(), req.token.as_bytes()) {
+            return Err("unauthorized".into());
+        }
+        if let Some(text) = req.text.as_deref() {
+            let mut c = collab.lock().map_err(|e| e.to_string())?;
             let r = collab::request(&mut c, req.source, new_id, text, collab::now(), &|id| {
                 session::lookup(&map, id)
-            });
-            if r.is_ok() {
-                collab::save(&c);
-            }
-            r
-        };
-        match created {
-            Ok(r) => {
-                // No immediate delivery attempt: the new session has no PTY until the UI
-                // attaches it, and `can_deliver` would flag the run needsAttention. The run
-                // stays queued; `deliver::on_status` delivers it on the first `waiting`.
-                collab::changed(app, &app.state::<CollabNotify>().0, &[r.project_id]);
-                run = json!(r);
-            }
-            Err(e) => return err(&e),
+            })?;
+            collab::save(&c);
+            Ok(Some(r))
+        } else {
+            Ok(None)
         }
+    })();
+    let run = match created {
+        Ok(run) => run,
+        Err(e) => {
+            let h = app.clone();
+            return match tokio::task::spawn_blocking(move || session::close_one(&h, new_id)).await {
+                Ok(Ok(session::CloseOutcome::Removed)) => err(&e),
+                Ok(Ok(session::CloseOutcome::Kept { path })) => {
+                    err(&format!("{e}; worktree kept at {path}"))
+                }
+                Ok(Err(cleanup)) => err(&format!("{e}; cleanup failed: {cleanup}")),
+                Err(cleanup) => err(&format!("{e}; cleanup failed: {cleanup}")),
+            };
+        }
+    };
+    let _ = app.emit("session-spawned", &info);
+    if let Some(r) = &run {
+        collab::changed(app, &app.state::<CollabNotify>().0, &[r.project_id]);
     }
     json!({ "session": info, "run": run })
 }
@@ -515,6 +543,25 @@ mod tests {
     use std::sync::Arc;
 
     const TOKEN: &str = "tok-abcdef";
+
+    #[test]
+    fn spawn_rejects_invalid_input_before_registration() {
+        let mut req: Request = serde_json::from_value(json!({
+            "method": "session.spawn", "source": Uuid::new_v4(), "token": TOKEN,
+            "text": "x".repeat(collab::MAX_PROMPT + 1)
+        }))
+        .unwrap();
+        assert!(validate_spawn(Agent::Claude, &req)
+            .unwrap_err()
+            .contains("prompt too large"));
+        req.text = Some("task".into());
+        assert!(validate_spawn(Agent::Claude, &req).is_ok());
+        assert!(validate_spawn(Agent::Shell, &req).is_err());
+        req.text = None;
+        assert!(validate_spawn(Agent::Shell, &req).is_ok());
+        req.agent_args = Some(vec!["--bad".into()]);
+        assert!(validate_spawn(Agent::Shell, &req).is_err());
+    }
 
     fn session(project: Uuid, agent: Agent) -> Session {
         let id = Uuid::new_v4();

@@ -2,6 +2,7 @@
 //! `session-status` and `session-model`.
 use std::path::PathBuf;
 use std::time::Duration;
+use std::time::SystemTime;
 
 use serde::Serialize;
 use tauri::{AppHandle, Emitter, Manager};
@@ -66,6 +67,7 @@ pub enum Status {
     Unknown,
     Working,
     Waiting,
+    Blocked,
     Ended,
 }
 
@@ -73,6 +75,7 @@ pub fn parse(s: &str) -> Status {
     match s.trim() {
         "working" => Status::Working,
         "waiting" => Status::Waiting,
+        "blocked" => Status::Blocked,
         "ended" => Status::Ended,
         _ => Status::Unknown,
     }
@@ -86,10 +89,46 @@ struct StatusEvent {
 
 /// Single status sink: record on the session, notify the UI, then let delivery react.
 pub fn emit(app: &AppHandle, id: Uuid, status: Status) {
-    if let Ok(mut map) = app.state::<Sessions>().lock() {
-        if let Some(s) = map.get_mut(&id) {
-            s.status = status;
-        }
+    emit_if(app, id, status, None);
+}
+
+fn transition(current: &mut Status, next: Status, expected: Option<Status>) -> bool {
+    if *current == Status::Ended || expected.is_some_and(|s| s != *current) {
+        return false;
+    }
+    *current = next;
+    true
+}
+
+/// Compare-and-set readiness so a late startup timer cannot overwrite Working/Ended.
+pub fn mark_waiting_if_unknown(app: &AppHandle, id: Uuid) {
+    emit_if(app, id, Status::Waiting, Some(Status::Unknown));
+}
+
+fn emit_if(app: &AppHandle, id: Uuid, status: Status, expected: Option<Status>) {
+    let changed = app
+        .state::<Sessions>()
+        .lock()
+        .ok()
+        .and_then(|mut map| {
+            map.get_mut(&id)
+                .map(|s| transition(&mut s.status, status, expected))
+        })
+        .unwrap_or(false);
+    if !changed {
+        return;
+    }
+    publish(app, id, status);
+}
+
+/// Announce a state already recorded under the session registry lock.
+pub fn publish(app: &AppHandle, id: Uuid, status: Status) {
+    let sessions = app.state::<Sessions>();
+    let Ok(map) = sessions.lock() else {
+        return;
+    };
+    if map.get(&id).map(|s| s.status) != Some(status) {
+        return;
     }
     let _ = app.emit(
         "session-status",
@@ -98,7 +137,43 @@ pub fn emit(app: &AppHandle, id: Uuid, status: Status) {
             status,
         },
     );
-    crate::deliver::on_status(app, id, status);
+    drop(map);
+    let app = app.clone();
+    tauri::async_runtime::spawn_blocking(move || crate::deliver::on_status(&app, id, status));
+}
+
+#[derive(Clone, PartialEq)]
+struct StatusSnapshot {
+    status: Status,
+    modified: SystemTime,
+    len: u64,
+}
+
+fn read_status(path: &std::path::Path) -> Option<StatusSnapshot> {
+    let status = parse(&std::fs::read_to_string(path).ok()?);
+    // Hooks truncate then write. An empty/partial file is not a real state change.
+    if status == Status::Unknown {
+        return None;
+    }
+    let metadata = std::fs::metadata(path).ok()?;
+    Some(StatusSnapshot {
+        status,
+        modified: metadata.modified().ok()?,
+        len: metadata.len(),
+    })
+}
+
+fn observe(
+    current: &mut Status,
+    last: &mut Option<StatusSnapshot>,
+    sample: StatusSnapshot,
+) -> bool {
+    if last.as_ref() == Some(&sample) {
+        return false;
+    }
+    let status = sample.status;
+    *last = Some(sample);
+    transition(current, status, None)
 }
 
 /// Polls `status_file` and `model_source` every 200 ms; send `true` on the
@@ -112,7 +187,7 @@ pub fn spawn_poller(
 ) -> tauri::async_runtime::JoinHandle<()> {
     tauri::async_runtime::spawn(async move {
         let mut tick = tokio::time::interval(Duration::from_millis(200));
-        let mut last = Status::Unknown;
+        let mut last = None;
         // Seeded from the session so a restored (persisted) model is not re-emitted.
         let mut last_model = app
             .state::<Sessions>()
@@ -128,12 +203,16 @@ pub fn spawn_poller(
             if *stop.borrow() {
                 break;
             }
-            let cur = std::fs::read_to_string(&status_file)
-                .map(|s| parse(&s))
-                .unwrap_or(Status::Unknown);
-            if cur != last {
-                last = cur;
-                emit(&app, id, cur);
+            // Read and apply under the same lock as delivery reservations, so a
+            // previously sampled idle value cannot overwrite a new reservation.
+            let updated = app.state::<Sessions>().lock().ok().and_then(|mut map| {
+                let s = map.get_mut(&id)?;
+                let sample = read_status(&status_file)?;
+                let status = sample.status;
+                observe(&mut s.status, &mut last, sample).then_some(status)
+            });
+            if let Some(status) = updated {
+                publish(&app, id, status);
             }
             if let Some(m) = read_model(&model_source) {
                 if m != last_model {
@@ -148,6 +227,43 @@ pub fn spawn_poller(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn repeated_idle_updates_release_reservations_without_replaying_old_samples() {
+        let mut status = Status::Unknown;
+        let mut last = None;
+        let sample = StatusSnapshot {
+            status: Status::Waiting,
+            modified: SystemTime::now(),
+            len: 7,
+        };
+        assert!(observe(&mut status, &mut last, sample.clone()));
+        status = Status::Working; // request delivery reserves the composer
+        assert!(!observe(&mut status, &mut last, sample.clone()));
+        assert_eq!(status, Status::Working);
+        // A complete fast turn may fit between two polls; its new idle write is still observed.
+        let next = StatusSnapshot {
+            modified: sample.modified + Duration::from_millis(1),
+            ..sample
+        };
+        assert!(observe(&mut status, &mut last, next));
+        assert_eq!(status, Status::Waiting);
+    }
+
+    #[test]
+    fn late_status_updates_cannot_resurrect_or_reidle_sessions() {
+        let mut current = Status::Working;
+        assert!(!transition(
+            &mut current,
+            Status::Waiting,
+            Some(Status::Unknown)
+        ));
+        assert_eq!(current, Status::Working);
+        assert!(transition(&mut current, Status::Ended, None));
+        assert!(!transition(&mut current, Status::Waiting, None));
+        assert_eq!(current, Status::Ended);
+        assert_eq!(parse("blocked"), Status::Blocked);
+    }
 
     #[test]
     fn parses_words() {

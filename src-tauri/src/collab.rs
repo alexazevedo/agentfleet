@@ -153,7 +153,19 @@ pub fn load(path: &Path) -> Collab {
         waiting_on: HashMap::new(),
         path: Some(path.to_path_buf()),
     };
+    let mut interrupted = false;
+    for r in &mut c.runs {
+        if !r.status.is_terminal() {
+            r.status = RunStatus::Interrupted;
+            r.detail = Some("application restarted".into());
+            r.updated_at = now();
+            interrupted = true;
+        }
+    }
     prune(&mut c, now());
+    if interrupted {
+        save(&c);
+    }
     c
 }
 
@@ -171,11 +183,9 @@ pub fn prune(c: &mut Collab, now: u64) {
         !(r.status.is_terminal() && now.saturating_sub(r.updated_at) > TERMINAL_MAX_AGE)
     });
     while c.runs.len() > MAX_RUNS {
-        let i = c
-            .runs
-            .iter()
-            .position(|r| r.status.is_terminal())
-            .unwrap_or(0);
+        let Some(i) = c.runs.iter().position(|r| r.status.is_terminal()) else {
+            break;
+        };
         c.runs.remove(i);
     }
 }
@@ -201,6 +211,10 @@ pub fn request(
     }
     if tagent == Agent::Shell {
         return Err("target is not an agent session".into());
+    }
+    prune(c, now);
+    if c.runs.iter().filter(|r| !r.status.is_terminal()).count() >= MAX_RUNS {
+        return Err("too many active requests (max 500); complete or cancel a run first".into());
     }
     let run = Run {
         id: Uuid::new_v4(),
@@ -297,13 +311,11 @@ pub fn resolve_run(c: &Collab, s: &str) -> Option<Uuid> {
 }
 
 pub fn begin_wait(c: &mut Collab, session: Uuid, run: Uuid) -> Result<(), String> {
-    let target = c
-        .runs
-        .iter()
-        .find(|r| r.id == run)
-        .ok_or("no such run")?
-        .to_session_id;
-    let mut cur = target;
+    let requested = c.runs.iter().find(|r| r.id == run).ok_or("no such run")?;
+    if requested.status.is_terminal() {
+        return Ok(());
+    }
+    let mut cur = requested.to_session_id;
     let mut seen = HashSet::new();
     loop {
         if cur == session {
@@ -316,6 +328,7 @@ pub fn begin_wait(c: &mut Collab, session: Uuid, run: Uuid) -> Result<(), String
             .waiting_on
             .get(&cur)
             .and_then(|rid| c.runs.iter().find(|r| r.id == *rid))
+            .filter(|r| !r.status.is_terminal())
             .map(|r| r.to_session_id);
         match next {
             Some(n) => cur = n,
@@ -479,6 +492,57 @@ mod tests {
     }
 
     #[test]
+    fn completed_runs_do_not_create_wait_cycles() {
+        let w = world();
+        let mut c = Collab::default();
+        let ab = req(&mut c, &w, w.a, w.b, "1").unwrap();
+        reply(&mut c, ab.id, w.b, "done", 101).unwrap();
+        let ba = req(&mut c, &w, w.b, w.a, "2").unwrap();
+        begin_wait(&mut c, w.b, ba.id).unwrap();
+        assert_eq!(begin_wait(&mut c, w.a, ab.id), Ok(()));
+        assert!(!c.waiting_on.contains_key(&w.a));
+    }
+
+    #[test]
+    fn capacity_rejects_new_requests_without_dropping_live_runs() {
+        let w = world();
+        let mut c = Collab::default();
+        let first = req(&mut c, &w, w.a, w.b, "first").unwrap();
+        for _ in 1..MAX_RUNS {
+            req(&mut c, &w, w.a, w.b, "live").unwrap();
+        }
+        assert!(req(&mut c, &w, w.a, w.b, "overflow").is_err());
+        assert_eq!(c.runs.len(), MAX_RUNS);
+        assert_eq!(c.runs[0].id, first.id);
+        reply(&mut c, first.id, w.b, "done", 101).unwrap();
+        assert!(req(&mut c, &w, w.a, w.b, "accepted").is_ok());
+        assert_eq!(c.runs.len(), MAX_RUNS);
+    }
+
+    #[test]
+    fn restart_interrupts_active_runs_but_preserves_history() {
+        let w = world();
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("collab.json");
+        let mut c = Collab {
+            path: Some(path.clone()),
+            ..Collab::default()
+        };
+        let done = req(&mut c, &w, w.a, w.b, "done").unwrap();
+        reply(&mut c, done.id, w.b, "answer", now()).unwrap();
+        req(&mut c, &w, w.a, w.b, "queued").unwrap();
+        let running = req(&mut c, &w, w.a, w.b, "running").unwrap();
+        set_status(&mut c, running.id, RunStatus::Running, None, now());
+        save(&c);
+        let loaded = load(&path);
+        assert_eq!(loaded.runs[0].response.as_deref(), Some("answer"));
+        assert!(loaded.runs[1..]
+            .iter()
+            .all(|r| r.status == RunStatus::Interrupted));
+        assert_eq!(load(&path).runs, loaded.runs);
+    }
+
+    #[test]
     fn wait_cycle() {
         let w = world();
         let mut c = Collab::default();
@@ -504,11 +568,12 @@ mod tests {
         assert_eq!(c.runs[0].id, live.id);
 
         let mut c = Collab::default();
-        for i in 0..(MAX_RUNS + 5) {
+        for i in 0..MAX_RUNS {
             req(&mut c, &w, w.a, w.b, &i.to_string()).unwrap();
         }
         assert_eq!(c.runs.len(), MAX_RUNS);
-        assert_eq!(c.runs[0].prompt, "5");
+        assert_eq!(c.runs[0].prompt, "0");
+        assert!(req(&mut c, &w, w.a, w.b, "overflow").is_err());
     }
 
     #[test]
@@ -520,6 +585,7 @@ mod tests {
         assert_eq!(resolve_run(&c, id8), Some(r.id));
         assert_eq!(resolve_run(&c, &r.id.to_string()), Some(r.id));
         assert_eq!(resolve_run(&c, ""), None);
+        reply(&mut c, r.id, w.b, "done", now()).unwrap();
 
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("sub/collaboration.json");

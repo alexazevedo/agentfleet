@@ -88,9 +88,19 @@ pub fn is_clean(path: &Path) -> Result<bool, WorktreeError> {
 }
 
 pub fn remove(wt: &Worktree) -> Result<(), WorktreeError> {
+    // A clean index says nothing about commits made by the agent. Keep both the
+    // checkout and its branch unless their tips are reachable from the repo HEAD.
+    for revision in ["HEAD", wt.branch.as_str()] {
+        let commit = git(&wt.path, &["rev-parse", revision])?.map_err(WorktreeError::Git)?;
+        if git(&wt.repo, &["merge-base", "--is-ancestor", &commit, "HEAD"])?.is_err() {
+            return Err(WorktreeError::Git(format!(
+                "keeping worktree: {revision} has unmerged commits"
+            )));
+        }
+    }
     let path_str = wt.path.to_string_lossy().to_string();
     git(&wt.repo, &["worktree", "remove", &path_str])?.map_err(WorktreeError::Git)?;
-    git(&wt.repo, &["branch", "-D", &wt.branch])?.map_err(WorktreeError::Git)?;
+    git(&wt.repo, &["branch", "-d", &wt.branch])?.map_err(WorktreeError::Git)?;
     Ok(())
 }
 
@@ -215,6 +225,38 @@ mod tests {
         assert!(!is_clean(&wt.path).unwrap());
         assert!(remove(&wt).is_err());
         assert!(exists(&wt));
+    }
+
+    #[test]
+    fn remove_preserves_unmerged_commits() {
+        let tmp = tempfile::tempdir().unwrap();
+        let repo = repo_with_commit(tmp.path());
+        let wt = create(&repo, "a", "abcd1234", &tmp.path().join("w")).unwrap();
+        run(
+            &wt.path,
+            &[
+                "-c",
+                "user.email=t@t",
+                "-c",
+                "user.name=t",
+                "commit",
+                "--allow-empty",
+                "-m",
+                "work",
+            ],
+        );
+        assert!(is_clean(&wt.path).unwrap());
+        assert!(remove(&wt).is_err());
+        assert!(exists(&wt));
+        assert!(git(
+            &repo,
+            &["show-ref", "--verify", &format!("refs/heads/{}", wt.branch)]
+        )
+        .unwrap()
+        .is_ok());
+        run(&repo, &["merge", "--ff-only", &wt.branch]);
+        remove(&wt).unwrap();
+        assert!(!exists(&wt));
     }
 
     #[test]
