@@ -1,16 +1,16 @@
 # Graph Report - agentfleet  (2026-10-23)
 
 ## Corpus Check
-- 126 files · ~55,810 words
+- 126 files · ~56,095 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 967 nodes · 1502 edges · 87 communities (85 shown, 2 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 134 edges (avg confidence: 0.8)
+- 967 nodes · 1503 edges · 86 communities (85 shown, 1 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 135 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `43142076`
+- Built from commit: `3049973f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -96,7 +96,6 @@
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
 - [[_COMMUNITY_Community 80|Community 80]]
-- [[_COMMUNITY_Community 82|Community 82]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `err()` - 37 edges
@@ -122,15 +121,15 @@
 - `create_session()` --calls--> `err()`  [INFERRED]
   src-tauri/src/session.rs → src-tauri/src/broker.rs
 
-## Communities (87 total, 2 thin omitted)
+## Communities (86 total, 1 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
 Nodes (54): @xterm/addon-fit, svelte/elements, error, onKey(), otherAgent, send(), target, text (+46 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.08
-Nodes (59): auth(), close(), close_target(), close_target_rules(), connection(), ct_eq(), err(), fixture() (+51 more)
+Cohesion: 0.06
+Nodes (70): auth(), close(), close_target(), close_target_rules(), connection(), ct_eq(), err(), fixture() (+62 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.07
@@ -145,8 +144,8 @@ Cohesion: 0.1
 Nodes (26): PtyHandle, runs_command_and_streams_output(), scrubs_claude_code_markers_from_env(), spawn(), write_exit_ends_shell(), bad_json_errors(), load(), old_rows_default_name_and_args() (+18 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.1
-Nodes (18): addProject(), addProjectOrOfferInit(), ClosedSession, CloseOutcome, closeTab(), early, initProject(), labelOf() (+10 more)
+Cohesion: 0.09
+Nodes (17): confirm(), addProject(), addProjectOrOfferInit(), ClosedSession, CloseOutcome, closeTab(), early, initProject() (+9 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.13
@@ -173,120 +172,120 @@ Cohesion: 0.12
 Nodes (15): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total., Blockers, Decisions, Next (+7 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.21
-Nodes (11): apply_draft(), auto_delivery(), can_deliver(), cancel_run(), Decision, execute_run(), on_request_created(), on_status() (+3 more)
-
-### Community 13 - "Community 13"
 Cohesion: 0.19
 Nodes (12): Button.svelte, Checks (run in order — cheapest first), Context, Dialog.svelte, Done when, Goal, Not included, Popover.svelte (+4 more)
 
-### Community 14 - "Community 14"
+### Community 13 - "Community 13"
 Cohesion: 0.21
 Nodes (11): Checks (run in order — cheapest first), Cleanup, code:ts (newSession: null as { anchor: HTMLElement; projectId: string), code:svelte (<Popover anchor={store.newSession?.anchor ?? null} open={sto), Context, Done when, Goal, NewSessionPopover.svelte (new) (+3 more)
 
-### Community 15 - "Community 15"
+### Community 14 - "Community 14"
 Cohesion: 0.21
 Nodes (11): Checks (run in order — cheapest first), code:ts (/** Deep-merge `patch` into a snapshot of the current settin), Context, Done when, `Field.svelte` (layout helper), Goal, Not included, SettingsPane.svelte (+3 more)
 
-### Community 16 - "Community 16"
+### Community 15 - "Community 15"
 Cohesion: 0.23
 Nodes (10): AgentIcon.svelte, App.svelte, Checks (run in order — cheapest first), Context, Done when, Goal, Messages.svelte, Scratchpad.svelte (substitution only), Not included (+2 more)
 
-### Community 17 - "Community 17"
+### Community 16 - "Community 16"
 Cohesion: 0.18
 Nodes (7): args, dry, edits, t, t2, ver, main()
 
-### Community 18 - "Community 18"
+### Community 17 - "Community 17"
 Cohesion: 0.18
 Nodes (4): collab, Run, RunStatus, store
 
-### Community 19 - "Community 19"
+### Community 18 - "Community 18"
 Cohesion: 0.18
 Nodes (10): Broker, Checks (run in order — cheapest first), CLI, code:rust (Spawn { agent: Option<String>, name: Option<String>, role: O), Context, Docs, Done when, Frontend (+2 more)
 
-### Community 20 - "Community 20"
+### Community 19 - "Community 19"
 Cohesion: 0.18
 Nodes (10): agentfleet, Close a session, Delegate work, Exit codes, Find sessions, Handle incoming work, Ids, Roles (+2 more)
 
-### Community 21 - "Community 21"
+### Community 20 - "Community 20"
 Cohesion: 0.27
 Nodes (8): applyTheme(), initTheme(), prefersDark(), ResolvedTheme, resolveTheme(), theme, ThemeSetting, onchange
 
-### Community 22 - "Community 22"
+### Community 21 - "Community 21"
 Cohesion: 0.2
 Nodes (9): Backend, Checks (run in order — cheapest first), code:sh (#!/bin/sh), Context, Done when, Frontend, Goal, Not included (+1 more)
 
-### Community 23 - "Community 23"
+### Community 22 - "Community 22"
 Cohesion: 0.2
 Nodes (9): Architecture, Feature inventory, How it was built, Integrations and network, Orchestra 0.3.1 Replication PRD, Overview, Replication requirements, UI and UX (+1 more)
 
-### Community 24 - "Community 24"
+### Community 23 - "Community 23"
 Cohesion: 0.22
 Nodes (4): @tauri-apps/api/core, Listener, listeners, Scratchpad
 
-### Community 25 - "Community 25"
+### Community 24 - "Community 24"
 Cohesion: 0.22
 Nodes (8): agentfleet, Features, Messaging between sessions, agentfleet, Messaging between sessions, agentfleet, Features, Messaging between sessions
 
-### Community 26 - "Community 26"
+### Community 25 - "Community 25"
 Cohesion: 0.25
 Nodes (7): Backend changes, Checks (run in order — cheapest first), Context, Done when, Frontend changes, Goal, Not included
 
-### Community 27 - "Community 27"
+### Community 26 - "Community 26"
 Cohesion: 0.25
 Nodes (7): agentfleet — M1 discovery brief, Done when I can, Explicitly out of M1, One job (M1 only), Product class, Stack constraints (fixed, not up for grill), Who
 
-### Community 28 - "Community 28"
+### Community 27 - "Community 27"
 Cohesion: 0.25
 Nodes (7): agentfleet (M1), Out of scope, Primary user story, Scope (M1), Stack constraints (fixed), Success demo, What / why
 
-### Community 29 - "Community 29"
+### Community 28 - "Community 28"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:rust (pub type OnData = Box<dyn Fn(Vec<u8>) + Send + 'static>;), Context, Done when, Goal, Not included
 
-### Community 30 - "Community 30"
+### Community 29 - "Community 29"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:json ({"hooks":{), Context, Done when, Goal, Not included
 
-### Community 31 - "Community 31"
+### Community 30 - "Community 30"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:rust (pub struct Worktree { pub repo: PathBuf, pub path: PathBuf, ), Context, Done when, Goal, Not included
 
-### Community 32 - "Community 32"
+### Community 31 - "Community 31"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:rust (#[derive(Serialize, Debug, PartialEq)]), Context, Done when, Goal, Not included
 
-### Community 33 - "Community 33"
+### Community 32 - "Community 32"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:ts (export async function removeProject(id: string): Promise<voi), Context, Done when, Goal, Not included
 
-### Community 34 - "Community 34"
+### Community 33 - "Community 33"
 Cohesion: 0.39
 Nodes (6): Checks (run in order — cheapest first), code:ts (test: { environment: "jsdom", include: ["src/**/*.test.ts"],), Context, Done when, Goal, Not included
 
-### Community 35 - "Community 35"
+### Community 34 - "Community 34"
 Cohesion: 0.33
 Nodes (3): startScheduler(), stopScheduler(), updater
 
-### Community 36 - "Community 36"
+### Community 35 - "Community 35"
 Cohesion: 0.29
 Nodes (6): Changes, Checks (run in order — cheapest first), Context (verified 2026-10-23 against codex-cli 0.163.0 by driving the TUI in a pty), Done when, Goal, Not included
 
-### Community 37 - "Community 37"
+### Community 36 - "Community 36"
 Cohesion: 0.29
 Nodes (6): Changes, Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
-### Community 38 - "Community 38"
+### Community 37 - "Community 37"
 Cohesion: 0.29
 Nodes (6): agentfleet roadmap, Later / optional, M2 — inter-session messaging, M3 — release, M4 — native-feeling UI (done), Shape fixed in M1 (do not rework)
 
-### Community 39 - "Community 39"
+### Community 38 - "Community 38"
 Cohesion: 0.29
 Nodes (6): code:sh (grep -rnE '#[0-9a-fA-F]{3,8}\b' src --include='*.svelte' --i), Primitives (`src/lib/ui/*.svelte`), Rule, Theming, Tokens (`src/lib/ui/tokens.css`), UI layer
 
-### Community 40 - "Community 40"
+### Community 39 - "Community 39"
 Cohesion: 0.29
 Nodes (6): agentfleet (M3.1 — terminal preferences + restore prompt), Out of scope, Primary user story, Scope, Success demo, What / why
+
+### Community 40 - "Community 40"
+Cohesion: 0.48
+Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 41 - "Community 41"
 Cohesion: 0.48
@@ -309,36 +308,36 @@ Cohesion: 0.48
 Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 46 - "Community 46"
-Cohesion: 0.48
-Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
-
-### Community 47 - "Community 47"
 Cohesion: 0.29
 Nodes (6): agentfleet (M3.2 — remove project), Out of scope, Primary user story, Scope, Success demo, What / why
 
-### Community 48 - "Community 48"
+### Community 47 - "Community 47"
 Cohesion: 0.29
 Nodes (6): agentfleet (M3 — release), Out of scope, Primary user story, Scope (M3), Success demo, What / why
 
-### Community 49 - "Community 49"
+### Community 48 - "Community 48"
 Cohesion: 0.29
 Nodes (6): agentfleet (M4 — native-feeling UI), Out of scope, Primary user story, Scope, Success demo, What / why
 
-### Community 50 - "Community 50"
+### Community 49 - "Community 49"
 Cohesion: 0.48
 Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
-### Community 51 - "Community 51"
+### Community 50 - "Community 50"
 Cohesion: 0.48
 Nodes (5): Checks, Context, Done when, Goal, Not included
 
-### Community 52 - "Community 52"
+### Community 51 - "Community 51"
 Cohesion: 0.48
 Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
-### Community 53 - "Community 53"
+### Community 52 - "Community 52"
 Cohesion: 0.29
 Nodes (6): agentfleet (M2 — inter-session messaging), Out of scope, Primary user story, Scope (M2), Success demo, What / why
+
+### Community 53 - "Community 53"
+Cohesion: 0.48
+Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 54 - "Community 54"
 Cohesion: 0.48
@@ -373,12 +372,12 @@ Cohesion: 0.48
 Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 62 - "Community 62"
-Cohesion: 0.48
-Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
+Cohesion: 0.33
+Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ### Community 63 - "Community 63"
 Cohesion: 0.33
-Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
+Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 64 - "Community 64"
 Cohesion: 0.33
@@ -386,7 +385,7 @@ Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, N
 
 ### Community 65 - "Community 65"
 Cohesion: 0.33
-Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
+Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ### Community 66 - "Community 66"
 Cohesion: 0.33
@@ -398,7 +397,7 @@ Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket 
 
 ### Community 68 - "Community 68"
 Cohesion: 0.33
-Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
+Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
 
 ### Community 69 - "Community 69"
 Cohesion: 0.33
@@ -426,28 +425,28 @@ Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, N
 
 ### Community 75 - "Community 75"
 Cohesion: 0.33
-Nodes (5): Checks (run in order — cheapest first), Context, Done when, Goal, Not included
+Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ### Community 76 - "Community 76"
 Cohesion: 0.33
 Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ### Community 77 - "Community 77"
-Cohesion: 0.33
-Nodes (5): Blockers, Decisions, Next, Now, STATE — rewrite after every ticket completes; never append. ≤30 lines total.
-
-### Community 78 - "Community 78"
 Cohesion: 0.4
 Nodes (4): ADR 0001 — Hand-rolled UI primitives on native `<dialog>` and a positioned `<div>`, Consequences, Context, Decision
 
-### Community 80 - "Community 80"
+### Community 79 - "Community 79"
 Cohesion: 0.5
 Nodes (3): Release runbook, Secrets, Unnotarized builds
+
+### Community 80 - "Community 80"
+Cohesion: 1.0
+Nodes (3): listRestorable(), loadProjects(), restoreTabs()
 
 ## Knowledge Gaps
 - **297 isolated node(s):** `dry`, `ver`, `edits`, `t`, `t2` (+292 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -455,7 +454,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `close()` connect `Community 1` to `Community 0`, `Community 2`?**
   _High betweenness centrality (0.095) - this node is a cross-community bridge._
 - **Why does `err()` connect `Community 1` to `Community 2`, `Community 3`, `Community 4`, `Community 7`, `Community 8`, `Community 9`?**
-  _High betweenness centrality (0.083) - this node is a cross-community bridge._
+  _High betweenness centrality (0.084) - this node is a cross-community bridge._
 - **Are the 25 inferred relationships involving `err()` (e.g. with `.parse()` and `register()`) actually correct?**
   _`err()` has 25 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 13 inferred relationships involving `spawn_for()` (e.g. with `home_dir()` and `.from_settings()`) actually correct?**
