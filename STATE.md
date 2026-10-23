@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-M4: tickets 30–38 done on branch m4-ui (8778368); reviewer pass done (1 confirmed finding → ticket 38, fixed); awaiting final human review (approval 3/3) before merge to main
+M4 (native-feeling UI) approved 3/3 and merged to main; tickets 30–38 done
 
 ## Next
-manual probe in `npm run tauri dev` (light/dark follow + override, 4 settings tabs auto-save, row "+" popover, dialogs); then merge m4-ui → main, delete branch
+manual probe in `npm run tauri dev` (theme follow/override, settings tabs auto-save, row "+" popover, dialogs); next milestone per docs/roadmap.md "Later / optional"
 
 ## Decisions
 - execution: 30–33 sequential in place, 34/35/36 parallel worktrees (own `npm ci` each; symlinked node_modules breaks vite), 37–38 in place
