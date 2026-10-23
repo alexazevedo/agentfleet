@@ -1,10 +1,10 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-M6 complete: tickets 35–39 all done, every attempt 1. Final checks: cargo 69 passed, svelte-check 0 errors, vitest 10 passed. Graph updated. Approved, committed (8d2d819) and pushed; PR #1 open; rustfmt CI fix applied.
+M6 complete: tickets 35–39 all done, every attempt 1. Final checks: cargo 69 passed, svelte-check 0 errors, vitest 10 passed. Graph updated. PR #1 merged to main (CI green).
 
 ## Next
-CI green on PR #1 → merge. Live probe pending in `npm run tauri dev`: popover name+worktree→session in repo root; model appears in sidebar for Claude (statusLine) and Codex (payload `model` key, may stay blank).
+Live probe pending in `npm run tauri dev`: popover name+worktree→session in repo root; model appears in sidebar for Claude (statusLine) and Codex (payload `model` key, may stay blank).
 
 ## Decisions
 - Dispatch: sequential in place (user choice at forge:run; matches parallel_default)
