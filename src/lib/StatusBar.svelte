@@ -7,8 +7,7 @@
     const t = active;
     if (!t?.info) return null;
     const proj = store.projects.find((p) => p.id === t.projectId)?.name ?? t.info.repoName;
-    const agent = tabTitle(t.info);
-    return { agent: t.info.agent, text: `${proj} · ${agent} ${t.info.id8} · ${t.status ?? "unknown"}` };
+    return { agent: t.info.agent, project: proj, rest: ` · ${tabTitle(t.info)} ${t.info.id8} · ${t.status ?? "unknown"}` };
   });
   const running = $derived(store.tabs.filter((t) => t.info && t.status !== "ended").length);
 </script>
@@ -16,7 +15,7 @@
 <footer class="status-bar">
   <span>
     {#if left}
-      <AgentIcon agent={left.agent} size={12} /> {left.text}
+      <AgentIcon agent={left.agent} size={12} /> <strong>{left.project}</strong>{left.rest}
     {:else}
       No session
     {/if}
@@ -31,8 +30,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    font-size: 12px;
-    background: #007acc;
-    color: #fff;
+    font-size: var(--text-xs);
+    font-family: var(--font-ui);
+    background: var(--bg-strip);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+  strong {
+    color: var(--text);
+    font-weight: 500;
   }
 </style>

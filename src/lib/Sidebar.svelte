@@ -1,8 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { open } from "@tauri-apps/plugin-dialog";
-  import { Folder, NotebookPen, Settings, Plus, Trash2, X } from "lucide-svelte";
+  import { Folder, NotebookPen, Settings, Plus, FolderPlus, Trash2, X } from "lucide-svelte";
+  import Button from "./ui/Button.svelte";
   import AgentIcon from "./AgentIcon.svelte";
+  import NewSessionPopover from "./NewSessionPopover.svelte";
   import { collab, initCollabListener, loadRuns, queuedCount } from "./collab.svelte";
   import {
     addProject,
@@ -48,25 +50,33 @@
     store.view = "settings";
   }
 
-  function onNewSession(projectId: string) {
+  function onNewSession(e: MouseEvent, projectId: string | null) {
     store.error = "";
-    store.preselectedProjectId = projectId;
-    store.dialogOpen = true;
+    store.newSession = { anchor: e.currentTarget as HTMLElement, projectId };
   }
 </script>
 
 <aside class="sidebar">
   <div class="header">
     <span>Projects</span>
-    <button type="button" aria-label="Add project" onclick={onAddProject}><Plus size={14} strokeWidth={1.75} /></button>
+    <span class="actions">
+      <Button variant="ghost" size="sm" aria-label="Add project" onclick={onAddProject}><FolderPlus size={14} strokeWidth={1.75} /></Button>
+      <Button variant="ghost" size="sm" aria-label="New session" onclick={(e: MouseEvent) => onNewSession(e, null)}><Plus size={14} strokeWidth={1.75} /></Button>
+    </span>
   </div>
+  {#if store.error && store.newSession === null}
+    <div class="banner" role="alert">
+      {store.error}
+      <button type="button" aria-label="Dismiss" onclick={() => (store.error = "")}>×</button>
+    </div>
+  {/if}
   <div class="list">
     {#each store.projects as p (p.id)}
       <div class="project">
         <span class="name" title={p.path}><Folder size={14} strokeWidth={1.75} /> {p.name}</span>
         <span class="actions">
-          <button type="button" aria-label="New session" onclick={() => onNewSession(p.id)}><Plus size={14} strokeWidth={1.75} /></button>
-          <button type="button" class="remove" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></button>
+          <Button variant="ghost" size="sm" aria-label="New session" onclick={(e: MouseEvent) => onNewSession(e, p.id)}><Plus size={14} strokeWidth={1.75} /></Button>
+          <span class="remove"><Button variant="ghost" size="sm" aria-label="Remove project" onclick={() => (store.removeProjectId = p.id)}><Trash2 size={14} strokeWidth={1.75} /></Button></span>
         </span>
       </div>
       <div
@@ -128,30 +138,55 @@
   >
     <Settings size={14} strokeWidth={1.75} /> Settings
   </div>
+  <NewSessionPopover />
 </aside>
 
 <style>
   .sidebar {
     display: flex;
     flex-direction: column;
-    background: #252526;
-    border-right: 1px solid #111;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
     overflow: hidden;
     min-width: 0;
-    font-size: 13px;
+    font-family: var(--font-ui);
+    font-size: var(--text-md);
+    color: var(--text);
   }
-  .header,
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) 10px var(--space-1);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
   .project {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 6px 10px;
+    height: 28px;
+    margin: 0 4px;
+    padding: 0 6px;
+    border-radius: var(--radius-sm);
   }
-  .header {
-    font-weight: 600;
-    font-size: 12px;
-    color: #aaa;
-    padding-top: 10px;
+  .project:hover {
+    background: var(--bg-hover);
+  }
+  .banner {
+    background: color-mix(in srgb, var(--danger) 15%, transparent);
+    color: var(--danger);
+    font-size: var(--text-sm);
+    padding: var(--space-1) var(--space-2);
+  }
+  .banner button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
   }
   .list {
     flex: 1;
@@ -169,35 +204,34 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  button {
-    background: transparent;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    font-size: 16px;
   }
   .session {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 10px 4px 28px;
+    height: 26px;
+    margin: 0 4px;
+    padding: 0 6px 0 24px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
     cursor: pointer;
     white-space: nowrap;
   }
   .session:hover {
-    background: #2a2d2e;
+    background: var(--bg-hover);
   }
   .session.active {
-    background: #37373d;
+    background: var(--bg-active);
+    color: var(--text);
   }
   .id8 {
-    color: #888;
-    font-family: ui-monospace, monospace;
-    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
   }
   .spacer {
     flex: 1;
@@ -205,24 +239,36 @@
   .close {
     visibility: hidden;
     padding: 0 4px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
   }
   .session:hover .close {
     visibility: visible;
   }
+  .close:hover {
+    color: var(--text);
+  }
   .remove {
     visibility: hidden;
-    padding: 0 4px;
+    display: inline-flex;
   }
   .project:hover .remove {
     visibility: visible;
   }
+  .remove:hover :global(button) {
+    color: var(--danger);
+  }
   .kept {
-    font-size: 11px;
-    color: #e3a008;
+    font-size: var(--text-xs);
+    color: var(--warning);
   }
   .badge {
-    background: #0e639c;
-    color: #fff;
+    background: var(--accent);
+    color: var(--text-inverse);
     border-radius: 8px;
     font-size: 10px;
     padding: 0 5px;
@@ -232,28 +278,34 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #888;
+    background: var(--neutral);
+    box-shadow: 0 0 0 1px var(--bg-sidebar);
+    flex: none;
   }
   .dot.working {
-    background: #3fb950;
+    background: var(--success);
   }
   .dot.waiting {
-    background: #e3a008;
+    background: var(--warning);
   }
   .dot.ended {
-    background: #f85149;
+    background: var(--danger);
   }
   .settings {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 10px;
-    border-top: 1px solid #111;
-    color: #aaa;
+    height: 32px;
+    padding: 0 10px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
     cursor: pointer;
   }
-  .settings:hover,
+  .settings:hover {
+    background: var(--bg-hover);
+  }
   .settings.active {
-    background: #37373d;
+    background: var(--bg-active);
+    color: var(--text);
   }
 </style>

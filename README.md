@@ -4,6 +4,10 @@ Desktop cockpit for running multiple coding agents (Claude Code, Codex, ...) sid
 
 Built with Tauri 2 + Rust + xterm.js.
 
+## Features
+
+- Light and dark theme that follows the OS appearance, with an override (system / light / dark) in Settings > General.
+
 Inspired by [Orchestra](https://github.com/theorchestradev/orchestra) (MIT). Clean-room implementation; no code copied.
 
 ## Messaging between sessions

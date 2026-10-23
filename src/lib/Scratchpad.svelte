@@ -74,7 +74,7 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    background: #1e1e1e;
+    background: var(--bg);
     font-size: 13px;
   }
   .bar {
@@ -82,20 +82,20 @@
     align-items: center;
     gap: 8px;
     padding: 6px 8px;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid var(--border);
   }
   .rev {
     flex: 1;
-    color: #aaa;
+    color: var(--text-muted);
     font-family: ui-monospace, monospace;
   }
   .err {
-    color: #f85149;
+    color: var(--danger);
     padding: 4px 8px;
   }
   button {
-    background: #333;
-    border: 1px solid #444;
+    background: var(--bg-control);
+    border: 1px solid var(--border-strong);
     color: inherit;
     border-radius: 3px;
     cursor: pointer;
@@ -108,7 +108,7 @@
   textarea {
     flex: 1;
     resize: none;
-    background: #252526;
+    background: var(--bg-surface);
     color: inherit;
     border: none;
     padding: 8px;

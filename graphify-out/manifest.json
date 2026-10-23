@@ -4,8 +4,8 @@
     "hash": "bf7174b10541059709a0e8f876f69c6a"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/vite.config.ts": {
-    "mtime": 1792717628.3965983,
-    "hash": "f9e93dffdd64cb486843682161838e45"
+    "mtime": 1792722569.7829916,
+    "hash": "2807658a51131af4f01acc99e44b5f78"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/scripts/release.mjs": {
     "mtime": 1792717628.3829863,
@@ -68,8 +68,8 @@
     "hash": "ad5b4ca8469f724a35681356bbc7cbfd"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/settings.rs": {
-    "mtime": 1792721179.5467823,
-    "hash": "2f7bbde663366de2f66b0853e4d29ea4"
+    "mtime": 1792722569.7753122,
+    "hash": "d648ba897efbb8808dacbb195a7b1ae0"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/cli.rs": {
     "mtime": 1792721179.5471663,
@@ -88,79 +88,163 @@
     "hash": "fb7f031054e16bd9e53f7c33a5846f79"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/main.ts": {
-    "mtime": 1792717628.3922992,
-    "hash": "fa588c67b49f9d6a7083ba161c2d5306"
+    "mtime": 1792722569.7820606,
+    "hash": "d21a32502dcc51fa5c2c4509d92f1bba"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/test-setup.ts": {
+    "mtime": 1792722569.7821407,
+    "hash": "3709e3aa95abf0544678f0f2d9b46702"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/App.svelte": {
-    "mtime": 1792717628.399855,
-    "hash": "690b8e9ba43e6c35f6508974c8931917"
+    "mtime": 1792722569.7755287,
+    "hash": "2027fc78b570ac069e4dfef06b8aa5ee"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/RestoreDialog.svelte": {
-    "mtime": 1792717628.3926413,
-    "hash": "796614c2e1cac9d33ede0aca12c99eb0"
+    "mtime": 1792722569.7763095,
+    "hash": "0c15173802ad352104ef5e98eddb1ee1"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/sessions.svelte.ts": {
-    "mtime": 1792721209.4165137,
-    "hash": "7859d1085615da44bda0b918e70345a9"
+    "mtime": 1792722569.7775786,
+    "hash": "f0abf08ee4cad3b62b22ac3ce797e3aa"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/collab.svelte.ts": {
     "mtime": 1792717628.3909483,
     "hash": "d32dc0f484808ca6664b431d51aa9958"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Terminal.svelte": {
-    "mtime": 1792720586.5856218,
-    "hash": "422983d867663741a06def988af46f98"
+    "mtime": 1792722569.7773542,
+    "hash": "5ca46fb3a971097fdb0bfd05027f6940"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/StatusBar.svelte": {
-    "mtime": 1792720586.5858307,
-    "hash": "829ad50e620bfff0e7fc7aee5b210495"
+    "mtime": 1792722633.7610428,
+    "hash": "e01a05d7d42ce9db3cc6315b527d3699"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Messages.svelte": {
-    "mtime": 1792721230.1616464,
-    "hash": "1784baf4a994df8b13029527ea04165a"
+    "mtime": 1792722569.7758968,
+    "hash": "ece67379d5d33a0b0d5e13508f95b77a"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/theme.svelte.ts": {
+    "mtime": 1792722569.778341,
+    "hash": "353de2ee38a5d3eb0d7fc1ca8abf2612"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settingsStore.svelte.ts": {
-    "mtime": 1792717628.3917785,
-    "hash": "85f19259e0fa2a1342172b11e409fe8d"
+    "mtime": 1792722569.778109,
+    "hash": "5eb135f5b0d89d020b7d71c2b07bfcfb"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/SettingsPane.svelte": {
-    "mtime": 1792721209.4167647,
-    "hash": "8b4b976393256ee0f57492b670f71c2e"
-  },
-  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/NewTabDialog.svelte": {
-    "mtime": 1792721209.4166386,
-    "hash": "6fa39da0ff7faf318ad25bd83a8db900"
+    "mtime": 1792722630.9605005,
+    "hash": "6ca7158e54d72d1fea24480d4d64253a"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/AgentIcon.svelte": {
-    "mtime": 1792717628.400269,
-    "hash": "f2c4edfef91db5a1595b0303ee9858d0"
+    "mtime": 1792722569.7757905,
+    "hash": "ae9b7479b0eb68c49b305f0fd5528706"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Scratchpad.svelte": {
-    "mtime": 1792717628.3928745,
-    "hash": "acb59e23230e78e5737360c69b37a185"
+    "mtime": 1792722569.7764096,
+    "hash": "14872b22f5261e92654b3a7cfb537392"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/scratchpadStore.svelte.ts": {
     "mtime": 1792717628.391293,
     "hash": "6c39f2df3f3a18108016d7a00c660dac"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/UpdateDialog.svelte": {
-    "mtime": 1792717628.3907223,
-    "hash": "3bbd1328a99c9b08293b6eb71f6b94e5"
+    "mtime": 1792722569.7774704,
+    "hash": "fdd68961d8a38acc8be2bb148cd4c427"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Sidebar.svelte": {
-    "mtime": 1792720996.6298597,
-    "hash": "d7b406dcdaaab02960c6ee4f6cead479"
+    "mtime": 1792722569.7768981,
+    "hash": "241780f50b1f17acb8fef9e5d14efc50"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/RemoveProjectDialog.svelte": {
-    "mtime": 1792717628.392401,
-    "hash": "7303b132aebdab06cc1c0fc4bfe2376e"
+    "mtime": 1792722569.7762074,
+    "hash": "5f6f520baac1d9817dad16f3ad9edc00"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/theme.test.ts": {
+    "mtime": 1792722569.780587,
+    "hash": "8db32f7c19dffd912ec53a7104d9dbe0"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/NewSessionPopover.svelte": {
+    "mtime": 1792722631.7244089,
+    "hash": "d1d5022dc657e97c2057b18300795634"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settingsStore.test.ts": {
+    "mtime": 1792722569.7782657,
+    "hash": "bd7e56bdcf1bd8d9e2eae144fd4c5cb3"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/updater.svelte.ts": {
     "mtime": 1792717628.3920538,
     "hash": "7eb9993a903b1ca402db0b7e2bba2a3b"
   },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Switch.test.ts": {
+    "mtime": 1792722569.7814393,
+    "hash": "73756fe795ef901d7dbe65b6f2b99501"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/SegmentedControl.svelte": {
+    "mtime": 1792722569.7812352,
+    "hash": "a2141182c11ffb328812d549effb1cdd"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Tabs.svelte": {
+    "mtime": 1792722569.781533,
+    "hash": "3445c821008616ed44fffcec6b724d97"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Button.svelte": {
+    "mtime": 1792722569.7807093,
+    "hash": "81f0fb67156a3ee642532d725132b6ae"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Switch.svelte": {
+    "mtime": 1792722569.781334,
+    "hash": "fbe33142369d88d9d31f5b347b8c2aa3"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Tabs.test.ts": {
+    "mtime": 1792722569.7816117,
+    "hash": "4a523225f197f26ca7c11c21eb095eb5"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Popover.test.ts": {
+    "mtime": 1792722569.7811353,
+    "hash": "6a586f7956bdc2b5985afff99dac2977"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Popover.svelte": {
+    "mtime": 1792722569.781038,
+    "hash": "0df5e5630dda38ad6f518262e8bf4dad"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/Dialog.svelte": {
+    "mtime": 1792722569.7809193,
+    "hash": "4897b39f0f7ec049ba25b9451546927c"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/__fixtures__/TabsHost.svelte": {
+    "mtime": 1792722569.781876,
+    "hash": "2a21f3aac0f037cd3a14839230990b0f"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/__fixtures__/PopoverHost.svelte": {
+    "mtime": 1792722569.7817383,
+    "hash": "891590097451553c08620ed4f0ed5df1"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/ui/__fixtures__/SwitchHost.svelte": {
+    "mtime": 1792722569.7818098,
+    "hash": "40ca86ce503f51f5da8f25fe046619e1"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settings/AboutTab.svelte": {
+    "mtime": 1792722569.777684,
+    "hash": "2c0f676203a84e4adcb1cb3b558a8a3b"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settings/Field.svelte": {
+    "mtime": 1792722569.77776,
+    "hash": "f2376b34303de3d4c7c3f015363952ec"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settings/GeneralTab.svelte": {
+    "mtime": 1792722632.3950338,
+    "hash": "8bc4bd6e71fc280ea1ef8584e534afd6"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settings/UpdatesTab.svelte": {
+    "mtime": 1792722569.777989,
+    "hash": "c9fa8c6e564f7ccbca61aaeb2c759d76"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settings/TerminalTab.svelte": {
+    "mtime": 1792722569.7779107,
+    "hash": "c78c233b24c8a20633a721199656cd98"
+  },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/PRODUCT.md": {
-    "mtime": 1792717783.9389668,
+    "mtime": 1792722628.4561055,
     "hash": "1d7c788845cbb5c9d9dadf8a7e0c66db"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/index.html": {
@@ -168,12 +252,12 @@
     "hash": "296ab2daceb75e6b90caa184795a8861"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/STATE.md": {
-    "mtime": 1792721325.5487928,
-    "hash": "d32a0412b72278c7b1b1e4cbdfa6317f"
+    "mtime": 1792722634.4281862,
+    "hash": "218deeb2b137782e6c6cf8e65ae3c398"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/README.md": {
-    "mtime": 1792720996.6300895,
-    "hash": "82b38997d6fc6edba63afbc515321a5b"
+    "mtime": 1792722569.7712407,
+    "hash": "b344c84de4586f6df48ba9cb9eb4805d"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/tickets/30-session-register-label-args.md": {
     "mtime": 1792720846.2947676,
@@ -196,12 +280,20 @@
     "hash": "a894f96eac3f13f10a30cbadf187879e"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/roadmap.md": {
-    "mtime": 1792717628.3947797,
-    "hash": "4f2c94d0cfbdf2442a5f2ea5ea4f5cdf"
+    "mtime": 1792722569.7719386,
+    "hash": "cf29f2e76cd9644d554a724ef13f2f7c"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/discovery-m1.md": {
     "mtime": 1792717628.3808339,
     "hash": "7cc40533c0b4733108b6c67ce84cf2e3"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/ui.md": {
+    "mtime": 1792722569.7720299,
+    "hash": "88914cf48e1093272de6e65223527537"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/adr/0001-hand-rolled-ui-primitives.md": {
+    "mtime": 1792722569.7715342,
+    "hash": "692b724d53b7c67217370688bfa66a2c"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.1/PRODUCT.md": {
     "mtime": 1792717628.3793285,
@@ -314,6 +406,46 @@
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/20-settings.md": {
     "mtime": 1792717628.3807936,
     "hash": "86f943fac6be3fdab1a3315109a989de"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/PRODUCT.md": {
+    "mtime": 1792722626.7748356,
+    "hash": "4605b9e26f2a52834d9fa2cee657a302"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/STATE.md": {
+    "mtime": 1792722626.7889445,
+    "hash": "346c4424ab999e696d27ce2379c4deba"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/33-new-session-popover.md": {
+    "mtime": 1792722569.782478,
+    "hash": "ecfe1dd4b5a1bed785e5705f6554f819"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/35-chrome-restyle.md": {
+    "mtime": 1792722569.7826452,
+    "hash": "7ccec6a6a236dd6b4c7efd87ad52cee5"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/37-docs-and-gate.md": {
+    "mtime": 1792722569.7828023,
+    "hash": "2698c20bccf6c5bfd3bb86da370100a7"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/38-theme-load-fallback.md": {
+    "mtime": 1792722569.7828765,
+    "hash": "d7e2c11278732b58f9e948728564c276"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/32-ui-primitives.md": {
+    "mtime": 1792722569.782397,
+    "hash": "16e2963478aca59ba5da4f94495a3ed2"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/36-dialogs-on-primitive.md": {
+    "mtime": 1792722569.7827232,
+    "hash": "bd5af83a656a64bbd4a7477f6f522c1a"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/34-settings-tabs-autosave.md": {
+    "mtime": 1792722569.7825592,
+    "hash": "919d014de64d291b6507fd8761b172ea"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m4/tickets/31-test-harness.md": {
+    "mtime": 1792722569.782314,
+    "hash": "482087b27daa6b9289461040b8f218cf"
   },
   "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/PRODUCT.md": {
     "mtime": 1792717628.3849735,

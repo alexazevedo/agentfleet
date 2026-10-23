@@ -1,15 +1,15 @@
 <script lang="ts">
   import Sidebar from "./lib/Sidebar.svelte";
   import StatusBar from "./lib/StatusBar.svelte";
-  import NewTabDialog from "./lib/NewTabDialog.svelte";
   import RemoveProjectDialog from "./lib/RemoveProjectDialog.svelte";
   import Terminal from "./lib/Terminal.svelte";
-  import { NotebookPen, PanelLeft, Settings as SettingsIcon } from "lucide-svelte";
+  import { NotebookPen, PanelLeft, Plus, Settings as SettingsIcon } from "lucide-svelte";
   import Messages from "./lib/Messages.svelte";
   import SettingsPane from "./lib/SettingsPane.svelte";
   import Scratchpad from "./lib/Scratchpad.svelte";
   import { queuedCount } from "./lib/collab.svelte";
   import { onMount } from "svelte";
+  import { applyTheme, initTheme } from "./lib/theme.svelte";
   import { attachRestored, forgetRestorable, listRestorable, store } from "./lib/sessions.svelte";
   import { loadSettings, settings } from "./lib/settingsStore.svelte";
   import { startScheduler, stopScheduler, updater } from "./lib/updater.svelte";
@@ -18,6 +18,9 @@
 
   const KEY = "agentfleet.sidebarCollapsed";
   let collapsed = $state(false);
+
+  onMount(() => initTheme());
+  $effect(() => applyTheme(settings.value.theme));
 
   onMount(async () => {
     try {
@@ -87,11 +90,13 @@
       {/if}
     </div>
     {#if store.tabs.length === 0}
-      <div class="empty">Add a project, then press + to start a session</div>
+      <div class="empty">
+        <div class="empty-box"><Plus size={24} strokeWidth={1.75} /></div>
+        <span>Add a project, then press + to start a session</span>
+      </div>
     {/if}
   </section>
   <StatusBar />
-  {#if store.dialogOpen}<NewTabDialog />{/if}
   {#if store.restoreDialogOpen}<RestoreDialog />{/if}
   {#if store.removeProjectId}<RemoveProjectDialog />{/if}
   {#if updater.available}<UpdateDialog />{/if}
@@ -119,27 +124,33 @@
     align-items: center;
     gap: 4px;
     padding-left: 32px;
-    background: #252526;
-    border-bottom: 1px solid #111;
+    background: var(--bg-strip);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-ui);
   }
   .strip button {
     background: transparent;
     border: none;
-    color: #aaa;
+    border-radius: var(--radius-sm);
+    height: 26px;
+    color: var(--text-muted);
     cursor: pointer;
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 0 10px;
+    font-size: var(--text-sm);
+  }
+  .strip button:hover {
+    color: var(--text);
   }
   .strip button.on {
-    color: #fff;
-    border-bottom: 2px solid #0e639c;
+    color: var(--text);
+    background: var(--bg-active);
   }
   .strip .label {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #fff;
-    font-size: 12px;
+    color: var(--text);
+    font-size: var(--text-sm);
     padding: 4px 10px;
   }
   .pane {
@@ -153,16 +164,28 @@
     z-index: 5;
     background: transparent;
     border: none;
-    color: #aaa;
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 16px;
+  }
+  .toggle:hover {
+    color: var(--text);
   }
   .empty {
     position: absolute;
     inset: 28px 0 0 0;
     display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
     align-items: center;
     justify-content: center;
-    color: #888;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-size: var(--text-md);
+  }
+  .empty-box {
+    display: flex;
+    padding: var(--space-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
   }
 </style>
