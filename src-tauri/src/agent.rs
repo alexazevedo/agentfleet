@@ -8,18 +8,41 @@ pub fn shell_quote(s: &str) -> String {
     format!("'{}'", s.replace('\'', "'\\''"))
 }
 
+/// How an agent handles tool-call permission prompts.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Permission {
+    /// The agent's own default: prompt in the terminal.
+    Ask,
+    /// Auto-approve through the agent's reviewer; it may still prompt.
+    Auto,
+    /// Never prompt.
+    Bypass,
+}
+
+impl Permission {
+    pub fn from_settings(auto_permission: bool, bypass_permissions: bool) -> Permission {
+        if bypass_permissions {
+            Permission::Bypass
+        } else if auto_permission {
+            Permission::Auto
+        } else {
+            Permission::Ask
+        }
+    }
+}
+
 pub fn claude_launch(
     session_id: Uuid,
     settings_path: &Path,
     resume: bool,
-    auto_permission: bool,
+    permission: Permission,
     extra: &[String],
 ) -> String {
     let id_flag = if resume { "--resume" } else { "--session-id" };
-    let perm = if auto_permission {
-        "--permission-mode auto "
-    } else {
-        ""
+    let perm = match permission {
+        Permission::Ask => "",
+        Permission::Auto => "--permission-mode auto ",
+        Permission::Bypass => "--dangerously-skip-permissions ",
     };
     let mut s = format!(
         "claude {perm}--settings {} {} {}",
@@ -36,6 +59,7 @@ pub fn claude_launch(
 
 /// Claude hook settings. `shim` is the absolute path of the `agentfleet` CLI shim: SessionStart
 /// also runs `agentfleet hook-context`, which injects the skill guide into the model context.
+/// The `agentfleet` CLI is pre-allowed so replying to a request never needs a permission click.
 pub fn write_hooks_settings(status_file: &Path, shim: &Path, dest: &Path) -> std::io::Result<()> {
     let q = shell_quote(&status_file.to_string_lossy());
     let hook = |word: &str| json!({ "type": "command", "command": format!("printf {word} > {q}") });
@@ -43,13 +67,16 @@ pub fn write_hooks_settings(status_file: &Path, shim: &Path, dest: &Path) -> std
         "type": "command",
         "command": format!("{} hook-context", shell_quote(&shim.to_string_lossy())),
     });
-    let settings = json!({"hooks": {
-        "SessionStart": [{"hooks": [hook("waiting"), context]}],
-        "UserPromptSubmit": [{"hooks": [hook("working")]}],
-        "PreToolUse": [{"matcher": "", "hooks": [hook("working")]}],
-        "PermissionRequest": [{"hooks": [hook("waiting")]}],
-        "Stop": [{"hooks": [hook("waiting")]}],
-    }});
+    let settings = json!({
+        "permissions": {"allow": ["Bash(agentfleet:*)"]},
+        "hooks": {
+            "SessionStart": [{"hooks": [hook("waiting"), context]}],
+            "UserPromptSubmit": [{"hooks": [hook("working")]}],
+            "PreToolUse": [{"matcher": "", "hooks": [hook("working")]}],
+            "PermissionRequest": [{"hooks": [hook("waiting")]}],
+            "Stop": [{"hooks": [hook("waiting")]}],
+        },
+    });
     std::fs::write(dest, serde_json::to_vec_pretty(&settings)?)
 }
 
@@ -123,12 +150,14 @@ pub fn toml_basic_string(s: &str) -> String {
 pub fn codex_launch(
     script: &Path,
     resume_id: Option<&str>,
-    auto_permission: bool,
+    permission: Permission,
     extra: &[String],
 ) -> String {
     let mut s = String::from("codex --no-daemon --dangerously-bypass-hook-trust");
-    if auto_permission {
-        s.push_str(" --approve-for-me");
+    match permission {
+        Permission::Ask => {}
+        Permission::Auto => s.push_str(" --approve-for-me"),
+        Permission::Bypass => s.push_str(" --dangerously-bypass-approvals-and-sandbox"),
     }
     for o in codex_hook_overrides(script) {
         s.push_str(" -c ");
@@ -197,18 +226,27 @@ mod tests {
     fn launch_flags() {
         let id = Uuid::new_v4();
         let p = PathBuf::from("/tmp/x.settings.json");
-        let s = claude_launch(id, &p, false, true, &[]);
+        let s = claude_launch(id, &p, false, Permission::Auto, &[]);
         assert!(s.starts_with("claude --permission-mode auto --settings "));
         assert!(s.contains(&format!("--session-id {id}")));
         assert!(!s.contains("--resume"));
-        let r = claude_launch(id, &p, true, true, &[]);
+        let r = claude_launch(id, &p, true, Permission::Auto, &[]);
         assert!(r.contains(&format!("--resume {id}")));
         assert!(!r.contains("--session-id"));
-        let n = claude_launch(id, &p, false, false, &[]);
+        let n = claude_launch(id, &p, false, Permission::Ask, &[]);
         assert!(n.starts_with("claude --settings "));
         assert!(!n.contains("--permission-mode"));
         assert!(n.ends_with(&id.to_string()));
-        let x = claude_launch(id, &p, false, false, &["--model".into(), "o'p us".into()]);
+        let b = claude_launch(id, &p, false, Permission::Bypass, &[]);
+        assert!(b.starts_with("claude --dangerously-skip-permissions --settings "));
+        assert!(!b.contains("--permission-mode"));
+        let x = claude_launch(
+            id,
+            &p,
+            false,
+            Permission::Ask,
+            &["--model".into(), "o'p us".into()],
+        );
         assert!(x.ends_with(&format!("{id} '--model' 'o'\\''p us'")), "{x}");
     }
 
@@ -221,6 +259,7 @@ mod tests {
         write_hooks_settings(&status, &shim, &dest).unwrap();
         let v: serde_json::Value = serde_json::from_slice(&std::fs::read(&dest).unwrap()).unwrap();
         let quoted = shell_quote(&status.to_string_lossy());
+        assert_eq!(v["permissions"]["allow"][0], "Bash(agentfleet:*)");
         let hooks = v["hooks"].as_object().unwrap();
         assert_eq!(hooks.len(), 5);
         for (event, groups) in hooks {
@@ -301,7 +340,7 @@ mod tests {
     #[test]
     fn codex_launch_flags() {
         let p = PathBuf::from("/h/x.sh");
-        let a = codex_launch(&p, None, true, &[]);
+        let a = codex_launch(&p, None, Permission::Auto, &[]);
         assert!(a.starts_with(
             "codex --no-daemon --dangerously-bypass-hook-trust --approve-for-me -c 'hooks.SessionStart="
         ));
@@ -309,11 +348,30 @@ mod tests {
         assert_eq!(a.matches(" -c 'developer_instructions=").count(), 1);
         assert!(a.contains(" -c 'developer_instructions=\"---"));
         assert!(!a.contains("resume"));
-        let n = codex_launch(&p, None, false, &[]);
+        let n = codex_launch(&p, None, Permission::Ask, &[]);
         assert!(n.starts_with("codex --no-daemon --dangerously-bypass-hook-trust -c "));
         assert!(!n.contains("--approve-for-me"));
-        let r = codex_launch(&p, Some("abc-123"), false, &["-m".into(), "o'3".into()]);
+        let b = codex_launch(&p, None, Permission::Bypass, &[]);
+        assert!(b.starts_with(
+            "codex --no-daemon --dangerously-bypass-hook-trust --dangerously-bypass-approvals-and-sandbox -c "
+        ));
+        assert!(!b.contains("--approve-for-me"));
+        let r = codex_launch(
+            &p,
+            Some("abc-123"),
+            Permission::Ask,
+            &["-m".into(), "o'3".into()],
+        );
         assert!(r.ends_with("' '-m' 'o'\\''3' resume 'abc-123'"), "{r}");
+    }
+
+    #[test]
+    fn permission_from_settings() {
+        assert_eq!(Permission::from_settings(false, false), Permission::Ask);
+        assert_eq!(Permission::from_settings(true, false), Permission::Auto);
+        assert_eq!(Permission::from_settings(true, true), Permission::Bypass);
+        // Bypass wins even if auto was switched off.
+        assert_eq!(Permission::from_settings(false, true), Permission::Bypass);
     }
 
     #[test]

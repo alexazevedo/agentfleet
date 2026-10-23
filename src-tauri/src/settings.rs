@@ -36,7 +36,11 @@ impl Default for TerminalSettings {
 pub struct Settings {
     pub worktrees_root: PathBuf,
     pub default_agent: String,
+    /// Agents auto-approve tool calls (Claude `--permission-mode auto`, Codex `--approve-for-me`).
     pub auto_permission: bool,
+    /// Agents never prompt at all (Claude `--dangerously-skip-permissions`,
+    /// Codex `--dangerously-bypass-approvals-and-sandbox`). Overrides `auto_permission`.
+    pub bypass_permissions: bool,
     pub auto_delivery: bool,
     pub confirm_quit: bool,
     pub update_checks: bool,
@@ -54,6 +58,7 @@ impl Default for Settings {
             worktrees_root: platform::home_dir().join(".agentfleet/worktrees"),
             default_agent: "claude".into(),
             auto_permission: true,
+            bypass_permissions: false,
             auto_delivery: true,
             confirm_quit: true,
             update_checks: true,
@@ -173,9 +178,10 @@ mod tests {
         assert!(s.worktrees_root.ends_with(".agentfleet/worktrees"));
         assert_eq!(s.default_agent, "claude");
         assert!(s.auto_permission && s.auto_delivery && s.confirm_quit && s.update_checks);
+        assert!(!s.bypass_permissions);
         // Partial file fills the rest with defaults.
         let p: Settings = serde_json::from_str(r#"{"autoDelivery":false}"#).unwrap();
-        assert!(!p.auto_delivery && p.auto_permission);
+        assert!(!p.auto_delivery && p.auto_permission && !p.bypass_permissions);
         assert_eq!(p.terminal, TerminalSettings::default());
         assert_eq!(s.theme, "system");
         let t: Settings = serde_json::from_str(r#"{"theme":"dark"}"#).unwrap();

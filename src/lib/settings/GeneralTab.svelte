@@ -30,6 +30,22 @@
   function onkeydown(e: KeyboardEvent) {
     if (e.key === "Enter") (e.currentTarget as HTMLInputElement).blur();
   }
+
+  // Two booleans on disk, one control here. Bypass wins when both are set.
+  type PermissionMode = "ask" | "auto" | "bypass";
+  const permissionMode = $derived<PermissionMode>(
+    settings.value.bypassPermissions ? "bypass" : settings.value.autoPermission ? "auto" : "ask",
+  );
+  const permissionHints: Record<PermissionMode, string> = {
+    ask: "Agents prompt in the terminal before each tool call.",
+    auto: "Agents approve routine tool calls themselves and prompt only for risky ones.",
+    bypass:
+      "Agents never prompt, so incoming requests run unattended. Claude starts with --dangerously-skip-permissions, Codex with --dangerously-bypass-approvals-and-sandbox. Applies to new sessions.",
+  };
+  function setPermissionMode(v: string) {
+    const mode = v as PermissionMode;
+    apply("permissions", { autoPermission: mode !== "ask", bypassPermissions: mode === "bypass" });
+  }
 </script>
 
 <Field label="Worktrees root" error={errors.worktreesRoot}>
@@ -58,8 +74,15 @@
     bind:value={() => settings.value.theme, (v) => apply("theme", { theme: v as Settings["theme"] })}
   />
 </Field>
-<Field label="Claude auto-permission" error={errors.autoPermission}>
-  <Switch bind:checked={() => settings.value.autoPermission, (v) => apply("autoPermission", { autoPermission: v })} />
+<Field label="Permissions" hint={permissionHints[permissionMode]} error={errors.permissions}>
+  <SegmentedControl
+    options={[
+      { value: "ask", label: "Ask" },
+      { value: "auto", label: "Auto" },
+      { value: "bypass", label: "Never ask" },
+    ]}
+    bind:value={() => permissionMode, setPermissionMode}
+  />
 </Field>
 <Field label="Auto-deliver queued requests" error={errors.autoDelivery}>
   <Switch bind:checked={() => settings.value.autoDelivery, (v) => apply("autoDelivery", { autoDelivery: v })} />

@@ -13,6 +13,7 @@ export interface Settings {
   worktreesRoot: string;
   defaultAgent: AgentKind;
   autoPermission: boolean;
+  bypassPermissions: boolean;
   autoDelivery: boolean;
   confirmQuit: boolean;
   updateChecks: boolean;
@@ -32,6 +33,7 @@ export const settings = $state({
     worktreesRoot: "",
     defaultAgent: "claude",
     autoPermission: true,
+    bypassPermissions: false,
     autoDelivery: true,
     confirmQuit: true,
     updateChecks: true,

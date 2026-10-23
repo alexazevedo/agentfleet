@@ -232,11 +232,11 @@ fn spawn_for(
         let run = platform::home_dir().join(".agentfleet/run");
         std::fs::create_dir_all(&run).map_err(|e| e.to_string())?;
         let status_file = run.join(format!("{id}.status"));
-        let auto_permission = app
-            .state::<SettingsState>()
-            .lock()
-            .map_err(|e| e.to_string())?
-            .auto_permission;
+        let permission = {
+            let s = app.state::<SettingsState>();
+            let s = s.lock().map_err(|e| e.to_string())?;
+            agent::Permission::from_settings(s.auto_permission, s.bypass_permissions)
+        };
         let launch = if session.agent == Agent::Codex {
             let script = run.join(format!("{id}.codex-hook.sh"));
             let payload = run.join(format!("{id}.codex-hook.json"));
@@ -253,14 +253,14 @@ fn spawn_for(
             agent::codex_launch(
                 &script,
                 resume_id.as_deref(),
-                auto_permission,
+                permission,
                 &session.agent_args,
             )
         } else {
             let settings = run.join(format!("{id}.settings.json"));
             agent::write_hooks_settings(&status_file, &rt.shim, &settings)
                 .map_err(|e| e.to_string())?;
-            agent::claude_launch(id, &settings, resume, auto_permission, &session.agent_args)
+            agent::claude_launch(id, &settings, resume, permission, &session.agent_args)
         };
         command = format!("{path_prefix}exec {launch}");
         status::spawn_poller(app.clone(), id, status_file, stop_rx);
