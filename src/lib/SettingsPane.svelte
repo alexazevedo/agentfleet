@@ -49,6 +49,7 @@
     <span>Default agent</span>
     <select bind:value={form.defaultAgent}>
       <option value="claude">Claude Code</option>
+      <option value="codex">Codex</option>
       <option value="shell">Shell</option>
     </select>
   </label>

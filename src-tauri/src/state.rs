@@ -20,6 +20,10 @@ pub struct PersistedSession {
     pub worktree_path: PathBuf,
     pub branch: String,
     pub base_commit: String,
+    #[serde(default)]
+    pub name: String,
+    #[serde(default)]
+    pub agent_args: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -90,6 +94,8 @@ mod tests {
                 worktree_path: "/w".into(),
                 branch: "agentfleet/claude-abcd1234".into(),
                 base_commit: "deadbeef".into(),
+                name: "label".into(),
+                agent_args: vec!["--x".into(), "a b".into()],
             }],
             projects: vec![project],
         }
@@ -104,6 +110,22 @@ mod tests {
         assert_eq!(load(&p).unwrap(), s);
         let mode = fs::metadata(&p).unwrap().permissions().mode() & 0o777;
         assert_eq!(mode, 0o600);
+    }
+
+    #[test]
+    fn old_rows_default_name_and_args() {
+        let tmp = tempfile::tempdir().unwrap();
+        let p = tmp.path().join("state.json");
+        let pid = Uuid::new_v4();
+        let row = format!(
+            r#"{{"id":"{}","id8":"abcd1234","project_id":"{pid}","agent":"claude","repo":"/r","worktree_path":"/w","branch":"b","base_commit":"c"}}"#,
+            Uuid::new_v4()
+        );
+        let json = format!(r#"{{"version":1,"projects":[],"sessions":[{row}]}}"#);
+        fs::write(&p, json).unwrap();
+        let st = load(&p).unwrap();
+        assert_eq!(st.sessions[0].name, "");
+        assert!(st.sessions[0].agent_args.is_empty());
     }
 
     #[test]

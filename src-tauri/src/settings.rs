@@ -100,7 +100,7 @@ fn validate(s: &Settings) -> Result<(), String> {
     if !s.worktrees_root.is_absolute() {
         return Err("worktrees root must be an absolute path".into());
     }
-    if s.default_agent != "claude" && s.default_agent != "shell" {
+    if !matches!(s.default_agent.as_str(), "claude" | "codex" | "shell") {
         return Err(format!("unknown agent: {}", s.default_agent));
     }
     if !matches!(s.restore_sessions.as_str(), "ask" | "always" | "never") {

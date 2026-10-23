@@ -1,13 +1,13 @@
 <script lang="ts">
   import AgentIcon from "./AgentIcon.svelte";
-  import { store } from "./sessions.svelte";
+  import { store, tabTitle } from "./sessions.svelte";
 
   const active = $derived(store.tabs.find((t) => t.key === store.activeKey));
   const left = $derived.by(() => {
     const t = active;
     if (!t?.info) return null;
     const proj = store.projects.find((p) => p.id === t.projectId)?.name ?? t.info.repoName;
-    const agent = t.info.agent === "claude" ? "Claude Code" : "Shell";
+    const agent = tabTitle(t.info);
     return { agent: t.info.agent, text: `${proj} · ${agent} ${t.info.id8} · ${t.status ?? "unknown"}` };
   });
   const running = $derived(store.tabs.filter((t) => t.info && t.status !== "ended").length);

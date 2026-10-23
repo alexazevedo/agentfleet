@@ -7,7 +7,7 @@ use std::time::Duration;
 
 use serde::Deserialize;
 use serde_json::{json, Value};
-use tauri::{AppHandle, Manager};
+use tauri::{AppHandle, Emitter, Manager};
 use tokio::io::{AsyncBufReadExt, AsyncReadExt, AsyncWriteExt, BufReader};
 use tokio::net::{UnixListener, UnixStream};
 use tokio::sync::Notify;
@@ -39,6 +39,12 @@ pub struct Request {
     pub before: Option<String>,
     #[serde(default)]
     pub revision: Option<u64>,
+    #[serde(default)]
+    pub agent: Option<String>,
+    #[serde(default)]
+    pub name: Option<String>,
+    #[serde(default)]
+    pub agent_args: Option<Vec<String>>,
 }
 
 /// Constant-time byte compare: early exit only on length mismatch.
@@ -276,6 +282,127 @@ pub async fn wait(
     }
 }
 
+/// Resolve a close target: same project as `source`, resolvable, and not `source` itself.
+pub fn close_target(
+    map: &std::collections::HashMap<Uuid, session::Session>,
+    source: Uuid,
+    target: &str,
+) -> Result<Uuid, String> {
+    const NONE: &str = "no such session in this project";
+    let (project, _) = session::lookup(map, source).ok_or("unauthorized")?;
+    let id = session::resolve_id(map, target).ok_or(NONE)?;
+    if session::lookup(map, id).map(|(p, _)| p) != Some(project) {
+        return Err(NONE.into());
+    }
+    if id == source {
+        return Err("cannot close yourself".into());
+    }
+    Ok(id)
+}
+
+/// `session.spawn`: register a sibling session, announce it, queue the prompt as a run.
+pub async fn spawn(req: &Request, app: &AppHandle) -> Value {
+    let sessions = app.state::<Sessions>();
+    let project = match auth(&sessions, req) {
+        Ok(p) => p,
+        Err(e) => return e,
+    };
+    let agent = match req.agent.as_deref() {
+        Some(a) => session::Agent::parse(a),
+        None => session::Agent::parse(
+            &app.state::<crate::settings::SettingsState>()
+                .lock()
+                .map(|s| s.default_agent.clone())
+                .unwrap_or_else(|_| "claude".into()),
+        ),
+    };
+    let agent = match agent {
+        Ok(a) => a,
+        Err(e) => return err(&e),
+    };
+    if agent == session::Agent::Shell && req.text.is_some() {
+        return err("shell sessions take no prompt");
+    }
+    let name = req.name.clone().unwrap_or_default();
+    let args = req.agent_args.clone().unwrap_or_default();
+    let h = app.clone();
+    let info = match tokio::task::spawn_blocking(move || {
+        session::register(&h, project, agent, &name, args)
+    })
+    .await
+    {
+        Ok(Ok(i)) => i,
+        Ok(Err(e)) => return err(&e),
+        Err(e) => return err(&e.to_string()),
+    };
+    let _ = app.emit("session-spawned", &info);
+    let mut run = Value::Null;
+    if let (Some(text), false) = (req.text.as_deref(), agent == session::Agent::Shell) {
+        let Ok(new_id) = Uuid::parse_str(&info.id) else {
+            return err("bad session id");
+        };
+        let collab = app.state::<CollabState>();
+        let created = {
+            let map = match sessions.lock() {
+                Ok(m) => m,
+                Err(e) => return err(&e.to_string()),
+            };
+            let mut c = match collab.lock() {
+                Ok(c) => c,
+                Err(e) => return err(&e.to_string()),
+            };
+            let r = collab::request(&mut c, req.source, new_id, text, collab::now(), &|id| {
+                session::lookup(&map, id)
+            });
+            if r.is_ok() {
+                collab::save(&c);
+            }
+            r
+        };
+        match created {
+            Ok(r) => {
+                // No immediate delivery attempt: the new session has no PTY until the UI
+                // attaches it, and `can_deliver` would flag the run needsAttention. The run
+                // stays queued; `deliver::on_status` delivers it on the first `waiting`.
+                collab::changed(app, &app.state::<CollabNotify>().0, &[r.project_id]);
+                run = json!(r);
+            }
+            Err(e) => return err(&e),
+        }
+    }
+    json!({ "session": info, "run": run })
+}
+
+/// `session.close`: tear down a sibling session in the caller's project.
+pub async fn close(req: &Request, app: &AppHandle) -> Value {
+    let sessions = app.state::<Sessions>();
+    if let Err(e) = auth(&sessions, req) {
+        return e;
+    }
+    let Some(t) = req.target.as_deref() else {
+        return err("missing target");
+    };
+    let id = {
+        let map = match sessions.lock() {
+            Ok(m) => m,
+            Err(e) => return err(&e.to_string()),
+        };
+        match close_target(&map, req.source, t) {
+            Ok(id) => id,
+            Err(e) => return err(&e),
+        }
+    };
+    let h = app.clone();
+    match tokio::task::spawn_blocking(move || session::close_one(&h, id)).await {
+        Ok(Ok(outcome)) => {
+            let _ = app.emit("session-closed", json!({ "id": id }));
+            json!({ "outcome": outcome })
+        }
+        Ok(Err(e)) => err(&e),
+        Err(e) => err(&e.to_string()),
+    }
+}
+
 type Reply = Pin<Box<dyn Future<Output = Value> + Send>>;
 
 /// Started from `setup()`; runs for the life of the app.
@@ -290,6 +417,12 @@ pub async fn serve(app: AppHandle) {
             let notify = h.state::<CollabNotify>();
             if req.method == "run.wait" {
                 return wait(&req, &sessions, &collab, &notify.0).await;
+            }
+            if req.method == "session.spawn" {
+                return spawn(&req, &h).await;
+            }
+            if req.method == "session.close" {
+                return close(&req, &h).await;
             }
             let (v, touched) = handle(&req, &sessions, &h.state::<Projects>(), &collab);
             if req.method == "scratchpad.write" || req.method == "scratchpad.append" {
@@ -399,6 +532,8 @@ mod tests {
             token: TOKEN.into(),
             status: Status::Unknown,
             draft_len: 0,
+            name: String::new(),
+            agent_args: Vec::new(),
         }
     }
 
@@ -457,6 +592,24 @@ mod tests {
         got.sort();
         ids.sort();
         assert_eq!(got, ids);
+    }
+
+    #[test]
+    fn close_target_rules() {
+        let (sessions, src, ids) = fixture();
+        let other = ids.iter().copied().find(|i| *i != src).unwrap();
+        let m = sessions.lock().unwrap();
+        let q = m
+            .values()
+            .find(|s| s.project_id != m[&src].project_id)
+            .unwrap();
+        assert!(close_target(&m, src, &q.id.to_string()).is_err());
+        assert_eq!(
+            close_target(&m, src, &src.to_string()),
+            Err("cannot close yourself".into())
+        );
+        assert_eq!(close_target(&m, src, &other.to_string()), Ok(other));
+        assert!(close_target(&m, src, "zzzzzzzz").is_err());
     }
 
     #[test]

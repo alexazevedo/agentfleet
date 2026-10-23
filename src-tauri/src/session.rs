@@ -23,6 +23,7 @@ use crate::{platform, pty};
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Agent {
     Claude,
+    Codex,
     Shell,
 }
 
@@ -30,13 +31,15 @@ impl Agent {
     pub fn as_str(&self) -> &'static str {
         match self {
             Agent::Claude => "claude",
+            Agent::Codex => "codex",
             Agent::Shell => "shell",
         }
     }
 
-    fn parse(s: &str) -> Result<Agent, String> {
+    pub fn parse(s: &str) -> Result<Agent, String> {
         match s {
             "claude" => Ok(Agent::Claude),
+            "codex" => Ok(Agent::Codex),
             "shell" => Ok(Agent::Shell),
             other => Err(format!("unknown agent: {other}")),
         }
@@ -59,6 +62,10 @@ pub struct Session {
     pub status: Status,
     /// Bytes typed since the last Enter (backend shortcut: counts raw bytes, not characters).
     pub draft_len: usize,
+    /// Persisted label shown in the UI; empty when unset.
+    pub name: String,
+    /// Extra agent CLI args appended to the launch command.
+    pub agent_args: Vec<String>,
 }
 
 #[derive(Serialize)]
@@ -71,6 +78,7 @@ pub struct SessionInfo {
     pub branch: String,
     pub worktree_path: String,
     pub repo_name: String,
+    pub name: String,
 }
 
 pub type Sessions = Mutex<HashMap<Uuid, Session>>;
@@ -103,21 +111,19 @@ pub fn worktree_error_message(e: &WorktreeError) -> String {
     }
 }
 
-// Lock order everywhere: sessions, then projects.
-#[allow(clippy::too_many_arguments)]
-#[tauri::command]
-pub fn create_session(
-    project_id: String,
-    agent: String,
-    cols: u16,
-    rows: u16,
-    on_data: Channel<InvokeResponseBody>,
-    sessions: State<'_, Sessions>,
-    projects: State<'_, Projects>,
-    app: AppHandle,
+/// Create the worktree and registry entry without a PTY.
+pub fn register(
+    app: &AppHandle,
+    project_id: Uuid,
+    agent: Agent,
+    name: &str,
+    agent_args: Vec<String>,
 ) -> Result<SessionInfo, String> {
-    let agent = Agent::parse(&agent)?;
-    let project_id = Uuid::parse_str(&project_id).map_err(|_| "unknown project".to_string())?;
+    if !agent_args.is_empty() && agent == Agent::Shell {
+        return Err("agent args need a claude or codex session".into());
+    }
+    let sessions = app.state::<Sessions>();
+    let projects = app.state::<Projects>();
     let repo = projects
         .lock()
         .map_err(|e| e.to_string())?
@@ -138,41 +144,64 @@ pub fn create_session(
     let wt = worktree::create(&repo, agent.as_str(), &id8, &root)
         .map_err(|e| worktree_error_message(&e))?;
 
-    let mut session = Session {
+    let session = Session {
         id,
-        id8: id8.clone(),
+        id8,
         project_id,
         agent,
-        repo: repo.clone(),
-        worktree: wt.clone(),
+        repo,
+        worktree: wt,
         pty: None,
         poller_stop: None,
         token: String::new(),
         status: Status::Unknown,
         draft_len: 0,
+        name: name.to_string(),
+        agent_args,
     };
-    spawn_for(&mut session, &app, cols, rows, on_data, false)?;
-
-    let repo_name = repo
-        .file_name()
-        .map(|n| n.to_string_lossy().to_string())
-        .unwrap_or_else(|| "repo".into());
-    let info = SessionInfo {
-        id: id.to_string(),
-        id8: id8.clone(),
-        project_id: project_id.to_string(),
-        agent: agent.as_str().to_string(),
-        branch: wt.branch.clone(),
-        worktree_path: wt.path.to_string_lossy().to_string(),
-        repo_name,
-    };
+    let info = info_for(&session);
     let mut map = sessions.lock().map_err(|e| e.to_string())?;
     map.insert(id, session);
     persist(&map, &projects.lock().map_err(|e| e.to_string())?);
     Ok(info)
 }
 
-/// Spawn the PTY (and status poller for Claude) for an existing session.
+// Lock order everywhere: sessions, then projects.
+#[allow(clippy::too_many_arguments)]
+#[tauri::command]
+pub fn create_session(
+    project_id: String,
+    agent: String,
+    cols: u16,
+    rows: u16,
+    name: Option<String>,
+    agent_args: Option<Vec<String>>,
+    on_data: Channel<InvokeResponseBody>,
+    sessions: State<'_, Sessions>,
+    projects: State<'_, Projects>,
+    app: AppHandle,
+) -> Result<SessionInfo, String> {
+    let agent = Agent::parse(&agent)?;
+    let project_id = Uuid::parse_str(&project_id).map_err(|_| "unknown project".to_string())?;
+    let info = register(
+        &app,
+        project_id,
+        agent,
+        &name.unwrap_or_default(),
+        agent_args.unwrap_or_default(),
+    )?;
+    let id = Uuid::parse_str(&info.id).map_err(|e| e.to_string())?;
+    let mut map = sessions.lock().map_err(|e| e.to_string())?;
+    let s = map.get_mut(&id).ok_or("no such session")?;
+    if let Err(e) = spawn_for(s, &app, cols, rows, on_data, false) {
+        map.remove(&id);
+        persist(&map, &projects.lock().map_err(|e| e.to_string())?);
+        return Err(e);
+    }
+    Ok(info)
+}
+
+/// Spawn the PTY (and status poller for agent sessions) for an existing session.
 fn spawn_for(
     session: &mut Session,
     app: &AppHandle,
@@ -199,21 +228,40 @@ fn spawn_for(
     );
     let mut command = format!("{path_prefix}exec \"$SHELL\" -i");
     let mut poller_stop = None;
-    if session.agent == Agent::Claude {
+    if session.agent != Agent::Shell {
         let run = platform::home_dir().join(".agentfleet/run");
         std::fs::create_dir_all(&run).map_err(|e| e.to_string())?;
         let status_file = run.join(format!("{id}.status"));
-        let settings = run.join(format!("{id}.settings.json"));
-        agent::write_hooks_settings(&status_file, &settings).map_err(|e| e.to_string())?;
         let auto_permission = app
             .state::<SettingsState>()
             .lock()
             .map_err(|e| e.to_string())?
             .auto_permission;
-        command = format!(
-            "{path_prefix}exec {}",
-            agent::claude_launch(id, &settings, resume, auto_permission)
-        );
+        let launch = if session.agent == Agent::Codex {
+            let script = run.join(format!("{id}.codex-hook.sh"));
+            let payload = run.join(format!("{id}.codex-hook.json"));
+            let sp = script.to_string_lossy();
+            if sp.contains('"') || sp.contains('\\') {
+                return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
+            }
+            agent::write_codex_hook(&status_file, &payload, &script).map_err(|e| e.to_string())?;
+            let resume_id = if resume {
+                agent::codex_session_id(&payload)
+            } else {
+                None
+            };
+            agent::codex_launch(
+                &script,
+                resume_id.as_deref(),
+                auto_permission,
+                &session.agent_args,
+            )
+        } else {
+            let settings = run.join(format!("{id}.settings.json"));
+            agent::write_hooks_settings(&status_file, &settings).map_err(|e| e.to_string())?;
+            agent::claude_launch(id, &settings, resume, auto_permission, &session.agent_args)
+        };
+        command = format!("{path_prefix}exec {launch}");
         status::spawn_poller(app.clone(), id, status_file, stop_rx);
         poller_stop = Some(stop_tx.clone());
     }
@@ -256,6 +304,7 @@ fn info_for(s: &Session) -> SessionInfo {
             .file_name()
             .map(|n| n.to_string_lossy().to_string())
             .unwrap_or_else(|| "repo".into()),
+        name: s.name.clone(),
     }
 }
 
@@ -272,6 +321,8 @@ pub fn persist(sessions: &HashMap<Uuid, Session>, projects: &[Project]) {
             worktree_path: s.worktree.path.clone(),
             branch: s.worktree.branch.clone(),
             base_commit: s.worktree.base_commit.clone(),
+            name: s.name.clone(),
+            agent_args: s.agent_args.clone(),
         })
         .collect();
     list.sort_by(|a, b| a.id8.cmp(&b.id8));
@@ -341,6 +392,8 @@ pub fn list_restorable(
                     token: String::new(),
                     status: Status::Unknown,
                     draft_len: 0,
+                    name: p.name,
+                    agent_args: p.agent_args,
                 },
             );
         }
@@ -381,6 +434,7 @@ pub fn attach_session(
     id: String,
     cols: u16,
     rows: u16,
+    resume: bool,
     on_data: Channel<InvokeResponseBody>,
     app: AppHandle,
     sessions: State<'_, Sessions>,
@@ -391,7 +445,7 @@ pub fn attach_session(
     if s.pty.is_some() {
         return Err("session already attached".into());
     }
-    spawn_for(s, &app, cols, rows, on_data, true)
+    spawn_for(s, &app, cols, rows, on_data, resume)
 }
 
 fn with_pty<F>(sessions: &Sessions, id: &str, f: F) -> Result<(), String>
@@ -499,7 +553,12 @@ pub fn close_one(app: &AppHandle, uuid: Uuid) -> Result<CloseOutcome, String> {
         let _ = p.kill();
     }
     let run = platform::home_dir().join(".agentfleet/run");
-    for ext in ["status", "settings.json"] {
+    for ext in [
+        "status",
+        "settings.json",
+        "codex-hook.sh",
+        "codex-hook.json",
+    ] {
         let _ = std::fs::remove_file(run.join(format!("{uuid}.{ext}")));
     }
     let path = s.worktree.path.to_string_lossy().to_string();
@@ -645,6 +704,8 @@ mod tests {
                 token: String::new(),
                 status: Status::Unknown,
                 draft_len: 0,
+                name: String::new(),
+                agent_args: Vec::new(),
             },
         )
     }

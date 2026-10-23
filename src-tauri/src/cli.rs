@@ -9,7 +9,10 @@ const USAGE: &str = "usage: agentfleet <command>
 
 commands:
   list                      list the sessions in this project
-  send <session> <text...>  send a request to a claude session (id8 or full id)
+  send <session> <text...>  send a request to an agent session (id8 or full id)
+  spawn [--agent claude|codex|shell] [--name <label>] [--role <name>] [--agent-arg <arg>]... <prompt...|->
+                            start a sibling session, queue the prompt, print '<id8> <run>'
+  close <session>           close a sibling session in this project
   inbox                     list requests to/from this session
   read <run>                show a request and its response
   reply <run> <text...>     answer a request addressed to this session
@@ -49,6 +52,17 @@ pub enum Cmd {
     },
     Wait {
         run: String,
+    },
+    /// `text: None` means read stdin.
+    Spawn {
+        agent: Option<String>,
+        name: Option<String>,
+        role: Option<String>,
+        agent_args: Vec<String>,
+        text: Option<String>,
+    },
+    Close {
+        session: String,
     },
     ScratchRead,
     /// `text: None` means read stdin.
@@ -92,6 +106,55 @@ fn parse_scratch(rest: &[String]) -> Result<Cmd, String> {
     })
 }
 
+fn parse_spawn(rest: &[String]) -> Result<Cmd, String> {
+    let (mut agent, mut name, mut role) = (None, None, None);
+    let mut agent_args = Vec::new();
+    let mut i = 0;
+    while i < rest.len() && rest[i] != "-" && rest[i].starts_with("--") {
+        let flag = rest[i].as_str();
+        let val = rest
+            .get(i + 1)
+            .cloned()
+            .ok_or(format!("{flag} needs a value"))?;
+        match flag {
+            "--agent" => agent = Some(val),
+            "--name" => name = Some(val),
+            "--role" => role = Some(val),
+            "--agent-arg" => agent_args.push(val),
+            other => return Err(format!("unknown option: {other}")),
+        }
+        i += 2;
+    }
+    let words = &rest[i..];
+    let text = match words {
+        [] => None,
+        [d] if d == "-" => None,
+        _ => Some(words.join(" ")),
+    };
+    if agent.as_deref() == Some("shell") {
+        if !words.is_empty() {
+            return Err("shell sessions take no prompt".into());
+        }
+    } else if words.is_empty() {
+        return Err("spawn needs a prompt or -".into());
+    }
+    Ok(Cmd::Spawn {
+        agent,
+        name,
+        role,
+        agent_args,
+        text,
+    })
+}
+
+/// Prepend a role's text (plus a blank line) to the prompt.
+pub fn with_role(role_text: Option<&str>, prompt: &str) -> String {
+    match role_text {
+        Some(r) => format!("{}\n\n{}", r.trim_end(), prompt),
+        None => prompt.to_string(),
+    }
+}
+
 pub fn parse(args: &[String]) -> Result<Cmd, String> {
     let rest = &args[args.len().min(1)..];
     let one = |name: &str| -> Result<String, String> {
@@ -119,6 +182,8 @@ pub fn parse(args: &[String]) -> Result<Cmd, String> {
         Some("read") => one("read").map(|run| Cmd::Read { run }),
         Some("cancel") => one("cancel").map(|run| Cmd::Cancel { run }),
         Some("scratchpad") => parse_scratch(rest),
+        Some("spawn") => parse_spawn(rest),
+        Some("close") => one("close").map(|session| Cmd::Close { session }),
         Some("wait") => one("wait").map(|run| Cmd::Wait { run }),
         Some(other) => Err(format!("unknown command: {other}")),
     }
@@ -168,6 +233,25 @@ fn obj(pairs: &[(&str, &str)]) -> Map<String, Value> {
         .collect()
 }
 
+fn read_stdin() -> Result<String, String> {
+    let mut buf = String::new();
+    std::io::Read::read_to_string(&mut std::io::stdin(), &mut buf).map_err(|e| e.to_string())?;
+    Ok(buf)
+}
+
+/// Full id of a session in this project, given an id8 or full id.
+fn resolve_session(session: &str) -> Result<String, String> {
+    let list = call("session.list", Map::new())?;
+    list["sessions"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .find(|s| s["id8"] == session || s["id"] == session)
+        .and_then(|s| s["id"].as_str())
+        .map(str::to_string)
+        .ok_or(format!("no such session in this project: {session}"))
+}
+
 fn run(cmd: Cmd) -> Result<i32, String> {
     match cmd {
         Cmd::Help | Cmd::Guide => unreachable!(),
@@ -175,16 +259,60 @@ fn run(cmd: Cmd) -> Result<i32, String> {
             print_list(&call("session.list", Map::new())?);
             Ok(0)
         }
+        Cmd::Spawn {
+            agent,
+            name,
+            role,
+            agent_args,
+            text,
+        } => {
+            let text = match text {
+                Some(t) => Some(t),
+                None if agent.as_deref() == Some("shell") => None,
+                None => Some(read_stdin()?),
+            };
+            let text = match (text, role) {
+                (Some(t), Some(role)) => {
+                    let path = crate::platform::home_dir()
+                        .join(".agentfleet/roles")
+                        .join(format!("{role}.md"));
+                    let file = std::fs::read_to_string(&path)
+                        .map_err(|_| format!("no such role: {}", path.display()))?;
+                    Some(with_role(Some(&file), &t))
+                }
+                (t, _) => t,
+            };
+            let mut extra = Map::new();
+            if let Some(a) = agent {
+                extra.insert("agent".into(), a.into());
+            }
+            if let Some(n) = name {
+                extra.insert("name".into(), n.into());
+            }
+            if let Some(t) = text {
+                extra.insert("text".into(), t.into());
+            }
+            if !agent_args.is_empty() {
+                extra.insert("agentArgs".into(), agent_args.into());
+            }
+            let v = call_timeout("session.spawn", extra, 30)?;
+            println!(
+                "{} {}",
+                v["session"]["id8"].as_str().unwrap_or(""),
+                v["run"]["id"].as_str().unwrap_or("")
+            );
+            Ok(0)
+        }
+        Cmd::Close { session } => {
+            let id = resolve_session(&session)?;
+            let v = call_timeout("session.close", obj(&[("target", &id)]), 30)?;
+            if v["outcome"]["kind"] == "kept" {
+                println!("kept {}", v["outcome"]["path"].as_str().unwrap_or(""));
+            }
+            Ok(0)
+        }
         Cmd::Send { session, text } => {
-            let list = call("session.list", Map::new())?;
-            let id = list["sessions"]
-                .as_array()
-                .into_iter()
-                .flatten()
-                .find(|s| s["id8"] == session.as_str() || s["id"] == session.as_str())
-                .and_then(|s| s["id"].as_str())
-                .ok_or(format!("no such session in this project: {session}"))?
-                .to_string();
+            let id = resolve_session(&session)?;
             let v = call("session.request", obj(&[("target", &id), ("text", &text)]))?;
             println!("{}", v["run"]["id"].as_str().unwrap_or(""));
             Ok(0)
@@ -225,12 +353,7 @@ fn run(cmd: Cmd) -> Result<i32, String> {
         } => {
             let text = match text {
                 Some(t) => t,
-                None => {
-                    let mut buf = String::new();
-                    std::io::Read::read_to_string(&mut std::io::stdin(), &mut buf)
-                        .map_err(|e| e.to_string())?;
-                    buf
-                }
+                None => read_stdin()?,
             };
             let mut extra = obj(&[("text", &text)]);
             if let Some(r) = if_revision {
@@ -393,6 +516,54 @@ mod tests {
             Ok(Cmd::Wait { run: "r1".into() })
         );
         assert!(parse(&a(&["wait"])).is_err());
+        assert_eq!(
+            parse(&a(&[
+                "spawn",
+                "--agent",
+                "claude",
+                "--name",
+                "rev",
+                "--role",
+                "r",
+                "--agent-arg",
+                "--model",
+                "--agent-arg",
+                "opus",
+                "do",
+                "it"
+            ])),
+            Ok(Cmd::Spawn {
+                agent: Some("claude".into()),
+                name: Some("rev".into()),
+                role: Some("r".into()),
+                agent_args: vec!["--model".into(), "opus".into()],
+                text: Some("do it".into())
+            })
+        );
+        assert_eq!(
+            parse(&a(&["spawn", "-"])),
+            Ok(Cmd::Spawn {
+                agent: None,
+                name: None,
+                role: None,
+                agent_args: vec![],
+                text: None
+            })
+        );
+        assert!(parse(&a(&["spawn", "--agent", "shell", "hi"])).is_err());
+        assert!(parse(&a(&["spawn", "--agent", "shell"])).is_ok());
+        assert_eq!(
+            parse(&a(&["spawn", "--name", "x"])),
+            Err("spawn needs a prompt or -".into())
+        );
+        assert!(parse(&a(&["spawn", "--bogus", "x", "hi"])).is_err());
+        assert_eq!(
+            parse(&a(&["close", "ab12"])),
+            Ok(Cmd::Close {
+                session: "ab12".into()
+            })
+        );
+        assert!(parse(&a(&["close"])).is_err());
         assert_eq!(parse(&a(&["scratchpad", "read"])), Ok(Cmd::ScratchRead));
         assert_eq!(
             parse(&a(&[
@@ -423,5 +594,11 @@ mod tests {
             parse(&a(&["frobnicate"])),
             Err("unknown command: frobnicate".into())
         );
+    }
+
+    #[test]
+    fn with_role_prepends() {
+        assert_eq!(with_role(Some("be brief\n"), "go"), "be brief\n\ngo");
+        assert_eq!(with_role(None, "go"), "go");
     }
 }

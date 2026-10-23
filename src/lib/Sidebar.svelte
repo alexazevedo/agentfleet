@@ -8,12 +8,15 @@
     addProject,
     closeTab,
     initStatusListener,
+    initSpawnListener,
     setActive,
     store,
+    tabTitle,
   } from "./sessions.svelte";
 
   onMount(() => {
     initStatusListener();
+    initSpawnListener();
     initCollabListener();
   });
 
@@ -88,7 +91,7 @@
         >
           {#if tab.info}
             <AgentIcon agent={tab.info.agent} size={14} />
-            <span>{tab.info.agent === "claude" ? "Claude Code" : "Shell"}</span>
+            <span>{tabTitle(tab.info)}</span>
             <span class="id8">{tab.info.id8}</span>
           {:else}
             <span class="id8">starting…</span>

@@ -67,6 +67,7 @@
     </div>
     {/if}
     <label><input type="radio" bind:group={agent} value="claude" /> Claude Code</label>
+    <label><input type="radio" bind:group={agent} value="codex" /> Codex</label>
     <label><input type="radio" bind:group={agent} value="shell" /> Shell</label>
     {#if store.error}<p class="error">{store.error}</p>{/if}
     <div class="row actions">

@@ -1,370 +1,390 @@
 {
-  "/Users/aazevedo/dev/agentfleet/svelte.config.js": {
-    "mtime": 1792683102.4783094,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/svelte.config.js": {
+    "mtime": 1792717628.3958778,
     "hash": "bf7174b10541059709a0e8f876f69c6a"
   },
-  "/Users/aazevedo/dev/agentfleet/vite.config.ts": {
-    "mtime": 1792683102.4709723,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/vite.config.ts": {
+    "mtime": 1792717628.3965983,
     "hash": "f9e93dffdd64cb486843682161838e45"
   },
-  "/Users/aazevedo/dev/agentfleet/scripts/release.mjs": {
-    "mtime": 1792696355.3631024,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/scripts/release.mjs": {
+    "mtime": 1792717628.3829863,
     "hash": "27283dfb2289348735f3f90e34c505c2"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/build.rs": {
-    "mtime": 1792695775.3662045,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/build.rs": {
+    "mtime": 1792717628.3977113,
     "hash": "4f08ca7a6f3a041247b07a99c4537fb3"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/session.rs": {
-    "mtime": 1792708001.0436368,
-    "hash": "092968b7117ae577fcbde54ae3cf3e22"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/session.rs": {
+    "mtime": 1792721179.54665,
+    "hash": "3fcad707ffcd455a068ed4cd929720fa"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/runtime.rs": {
-    "mtime": 1792688311.968743,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/runtime.rs": {
+    "mtime": 1792717628.3861985,
     "hash": "c00a6b4c071900b5070853d6351f4c75"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/lib.rs": {
-    "mtime": 1792708001.0434842,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/lib.rs": {
+    "mtime": 1792717628.389042,
     "hash": "c56761363e0f40f4fc826767894b2a5c"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/scratchpad.rs": {
-    "mtime": 1792688855.529179,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/scratchpad.rs": {
+    "mtime": 1792717628.3863413,
     "hash": "d803e58bfd6e238e1de0930924483736"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/deliver.rs": {
-    "mtime": 1792695999.3603704,
-    "hash": "5256cd2370b492a79d4fcbf432fa9fb0"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/deliver.rs": {
+    "mtime": 1792721179.5470154,
+    "hash": "6966598963528c0ddf471c3663be04aa"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/status.rs": {
-    "mtime": 1792688654.1858299,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/status.rs": {
+    "mtime": 1792717628.387155,
     "hash": "01a79e45b7e5224e11db7943bc7f5a69"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/project.rs": {
-    "mtime": 1792684803.8057745,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/project.rs": {
+    "mtime": 1792717628.3902063,
     "hash": "c82bec4cc272f9a1ca345edf50515baf"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/state.rs": {
-    "mtime": 1792684793.7451243,
-    "hash": "933811f22d43622536ee08f24d6fbdd4"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/state.rs": {
+    "mtime": 1792720586.58496,
+    "hash": "62db0ac5090db87fe113251867b386b3"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/main.rs": {
-    "mtime": 1792688311.9772604,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/main.rs": {
+    "mtime": 1792717628.389211,
     "hash": "22e9c1b88bc203d8e664919509a7eb57"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/broker.rs": {
-    "mtime": 1792688851.183527,
-    "hash": "587252ccdd683cf0693f00e33124d717"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/broker.rs": {
+    "mtime": 1792721102.6510043,
+    "hash": "7d1416bc3c9277eef178e4cbbc58890b"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/agent.rs": {
-    "mtime": 1792695999.4728332,
-    "hash": "964369518813f22fe192ee6ff8c09df4"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/agent.rs": {
+    "mtime": 1792721188.605765,
+    "hash": "3e2ed983ac13191d799169fa26e12591"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/worktree.rs": {
-    "mtime": 1792683466.7793264,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/worktree.rs": {
+    "mtime": 1792717628.3874567,
     "hash": "c13e978c28d962a79f93748ffe046d36"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/pty.rs": {
-    "mtime": 1792696069.9484072,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/pty.rs": {
+    "mtime": 1792717628.390443,
     "hash": "ad5b4ca8469f724a35681356bbc7cbfd"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/settings.rs": {
-    "mtime": 1792706388.2250764,
-    "hash": "884ba9616f273bf5c2b39deac737db88"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/settings.rs": {
+    "mtime": 1792721179.5467823,
+    "hash": "2f7bbde663366de2f66b0853e4d29ea4"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/cli.rs": {
-    "mtime": 1792688949.867029,
-    "hash": "b483de92abcf6360ac44ec707bac072f"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/cli.rs": {
+    "mtime": 1792721179.5471663,
+    "hash": "66016e139ec2f5b2c41d05a77c4a7e44"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/collab.rs": {
-    "mtime": 1792688759.8434958,
-    "hash": "0c676046f251d37e2dfe58615da8bb47"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/collab.rs": {
+    "mtime": 1792721188.5178843,
+    "hash": "6232b3bda87c19074983b9317db346bd"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/platform/unix.rs": {
-    "mtime": 1792683109.804203,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/platform/unix.rs": {
+    "mtime": 1792717628.3899257,
     "hash": "feeed81323238bac1348bdb5fac9ffb4"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/src/platform/mod.rs": {
-    "mtime": 1792683466.7885249,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/src/platform/mod.rs": {
+    "mtime": 1792717628.389592,
     "hash": "fb7f031054e16bd9e53f7c33a5846f79"
   },
-  "/Users/aazevedo/dev/agentfleet/src/main.ts": {
-    "mtime": 1792684884.000348,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/main.ts": {
+    "mtime": 1792717628.3922992,
     "hash": "fa588c67b49f9d6a7083ba161c2d5306"
   },
-  "/Users/aazevedo/dev/agentfleet/src/App.svelte": {
-    "mtime": 1792708030.567968,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/App.svelte": {
+    "mtime": 1792717628.399855,
     "hash": "690b8e9ba43e6c35f6508974c8931917"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/RestoreDialog.svelte": {
-    "mtime": 1792706401.8795807,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/RestoreDialog.svelte": {
+    "mtime": 1792717628.3926413,
     "hash": "796614c2e1cac9d33ede0aca12c99eb0"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/sessions.svelte.ts": {
-    "mtime": 1792708030.5681832,
-    "hash": "b3d01c6ad50df721daff474024190d04"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/sessions.svelte.ts": {
+    "mtime": 1792721209.4165137,
+    "hash": "7859d1085615da44bda0b918e70345a9"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/collab.svelte.ts": {
-    "mtime": 1792688757.8013468,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/collab.svelte.ts": {
+    "mtime": 1792717628.3909483,
     "hash": "d32dc0f484808ca6664b431d51aa9958"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/Terminal.svelte": {
-    "mtime": 1792706304.7186267,
-    "hash": "2c3253bdb0be8b542ac261a3b457ba8a"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Terminal.svelte": {
+    "mtime": 1792720586.5856218,
+    "hash": "422983d867663741a06def988af46f98"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/StatusBar.svelte": {
-    "mtime": 1792692299.094542,
-    "hash": "1a7a71daa05c4c968c94035ec808cb6a"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/StatusBar.svelte": {
+    "mtime": 1792720586.5858307,
+    "hash": "829ad50e620bfff0e7fc7aee5b210495"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/Messages.svelte": {
-    "mtime": 1792692299.094687,
-    "hash": "1cad39279c511144a20de48f8d75b928"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Messages.svelte": {
+    "mtime": 1792721230.1616464,
+    "hash": "1784baf4a994df8b13029527ea04165a"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/settingsStore.svelte.ts": {
-    "mtime": 1792706388.2255259,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/settingsStore.svelte.ts": {
+    "mtime": 1792717628.3917785,
     "hash": "85f19259e0fa2a1342172b11e409fe8d"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/SettingsPane.svelte": {
-    "mtime": 1792706401.8696167,
-    "hash": "3deefb397791237a023441c4a61a6349"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/SettingsPane.svelte": {
+    "mtime": 1792721209.4167647,
+    "hash": "8b4b976393256ee0f57492b670f71c2e"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/NewTabDialog.svelte": {
-    "mtime": 1792696016.0210383,
-    "hash": "9d7465871bb070fcc513cb248451f576"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/NewTabDialog.svelte": {
+    "mtime": 1792721209.4166386,
+    "hash": "6fa39da0ff7faf318ad25bd83a8db900"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/AgentIcon.svelte": {
-    "mtime": 1792692298.2873387,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/AgentIcon.svelte": {
+    "mtime": 1792717628.400269,
     "hash": "f2c4edfef91db5a1595b0303ee9858d0"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/Scratchpad.svelte": {
-    "mtime": 1792692406.808679,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Scratchpad.svelte": {
+    "mtime": 1792717628.3928745,
     "hash": "acb59e23230e78e5737360c69b37a185"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/scratchpadStore.svelte.ts": {
-    "mtime": 1792688873.9130557,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/scratchpadStore.svelte.ts": {
+    "mtime": 1792717628.391293,
     "hash": "6c39f2df3f3a18108016d7a00c660dac"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/UpdateDialog.svelte": {
-    "mtime": 1792696166.4188454,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/UpdateDialog.svelte": {
+    "mtime": 1792717628.3907223,
     "hash": "3bbd1328a99c9b08293b6eb71f6b94e5"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/Sidebar.svelte": {
-    "mtime": 1792708001.044699,
-    "hash": "a8624646cf53056410a49f53fc893421"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/Sidebar.svelte": {
+    "mtime": 1792720996.6298597,
+    "hash": "d7b406dcdaaab02960c6ee4f6cead479"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/RemoveProjectDialog.svelte": {
-    "mtime": 1792708001.0443056,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/RemoveProjectDialog.svelte": {
+    "mtime": 1792717628.392401,
     "hash": "7303b132aebdab06cc1c0fc4bfe2376e"
   },
-  "/Users/aazevedo/dev/agentfleet/src/lib/updater.svelte.ts": {
-    "mtime": 1792696166.4129293,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src/lib/updater.svelte.ts": {
+    "mtime": 1792717628.3920538,
     "hash": "7eb9993a903b1ca402db0b7e2bba2a3b"
   },
-  "/Users/aazevedo/dev/agentfleet/PRODUCT.md": {
-    "mtime": 1792708001.040361,
-    "hash": "a50e010aea93ffd4e5a2bec1342fa36e"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/PRODUCT.md": {
+    "mtime": 1792717783.9389668,
+    "hash": "1d7c788845cbb5c9d9dadf8a7e0c66db"
   },
-  "/Users/aazevedo/dev/agentfleet/index.html": {
-    "mtime": 1792683102.4976833,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/index.html": {
+    "mtime": 1792717628.3821118,
     "hash": "296ab2daceb75e6b90caa184795a8861"
   },
-  "/Users/aazevedo/dev/agentfleet/STATE.md": {
-    "mtime": 1792708017.5714772,
-    "hash": "23cecc3922e76738d3946354d140aad5"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/STATE.md": {
+    "mtime": 1792721325.5487928,
+    "hash": "d32a0412b72278c7b1b1e4cbdfa6317f"
   },
-  "/Users/aazevedo/dev/agentfleet/README.md": {
-    "mtime": 1792688950.4201186,
-    "hash": "bb145bedddfddee730a6f0d6ff675a98"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/README.md": {
+    "mtime": 1792720996.6300895,
+    "hash": "82b38997d6fc6edba63afbc515321a5b"
   },
-  "/Users/aazevedo/dev/agentfleet/tickets/28-remove-project-cascade.md": {
-    "mtime": 1792708001.0451908,
-    "hash": "9641ce328ac505fe5d17a3c50cb96fd8"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/tickets/30-session-register-label-args.md": {
+    "mtime": 1792720846.2947676,
+    "hash": "5428a6337e9bbbd0b2b7eefccec1e7b6"
   },
-  "/Users/aazevedo/dev/agentfleet/tickets/29-remove-project-ui.md": {
-    "mtime": 1792708001.0454264,
-    "hash": "ebb0d70b33face4aebb8065e3c609967"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/tickets/32-codex-agent.md": {
+    "mtime": 1792721324.8732808,
+    "hash": "3da1b46987378608626a5529a67d53bf"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/orchestra-prd.md": {
-    "mtime": 1792682031.23037,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/tickets/31-spawn-close-cli.md": {
+    "mtime": 1792721103.2962172,
+    "hash": "df799cdd0cf62646081ad92e537f89bc"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/orchestra-prd.md": {
+    "mtime": 1792717628.3943062,
     "hash": "7192030d0ca64389ff31043d88f5d531"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/release.md": {
-    "mtime": 1792696420.2092433,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/release.md": {
+    "mtime": 1792717628.39456,
     "hash": "a894f96eac3f13f10a30cbadf187879e"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/roadmap.md": {
-    "mtime": 1792684741.8033707,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/roadmap.md": {
+    "mtime": 1792717628.3947797,
     "hash": "4f2c94d0cfbdf2442a5f2ea5ea4f5cdf"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/discovery-m1.md": {
-    "mtime": 1792682031.2224724,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/discovery-m1.md": {
+    "mtime": 1792717628.3808339,
     "hash": "7cc40533c0b4733108b6c67ce84cf2e3"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/PRODUCT.md": {
-    "mtime": 1792708001.0407987,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.1/PRODUCT.md": {
+    "mtime": 1792717628.3793285,
     "hash": "7b22cbbd978338c3aa64be9c52d1b9c9"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/STATE.md": {
-    "mtime": 1792708017.5559146,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.1/STATE.md": {
+    "mtime": 1792717628.3796556,
     "hash": "6bc999a02db2b3ace0f558e405962387"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/26-terminal-prefs.md": {
-    "mtime": 1792708001.0411334,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.1/tickets/26-terminal-prefs.md": {
+    "mtime": 1792717628.3801181,
     "hash": "93262117c07db21e5f8fc8ba2eb5cf0b"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3.1/tickets/27-restore-prompt.md": {
-    "mtime": 1792708001.0412273,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.1/tickets/27-restore-prompt.md": {
+    "mtime": 1792717628.3805473,
     "hash": "216f749571de8fff5769f06b646a89d1"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/PRODUCT.md": {
-    "mtime": 1792684741.781378,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/PRODUCT.md": {
+    "mtime": 1792717628.379113,
     "hash": "6f80213485ca32f43598be92f0ffa92b"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/STATE.md": {
-    "mtime": 1792684906.4283867,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/STATE.md": {
+    "mtime": 1792717628.3793957,
     "hash": "5e5b94b25e4bc68118c027ccda72e980"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/07-persist-restore.md": {
-    "mtime": 1792683805.1923444,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/07-persist-restore.md": {
+    "mtime": 1792717628.3841972,
     "hash": "ce4ad7c63810ebb018a4b8820ea091e9"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/09-sidebar.md": {
-    "mtime": 1792684898.960099,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/09-sidebar.md": {
+    "mtime": 1792717628.384681,
     "hash": "5d4bb7c12f65e1825da53ab7f576989c"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/03-pty.md": {
-    "mtime": 1792683408.6717956,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/03-pty.md": {
+    "mtime": 1792717628.3808367,
     "hash": "9eeab8c65b7bdf9164dac95eaa412fad"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/04-shell-tab.md": {
-    "mtime": 1792683543.9991345,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/04-shell-tab.md": {
+    "mtime": 1792717628.3811922,
     "hash": "c9aaa3d3e561908c0b03784d1fd9d87d"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/05-claude-status.md": {
-    "mtime": 1792683637.4825873,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/05-claude-status.md": {
+    "mtime": 1792717628.381419,
     "hash": "ac9ca65770ad6312094a120041a66e97"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/06-close-tab.md": {
-    "mtime": 1792683717.2900128,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/06-close-tab.md": {
+    "mtime": 1792717628.3839715,
     "hash": "3de2b28e3d1ec410500ed6d2889ec692"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/01-scaffold.md": {
-    "mtime": 1792683289.225268,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/01-scaffold.md": {
+    "mtime": 1792717628.379832,
     "hash": "b95048ba9798d2462d9be502b3ac9df2"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/02-worktree.md": {
-    "mtime": 1792683344.8931518,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/02-worktree.md": {
+    "mtime": 1792717628.3801243,
     "hash": "488a5022aab97dc10e8da6c73ca9eaac"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m1/tickets/08-projects.md": {
-    "mtime": 1792684842.8036742,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m1/tickets/08-projects.md": {
+    "mtime": 1792717628.3844328,
     "hash": "10149b4de3b10927e921014175af5ff3"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/PRODUCT.md": {
-    "mtime": 1792695771.4113498,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.2/PRODUCT.md": {
+    "mtime": 1792717628.3799667,
+    "hash": "a50e010aea93ffd4e5a2bec1342fa36e"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.2/STATE.md": {
+    "mtime": 1792717628.3804455,
+    "hash": "68110379e61d1ec3b25f86b5518ffdb8"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.2/tickets/28-remove-project-cascade.md": {
+    "mtime": 1792717628.395999,
+    "hash": "9641ce328ac505fe5d17a3c50cb96fd8"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3.2/tickets/29-remove-project-ui.md": {
+    "mtime": 1792717628.396101,
+    "hash": "ebb0d70b33face4aebb8065e3c609967"
+  },
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/PRODUCT.md": {
+    "mtime": 1792717628.3810296,
     "hash": "c7d664e9ff555e236423b36dba10515c"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/STATE.md": {
-    "mtime": 1792699710.805197,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/STATE.md": {
+    "mtime": 1792717628.3812828,
     "hash": "de6ca75e8daaa2930b68fa429662cd13"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/24-cut-releases.md": {
-    "mtime": 1792695771.412366,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/24-cut-releases.md": {
+    "mtime": 1792717628.38204,
     "hash": "1c2543f358f93f9512e4b8bb6283bac2"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/22-quit-guard-release-script.md": {
-    "mtime": 1792696381.6448267,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/22-quit-guard-release-script.md": {
+    "mtime": 1792717628.3813202,
     "hash": "7cfef79cd7fdcfef36e5b23a33c9b0f6"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/19-bundle-ci.md": {
-    "mtime": 1792695930.2924933,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/19-bundle-ci.md": {
+    "mtime": 1792717628.3803322,
     "hash": "06f703908ce1fbb516682b2c6cab6fe1"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/25-env-scrub.md": {
-    "mtime": 1792696099.331136,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/25-env-scrub.md": {
+    "mtime": 1792717628.3823507,
     "hash": "1bf66ec5ecd2e425389014556e16ae55"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/23-release-workflow.md": {
-    "mtime": 1792696466.6760652,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/23-release-workflow.md": {
+    "mtime": 1792717628.381683,
     "hash": "2f6f9d791288213bc548ad2c8ca354c2"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/21-updater.md": {
-    "mtime": 1792696279.0426347,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/21-updater.md": {
+    "mtime": 1792717628.3810198,
     "hash": "deb6915b8970bba55b4f97e3d26732c0"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m3/tickets/20-settings.md": {
-    "mtime": 1792696050.289745,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m3/tickets/20-settings.md": {
+    "mtime": 1792717628.3807936,
     "hash": "86f943fac6be3fdab1a3315109a989de"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/PRODUCT.md": {
-    "mtime": 1792686165.809526,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/PRODUCT.md": {
+    "mtime": 1792717628.3849735,
     "hash": "ccd60cf02ede390b907733180b32525f"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/STATE.md": {
-    "mtime": 1792692659.7286444,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/STATE.md": {
+    "mtime": 1792717628.385264,
     "hash": "ca76ceb89d6d9b6c8a1ca91be88101b6"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/14-scratchpad.md": {
-    "mtime": 1792688905.496224,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/14-scratchpad.md": {
+    "mtime": 1792717628.3797913,
     "hash": "2f186c038f75705680704cd549774319"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/13-messages-ui.md": {
-    "mtime": 1792688795.5880542,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/13-messages-ui.md": {
+    "mtime": 1792717628.3794968,
     "hash": "93e6039e203993a3b89bb9adb309c4c7"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/11-runs.md": {
-    "mtime": 1792688601.4217575,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/11-runs.md": {
+    "mtime": 1792717628.3786886,
     "hash": "cdfc378964c88fc706e36b1f9c513801"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/15-skill-guide.md": {
-    "mtime": 1792688980.027921,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/15-skill-guide.md": {
+    "mtime": 1792717628.3801308,
     "hash": "b6a6d4267dbd3ef47de7a5e72031b536"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/12-delivery.md": {
-    "mtime": 1792688700.5059865,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/12-delivery.md": {
+    "mtime": 1792717628.3792226,
     "hash": "059b48a8e99a439feaaaa28effae8089"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/17-sidebar-polish.md": {
-    "mtime": 1792692312.9803548,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/17-sidebar-polish.md": {
+    "mtime": 1792717628.3805752,
     "hash": "7e2c111970c6b69bbd2598264d4173d7"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/18-2d-icons.md": {
-    "mtime": 1792692430.7164752,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/18-2d-icons.md": {
+    "mtime": 1792717628.3786156,
     "hash": "adb2ba3b7494ca0ebf2cf00a444c3a50"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/16-draft-fix.md": {
-    "mtime": 1792692271.748452,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/16-draft-fix.md": {
+    "mtime": 1792717628.3803072,
     "hash": "b8a50f6476d7beea514065cacede63f8"
   },
-  "/Users/aazevedo/dev/agentfleet/docs/forge-m2/tickets/10-cli-broker.md": {
-    "mtime": 1792688425.4558554,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/docs/forge-m2/tickets/10-cli-broker.md": {
+    "mtime": 1792717628.3854487,
     "hash": "cc45b811607c0ac5db2bc96215642ec5"
   },
-  "/Users/aazevedo/dev/agentfleet/skills/agentfleet/SKILL.md": {
-    "mtime": 1792688938.6400428,
-    "hash": "80c7b7be02755878c4b3d45f9b6a22a4"
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/skills/agentfleet/SKILL.md": {
+    "mtime": 1792721209.417247,
+    "hash": "cea565c35344a66a782a35a5bb50443d"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/icon.png": {
-    "mtime": 1792695768.127238,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/icon.png": {
+    "mtime": 1792717628.4019668,
     "hash": "0cb8d845e0a65d7f4556fb413c951e24"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/128x128.png": {
-    "mtime": 1792695768.0881424,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/128x128.png": {
+    "mtime": 1792717628.39821,
     "hash": "47e2968d83c826e42f76b021c048992f"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/source.png": {
-    "mtime": 1792695763.8188224,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/source.png": {
+    "mtime": 1792717628.4021962,
     "hash": "a9661d7f8485e47131e88318aec7af6c"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/32x32.png": {
-    "mtime": 1792695768.0650728,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/32x32.png": {
+    "mtime": 1792717628.3987021,
     "hash": "1e89ccb0104a9b82e6378fdfdc1cdb7d"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/128x128@2x.png": {
-    "mtime": 1792695768.1025157,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/128x128@2x.png": {
+    "mtime": 1792717628.3985019,
     "hash": "e98b226620018b0f540cd97a84d5a1f7"
   },
-  "/Users/aazevedo/dev/agentfleet/src-tauri/icons/64x64.png": {
-    "mtime": 1792695768.0753193,
+  "/Users/aazevedo/dev/agentfleet/.claude/worktrees/spawn-codex/src-tauri/icons/64x64.png": {
+    "mtime": 1792717628.398956,
     "hash": "1a0c6bc9fe1fd559cbc96b181a56c027"
   }
 }

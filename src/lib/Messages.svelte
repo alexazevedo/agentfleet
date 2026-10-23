@@ -9,7 +9,7 @@
   const runs = $derived(collab.runsBySession[me] ?? []);
   const targets = $derived(
     store.tabs.filter(
-      (t) => t.projectId === tab.projectId && t.agent === "claude" && t.info && t.info.id !== me,
+      (t) => t.projectId === tab.projectId && t.agent !== "shell" && t.info && t.info.id !== me,
     ),
   );
 
@@ -100,12 +100,12 @@
   <div class="compose">
     {#if error}<div class="err">{error}</div>{/if}
     {#if targets.length === 0}
-      <div class="none">No other Claude session in this project to message</div>
+      <div class="none">No other agent session in this project to message</div>
     {/if}
     <div class="line">
       <select bind:value={target} disabled={targets.length === 0}>
         {#each targets as t (t.key)}
-          <option value={t.info!.id}>Claude {t.info!.id8}</option>
+          <option value={t.info!.id}>{t.agent === "codex" ? "Codex" : "Claude"} {t.info!.id8}</option>
         {/each}
       </select>
       <button type="button" disabled={targets.length === 0 || !text.trim()} onclick={send}>

@@ -24,8 +24,8 @@ pub fn can_deliver(
     if !has_pty {
         return Decision::NeedsAttention("target has no terminal attached");
     }
-    if agent != Agent::Claude {
-        return Decision::NeedsAttention("target is not a claude session");
+    if agent == Agent::Shell {
+        return Decision::NeedsAttention("target is not an agent session");
     }
     if status == Status::Ended {
         return Decision::NeedsAttention("session ended");
@@ -237,6 +237,14 @@ mod tests {
             can_deliver(Status::Waiting, 0, c, false, false),
             NeedsAttention(_)
         ));
+        assert_eq!(
+            can_deliver(Status::Waiting, 0, Agent::Codex, true, false),
+            Deliver
+        );
+        assert_eq!(
+            can_deliver(Status::Working, 0, Agent::Codex, true, false),
+            Wait
+        );
         assert!(matches!(
             can_deliver(Status::Waiting, 0, Agent::Shell, true, true),
             NeedsAttention(_)

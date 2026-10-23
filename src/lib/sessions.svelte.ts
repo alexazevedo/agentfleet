@@ -1,7 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 
-export type AgentKind = "claude" | "shell";
+export type AgentKind = "claude" | "codex" | "shell";
 
 export type Status = "unknown" | "working" | "waiting" | "ended";
 
@@ -19,6 +19,15 @@ export interface SessionInfo {
   branch: string;
   worktreePath: string;
   repoName: string;
+  name: string;
+}
+
+export function labelOf(agent: AgentKind): string {
+  return agent === "claude" ? "Claude Code" : agent === "codex" ? "Codex" : "Shell";
+}
+
+export function tabTitle(info: SessionInfo): string {
+  return info.name || labelOf(info.agent);
 }
 
 // A tab: pending until Terminal.svelte's create_session call returns `info`.
@@ -30,7 +39,7 @@ export interface Tab {
   status?: Status;
   closing?: "kept" | null;
   keptPath?: string;
-  restored?: boolean;
+  resume?: boolean;
 }
 
 export const store = $state({
@@ -106,6 +115,30 @@ export function initStatusListener() {
   });
 }
 
+let spawnListening = false;
+export function initSpawnListener() {
+  if (spawnListening) return;
+  spawnListening = true;
+  listen<SessionInfo>("session-spawned", (e) => {
+    const info = e.payload;
+    const key = crypto.randomUUID();
+    store.tabs.push({
+      key,
+      projectId: info.projectId,
+      agent: info.agent,
+      info,
+      status: early.get(info.id) ?? "unknown",
+      resume: false,
+    });
+    early.delete(info.id);
+    store.activeKey ??= key;
+  });
+  listen<{ id: string }>("session-closed", (e) => {
+    const t = store.tabs.find((t) => t.info?.id === e.payload.id);
+    if (t) remove(t.key);
+  });
+}
+
 export function remove(key: string) {
   const i = store.tabs.findIndex((t) => t.key === key);
   if (i >= 0) store.tabs.splice(i, 1);
@@ -174,7 +207,7 @@ export function attachRestored() {
       agent: info.agent,
       info,
       status: early.get(info.id) ?? "unknown",
-      restored: true,
+      resume: true,
     });
     early.delete(info.id);
     store.activeKey ??= key;

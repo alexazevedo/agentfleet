@@ -66,10 +66,11 @@
 
     const channel = new Channel<ArrayBuffer>();
     channel.onmessage = (buf) => term.write(new Uint8Array(buf));
-    if (tab.restored && tab.info) {
+    if (tab.info) {
       const restoredId = tab.info.id;
       invoke("attach_session", {
         id: restoredId,
+        resume: tab.resume ?? true,
         cols: term.cols,
         rows: term.rows,
         onData: channel,

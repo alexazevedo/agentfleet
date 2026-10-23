@@ -199,8 +199,8 @@ pub fn request(
     if tproject != project {
         return Err("target session is in a different project".into());
     }
-    if tagent != Agent::Claude {
-        return Err("target is not a claude session".into());
+    if tagent == Agent::Shell {
+        return Err("target is not an agent session".into());
     }
     let run = Run {
         id: Uuid::new_v4(),
@@ -377,23 +377,26 @@ mod tests {
         b: Uuid,
         sh: Uuid,
         other: Uuid,
+        cx: Uuid,
         map: HashMap<Uuid, (Uuid, Agent)>,
     }
 
     fn world() -> W {
         let (p, q) = (Uuid::new_v4(), Uuid::new_v4());
-        let ids: Vec<Uuid> = (0..4).map(|_| Uuid::new_v4()).collect();
+        let ids: Vec<Uuid> = (0..5).map(|_| Uuid::new_v4()).collect();
         let mut map = HashMap::new();
         map.insert(ids[0], (p, Agent::Claude));
         map.insert(ids[1], (p, Agent::Claude));
         map.insert(ids[2], (p, Agent::Shell));
         map.insert(ids[3], (q, Agent::Claude));
+        map.insert(ids[4], (p, Agent::Codex));
         W {
             p,
             a: ids[0],
             b: ids[1],
             sh: ids[2],
             other: ids[3],
+            cx: ids[4],
             map,
         }
     }
@@ -409,13 +412,19 @@ mod tests {
         let r = req(&mut c, &w, w.a, w.b, "hi").unwrap();
         assert_eq!(r.status, RunStatus::Queued);
         assert_eq!(r.project_id, w.p);
-        assert!(req(&mut c, &w, w.a, w.sh, "hi").is_err());
+        assert_eq!(
+            req(&mut c, &w, w.a, w.sh, "hi").unwrap_err(),
+            "target is not an agent session"
+        );
         assert!(req(&mut c, &w, w.a, w.other, "hi").is_err());
         assert!(req(&mut c, &w, w.a, w.a, "hi").is_err());
         assert!(req(&mut c, &w, w.a, Uuid::new_v4(), "hi").is_err());
         let big = "x".repeat(MAX_PROMPT + 1);
         assert!(req(&mut c, &w, w.a, w.b, &big).is_err());
         assert_eq!(c.runs.len(), 1);
+        let rc = req(&mut c, &w, w.a, w.cx, "review").unwrap();
+        assert_eq!(rc.to_session_id, w.cx);
+        assert_eq!(c.runs.len(), 2);
     }
 
     #[test]
