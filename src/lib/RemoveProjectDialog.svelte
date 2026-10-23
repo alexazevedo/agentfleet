@@ -1,5 +1,7 @@
 <script lang="ts">
   import { removeProject, store } from "./sessions.svelte";
+  import Dialog from "./ui/Dialog.svelte";
+  import Button from "./ui/Button.svelte";
 
   const id = store.removeProjectId as string;
   const name = $derived(store.projects.find((p) => p.id === id)?.name ?? "project");
@@ -25,11 +27,18 @@
   }
 </script>
 
-<svelte:window onkeydown={(e) => e.key === "Escape" && !busy && cancel()} />
-
-<div class="backdrop">
-  <div class="dialog">
-    <h3>Remove {name}?</h3>
+<Dialog
+  bind:open={
+    () => store.removeProjectId !== null,
+    (v) => {
+      if (!v) cancel();
+    }
+  }
+  title="Remove {name}?"
+  dismissible={!busy}
+  onclose={cancel}
+>
+  <div class="content">
     {#if n > 0}
       <p>
         {n} open session{n === 1 ? "" : "s"} will be closed. Clean worktrees are deleted, dirty ones stay on disk. The repo folder is not touched.
@@ -37,51 +46,25 @@
     {:else}
       <p>The repo folder is not touched.</p>
     {/if}
-    {#if error}<p class="error">{error}</p>{/if}
-    <div class="row actions">
-      <button type="button" disabled={busy} onclick={cancel}>Cancel</button>
-      <button type="button" class="danger" disabled={busy} onclick={confirm}>Remove</button>
-    </div>
+    {#if error}<p class="error" role="alert">{error}</p>{/if}
   </div>
-</div>
+  {#snippet footer()}
+    <Button disabled={busy} onclick={cancel}>Cancel</Button>
+    <Button variant="danger" disabled={busy} onclick={confirm} autofocus>Remove</Button>
+  {/snippet}
+</Dialog>
 
 <style>
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-  .dialog {
-    background: #2d2d30;
-    padding: 16px;
-    border-radius: 6px;
-    min-width: 360px;
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2);
+    font-size: var(--text-md);
   }
-  h3,
   p {
     margin: 0;
   }
-  .row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .actions {
-    justify-content: flex-end;
-  }
-  .danger {
-    background: #f85149;
-    color: #fff;
-    border: none;
-  }
   .error {
-    color: #f48771;
+    color: var(--danger);
   }
 </style>
