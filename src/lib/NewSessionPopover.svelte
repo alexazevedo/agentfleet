@@ -92,6 +92,8 @@
       options={[
         { value: "claude", label: "Claude Code" },
         { value: "codex", label: "Codex" },
+        { value: "pi", label: "Pi" },
+        { value: "opencode", label: "opencode" },
         { value: "shell", label: "Shell" },
       ]}
       bind:value={agent}

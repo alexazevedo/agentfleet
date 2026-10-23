@@ -1,6 +1,8 @@
 <script lang="ts">
-  let { agent, size = 14 }: { agent: "claude" | "codex" | "shell"; size?: number } = $props();
-  const label = $derived(agent === "claude" ? "Claude Code" : agent === "codex" ? "Codex" : "Shell");
+  import { labelOf, type AgentKind } from "./sessions.svelte";
+
+  let { agent, size = 14 }: { agent: AgentKind; size?: number } = $props();
+  const label = $derived(labelOf(agent));
 </script>
 
 <svg
@@ -34,6 +36,27 @@
       stroke-linecap="round"
       stroke-linejoin="round"
     />
+  {:else if agent === "pi"}
+    <path
+      d="M3.5 4.5 H12.5 M6 4.5 V11.5 M10 4.5 V11.5"
+      fill="none"
+      stroke="var(--brand-pi)"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  {:else if agent === "opencode"}
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="var(--brand-opencode-bg)" />
+    <rect
+      x="4.5"
+      y="4.5"
+      width="4.5"
+      height="7"
+      fill="none"
+      stroke="var(--brand-opencode-fg)"
+      stroke-width="1.4"
+    />
+    <rect x="10.5" y="8.5" width="2" height="3" fill="var(--brand-opencode-fg)" />
   {:else}
     <rect x="1" y="1" width="14" height="14" rx="3" fill="var(--brand-shell-bg)" stroke="var(--brand-shell-border)" />
     <path

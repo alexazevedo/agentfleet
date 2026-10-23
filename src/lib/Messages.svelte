@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import AgentIcon from "./AgentIcon.svelte";
-  import { store, type Tab } from "./sessions.svelte";
+  import { labelOf, store, type Tab } from "./sessions.svelte";
   import { cancelRun, collab, executeRun, loadRuns, sendRequest } from "./collab.svelte";
 
   let { tab }: { tab: Tab } = $props();
@@ -105,7 +105,7 @@
     <div class="line">
       <select bind:value={target} disabled={targets.length === 0}>
         {#each targets as t (t.key)}
-          <option value={t.info!.id}>{t.agent === "codex" ? "Codex" : "Claude"} {t.info!.id8}</option>
+          <option value={t.info!.id}>{labelOf(t.agent)} {t.info!.id8}</option>
         {/each}
       </select>
       <button type="button" disabled={targets.length === 0 || !text.trim()} onclick={send}>

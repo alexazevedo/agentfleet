@@ -120,7 +120,10 @@ fn validate(s: &Settings) -> Result<(), String> {
     if !s.worktrees_root.is_absolute() {
         return Err("worktrees root must be an absolute path".into());
     }
-    if !matches!(s.default_agent.as_str(), "claude" | "codex" | "shell") {
+    if !matches!(
+        s.default_agent.as_str(),
+        "claude" | "codex" | "pi" | "opencode" | "shell"
+    ) {
         return Err(format!("unknown agent: {}", s.default_agent));
     }
     if !matches!(s.restore_sessions.as_str(), "ask" | "always" | "never") {
@@ -223,6 +226,13 @@ mod tests {
             ..Settings::default()
         };
         assert!(validate(&bad_agent).is_err());
+        for ok in ["claude", "codex", "pi", "opencode", "shell"] {
+            let s = Settings {
+                default_agent: ok.into(),
+                ..Settings::default()
+            };
+            assert!(validate(&s).is_ok(), "{ok}");
+        }
         let rel = Settings {
             worktrees_root: "relative/x".into(),
             ..Settings::default()
