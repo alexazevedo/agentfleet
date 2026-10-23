@@ -854,7 +854,16 @@ mod tests {
                 .success())
         };
         git(&["init"]);
-        git(&["-c", "user.email=t@t", "-c", "user.name=t", "commit", "--allow-empty", "-m", "i"]);
+        git(&[
+            "-c",
+            "user.email=t@t",
+            "-c",
+            "user.name=t",
+            "commit",
+            "--allow-empty",
+            "-m",
+            "i",
+        ]);
         let wt = worktree::current(&repo).unwrap();
         std::fs::write(repo.join("dirty.txt"), "x").unwrap();
         assert_eq!(unowned_close(false), Some(CloseOutcome::Removed));

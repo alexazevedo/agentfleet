@@ -304,7 +304,9 @@ pub fn statusline(mut input: impl std::io::Read, file: &Path) -> String {
             .filter(|s| !s.is_empty())
             .map(str::to_string)
     };
-    let model = pick("display_name").or_else(|| pick("id")).unwrap_or_default();
+    let model = pick("display_name")
+        .or_else(|| pick("id"))
+        .unwrap_or_default();
     if !model.is_empty() {
         let _ = std::fs::write(file, &model);
     }
@@ -359,11 +361,9 @@ fn resolve_session(session: &str) -> Result<String, String> {
 
 fn run(cmd: Cmd) -> Result<i32, String> {
     match cmd {
-        Cmd::Help
-        | Cmd::Guide
-        | Cmd::HookContext
-        | Cmd::SkillInstall
-        | Cmd::StatusLine { .. } => unreachable!(),
+        Cmd::Help | Cmd::Guide | Cmd::HookContext | Cmd::SkillInstall | Cmd::StatusLine { .. } => {
+            unreachable!()
+        }
         Cmd::List => {
             print_list(&call("session.list", Map::new())?);
             Ok(0)
@@ -678,7 +678,15 @@ mod tests {
             })
         );
         assert_eq!(
-            parse(&a(&["spawn", "--agent", "claude", "--no-worktree", "--role", "r", "go"])),
+            parse(&a(&[
+                "spawn",
+                "--agent",
+                "claude",
+                "--no-worktree",
+                "--role",
+                "r",
+                "go"
+            ])),
             Ok(Cmd::Spawn {
                 agent: Some("claude".into()),
                 name: None,
