@@ -1,20 +1,19 @@
 # STATE — rewrite after every ticket completes; never append. ≤30 lines total.
 
 ## Now
-M3.2 28–29 done and approved (mvp 2 of 2, 49 Rust tests, svelte-check 0 errors, build ok); merged to main (36c3803), branch removed
+M4 (native-feeling UI) planned: PRODUCT.md approved (1/3), tickets 30–37 written, awaiting plan approval (2/3)
 
 ## Next
-manual probe in `npm run tauri dev` (remove project with clean + dirty session)
+tickets 30→31→32→33 sequential in place on branch m4-ui; then 34 ‖ 35 ‖ 36 in git worktrees; merge; then 37; reviewer pass; approval 3/3
 
 ## Decisions
-- execution: sequential (28 then 29)
-- built in a worktree branch, merged to main 36c3803
-- M3.1 artifacts archived to docs/forge-m3.1/ (ticket 27 still uncommitted on main; resolve at merge)
-- cascade in backend: `remove_project_cascade(id, app)` = `close_one` per session in id8 order (clean worktree removed, dirty kept) then `project::remove_from`; sessions first, project last; stop at first error; unknown id → "no such project"
-- `close_session` now takes only `id` + AppHandle (frontend unchanged)
-- `project::remove_project` guard kept unchanged as last-line safety
-- frontend: `store.removeProjectId` opens `RemoveProjectDialog`; `removeProject()` splices tabs + project on success, store untouched on error; Escape/Cancel disabled while busy
-- confirmation always shown; errors render inside the dialog (no toast channel exists)
+- execution: sequential 30–33 in place (branch m4-ui), parallel worktrees for 34/35/36, then 37
+- mode: production; routing cloud; hand-rolled primitives on native <dialog> + fixed-position popover (docs/adr/0001)
+- theme: tokens.css with prefers-color-scheme default + data-theme override; `theme` field added to Settings (Rust + TS)
+- new-session: store.dialogOpen/preselectedProjectId → store.newSession {anchor, projectId}; create failures show in a sidebar banner
+- settings: auto-save via updateSettings(patch) promise chain; last tab in localStorage agentfleet.settingsTab
+- Messages/Scratchpad: color substitution only (hex gate), no restyle
+- M3.2 artifacts archived to docs/forge-m3.2/
 
 ## Blockers
 - none
