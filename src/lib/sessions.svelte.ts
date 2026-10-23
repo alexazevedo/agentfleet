@@ -38,8 +38,7 @@ export const store = $state({
   tabs: [] as Tab[],
   activeKey: null as string | null,
   view: "terminal" as "terminal" | "messages" | "scratchpad" | "settings",
-  dialogOpen: false,
-  preselectedProjectId: null as string | null,
+  newSession: null as { anchor: HTMLElement; projectId: string | null } | null,
   removeProjectId: null as string | null,
   error: "",
   pendingRestore: [] as SessionInfo[],
@@ -81,13 +80,12 @@ export function resolve(key: string, info: SessionInfo) {
   }
 }
 
-// Create failed: drop the pending tab and surface the error in the dialog.
+// Create failed: drop the pending tab and surface the error in the sidebar banner.
 export function fail(key: string, message: string) {
   const i = store.tabs.findIndex((t) => t.key === key);
   if (i >= 0) store.tabs.splice(i, 1);
   if (store.activeKey === key) store.activeKey = store.tabs.at(-1)?.key ?? null;
   store.error = message;
-  store.dialogOpen = true;
 }
 
 export function setActive(key: string) {

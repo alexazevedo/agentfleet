@@ -21,12 +21,19 @@ Milestones after M1 are re-based on the M1 sidebar/project model so later work e
 ## M3 — release
 
 - Updater, macOS signing/notarization, Linux AppImage/deb, CI release workflow.
-- Settings panel behind the sidebar "Settings" row: worktrees root, default agent, auto-permission toggle.
+- Settings panel behind the sidebar "Settings" row: worktrees root, default agent, auto-permission toggle. (Now tabbed; see M4.)
 - Quit confirmation while sessions run.
+
+## M4 — native-feeling UI (done)
+
+- Design tokens on `:root` with light and dark sets; light/dark follows the OS by default, with a Theme override (system/light/dark) in Settings > General.
+- Shared primitives in `src/lib/ui/` (Button, Switch, SegmentedControl, Tabs, Popover, Dialog), hand-rolled per ADR 0001. Reference: `docs/ui.md`.
+- New-session popover anchored to the "+" on a project row (or the global "+" with a project picker), replacing the centered modal.
+- Settings is a tabbed pane (General, Terminal, Updates, About) that auto-saves on change or blur, with no Save button.
 
 ## Later / optional
 
 - Changes pane (diff of worktree vs `base_commit`, already persisted) as a right-side pane toggled from the status bar.
 - Profiles (per-agent config dirs) selectable per project; project default profile.
 - More agents (Codex, …) via the same launch/status hook pattern in `agent.rs`.
-- Themes, GitHub issue/PR context, usage/cost views, Windows.
+- Custom color themes beyond light/dark, GitHub issue/PR context, usage/cost views, Windows.

@@ -2,10 +2,24 @@ html,
 body {
   margin: 0;
   height: 100%;
-  background: #1e1e1e;
-  color: #ddd;
-  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  user-select: none;
+}
+input,
+textarea,
+.term {
+  user-select: text;
 }
 #app {
   height: 100%;
+}
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }

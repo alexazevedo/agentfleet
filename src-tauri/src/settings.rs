@@ -42,6 +42,8 @@ pub struct Settings {
     pub update_checks: bool,
     /// "ask" | "always" | "never"
     pub restore_sessions: String,
+    /// "system" | "light" | "dark"
+    pub theme: String,
     #[serde(default)]
     pub terminal: TerminalSettings,
 }
@@ -56,6 +58,7 @@ impl Default for Settings {
             confirm_quit: true,
             update_checks: true,
             restore_sessions: "ask".into(),
+            theme: "system".into(),
             terminal: TerminalSettings::default(),
         }
     }
@@ -70,7 +73,7 @@ pub fn settings_path() -> PathBuf {
 
 pub fn load(path: &Path) -> Settings {
     match fs::read_to_string(path) {
-        Ok(t) => serde_json::from_str(&t).unwrap_or_else(|e| {
+        Ok(t) => serde_json::from_str(&t).map(normalize).unwrap_or_else(|e| {
             eprintln!("agentfleet: bad settings.json, using defaults: {e}");
             Settings::default()
         }),
@@ -96,6 +99,18 @@ pub fn save(s: &Settings, path: &Path) -> io::Result<()> {
     fs::rename(&tmp, path)
 }
 
+/// Repair values a hand-edited file may contain that the frontend cannot represent.
+fn normalize(mut s: Settings) -> Settings {
+    if !matches!(s.theme.as_str(), "system" | "light" | "dark") {
+        eprintln!(
+            "agentfleet: unknown theme {:?} in settings.json, using system",
+            s.theme
+        );
+        s.theme = "system".into();
+    }
+    s
+}
+
 fn validate(s: &Settings) -> Result<(), String> {
     if !s.worktrees_root.is_absolute() {
         return Err("worktrees root must be an absolute path".into());
@@ -105,6 +120,9 @@ fn validate(s: &Settings) -> Result<(), String> {
     }
     if !matches!(s.restore_sessions.as_str(), "ask" | "always" | "never") {
         return Err("restore sessions must be ask, always or never".into());
+    }
+    if !matches!(s.theme.as_str(), "system" | "light" | "dark") {
+        return Err("theme must be system, light or dark".into());
     }
     if !(9..=24).contains(&s.terminal.font_size) {
         return Err("font size must be 9–24".into());
@@ -159,6 +177,9 @@ mod tests {
         let p: Settings = serde_json::from_str(r#"{"autoDelivery":false}"#).unwrap();
         assert!(!p.auto_delivery && p.auto_permission);
         assert_eq!(p.terminal, TerminalSettings::default());
+        assert_eq!(s.theme, "system");
+        let t: Settings = serde_json::from_str(r#"{"theme":"dark"}"#).unwrap();
+        assert_eq!(t.theme, "dark");
         assert_eq!(s.terminal.font_size, 13);
         assert_eq!(s.terminal.line_height, 1.0);
         assert!(s.terminal.cursor_blink && s.terminal.font_family.is_empty());
@@ -171,11 +192,22 @@ mod tests {
         let s = Settings {
             default_agent: "shell".into(),
             auto_permission: false,
+            theme: "light".into(),
             ..Settings::default()
         };
         save(&s, &p).unwrap();
         assert_eq!(load(&p), s);
         assert_eq!(load(&dir.path().join("nope.json")), Settings::default());
+    }
+
+    #[test]
+    fn unknown_theme_falls_back() {
+        let dir = tempfile::tempdir().unwrap();
+        let p = dir.path().join("settings.json");
+        fs::write(&p, r#"{"theme":"purple","autoDelivery":false}"#).unwrap();
+        let s = load(&p);
+        assert_eq!(s.theme, "system");
+        assert!(!s.auto_delivery);
     }
 
     #[test]
@@ -200,6 +232,14 @@ mod tests {
             "restore sessions must be ask, always or never"
         );
         assert_eq!(Settings::default().restore_sessions, "ask");
+        let bad_theme = Settings {
+            theme: "purple".into(),
+            ..Settings::default()
+        };
+        assert_eq!(
+            validate(&bad_theme).unwrap_err(),
+            "theme must be system, light or dark"
+        );
         for size in [8, 25] {
             let s = Settings {
                 terminal: TerminalSettings {
