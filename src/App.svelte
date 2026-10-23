@@ -2,6 +2,7 @@
   import Sidebar from "./lib/Sidebar.svelte";
   import StatusBar from "./lib/StatusBar.svelte";
   import RemoveProjectDialog from "./lib/RemoveProjectDialog.svelte";
+  import InitRepoDialog from "./lib/InitRepoDialog.svelte";
   import Terminal from "./lib/Terminal.svelte";
   import { NotebookPen, PanelLeft, Plus, Settings as SettingsIcon } from "lucide-svelte";
   import Messages from "./lib/Messages.svelte";
@@ -99,6 +100,7 @@
   <StatusBar />
   {#if store.restoreDialogOpen}<RestoreDialog />{/if}
   {#if store.removeProjectId}<RemoveProjectDialog />{/if}
+  {#if store.initRepo}<InitRepoDialog />{/if}
   {#if updater.available}<UpdateDialog />{/if}
 </main>
 

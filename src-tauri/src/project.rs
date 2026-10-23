@@ -19,16 +19,61 @@ pub struct Project {
 
 pub type Projects = Mutex<Vec<Project>>;
 
-pub fn add_to(list: &mut Vec<Project>, path: &Path) -> Result<Project, String> {
-    let path = path.canonicalize().map_err(|e| e.to_string())?;
-    let ok = Command::new("git")
-        .current_dir(&path)
-        .args(["rev-parse", "--show-toplevel"])
+/// Error returned by `add_project` for a folder without a repo. The frontend
+/// matches it verbatim to offer `init_project` instead of showing an error.
+pub const NOT_A_REPO: &str = "not a git repository";
+
+fn git_ok(dir: &Path, args: &[&str]) -> bool {
+    Command::new("git")
+        .current_dir(dir)
+        .args(args)
         .output()
         .map(|o| o.status.success())
-        .unwrap_or(false);
-    if !ok {
-        return Err("not a git repository".into());
+        .unwrap_or(false)
+}
+
+fn git(dir: &Path, args: &[&str]) -> Result<(), String> {
+    let out = Command::new("git")
+        .current_dir(dir)
+        .args(args)
+        .output()
+        .map_err(|e| format!("git: {e}"))?;
+    if out.status.success() {
+        Ok(())
+    } else {
+        Err(String::from_utf8_lossy(&out.stderr).trim().to_string())
+    }
+}
+
+/// `git init` plus an empty first commit: sessions branch a worktree off HEAD,
+/// so a bare `git init` would still fail with "repository has no commits".
+pub fn init_repo(path: &Path) -> Result<(), String> {
+    if !path.is_dir() {
+        return Err("not a directory".into());
+    }
+    git(path, &["init", "-q"])?;
+    if git_ok(path, &["rev-parse", "--verify", "-q", "HEAD"]) {
+        return Ok(());
+    }
+    let commit = ["commit", "-q", "--allow-empty", "-m", "Initial commit"];
+    if git(path, &commit).is_ok() {
+        return Ok(());
+    }
+    // No user.name / user.email configured: commit under an app identity.
+    let mut with_identity = vec![
+        "-c",
+        "user.name=agentfleet",
+        "-c",
+        "user.email=agentfleet@localhost",
+    ];
+    with_identity.extend_from_slice(&commit);
+    git(path, &with_identity)
+}
+
+pub fn add_to(list: &mut Vec<Project>, path: &Path) -> Result<Project, String> {
+    let path = path.canonicalize().map_err(|e| e.to_string())?;
+    if !git_ok(&path, &["rev-parse", "--show-toplevel"]) {
+        return Err(NOT_A_REPO.into());
     }
     if let Some(p) = list.iter().find(|p| p.path == path) {
         return Ok(p.clone());
@@ -59,21 +104,36 @@ pub fn list_projects(projects: State<'_, Projects>) -> Result<Vec<Project>, Stri
     Ok(projects.lock().map_err(|e| e.to_string())?.clone())
 }
 
+fn register(path: &str, projects: &Projects, sessions: &Sessions) -> Result<Project, String> {
+    // Lock order everywhere: sessions, then projects.
+    let map = sessions.lock().map_err(|e| e.to_string())?;
+    let mut list = projects.lock().map_err(|e| e.to_string())?;
+    let before = list.len();
+    let p = add_to(&mut list, Path::new(path))?;
+    if list.len() != before {
+        crate::session::persist(&map, &list);
+    }
+    Ok(p)
+}
+
 #[tauri::command]
 pub fn add_project(
     path: String,
     projects: State<'_, Projects>,
     sessions: State<'_, Sessions>,
 ) -> Result<Project, String> {
-    // Lock order everywhere: sessions, then projects.
-    let map = sessions.lock().map_err(|e| e.to_string())?;
-    let mut list = projects.lock().map_err(|e| e.to_string())?;
-    let before = list.len();
-    let p = add_to(&mut list, Path::new(&path))?;
-    if list.len() != before {
-        crate::session::persist(&map, &list);
-    }
-    Ok(p)
+    register(&path, &projects, &sessions)
+}
+
+/// Turns a plain folder into a repo (see `init_repo`), then adds it.
+#[tauri::command]
+pub fn init_project(
+    path: String,
+    projects: State<'_, Projects>,
+    sessions: State<'_, Sessions>,
+) -> Result<Project, String> {
+    init_repo(Path::new(&path))?;
+    register(&path, &projects, &sessions)
 }
 
 #[tauri::command]
@@ -129,6 +189,27 @@ mod tests {
             "not a git repository"
         );
         assert!(list.is_empty());
+    }
+
+    #[test]
+    fn init_repo_makes_addable_with_head() {
+        let tmp = tempfile::tempdir().unwrap();
+        let dir = tmp.path().join("fresh");
+        std::fs::create_dir_all(&dir).unwrap();
+        let mut list = Vec::new();
+        assert_eq!(add_to(&mut list, &dir).unwrap_err(), NOT_A_REPO);
+        init_repo(&dir).unwrap();
+        // Worktrees branch from HEAD, so init must leave a commit behind.
+        assert!(git_ok(&dir, &["rev-parse", "--verify", "-q", "HEAD"]));
+        assert_eq!(add_to(&mut list, &dir).unwrap().name, "fresh");
+        // Idempotent: a second init neither fails nor adds a commit.
+        init_repo(&dir).unwrap();
+        let count = Command::new("git")
+            .current_dir(&dir)
+            .args(["rev-list", "--count", "HEAD"])
+            .output()
+            .unwrap();
+        assert_eq!(String::from_utf8_lossy(&count.stdout).trim(), "1");
     }
 
     #[test]

@@ -49,6 +49,9 @@ export const store = $state({
   view: "terminal" as "terminal" | "messages" | "scratchpad" | "settings",
   newSession: null as { anchor: HTMLElement; projectId: string | null } | null,
   removeProjectId: null as string | null,
+  // Folder picked for a project that has no git repo yet; InitRepoDialog offers `git init`.
+  // `done` gets the project on success, null on cancel.
+  initRepo: null as { path: string; done?: (p: Project | null) => void } | null,
   error: "",
   pendingRestore: [] as SessionInfo[],
   restoreDialogOpen: false,
@@ -67,10 +70,36 @@ export async function loadProjects() {
   }
 }
 
-export async function addProject(path: string): Promise<Project> {
-  const p = await invoke<Project>("add_project", { path });
+// Backend error for a folder without a repo (project.rs NOT_A_REPO).
+export const NOT_A_REPO = "not a git repository";
+
+function remember(p: Project): Project {
   if (!store.projects.some((x) => x.id === p.id)) store.projects.push(p);
   return p;
+}
+
+export async function addProject(path: string): Promise<Project> {
+  return remember(await invoke<Project>("add_project", { path }));
+}
+
+// `git init` (plus an empty first commit) in `path`, then add it as a project.
+export async function initProject(path: string): Promise<Project> {
+  return remember(await invoke<Project>("init_project", { path }));
+}
+
+// Adds `path`; a folder without a repo opens InitRepoDialog instead of failing,
+// and `done` is called once the user decides. Resolves to null in that case.
+export async function addProjectOrOfferInit(
+  path: string,
+  done?: (p: Project | null) => void,
+): Promise<Project | null> {
+  try {
+    return await addProject(path);
+  } catch (e) {
+    if (String(e) !== NOT_A_REPO) throw e;
+    store.initRepo = { path, done };
+    return null;
+  }
 }
 
 export function addPending(projectId: string, agent: AgentKind): string {

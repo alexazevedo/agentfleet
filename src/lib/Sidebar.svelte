@@ -7,7 +7,7 @@
   import NewSessionPopover from "./NewSessionPopover.svelte";
   import { collab, initCollabListener, loadRuns, queuedCount } from "./collab.svelte";
   import {
-    addProject,
+    addProjectOrOfferInit,
     closeTab,
     initStatusListener,
     initSpawnListener,
@@ -34,7 +34,7 @@
     if (typeof picked !== "string") return;
     try {
       store.error = "";
-      await addProject(picked);
+      await addProjectOrOfferInit(picked);
     } catch (e) {
       store.error = String(e);
     }

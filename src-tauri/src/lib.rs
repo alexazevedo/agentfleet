@@ -79,6 +79,7 @@ pub fn run() {
             deliver::cancel_run,
             project::list_projects,
             project::add_project,
+            project::init_project,
             project::remove_project,
             session::remove_project_cascade,
             scratchpad::read_scratchpad,

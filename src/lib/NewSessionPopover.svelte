@@ -4,7 +4,7 @@
   import SegmentedControl from "./ui/SegmentedControl.svelte";
   import Button from "./ui/Button.svelte";
   import { loadSettings, settings } from "./settingsStore.svelte";
-  import { addPending, addProject, store, type AgentKind } from "./sessions.svelte";
+  import { addPending, addProjectOrOfferInit, store, type AgentKind } from "./sessions.svelte";
 
   let projectId = $state("");
   let agent = $state<AgentKind>("claude");
@@ -39,9 +39,14 @@
   async function add() {
     const picked = await open({ directory: true, multiple: false });
     if (typeof picked !== "string") return;
+    const anchor = target?.anchor ?? null;
     try {
       store.error = "";
-      projectId = (await addProject(picked)).id;
+      const p = await addProjectOrOfferInit(picked, (made) => {
+        // Clicking the init dialog closed this popover: reopen it, on the new project if any.
+        if (anchor) store.newSession = { anchor, projectId: made?.id ?? null };
+      });
+      if (p) projectId = p.id;
     } catch (e) {
       store.error = String(e);
     }
