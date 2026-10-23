@@ -18,28 +18,28 @@
         y1="2"
         x2="8"
         y2="6"
-        stroke="#d97757"
+        stroke="var(--brand-claude)"
         stroke-width="1.6"
         stroke-linecap="round"
         transform="rotate({a} 8 8)"
       />
     {/each}
   {:else if agent === "codex"}
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="#f0f0f0" />
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="var(--brand-codex-bg)" />
     <path
       d="M4.5 5.5 L7 8 L4.5 10.5 M8.5 11 H11.5"
       fill="none"
-      stroke="#222"
+      stroke="var(--brand-codex-fg)"
       stroke-width="1.4"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
   {:else}
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="#1e1e1e" stroke="#555" />
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="var(--brand-shell-bg)" stroke="var(--brand-shell-border)" />
     <path
       d="M5 5 L9 8 L5 11"
       fill="none"
-      stroke="#aaa"
+      stroke="var(--brand-shell-fg)"
       stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"

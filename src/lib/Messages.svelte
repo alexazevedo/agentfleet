@@ -128,7 +128,7 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    background: #1e1e1e;
+    background: var(--bg);
     font-size: 13px;
   }
   .list {
@@ -137,7 +137,7 @@
     padding: 8px;
   }
   .row {
-    border-bottom: 1px solid #2d2d2d;
+    border-bottom: 1px solid var(--border);
     padding: 6px 0;
   }
   .head {
@@ -154,31 +154,31 @@
   }
   .dir {
     font-family: ui-monospace, monospace;
-    color: #aaa;
+    color: var(--text-muted);
   }
   .chip {
     font-size: 11px;
     padding: 1px 6px;
     border-radius: 8px;
-    color: #fff;
-    background: #666;
+    color: var(--text-inverse);
+    background: var(--neutral);
   }
   .chip.running {
-    background: #0e639c;
+    background: var(--accent);
   }
   .chip.completed {
-    background: #2ea043;
+    background: var(--success);
   }
   .chip.cancelled,
   .chip.interrupted {
-    background: #b7791f;
+    background: var(--warning);
   }
   .chip.needsAttention {
-    background: #da3633;
+    background: var(--danger);
   }
   button {
-    background: #333;
-    border: 1px solid #444;
+    background: var(--bg-control);
+    border: 1px solid var(--border-strong);
     color: inherit;
     border-radius: 3px;
     cursor: pointer;
@@ -192,7 +192,7 @@
     padding: 6px 0 0 8px;
   }
   .label {
-    color: #888;
+    color: var(--text-muted);
     font-size: 11px;
     margin-top: 4px;
   }
@@ -204,15 +204,15 @@
     font-size: 12px;
   }
   .none {
-    color: #888;
+    color: var(--text-muted);
     padding: 6px 0;
   }
   .err {
-    color: #f85149;
+    color: var(--danger);
     padding-bottom: 4px;
   }
   .compose {
-    border-top: 1px solid #111;
+    border-top: 1px solid var(--border);
     padding: 8px;
   }
   .line {
@@ -224,9 +224,9 @@
     width: 100%;
     box-sizing: border-box;
     resize: vertical;
-    background: #252526;
+    background: var(--bg-surface);
     color: inherit;
-    border: 1px solid #444;
+    border: 1px solid var(--border-strong);
     border-radius: 3px;
     font: inherit;
   }
