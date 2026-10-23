@@ -1,6 +1,7 @@
 //! `agentfleet` CLI (the app binary run with `--cli`). Sync std I/O only: no Tauri, no tokio.
 use std::io::{BufRead, BufReader, Write};
 use std::os::unix::net::UnixStream;
+use std::path::{Path, PathBuf};
 use std::time::Duration;
 
 use serde_json::{Map, Value};
@@ -24,6 +25,8 @@ commands:
   scratchpad append [--if-revision N] <text...|->
                             append a line to the scratchpad ('-' reads stdin)
   guide                     print the agentfleet skill (works outside sessions)
+  skill install             write the skill to ~/.claude/skills and ~/.codex/skills (outside sessions too)
+  hook-context              print the skill as SessionStart hook JSON (used by the app's hooks)
   help                      show this help
 ";
 
@@ -35,6 +38,8 @@ pub enum Cmd {
     List,
     Help,
     Guide,
+    HookContext,
+    SkillInstall,
     Send {
         session: String,
         text: String,
@@ -177,6 +182,12 @@ pub fn parse(args: &[String]) -> Result<Cmd, String> {
         Some("inbox") => Err("inbox takes no arguments".into()),
         Some("guide") if rest.is_empty() => Ok(Cmd::Guide),
         Some("guide") => Err("guide takes no arguments".into()),
+        Some("hook-context") if rest.is_empty() => Ok(Cmd::HookContext),
+        Some("hook-context") => Err("hook-context takes no arguments".into()),
+        Some("skill") => match rest {
+            [v] if v == "install" => Ok(Cmd::SkillInstall),
+            _ => Err("skill needs install".into()),
+        },
         Some("send") => with_text("send").map(|(session, text)| Cmd::Send { session, text }),
         Some("reply") => with_text("reply").map(|(run, text)| Cmd::Reply { run, text }),
         Some("read") => one("read").map(|run| Cmd::Read { run }),
@@ -199,6 +210,24 @@ pub fn main(args: Vec<String>) -> i32 {
         Ok(Cmd::Guide) => {
             print!("{GUIDE}");
             return 0;
+        }
+        Ok(Cmd::HookContext) => {
+            println!("{}", hook_context_json());
+            return 0;
+        }
+        Ok(Cmd::SkillInstall) => {
+            return match install_skill(&crate::platform::home_dir()) {
+                Ok(paths) => {
+                    for p in paths {
+                        println!("wrote {}", p.display());
+                    }
+                    0
+                }
+                Err(e) => {
+                    eprintln!("agentfleet: {e}");
+                    1
+                }
+            };
         }
         Ok(c) => c,
         Err(e) => {
@@ -224,6 +253,38 @@ pub fn main(args: Vec<String>) -> i32 {
             }
         }
     }
+}
+
+/// SessionStart hook output that injects the guide into the agent's context
+/// (`hookSpecificOutput.additionalContext`, understood by Claude Code and Codex).
+pub fn hook_context_json() -> String {
+    serde_json::json!({
+        "hookSpecificOutput": {
+            "hookEventName": "SessionStart",
+            "additionalContext": GUIDE,
+        }
+    })
+    .to_string()
+}
+
+/// Where `skill install` writes: always Claude's skills dir, Codex's too when `~/.codex` exists.
+pub fn skill_targets(home: &Path, codex_exists: bool) -> Vec<PathBuf> {
+    let mut v = vec![home.join(".claude/skills/agentfleet/SKILL.md")];
+    if codex_exists {
+        v.push(home.join(".codex/skills/agentfleet/SKILL.md"));
+    }
+    v
+}
+
+fn install_skill(home: &Path) -> Result<Vec<PathBuf>, String> {
+    let targets = skill_targets(home, home.join(".codex").is_dir());
+    for p in &targets {
+        if let Some(dir) = p.parent() {
+            std::fs::create_dir_all(dir).map_err(|e| format!("{}: {e}", dir.display()))?;
+        }
+        std::fs::write(p, GUIDE).map_err(|e| format!("{}: {e}", p.display()))?;
+    }
+    Ok(targets)
 }
 
 fn obj(pairs: &[(&str, &str)]) -> Map<String, Value> {
@@ -254,7 +315,7 @@ fn resolve_session(session: &str) -> Result<String, String> {
 
 fn run(cmd: Cmd) -> Result<i32, String> {
     match cmd {
-        Cmd::Help | Cmd::Guide => unreachable!(),
+        Cmd::Help | Cmd::Guide | Cmd::HookContext | Cmd::SkillInstall => unreachable!(),
         Cmd::List => {
             print_list(&call("session.list", Map::new())?);
             Ok(0)
@@ -496,6 +557,11 @@ mod tests {
         assert_eq!(parse(&a(&["inbox"])), Ok(Cmd::Inbox));
         assert_eq!(parse(&a(&["guide"])), Ok(Cmd::Guide));
         assert!(parse(&a(&["guide", "x"])).is_err());
+        assert_eq!(parse(&a(&["hook-context"])), Ok(Cmd::HookContext));
+        assert!(parse(&a(&["hook-context", "x"])).is_err());
+        assert_eq!(parse(&a(&["skill", "install"])), Ok(Cmd::SkillInstall));
+        assert!(parse(&a(&["skill"])).is_err());
+        assert!(parse(&a(&["skill", "remove"])).is_err());
         assert_eq!(
             parse(&a(&["read", "r1"])),
             Ok(Cmd::Read { run: "r1".into() })
@@ -594,6 +660,37 @@ mod tests {
             parse(&a(&["frobnicate"])),
             Err("unknown command: frobnicate".into())
         );
+    }
+
+    #[test]
+    fn hook_context_is_valid_json_with_guide() {
+        let v: Value = serde_json::from_str(&hook_context_json()).unwrap();
+        let out = &v["hookSpecificOutput"];
+        assert_eq!(out["hookEventName"], "SessionStart");
+        let ctx = out["additionalContext"].as_str().unwrap();
+        assert!(ctx.contains("agentfleet spawn") && ctx.contains("agentfleet send"));
+        assert!(!hook_context_json().contains('\n'));
+    }
+
+    #[test]
+    fn skill_install_targets() {
+        let home = Path::new("/home/u");
+        let both = skill_targets(home, true);
+        assert_eq!(
+            both,
+            vec![
+                PathBuf::from("/home/u/.claude/skills/agentfleet/SKILL.md"),
+                PathBuf::from("/home/u/.codex/skills/agentfleet/SKILL.md"),
+            ]
+        );
+        assert_eq!(skill_targets(home, false).len(), 1);
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::create_dir(dir.path().join(".codex")).unwrap();
+        let written = install_skill(dir.path()).unwrap();
+        assert_eq!(written.len(), 2);
+        for p in written {
+            assert_eq!(std::fs::read_to_string(p).unwrap(), GUIDE);
+        }
     }
 
     #[test]

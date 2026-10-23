@@ -240,9 +240,11 @@ fn spawn_for(
         let launch = if session.agent == Agent::Codex {
             let script = run.join(format!("{id}.codex-hook.sh"));
             let payload = run.join(format!("{id}.codex-hook.json"));
-            let sp = script.to_string_lossy();
-            if sp.contains('"') || sp.contains('\\') {
-                return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
+            for p in [&script, &rt.shim] {
+                let sp = p.to_string_lossy();
+                if sp.contains('"') || sp.contains('\\') {
+                    return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
+                }
             }
             agent::write_codex_hook(&status_file, &payload, &script).map_err(|e| e.to_string())?;
             let resume_id = if resume {
@@ -252,13 +254,15 @@ fn spawn_for(
             };
             agent::codex_launch(
                 &script,
+                &rt.shim,
                 resume_id.as_deref(),
                 auto_permission,
                 &session.agent_args,
             )
         } else {
             let settings = run.join(format!("{id}.settings.json"));
-            agent::write_hooks_settings(&status_file, &settings).map_err(|e| e.to_string())?;
+            agent::write_hooks_settings(&status_file, &rt.shim, &settings)
+                .map_err(|e| e.to_string())?;
             agent::claude_launch(id, &settings, resume, auto_permission, &session.agent_args)
         };
         command = format!("{path_prefix}exec {launch}");

@@ -34,16 +34,21 @@ pub fn claude_launch(
     s
 }
 
-pub fn write_hooks_settings(status_file: &Path, dest: &Path) -> std::io::Result<()> {
+/// Claude hook settings. `shim` is the absolute path of the `agentfleet` CLI shim: SessionStart
+/// also runs `agentfleet hook-context`, which injects the skill guide into the model context.
+pub fn write_hooks_settings(status_file: &Path, shim: &Path, dest: &Path) -> std::io::Result<()> {
     let q = shell_quote(&status_file.to_string_lossy());
-    let hook =
-        |word: &str| json!([{ "type": "command", "command": format!("printf {word} > {q}") }]);
+    let hook = |word: &str| json!({ "type": "command", "command": format!("printf {word} > {q}") });
+    let context = json!({
+        "type": "command",
+        "command": format!("{} hook-context", shell_quote(&shim.to_string_lossy())),
+    });
     let settings = json!({"hooks": {
-        "SessionStart": [{"hooks": hook("waiting")}],
-        "UserPromptSubmit": [{"hooks": hook("working")}],
-        "PreToolUse": [{"matcher": "", "hooks": hook("working")}],
-        "PermissionRequest": [{"hooks": hook("waiting")}],
-        "Stop": [{"hooks": hook("waiting")}],
+        "SessionStart": [{"hooks": [hook("waiting"), context]}],
+        "UserPromptSubmit": [{"hooks": [hook("working")]}],
+        "PreToolUse": [{"matcher": "", "hooks": [hook("working")]}],
+        "PermissionRequest": [{"hooks": [hook("waiting")]}],
+        "Stop": [{"hooks": [hook("waiting")]}],
     }});
     std::fs::write(dest, serde_json::to_vec_pretty(&settings)?)
 }
@@ -79,20 +84,30 @@ pub fn write_codex_hook(
     Ok(())
 }
 
-/// Six `-c` override values (unquoted), one per Codex hook event.
-/// Caller guarantees `script` contains no `"` or `\\`.
-pub fn codex_hook_overrides(script: &Path) -> Vec<String> {
+/// Six `-c` override values (unquoted), one per Codex hook event. SessionStart carries a second
+/// hook, `<shim> hook-context`, which injects the skill guide into the model context.
+/// Caller guarantees `script` and `shim` contain no `"` or `\\`.
+pub fn codex_hook_overrides(script: &Path, shim: &Path) -> Vec<String> {
     let path = script.to_string_lossy();
+    let shim = shim.to_string_lossy();
     CODEX_HOOKS
         .iter()
         .map(|(event, word)| {
-            format!("hooks.{event}=[{{hooks=[{{type=\"command\",command=\"{path} {word}\"}}]}}]")
+            let context = if *event == "SessionStart" {
+                format!(",{{type=\"command\",command=\"{shim} hook-context\"}}")
+            } else {
+                String::new()
+            };
+            format!(
+                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"{path} {word}\"}}{context}]}}]"
+            )
         })
         .collect()
 }
 
 pub fn codex_launch(
     script: &Path,
+    shim: &Path,
     resume_id: Option<&str>,
     auto_permission: bool,
     extra: &[String],
@@ -101,7 +116,7 @@ pub fn codex_launch(
     if auto_permission {
         s.push_str(" --approve-for-me");
     }
-    for o in codex_hook_overrides(script) {
+    for o in codex_hook_overrides(script, shim) {
         s.push_str(" -c ");
         s.push_str(&shell_quote(&o));
     }
@@ -155,44 +170,70 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         let status = dir.path().join("it's.status");
         let dest = dir.path().join("s.json");
-        write_hooks_settings(&status, &dest).unwrap();
+        let shim = PathBuf::from("/t/agentfleet-1/agentfleet");
+        write_hooks_settings(&status, &shim, &dest).unwrap();
         let v: serde_json::Value = serde_json::from_slice(&std::fs::read(&dest).unwrap()).unwrap();
         let quoted = shell_quote(&status.to_string_lossy());
         let hooks = v["hooks"].as_object().unwrap();
         assert_eq!(hooks.len(), 5);
-        for (_, groups) in hooks {
-            let cmd = groups[0]["hooks"][0]["command"].as_str().unwrap();
+        for (event, groups) in hooks {
+            let list = groups[0]["hooks"].as_array().unwrap();
+            let cmd = list[0]["command"].as_str().unwrap();
             assert!(cmd.contains(&quoted), "{cmd}");
+            if event == "SessionStart" {
+                assert_eq!(list.len(), 2);
+                assert_eq!(
+                    list[1]["command"].as_str().unwrap(),
+                    "'/t/agentfleet-1/agentfleet' hook-context"
+                );
+            } else {
+                assert_eq!(list.len(), 1, "{event}");
+            }
         }
     }
 
     #[test]
     fn codex_overrides() {
-        let o = codex_hook_overrides(&PathBuf::from("/h/x.codex-hook.sh"));
+        let shim = PathBuf::from("/t/agentfleet-1/agentfleet");
+        let o = codex_hook_overrides(&PathBuf::from("/h/x.codex-hook.sh"), &shim);
         assert_eq!(o.len(), 6);
         for (event, word) in CODEX_HOOKS {
+            let context = if event == "SessionStart" {
+                ",{type=\"command\",command=\"/t/agentfleet-1/agentfleet hook-context\"}"
+            } else {
+                ""
+            };
             let want = format!(
-                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"/h/x.codex-hook.sh {word}\"}}]}}]"
+                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"/h/x.codex-hook.sh {word}\"}}{context}]}}]"
             );
             assert!(o.contains(&want), "{want}");
         }
+        assert!(o[0].contains("SessionStart") && o[0].contains("hook-context"));
         assert!(o[1].contains("UserPromptSubmit") && o[1].ends_with("working\"}]}]"));
+        assert!(!o[1].contains("hook-context"));
         assert!(o[5].contains("Interrupt") && o[5].ends_with("waiting\"}]}]"));
     }
 
     #[test]
     fn codex_launch_flags() {
         let p = PathBuf::from("/h/x.sh");
-        let a = codex_launch(&p, None, true, &[]);
+        let shim = PathBuf::from("/t/agentfleet");
+        let a = codex_launch(&p, &shim, None, true, &[]);
         assert!(a.starts_with(
             "codex --dangerously-bypass-hook-trust --approve-for-me -c 'hooks.SessionStart="
         ));
         assert_eq!(a.matches(" -c ").count(), 6);
         assert!(!a.contains("resume"));
-        let n = codex_launch(&p, None, false, &[]);
+        let n = codex_launch(&p, &shim, None, false, &[]);
         assert!(n.starts_with("codex --dangerously-bypass-hook-trust -c "));
         assert!(!n.contains("--approve-for-me"));
-        let r = codex_launch(&p, Some("abc-123"), false, &["-m".into(), "o'3".into()]);
+        let r = codex_launch(
+            &p,
+            &shim,
+            Some("abc-123"),
+            false,
+            &["-m".into(), "o'3".into()],
+        );
         assert!(r.ends_with("}]}]' '-m' 'o'\\''3' resume 'abc-123'"), "{r}");
     }
 
