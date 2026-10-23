@@ -31,7 +31,7 @@ commands:
 ";
 
 /// The agent skill, printed by `agentfleet guide`.
-const GUIDE: &str = include_str!("../../skills/agentfleet/SKILL.md");
+pub const GUIDE: &str = include_str!("../../skills/agentfleet/SKILL.md");
 
 #[derive(Debug, PartialEq)]
 pub enum Cmd {

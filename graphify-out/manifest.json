@@ -16,8 +16,8 @@
     "hash": "4f08ca7a6f3a041247b07a99c4537fb3"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/session.rs": {
-    "mtime": 1792726569.2719002,
-    "hash": "eca856383530a55be6dd0db31decdf43"
+    "mtime": 1792752301.905827,
+    "hash": "18443aa6fc25d82e819c862b430263d5"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/runtime.rs": {
     "mtime": 1792688311.968743,
@@ -56,8 +56,8 @@
     "hash": "7d1416bc3c9277eef178e4cbbc58890b"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/agent.rs": {
-    "mtime": 1792726595.4584894,
-    "hash": "f2ffeeb2158a4cb7f4618ce3c4995b2e"
+    "mtime": 1792752334.2939703,
+    "hash": "24a1d0320e03a77d01eb4f5c5d4a4210"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/worktree.rs": {
     "mtime": 1792683466.7793264,
@@ -72,8 +72,8 @@
     "hash": "d648ba897efbb8808dacbb195a7b1ae0"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/cli.rs": {
-    "mtime": 1792726587.7292829,
-    "hash": "013e1f91ae1ad96a3cceef4df4086e3a"
+    "mtime": 1792752200.2199943,
+    "hash": "b0691ece047f091dadb15aca409e1477"
   },
   "/Users/aazevedo/dev/agentfleet/src-tauri/src/collab.rs": {
     "mtime": 1792722717.4572675,
@@ -252,8 +252,8 @@
     "hash": "296ab2daceb75e6b90caa184795a8861"
   },
   "/Users/aazevedo/dev/agentfleet/STATE.md": {
-    "mtime": 1792727228.309762,
-    "hash": "f450f3dbdf107ffdd92a9317a67e6335"
+    "mtime": 1792752400.5396802,
+    "hash": "7a18b7ccbdc77d7f4b75eded7cea7de7"
   },
   "/Users/aazevedo/dev/agentfleet/README.md": {
     "mtime": 1792726588.2905753,
@@ -262,6 +262,10 @@
   "/Users/aazevedo/dev/agentfleet/tickets/30-session-register-label-args.md": {
     "mtime": 1792722717.4597855,
     "hash": "5428a6337e9bbbd0b2b7eefccec1e7b6"
+  },
+  "/Users/aazevedo/dev/agentfleet/tickets/34-codex-no-daemon-ready.md": {
+    "mtime": 1792752399.180467,
+    "hash": "88f7cc12b7fdab6759d0681f5d3ea364"
   },
   "/Users/aazevedo/dev/agentfleet/tickets/33-skill-discovery.md": {
     "mtime": 1792727227.290358,

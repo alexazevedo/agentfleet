@@ -84,42 +84,61 @@ pub fn write_codex_hook(
     Ok(())
 }
 
-/// Six `-c` override values (unquoted), one per Codex hook event. SessionStart carries a second
-/// hook, `<shim> hook-context`, which injects the skill guide into the model context.
-/// Caller guarantees `script` and `shim` contain no `"` or `\\`.
-pub fn codex_hook_overrides(script: &Path, shim: &Path) -> Vec<String> {
+/// Six `-c` override values (unquoted), one per Codex hook event.
+/// Caller guarantees `script` contains no `"` or `\\`.
+pub fn codex_hook_overrides(script: &Path) -> Vec<String> {
     let path = script.to_string_lossy();
-    let shim = shim.to_string_lossy();
     CODEX_HOOKS
         .iter()
         .map(|(event, word)| {
-            let context = if *event == "SessionStart" {
-                format!(",{{type=\"command\",command=\"{shim} hook-context\"}}")
-            } else {
-                String::new()
-            };
-            format!(
-                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"{path} {word}\"}}{context}]}}]"
-            )
+            format!("hooks.{event}=[{{hooks=[{{type=\"command\",command=\"{path} {word}\"}}]}}]")
         })
         .collect()
 }
 
+/// Escape `s` as a TOML basic (double-quoted, single-line) string, quotes included.
+pub fn toml_basic_string(s: &str) -> String {
+    let mut out = String::with_capacity(s.len() + 2);
+    out.push('"');
+    for c in s.chars() {
+        match c {
+            '"' => out.push_str("\\\""),
+            '\\' => out.push_str("\\\\"),
+            '\n' => out.push_str("\\n"),
+            '\r' => out.push_str("\\r"),
+            '\t' => out.push_str("\\t"),
+            c if (c as u32) < 0x20 || c == '\u{7f}' => {
+                out.push_str(&format!("\\u{:04X}", c as u32))
+            }
+            c => out.push(c),
+        }
+    }
+    out.push('"');
+    out
+}
+
+/// Codex launch string. `--no-daemon` is required: attached to the shared daemon the TUI
+/// ignores every `-c` override (hooks, instructions). SessionStart hooks only fire on the
+/// first turn, so readiness comes from the terminal (see `codex_ready_scan`).
 pub fn codex_launch(
     script: &Path,
-    shim: &Path,
     resume_id: Option<&str>,
     auto_permission: bool,
     extra: &[String],
 ) -> String {
-    let mut s = String::from("codex --dangerously-bypass-hook-trust");
+    let mut s = String::from("codex --no-daemon --dangerously-bypass-hook-trust");
     if auto_permission {
         s.push_str(" --approve-for-me");
     }
-    for o in codex_hook_overrides(script, shim) {
+    for o in codex_hook_overrides(script) {
         s.push_str(" -c ");
         s.push_str(&shell_quote(&o));
     }
+    s.push_str(" -c ");
+    s.push_str(&shell_quote(&format!(
+        "developer_instructions={}",
+        toml_basic_string(crate::cli::GUIDE)
+    )));
     for a in extra {
         s.push(' ');
         s.push_str(&shell_quote(a));
@@ -129,6 +148,34 @@ pub fn codex_launch(
         s.push_str(&shell_quote(id));
     }
     s
+}
+
+const OSC_7501_WORKING: &[u8] = b"7501;state=working";
+const OSC_7501_IDLE: &[u8] = b"7501;state=idle";
+
+/// Codex TUI readiness from its terminal output: at startup it emits `OSC 7501 state=idle`,
+/// then `state=working` while loading, then `state=idle` when the composer is ready.
+/// Returns true for the first chunk that completes a working → idle transition.
+pub fn codex_ready_scan(seen_working: &mut bool, chunk: &[u8]) -> bool {
+    let idle_at = chunk
+        .windows(OSC_7501_IDLE.len())
+        .rposition(|w| w == OSC_7501_IDLE);
+    let working_at = chunk
+        .windows(OSC_7501_WORKING.len())
+        .rposition(|w| w == OSC_7501_WORKING);
+    match (*seen_working, working_at, idle_at) {
+        (false, None, _) => false,
+        (false, Some(w), Some(i)) if i > w => {
+            *seen_working = true;
+            true
+        }
+        (false, Some(_), _) => {
+            *seen_working = true;
+            false
+        }
+        (true, _, Some(_)) => true,
+        (true, _, None) => false,
+    }
 }
 
 /// Codex session id from the last hook payload, if present.
@@ -194,47 +241,115 @@ mod tests {
 
     #[test]
     fn codex_overrides() {
-        let shim = PathBuf::from("/t/agentfleet-1/agentfleet");
-        let o = codex_hook_overrides(&PathBuf::from("/h/x.codex-hook.sh"), &shim);
+        let o = codex_hook_overrides(&PathBuf::from("/h/x.codex-hook.sh"));
         assert_eq!(o.len(), 6);
         for (event, word) in CODEX_HOOKS {
-            let context = if event == "SessionStart" {
-                ",{type=\"command\",command=\"/t/agentfleet-1/agentfleet hook-context\"}"
-            } else {
-                ""
-            };
             let want = format!(
-                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"/h/x.codex-hook.sh {word}\"}}{context}]}}]"
+                "hooks.{event}=[{{hooks=[{{type=\"command\",command=\"/h/x.codex-hook.sh {word}\"}}]}}]"
             );
             assert!(o.contains(&want), "{want}");
         }
-        assert!(o[0].contains("SessionStart") && o[0].contains("hook-context"));
         assert!(o[1].contains("UserPromptSubmit") && o[1].ends_with("working\"}]}]"));
-        assert!(!o[1].contains("hook-context"));
         assert!(o[5].contains("Interrupt") && o[5].ends_with("waiting\"}]}]"));
+    }
+
+    #[test]
+    fn toml_strings() {
+        assert_eq!(toml_basic_string("plain"), "\"plain\"");
+        assert_eq!(
+            toml_basic_string("a \"q\" b\\c\nd\te"),
+            "\"a \\\"q\\\" b\\\\c\\nd\\te\""
+        );
+        assert_eq!(toml_basic_string("\u{1}"), "\"\\u0001\"");
+        // The guide itself must come out as one line with no raw quotes left unescaped.
+        let g = toml_basic_string(crate::cli::GUIDE);
+        assert!(!g.contains('\n'));
+        assert!(g.starts_with('"') && g.ends_with('"'));
+        let v: toml_check::Value = toml_check::parse(&g);
+        assert_eq!(v.0, crate::cli::GUIDE);
+    }
+
+    /// Minimal TOML basic-string decoder, enough to round-trip `toml_basic_string` in tests.
+    mod toml_check {
+        pub struct Value(pub String);
+        pub fn parse(s: &str) -> Value {
+            let inner = &s[1..s.len() - 1];
+            let mut out = String::new();
+            let mut it = inner.chars();
+            while let Some(c) = it.next() {
+                if c != '\\' {
+                    out.push(c);
+                    continue;
+                }
+                match it.next().unwrap() {
+                    'n' => out.push('\n'),
+                    'r' => out.push('\r'),
+                    't' => out.push('\t'),
+                    '"' => out.push('"'),
+                    '\\' => out.push('\\'),
+                    'u' => {
+                        let hex: String = (0..4).map(|_| it.next().unwrap()).collect();
+                        out.push(char::from_u32(u32::from_str_radix(&hex, 16).unwrap()).unwrap());
+                    }
+                    other => panic!("unexpected escape \\{other}"),
+                }
+            }
+            Value(out)
+        }
     }
 
     #[test]
     fn codex_launch_flags() {
         let p = PathBuf::from("/h/x.sh");
-        let shim = PathBuf::from("/t/agentfleet");
-        let a = codex_launch(&p, &shim, None, true, &[]);
+        let a = codex_launch(&p, None, true, &[]);
         assert!(a.starts_with(
-            "codex --dangerously-bypass-hook-trust --approve-for-me -c 'hooks.SessionStart="
+            "codex --no-daemon --dangerously-bypass-hook-trust --approve-for-me -c 'hooks.SessionStart="
         ));
-        assert_eq!(a.matches(" -c ").count(), 6);
+        assert_eq!(a.matches(" -c 'hooks.").count(), 6);
+        assert_eq!(a.matches(" -c 'developer_instructions=").count(), 1);
+        assert!(a.contains(" -c 'developer_instructions=\"---"));
         assert!(!a.contains("resume"));
-        let n = codex_launch(&p, &shim, None, false, &[]);
-        assert!(n.starts_with("codex --dangerously-bypass-hook-trust -c "));
+        let n = codex_launch(&p, None, false, &[]);
+        assert!(n.starts_with("codex --no-daemon --dangerously-bypass-hook-trust -c "));
         assert!(!n.contains("--approve-for-me"));
-        let r = codex_launch(
-            &p,
-            &shim,
-            Some("abc-123"),
-            false,
-            &["-m".into(), "o'3".into()],
-        );
-        assert!(r.ends_with("}]}]' '-m' 'o'\\''3' resume 'abc-123'"), "{r}");
+        let r = codex_launch(&p, Some("abc-123"), false, &["-m".into(), "o'3".into()]);
+        assert!(r.ends_with("' '-m' 'o'\\''3' resume 'abc-123'"), "{r}");
+    }
+
+    #[test]
+    fn codex_ready_from_osc_7501() {
+        let mut w = false;
+        // Observed startup sequence: idle, working, working, idle (ready).
+        assert!(!codex_ready_scan(
+            &mut w,
+            b"\x1b]7501;state=idle:app=codex\x1b\\"
+        ));
+        assert!(!codex_ready_scan(
+            &mut w,
+            b"\x1b]7501;state=working:app=codex\x1b\\"
+        ));
+        assert!(!codex_ready_scan(
+            &mut w,
+            b"text \x1b]7501;state=working:app=codex\x1b\\ more"
+        ));
+        assert!(codex_ready_scan(
+            &mut w,
+            b"\x1b]7501;state=idle:app=codex\x1b\\"
+        ));
+        // Working and idle in one chunk, in that order, is ready too.
+        let mut w2 = false;
+        assert!(codex_ready_scan(
+            &mut w2,
+            b"\x1b]7501;state=working:app=codex\x1b\\..\x1b]7501;state=idle:app=codex\x1b\\"
+        ));
+        // Idle before working in the same chunk is not ready yet.
+        let mut w3 = false;
+        assert!(!codex_ready_scan(
+            &mut w3,
+            b"\x1b]7501;state=idle:app=codex\x1b\\..\x1b]7501;state=working:app=codex\x1b\\"
+        ));
+        assert!(w3);
+        assert!(!codex_ready_scan(&mut w3, b"plain output"));
     }
 
     #[test]

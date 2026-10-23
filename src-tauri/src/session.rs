@@ -240,11 +240,9 @@ fn spawn_for(
         let launch = if session.agent == Agent::Codex {
             let script = run.join(format!("{id}.codex-hook.sh"));
             let payload = run.join(format!("{id}.codex-hook.json"));
-            for p in [&script, &rt.shim] {
-                let sp = p.to_string_lossy();
-                if sp.contains('"') || sp.contains('\\') {
-                    return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
-                }
+            let sp = script.to_string_lossy();
+            if sp.contains('"') || sp.contains('\\') {
+                return Err(format!("codex hook path contains '\"' or '\\': {sp}"));
             }
             agent::write_codex_hook(&status_file, &payload, &script).map_err(|e| e.to_string())?;
             let resume_id = if resume {
@@ -254,7 +252,6 @@ fn spawn_for(
             };
             agent::codex_launch(
                 &script,
-                &rt.shim,
                 resume_id.as_deref(),
                 auto_permission,
                 &session.agent_args,
@@ -270,6 +267,33 @@ fn spawn_for(
         poller_stop = Some(stop_tx.clone());
     }
     let exit_app = app.clone();
+    // Codex: no hook fires before the first turn, so readiness (→ `waiting`, which triggers
+    // auto-delivery) comes from the TUI's OSC 7501 idle signal, with a timer as fallback.
+    let on_chunk: Box<dyn Fn(Vec<u8>) + Send + 'static> = if session.agent == Agent::Codex {
+        let ready_app = app.clone();
+        // (seen_working, readied); the PTY reader is the only caller, the mutex is uncontended.
+        let ready = Mutex::new((false, false));
+        Box::new(move |chunk: Vec<u8>| {
+            if let Ok(mut st) = ready.lock() {
+                if !st.1 && agent::codex_ready_scan(&mut st.0, &chunk) {
+                    st.1 = true;
+                    mark_waiting_if_unknown(&ready_app, id);
+                }
+            }
+            let _ = on_data.send(InvokeResponseBody::Raw(chunk));
+        })
+    } else {
+        Box::new(move |chunk: Vec<u8>| {
+            let _ = on_data.send(InvokeResponseBody::Raw(chunk));
+        })
+    };
+    if session.agent == Agent::Codex {
+        let fallback_app = app.clone();
+        tauri::async_runtime::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_secs(6)).await;
+            mark_waiting_if_unknown(&fallback_app, id);
+        });
+    }
     let handle = pty::spawn(
         &platform::login_shell(),
         &session.worktree.path,
@@ -277,9 +301,7 @@ fn spawn_for(
         &env,
         cols,
         rows,
-        Box::new(move |chunk| {
-            let _ = on_data.send(InvokeResponseBody::Raw(chunk));
-        }),
+        on_chunk,
         Box::new(move |_code| {
             // Stop the poller first so it cannot overwrite `ended`.
             let _ = stop_tx.send(true);
@@ -293,6 +315,22 @@ fn spawn_for(
     session.status = Status::Unknown;
     session.draft_len = 0;
     Ok(())
+}
+
+/// Emit `waiting` for `id` only while its status is still `Unknown` (lock-and-release first).
+fn mark_waiting_if_unknown(app: &AppHandle, id: Uuid) {
+    let unknown = app
+        .state::<Sessions>()
+        .lock()
+        .map(|m| {
+            m.get(&id)
+                .map(|s| s.status == Status::Unknown)
+                .unwrap_or(false)
+        })
+        .unwrap_or(false);
+    if unknown {
+        status::emit(app, id, Status::Waiting);
+    }
 }
 
 fn info_for(s: &Session) -> SessionInfo {

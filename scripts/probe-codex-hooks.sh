@@ -18,7 +18,7 @@ HOOK
 chmod 755 "$hook"
 
 cd "$tmp" || exit 1
-codex exec --skip-git-repo-check --dangerously-bypass-hook-trust \
+codex exec --skip-git-repo-check --no-daemon --dangerously-bypass-hook-trust \
   -c "hooks.SessionStart=[{hooks=[{type=\"command\",command=\"$hook waiting\"}]}]" \
   -c "hooks.Stop=[{hooks=[{type=\"command\",command=\"$hook waiting\"}]}]" \
   'Reply with the single word pong.' </dev/null >"$tmp/out.txt" 2>&1 &
